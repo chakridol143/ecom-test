@@ -1,0 +1,32 @@
+
+<div class="cart-details-overlay">
+  <div class="cart-details-panel" role="dialog" aria-modal="true">
+    <div class="header">
+      <h3>🛒 Your Cart ({{ items.length }})</h3>
+      <button class="close-btn" (click)="onClose()" aria-label="Close cart">✕</button>
+    </div>
+
+    <div *ngIf="items.length === 0" class="empty">Your cart is empty</div>
+
+    <ul *ngIf="items.length > 0" class="items-list">
+      <li *ngFor="let item of items; let i = index" class="cart-item">
+        <img [src]="'http://localhost:3000/assets/images/' + item.image_url" [alt]="item.name">
+        <p>{{item.description}}</p>
+        <div class="info">
+          <div class="name">{{ item.name }}</div>
+          <div class="price">₹{{ item.price || 0 }}</div>
+        </div>
+
+        <button class="remove-btn" (click)="onRemove(i)" aria-label="Remove item">Remove</button>
+      </li>
+    </ul>
+
+    <div class="footer" *ngIf="items.length > 0">
+      <div class="total">Total: <strong>₹{{ getTotal() }}</strong></div>
+      <div class="actions">
+        <button class="clear-btn" (click)="onClear()">Clear</button>
+        <button class="checkout-btn" (click)="onCheck()">Checkout</button>
+    </div>
+    </div>
+  </div>
+</div>

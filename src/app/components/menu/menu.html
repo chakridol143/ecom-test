@@ -1,0 +1,54 @@
+
+<div class="menu-container">
+  <div class="sidebar">
+    <h2>Category</h2>
+
+    <div 
+      class="menu-item" 
+      *ngFor="let category of categories; trackBy: trackByCategoryId" 
+      (click)="selectCategory(category)"
+    >
+      <img
+        [src]="getImageUrl(category.image_url)"
+        [alt]="category.name"
+        (error)="onImageError($event)"
+        width="130"
+        height="130"
+      />
+      <span>{{ category.name }}</span>
+    </div>
+  </div>
+
+  <div class="content">
+
+
+<div class="ad-slider">
+  <div class="ad-slide-track">
+    <div class="ad-slide"><img src="../../../assets/images/banner-bangle.webp" alt="Ad 1"></div>
+    <div class="ad-slide"><img src="../../../assets/images/banner-oddiyaanam_3.webp" alt="Ad 2"></div>
+    <div class="ad-slide"><img src="../../../assets/images/banner-pendant.webp" alt="Ad 3"></div>
+    <div class="ad-slide"><img src="../../../assets/images/banner-ring.webp" alt="Ad 4"></div>
+    <div class="ad-slide"><img src="../../../assets/images/earrings_1.jpg" alt="Ad 5"></div>
+
+    <!-- repeat for smooth loop -->
+    <div class="ad-slide"><img src="../../../assets/images/menubg.jpg" alt="Ad 1"></div>
+    <div class="ad-slide"><img src="../../../assets/images/addToCart.jpg" alt="Ad 2"></div>
+  </div>
+</div>
+
+
+  <h1 *ngIf="selectedCategory">{{ selectedCategory.name }}</h1>
+
+
+<app-products
+  [searchTerm]="searchTerm"
+  [categoryId]="selectedCategoryId"
+  
+  (addToCartEvent)="handleAddToCart($event)">
+</app-products>
+
+
+
+    <app-cart [cartCount]="cartCount" [items]="cartItems"></app-cart>
+  </div>
+</div>

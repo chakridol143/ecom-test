@@ -1,0 +1,11 @@
+<div class="search-bar">
+  <input
+    type="text"
+    [(ngModel)]="searchTerm"
+    (keyup)="onKeyUp()"         
+    (keydown.enter)="onSearch()" 
+    placeholder="Search products..."
+  />
+  <button (click)="onSearch()">Search</button>
+  <!-- <button *ngIf="searchTerm" (click)="clearSearch()">Clear</button> -->
+</div>

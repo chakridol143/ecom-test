@@ -1,0 +1,29 @@
+<header class="header-container">
+  <div class="logo">
+    <h1>Vending Machine</h1>
+  </div>
+
+  <app-search (searchEvent)="onSearch($event)"></app-search>
+
+  <div class="auth-buttons">
+
+  <ng-container *ngIf="!user; else loggedIn">
+    <button class="login-btn" routerLink="/login">Login</button>
+    
+     
+  </ng-container>
+  
+
+  <ng-template #loggedIn>
+    <span class="user-name">Hello {{ user.name }}</span>
+    <button class="logout-btn" routerLink="/logout" >Logout</button>
+  </ng-template>
+
+  <button (click)="filterComponent.openFilter()">Filter</button>
+  <!-- <app-filter #filterComponent></app-filter> -->
+
+
+</div>
+
+</header>
+<app-filter #filterComponent></app-filter>

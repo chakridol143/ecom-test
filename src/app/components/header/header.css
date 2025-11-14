@@ -1,0 +1,133 @@
+/* 🔹 HEADER CONTAINER */
+.header-container {
+  position: fixed;
+  top: -8px;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  background-image: url('https://png.pngtree.com/thumb_back/fw800/background/20240104/pngtree-vectorized-linkedin-banner-with-seamless-gradient-texture-technology-image_13913254.png');
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: cover;
+  background-attachment: fixed;
+  color: #ffffff;
+  /* padding: 14.8px 30px; */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Poppins', sans-serif;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+  z-index: 800;
+  backdrop-filter: blur(6px);
+  transition: all 0.3s ease;
+  overflow: hidden;
+  position: relative;
+  /* margin-right: 15px; */
+  left: -8px;
+  padding-right: 20%;
+}
+.user-name {
+  margin-right: 12px;
+  font-weight: 600;
+  color: #fdfdfd;
+}
+
+
+/* 🔹 Overlay for better readability */
+.header-container::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: -1;
+}
+
+/* 🔹 LOGO */
+.logo {
+  flex: 1;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.logo h1 {
+  margin: 0;
+  margin-left: 5%;
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+/* Hover Effect */
+.logo h1:hover {
+  color: #FFD54F;
+  text-shadow: 0 0 10px rgba(255, 213, 79, 0.8),
+               0 0 20px rgba(255, 255, 255, 0.3);
+  transform: scale(1.05);
+}
+
+/* 🔹 AUTH BUTTONS */
+.auth-buttons {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 12px;
+  margin-right: -9%;
+  /* margin-left: 5%; */
+}
+
+.auth-buttons button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  font-family: 'Poppins', sans-serif;
+  
+}
+
+.login-btn {
+  background-color: #FFD54F;
+  color: #0b3c91;
+}
+
+
+.logout-btn {
+  background-color: #dc3545;
+  color: white;
+}
+
+.auth-buttons button:hover {
+  transform: scale(1.05);
+  opacity: 0.9;
+}
+
+/* 🔹 RESPONSIVE DESIGN */
+@media (max-width: 768px) {
+  .header-container {
+    flex-direction: column;
+    align-items: flex-start;
+    height: auto;
+    padding: 12px 20px;
+    gap: 10px;
+    background-attachment: scroll;
+    background-position: center center;
+  }
+
+  .auth-buttons {
+    align-self: flex-end;
+    margin-right: 0;
+  }
+
+  .logo h1 {
+    font-size: 20px;
+  }
+}
+
+

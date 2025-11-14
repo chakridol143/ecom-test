@@ -1,0 +1,170 @@
+/* 🔹 Minimal Search container aligned to right */
+.search-container {
+  top: 70px; /* just below header */
+  right: 20px;
+  z-index: 100;
+}
+
+/* 🌐 Simple search bar (input + button) */
+.search-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+}
+
+/* ✏️ Input box */
+.search-bar input[type="text"] {
+  padding: 10px 14px;
+  border: 1.5px solid #ccc;
+  border-radius: 25px;
+  outline: none;
+  font-size: 15px;
+  color: #333;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  width: 220px;
+}
+
+.search-bar input[type="text"]:focus {
+  border-color: #0078ff;
+  box-shadow: 0 0 6px rgba(0, 120, 255, 0.3);
+}
+
+.search-bar input::placeholder {
+  color: #888;
+}
+
+/* 🔘 Search button */
+.search-bar button {
+  background-color: #0078ff;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  padding: 10px 16px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.search-bar button:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+}
+
+/* 🧾 Search Results aligned to left */
+.results {
+  position: fixed;
+  top: 120px; /* below header */
+  left: 20%;
+  width: 60%;
+  /* background-image: url('https://png.pngtree.com/thumb_back/fw800/background/20240104/pngtree-vectorized-linkedin-banner-with-seamless-gradient-texture-technology-image_13913254.png'); */
+    background-image: url('/assets/images/background.png.webp');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  z-index: 100;
+  max-height: 420px;
+  overflow-y: auto;
+  font-family: 'Poppins', sans-serif;
+
+  /* 🧩 Grid layout */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+/* 🔹 Individual Result Card */
+.result-card {
+  /* background: linear-gradient(145deg, #f7f9fc, #ffffff); */
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  padding: 15px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: url('https://png.pngtree.com/thumb_back/fw800/background/20240104/pngtree-vectorized-linkedin-banner-with-seamless-gradient-texture-technology-image_13913254.png');
+}
+
+.result-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+}
+
+/* 🖼️ Image Styling */
+.result-card img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+/* 📋 Meta Information */
+.result-card .meta {
+  text-align: center;
+}
+
+.result-card .title {
+  font-weight: 600;
+  font-size: 16px;
+  color: white;
+  margin-bottom: 6px;
+}
+
+.result-card .sub {
+  font-size: 14px;
+  color: white;
+}
+
+.result-card .sub span {
+  display: block;
+}
+
+/* 🧱 No results */
+.no-results {
+  position: fixed;
+  top: 120px;
+  left: 20%;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 250px;
+  text-align: center;
+  font-weight: 500;
+  color: #555;
+}
+
+/* 📱 Responsive */
+@media (max-width: 768px) {
+  .results {
+    left: 5%;
+    width: 90%;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  }
+}
+.add-to-cart-btn {
+  background-color: #f1c40f; 
+  color: #000;             
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  margin-top: 10px;
+}
+
+.add-to-cart-btn:hover {
+  background-color: #d4ac0d; 
+  transform: scale(1.05);
+}

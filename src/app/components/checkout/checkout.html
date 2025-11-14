@@ -1,0 +1,49 @@
+<div class="checkout-popup">
+  <div class="checkout-header">
+    <h2>Checkout</h2>
+    <button class="close-btn" (click)="closePopup()">✖</button>
+  </div>
+
+  <div *ngIf="items.length === 0" class="empty-cart">
+    <p>Your cart is empty.</p>
+  </div>
+
+  <div *ngIf="items.length > 0" class="cart-list">
+    <div class="cart-item" *ngFor="let item of items; let i = index">
+      <img [src]="'http://localhost:3000/assets/images/' + item.image_url" alt="{{ item.name }}" class="cart-img">
+      <!-- <p>{{item.description}}</p> -->
+      <div class="item-details">
+        <h4>{{ item.name }}</h4>
+         <p>{{item.description}}</p>
+        <p>Price: ₹{{ item.price }}</p>
+      </div>
+      <button class="remove-btn" (click)="removeItem(i)">Remove</button>
+    </div>
+
+    <div class="price-summary">
+      <div class="price-row">
+        <span>Subtotal:</span>
+        <span>₹{{ totalAmount.toFixed(2) }}</span>
+      </div>
+      <div class="price-row">
+        <span>GST (18%):</span>
+        <span>₹{{ gstAmount.toFixed(2) }}</span>
+      </div>
+      <div class="price-row total">
+        <span><strong>Total Payment:</strong></span>
+        <span><strong>₹{{ grandTotal.toFixed(2) }}</strong></span>
+      </div>
+    </div>
+
+    <div class="checkout-actions">
+      <button class="buy-btn" (click)="buyNow()">Buy Now</button>
+      <button class="clear-btn" (click)="clearCart()">Clear Cart</button>
+    </div>
+  </div>
+  <div class="modal-overlay" *ngIf="showDialog" (click)="closeDialog()"></div>
+<div class="dialog-box" *ngIf="showDialog">
+  <h2>Purchase Successful </h2>
+  <p>Thank you for your purchase!<br>Your total payment is <strong>₹{{ grandTotal.toFixed(2) }}</strong>.</p>
+  <button class="ok-btn" (click)="confirmPurchase()">OK</button>
+</div>
+</div>
