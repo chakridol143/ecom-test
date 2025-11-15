@@ -1,0 +1,160 @@
+.cart-container {
+  position: fixed;
+  bottom: 30px;
+  right: 40px;
+  z-index: 100;
+  cursor: pointer;
+}
+
+.cart-icon {
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+  padding: 10px;
+  transition: transform 0.2s ease;
+}
+
+.cart-container:hover .cart-icon {
+  transform: scale(1.1);
+}
+
+.cart-count {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  background-color: #e74c3c;
+  color: #fff;
+  border-radius: 50%;
+  font-size: 14px;
+  padding: 3px 8px;
+  font-weight: bold;
+}
+
+/* cart-details.css */
+.popup-container {
+  position: fixed;
+  top: 80px;
+  right: 20px;
+  width: 350px;
+  background: white;
+  border: 1px solid #ccc;
+  padding: 15px;
+  z-index: 1000;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+
+.cart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 10px;
+}
+
+.cart-header h3 {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.cart-items {
+  margin-top: 10px;
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+  border-bottom: 1px solid #f0f0f0;
+  padding-bottom: 8px;
+}
+
+.item-image {
+  width: 50px;
+  height: 50px;
+  border-radius: 6px;
+  margin-right: 10px;
+}
+
+.item-details {
+  flex: 1;
+}
+
+.item-name {
+  font-size: 15px;
+  font-weight: 500;
+  margin: 0;
+}
+
+.item-price {
+  color: green;
+  margin: 2px 0 0;
+  font-weight: 600;
+}
+
+.remove-btn {
+  background: none;
+  color: #c62828;
+  border: 1px solid #c62828;
+  border-radius: 5px;
+  padding: 3px 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.remove-btn:hover {
+  background: #c62828;
+  color: #fff;
+}
+
+.cart-total {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.total-amount {
+  color: #000;
+}
+
+.cart-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.clear-btn,
+.checkout-btn {
+  flex: 1;
+  padding: 8px 0;
+  border-radius: 5px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.clear-btn {
+  background: #f1f1f1;
+  color: #000;
+}
+
+.checkout-btn {
+  background: #fbc02d;
+  color: #000;
+}
+
+.empty-message {
+  text-align: center;
+  color: #888;
+  margin-top: 50px;
+  font-size: 15px;
+}

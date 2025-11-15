@@ -1,0 +1,199 @@
+.checkout-popup {
+  position: fixed;
+  top: 60px;
+  right: 40px;
+  width: 94%;
+  background: #fff;
+  /* border-radius: 5px; */
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+  padding: 47px;
+  z-index: 1000;
+  bottom: 1px;
+  right: 0;
+  font-family: 'Poppins', sans-serif;
+}
+
+
+.checkout-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 10px;
+}
+
+.close-btn {
+  border: none;
+  background: transparent;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.cart-list {
+  margin-top: 15px;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.cart-item {
+  display: grid;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #eee;
+  padding: 15px 5px;
+  gap: 15px;
+  grid-template-columns: 70px 1fr auto;
+}
+
+.cart-img {
+  width: 200%;
+  height: 100%;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.item-details {
+  display: flex;
+  /* flex: 1; */
+  flex-direction: column;
+  margin-left: 100px;
+  /* padding-top: 2px;
+  padding-bottom: 2px; */
+  gap: 1px;
+}
+
+
+
+.remove-btn {
+  background: #f44336;
+  border: none;
+  color: #fff;
+  padding: 8px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.remove-btn:hover {
+  background: #d32f2f;
+}
+
+.price-summary {
+  margin-top: 20px;
+  border-top: 1px solid #ddd;
+  padding-top: 10px;
+}
+
+.price-row {
+  display: flex;
+  justify-content: space-between;
+  margin: 6px 0;
+}
+
+.price-row.total {
+  font-size: 16px;
+  border-top: 1px solid #ccc;
+  padding-top: 8px;
+}
+
+.checkout-actions {
+  margin-top: 20px;
+  text-align: right;
+}
+
+.buy-btn {
+  background: #4CAF50;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.buy-btn:hover {
+  background: #388E3C;
+}
+
+.clear-btn {
+  background: #9E9E9E;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-left: 8px;
+  transition: 0.3s;
+}
+
+.clear-btn:hover {
+  background: #757575;
+}
+
+/* Existing styles remain same */
+
+/* ✨ Dialog Overlay */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(3px);
+  z-index: 2000;
+}
+
+/* 💎 Dialog Box */
+.dialog-box {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: linear-gradient(145deg, #fffaf0, #f9f5e3);
+  padding: 30px 40px;
+  border-radius: 14px;
+  text-align: center;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+  border: 1px solid #d4af37;
+  z-index: 2001;
+  width: 350px;
+  animation: scaleIn 0.3s ease;
+}
+
+/* Header */
+.dialog-box h2 {
+  color: #2b1b0f;
+  font-weight: 700;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+/* Text */
+.dialog-box p {
+  color: #5c4c32;
+  font-size: 15px;
+  margin-bottom: 20px;
+  line-height: 1.4;
+}
+
+/* OK Button */
+.ok-btn {
+  background: linear-gradient(135deg, #b8860b, #ffd700);
+  color: white;
+  border: none;
+  padding: 10px 24px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.3s;
+  box-shadow: 0 3px 7px rgba(184, 134, 11, 0.4);
+}
+
+.ok-btn:hover {
+  background: linear-gradient(135deg, #ffd700, #b8860b);
+  transform: translateY(-2px);
+}
+
+/* Animation */
+@keyframes scaleIn {
+  from { transform: translate(-50%, -50%) scale(0.9); opacity: 0; }
+  to { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+}

@@ -1,0 +1,134 @@
+/* Overlay */
+.filter-overlay {
+  position: fixed;
+  top: 60px; /* below header */
+  left: 0;
+  width: 100%;
+  height: calc(100vh - 60px);
+  background: rgba(0,0,0,0.4);
+  z-index: 900;
+  backdrop-filter: blur(2px);
+}
+
+/* Popup */
+.filter-popup {
+  position: fixed;
+  top: 80px; /* start slightly below header */
+  right: 5%;
+  width: 320px;
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  padding: 20px;
+  z-index: 1000;
+  animation: slideDown 0.3s ease-in-out;
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.filter-box h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #0b3c91;
+}
+
+.filter-group {
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.filter-group label {
+  font-weight: 600;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+.filter-group input,
+.filter-group select {
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  outline: none;
+  transition: border 0.3s;
+}
+
+.filter-group input:focus,
+.filter-group select:focus {
+  border-color: #0b3c91;
+}
+
+.filter-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.apply-btn {
+  background: #0b3c91;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 14px;
+  cursor: pointer;
+}
+
+.reset-btn {
+  background: #ccc;
+  color: #000;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 14px;
+  cursor: pointer;
+}
+
+.apply-btn:hover {
+  background: #092a6d;
+}
+
+.reset-btn:hover {
+  background: #aaa;
+}
+
+
+.slider {
+  position: relative;
+  width: 95%;
+  margin-top: 10px;
+}
+
+input[type="range"] {
+  width: 100%;
+  height: 6px;
+  border-radius: 3px;
+  background: linear-gradient(to right, #ccc var(--progress, 50%));
+  outline: none;
+  appearance: none;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #0b3c91;
+  border: 2px solid white;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  transition: transform 0.1s ease;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+  transform: scale(1.1);
+}
+
+.filter-group label {
+  font-weight: 600;
+  color: #333;
+}

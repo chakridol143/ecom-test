@@ -1,0 +1,13 @@
+<div class="cart-container" (click)="toggleCartDetails()">
+  <img src="../../../assets/images/addToCart1.avif" alt="Cart" class="cart-icon">
+  <span class="cart-count" *ngIf="cartCount > 0">{{ cartCount }}</span>
+</div>
+
+<app-cart-details
+  *ngIf="showCartPopup"
+  [items]="items"
+  (close)="closeDetails()"
+  (remove)="cartItemRemove($event)"
+  (clear)="handleClear()">
+</app-cart-details>
+
