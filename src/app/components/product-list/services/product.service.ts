@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http';
 
 @Injectable({ providedIn: 'root' })
 export class ProductService {
-  private baseUrl = 'http://127.0.0.1:3000/products';
+  private baseUrl = `${environment.apiUrl}/api/products`;
 
   constructor(private http: HttpClient) {}
 
