@@ -1,0 +1,11 @@
+<nav class="nav">
+  <ul class="nav-bar">
+
+    <li class="nav-item" *ngFor="let item of menuItems">
+      <!-- Left icon like Amazon -->
+      <span *ngIf="item.icon" class="nav-icon">{{ item.icon }}</span>
+      {{ item.name }}
+    </li>
+
+  </ul>
+</nav>

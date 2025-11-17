@@ -1,0 +1,23 @@
+<div class="slider-container">
+  <button class="nav-btn left" (click)="prevSlide()">&#10094;</button>
+
+  <div class="slider">
+    <!-- RELATED IMAGES BELOW SLIDER -->
+<!-- <div class="related-container" *ngIf="relatedImages.length > 0">
+  <h3>Related Products</h3>
+
+  <div class="related-grid">
+    <img *ngFor="let img of relatedImages" [src]="img" class="related-img">
+  </div>
+</div> -->
+
+
+    <div class="slides" [style.transform]="'translateX(-' + currentIndex * 100 + '%)'">
+      <div class="slide" *ngFor="let img of images">
+        <img [src]="img" (click)="onSliderClick(img)" class="slider-clickable" />
+      </div>
+    </div>
+  </div>
+
+  <button class="nav-btn right" (click)="nextSlide()">&#10095;</button>
+</div>

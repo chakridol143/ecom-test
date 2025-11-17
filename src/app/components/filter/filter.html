@@ -39,30 +39,25 @@
   </div>
 </div>
 
-      <!-- Brand -->
-      <!-- Brand (using category names) -->
-<!-- <div class="filter-group">
-  <label>Brand</label>
-  <select [(ngModel)]="filters.brand" name="brand">
-    <option value="">All Brands</option>
-    <option *ngFor="let cat of categories" [value]="cat.category_name">
-      {{ cat.category_name }}
-    </option>
-  </select>
-</div> -->
+ 
 
 <div class="filter-group">
-  <label>Brand</label>
-  <select [(ngModel)]="filters.brand" name="brand">
-    <option value="">All Brands</option>
-    <option>Tanishq</option>
-    <option>Kalyan</option>
-    <option>Malabar</option>
-    <option>PC Jeweller</option>
-    <option>Caratlane</option>
-    <option>Bluestone</option>
+  <label>Category</label>
+
+  <select [(ngModel)]="filters.category" name="category">
+    <option value="">All Categories</option>
+
+    <option 
+      *ngFor="let c of categories" 
+      [value]="c.category_id">
+      {{ c.name }}
+    </option>
+
   </select>
 </div>
+
+
+
 
 
       <!-- Material -->

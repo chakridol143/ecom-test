@@ -1,0 +1,103 @@
+/* .nav {
+  width: 100%;
+  background-color: #8fa1b2;
+  padding: 5px 20px;
+  box-sizing: border-box;
+
+}
+
+.nav-bar {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-item-nav {
+  color: #ffffff;
+  font-size: 15px;
+  cursor: pointer;
+  padding: 6px 8px;
+  border-radius: 4px;
+  transition: 0.3s ease;
+  display: flex;
+  align-items: center;
+}
+
+.nav-item-nav:hover {
+  background-color: #232f3e;
+}
+
+.nav-icon {
+  font-size: 20px;
+  margin-right: 6px;
+} */
+   
+
+/* 🔹 NAV BAR FIXED BELOW HEADER */
+.nav {
+  position: fixed;
+  top: 60px;     /* Header height = 60px */
+  left: 0;
+  width: 100%;
+  
+  background-image: url('https://png.pngtree.com/thumb_back/fw800/background/20240104/pngtree-vectorized-linkedin-banner-with-seamless-gradient-texture-technology-image_13913254.png');
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: cover;
+  background-attachment: fixed;
+
+  padding: 10px 20px;
+  box-sizing: border-box;
+
+  display: flex;
+  align-items: center;
+  color: white;
+  z-index: 700;
+
+  font-family: 'Poppins', sans-serif;
+  /* backdrop-filter: blur(6px); */
+  /* overflow: hidden; */
+  position: fixed;
+}
+
+/* 🔹 DARK OVERLAY LIKE HEADER */
+.nav::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(25, 41, 58, 0.45);
+  z-index: -1;
+}
+
+/* Nav internal layout */
+.nav-bar {
+  display: flex;
+  align-items: center;
+  gap: 45px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-item-nav {
+  /* color: white; */
+  font-size: 15px;
+  cursor: pointer;
+  padding: 6px 8px;
+  border-radius: 4px;
+  transition: 0.3s ease;
+  display: flex;
+  align-items: center;
+}
+
+.nav-item-nav:hover {
+  background-color: rgba(255, 255, 255, 0.18);
+}
+
+.nav-icon {
+  font-size: 20px;
+  margin-right: 6px;
+}
