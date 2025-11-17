@@ -1,15 +1,36 @@
-/* You can add global styles to this file, and also import other style files */
-
-body{
-/* background: linear-gradient(120deg, #f093fb, #f5576c);
- */
- /* background-color: #7cb0e4; */
-  /* background-color: #f4f6f8; */
-    /* background-color: #f8f9fa; */
-    /* background-color: rgb(166, 180, 195); */
-    /* background-color: #00e4eb; */
-    
-  position: fixed;
-  
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
+/* Body setup */
+html, body {
+  width: 100%;
+  height: 100%;
+  font-family: 'Roboto', sans-serif;
+  background-color: #f9f9f9;
+  overflow-x: hidden;
+}
+
+/* Mobile-first responsive base */
+body {
+  display: block;
+}
+
+/* Make Angular root fill the screen */
+app-root {
+  display: block;
+  min-height: 100vh;
+}
+
+/* Text smooth */
+body, input, button {
+  font-family: 'Roboto', sans-serif;
+}
+
+/* Improve tap highlight on mobiles */
+* {
+  -webkit-tap-highlight-color: transparent;
+}

@@ -36,6 +36,38 @@ export const getCartItemById = async (req: Request, res: Response) => {
   }
 };
 
+export const getcartByUserId = async(req:Request, res:Response )=>{
+  const user_Id = Number(req.params.user_Id);
+  if(Number.isNaN(user_Id)){
+    return res.status(400).json({error: 'Invalid User'})
+  }
+  const query =
+   `SELECT 
+      ci.cart_item_id,
+      ci.user_id,
+      ci.product_id,
+      ci.quantity,
+      p.name,
+      p.price,
+      p.image_url,
+      p.description
+    FROM Cart_Items ci
+    JOIN Products p ON ci.product_id = p.product_id
+    WHERE ci.user_id = ?`;
+  try{
+    const [rows] = await db.query<CartItem[]>(query,[user_Id]);
+    if(!rows || rows.length ===0){
+      return res.status(200).json([]);
+    }
+    res.status(200).json(rows);
+
+  }catch (err){
+    console.error('Error Fetching Users Cart Items',err);
+    return res.status(500).json({ error: "Failed to fetch user's cart items" });
+    
+  }
+};
+
 // export const addMultipleCartItems = async (req: Request, res: Response) => {
 //   const items = req.body; 
 //   console.log('Received addMultipleCartItems request with body:', items);
@@ -137,20 +169,24 @@ export const updateCartItem = async (req: Request, res: Response) => {
 
 // Delete a cart item
 export const deleteCartItem = async (req: Request, res: Response) => {
-  const id = Number(req.params.id);
-  if (Number.isNaN(id)) {
-    return res.status(400).json({ error: "Invalid cart item id" });
+  const user_id = Number(req.params.user_id);
+  const product_id = Number(req.params.product_id);
+
+  if (Number.isNaN(user_id) || Number.isNaN(product_id)) {
+    return res.status(400).json({ error: "Invalid user_id or product_id" });
   }
 
-  const query = "DELETE FROM Cart_Items WHERE cart_item_id = ?";
+  const query = "DELETE FROM Cart_Items WHERE user_id = ? AND product_id = ?";
   try {
-    const [result] = await db.query<any>(query, [id]);
+    const [result] = await db.query<any>(query, [user_id, product_id]);
+
     if ((result as any).affectedRows === 0) {
       return res.status(404).json({ message: "Cart item not found" });
     }
+
     return res.status(200).json({ message: "Cart item deleted successfully" });
   } catch (err) {
-    console.error("Error deleting cart item:", err);
+    console.error("❌ Error deleting cart item:", err);
     return res.status(500).json({ error: "Failed to delete cart item" });
   }
 };

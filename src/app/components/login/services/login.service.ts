@@ -28,8 +28,10 @@ export class LoginService {
 
     console.log('✅ Session saved for user:', user);
 
-   
-    this.cartService.loadCartForUser(user.id, token);
+   const userId = this.getUserId();
+  if (userId) {
+    this.cartService.loadCartForUser(userId, token);
+  }
   }
 
   logout() {
@@ -50,11 +52,13 @@ export class LoginService {
     return sessionStorage.getItem('token');
   }
 
-  getUserId() {
-  const user = JSON.parse(sessionStorage.getItem("user") || "null");
+getUserId() {
+  const user = JSON.parse(sessionStorage.getItem('user')||'{}');
   if (!user) return null;
-  return user.id || user.user_id || null;
+
+  return user.id || user.user_id || user.userID || null;
 }
+
 saveUser(user:any){
   sessionStorage.setItem('user', JSON.stringify(user));
   this.userState.next(user)

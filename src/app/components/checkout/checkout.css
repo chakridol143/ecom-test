@@ -1,26 +1,27 @@
 .checkout-popup {
   position: fixed;
-  top: 60px;
+  top: 0px;
   right: 40px;
-  width: 94%;
+  width: 100%;
   background: #fff;
   /* border-radius: 5px; */
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
-  padding: 47px;
+  padding: 17px;
   z-index: 1000;
   bottom: 1px;
   right: 0;
   font-family: 'Poppins', sans-serif;
+  height: 100vh;
 }
 
 
-.checkout-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 1px solid #ddd;
-  padding-bottom: 10px;
-}
+  .checkout-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+  }
 
 .close-btn {
   border: none;
@@ -134,7 +135,7 @@
 
 /* ✨ Dialog Overlay */
 .modal-overlay {
-  position: fixed;
+  /* position: fixed; */
   inset: 0;
   background: rgba(0,0,0,0.6);
   backdrop-filter: blur(3px);

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Output, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 
@@ -9,8 +9,8 @@ import { HttpClient } from '@angular/common/http';
   templateUrl: './slider.html',
   styleUrls: ['./slider.css']
 })
-export class Slider{
-  
+export class Slider implements OnInit, OnDestroy {
+
   constructor(private http: HttpClient) {}
 
   @Output() categorySelect = new EventEmitter<number>();
@@ -32,8 +32,26 @@ export class Slider{
   };
 
   currentIndex = 0;
+  relatedImages: string[] = [];
 
-   relatedImages: string[] = [];
+  autoSlide: any;
+
+  ngOnInit() {
+    this.startAutoSlide();
+  }
+
+  ngOnDestroy() {
+    if (this.autoSlide) {
+      clearInterval(this.autoSlide);
+    }
+  }
+
+  /** Auto-slide every 5 seconds */
+  startAutoSlide() {
+    this.autoSlide = setInterval(() => {
+      this.nextSlide();
+    }, 3000);
+  }
 
   nextSlide() {
     this.currentIndex = (this.currentIndex + 1) % this.images.length;
@@ -47,14 +65,15 @@ export class Slider{
     const categoryId = this.sliderMap[img];
     if (categoryId) {
       this.categorySelect.emit(categoryId);
-      this.loadRelatedImages(categoryId);   // 🔥 Notify parent
+      this.loadRelatedImages(categoryId);
     }
   }
 
-   loadRelatedImages(categoryId: number) {
+  /** Loads related products only when clicked */
+  loadRelatedImages(categoryId: number) {
     this.http.get<any[]>(`http://localhost:3000/products/category/${categoryId}`)
       .subscribe(res => {
-        this.relatedImages = res.map(p => p.image_url); // ONLY IMAGES
+        this.relatedImages = res.map(p => p.image_url);
       });
   }
 }

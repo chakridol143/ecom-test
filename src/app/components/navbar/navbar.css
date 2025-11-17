@@ -1,103 +1,90 @@
-/* .nav {
-  width: 100%;
-  background-color: #8fa1b2;
-  padding: 5px 20px;
-  box-sizing: border-box;
-
-}
-
-.nav-bar {
-  display: flex;
-  align-items: center;
-  gap: 22px;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.nav-item-nav {
-  color: #ffffff;
-  font-size: 15px;
-  cursor: pointer;
-  padding: 6px 8px;
-  border-radius: 4px;
-  transition: 0.3s ease;
-  display: flex;
-  align-items: center;
-}
-
-.nav-item-nav:hover {
-  background-color: #232f3e;
-}
-
-.nav-icon {
-  font-size: 20px;
-  margin-right: 6px;
-} */
-   
-
-/* 🔹 NAV BAR FIXED BELOW HEADER */
+/* ---------------------------
+   NAVBAR MAIN
+----------------------------*/
 .nav {
-  position: fixed;
-  top: 60px;     /* Header height = 60px */
-  left: 0;
   width: 100%;
-  
-  background-image: url('https://png.pngtree.com/thumb_back/fw800/background/20240104/pngtree-vectorized-linkedin-banner-with-seamless-gradient-texture-technology-image_13913254.png');
-  background-repeat: no-repeat;
-  background-position: center top;
-  background-size: cover;
-  background-attachment: fixed;
-
-  padding: 10px 20px;
-  box-sizing: border-box;
-
+  background: #ffffff;
+  border-bottom: 1px solid #e5e5e5;
+  padding: 8px 0;
   display: flex;
-  align-items: center;
-  color: white;
-  z-index: 700;
-
-  font-family: 'Poppins', sans-serif;
-  /* backdrop-filter: blur(6px); */
-  /* overflow: hidden; */
-  position: fixed;
+  justify-content: center;
 }
 
-/* 🔹 DARK OVERLAY LIKE HEADER */
-.nav::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(25, 41, 58, 0.45);
-  z-index: -1;
-}
-
-/* Nav internal layout */
 .nav-bar {
-  display: flex;
-  align-items: center;
-  gap: 45px;
   list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.nav-item-nav {
-  /* color: white; */
-  font-size: 15px;
-  cursor: pointer;
-  padding: 6px 8px;
-  border-radius: 4px;
-  transition: 0.3s ease;
   display: flex;
+  gap: 20px;
+  padding: 0;
+  margin: 0;
   align-items: center;
 }
 
-.nav-item-nav:hover {
-  background-color: rgba(255, 255, 255, 0.18);
+.nav-item {
+  padding: 8px 14px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: 0.3s ease;
+  font-size: 16px;
 }
 
+/* Hover effect */
+.nav-item:hover {
+  background: #e6e6e6;
+}
+
+/* ICON style */
 .nav-icon {
-  font-size: 20px;
-  margin-right: 6px;
+  font-size: 18px;
+  display: inline-block;
+  margin-right: 4px;
+}
+
+/* ---------------------------
+   RESPONSIVE BEHAVIOR
+----------------------------*/
+
+/* Tablets */
+@media (max-width: 900px) {
+  .nav-bar {
+    gap: 14px;
+  }
+  .nav-item {
+    font-size: 15px;
+    padding: 7px 10px;
+  }
+}
+
+/* Mobile Landscape */
+@media (max-width: 650px) {
+  .nav-bar {
+    overflow-x: auto;
+    white-space: nowrap;
+    gap: 10px;
+    padding: 6px;
+  }
+
+  .nav-item {
+    font-size: 14px;
+    padding: 6px 10px;
+  }
+}
+
+/* Mobile Portrait */
+@media (max-width: 480px) {
+  .nav {
+    justify-content: flex-start;
+  }
+
+  .nav-bar {
+    width: 100%;
+    padding: 4px 6px;
+  }
+
+  .nav-item {
+    font-size: 13px;
+    padding: 5px 8px;
+  }
 }
