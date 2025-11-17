@@ -18,7 +18,7 @@ export class ProductService {
   }
   
   getProductsByCategory(categoryId: number) {
-  return this.http.get<any[]>(`https://ecom-backend-production-5341.up.railway.app/api/products/category/${categoryId}`);
+  return this.http.get<any[]>(`${this.baseUrl}/api/products/category/${categoryId}`);
 }
 
 }

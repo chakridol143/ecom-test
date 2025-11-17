@@ -35,7 +35,7 @@ export class CategoryService {
   }
 
   getCategoriesWithProducts(): Observable<Category[]> {
-    return this.http.get<Category[]>(`https://ecom-backend-production-5341.up.railway.app/with-products/all`);
+    return this.http.get<Category[]>(`${this.apiUrl}/with-products/all`);
   }
 
   getProductsByCategory(categoryId: number) {
