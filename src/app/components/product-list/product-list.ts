@@ -24,8 +24,8 @@ export class ProductList implements OnInit {
 selectedProducts: any = null;
 
   @Input() searchTerm: string = '';
-  private apiHost = 'http://localhost:3000';
-  private apiHost1 = 'http://localhost:3001'
+  private apiHost = 'https://ecom-backend-production-5341.up.railway.app';
+  private apiHost1 = 'https://ecom-backend-production-5341.up.railway.app'
   private productsUrl = `${this.apiHost}/api/products`;
   private categoryProductsUrl = `${this.apiHost1}/api/category`;
   @Input() categoryId: number | null = null;
