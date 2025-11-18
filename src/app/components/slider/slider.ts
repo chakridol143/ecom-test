@@ -71,7 +71,7 @@ export class Slider implements OnInit, OnDestroy {
 
   /** Loads related products only when clicked */
   loadRelatedImages(categoryId: number) {
-    this.http.get<any[]>(`http://localhost:3000/products/category/${categoryId}`)
+    this.http.get<any[]>(`https://ecom-backend-production-5341.up.railway.app/products/category/${categoryId}`)
       .subscribe(res => {
         this.relatedImages = res.map(p => p.image_url);
       });

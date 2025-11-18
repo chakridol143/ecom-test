@@ -111,7 +111,7 @@
        
         <div *ngIf="!showFullDetails" class="only-name-card">
             <img
-            [src]="'http://localhost:3000/assets/images/' + product.image_url"
+            [src]="'https://ecom-backend-production-5341.up.railway.app/assets/images/' + product.image_url"
             [alt]="product.name"
             class="product-img"
             (click)="openProductPopup(product)"
@@ -126,7 +126,7 @@
         <div *ngIf="showFullDetails" class="full-details-card">
 
           <img
-            [src]="'http://localhost:3000/assets/images/' + product.image_url"
+            [src]="'https://ecom-backend-production-5341.up.railway.app/assets/images/' + product.image_url"
             alt="{{ product.name }}"
             class="product-img"
             (click)="openProductPopup(product)"
@@ -178,7 +178,7 @@
 
     <img
       class="popup-img"
-      [src]="'http://localhost:3000/assets/images/' + selectedProducts?.image_url"
+      [src]="'https://ecom-backend-production-5341.up.railway.app/assets/images/' + selectedProducts?.image_url"
       (error)="onImgError($event)"
     />
 

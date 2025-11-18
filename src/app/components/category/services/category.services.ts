@@ -22,7 +22,7 @@ export interface Category {
   providedIn: 'root'
 })
 export class CategoryService {
-  private apiUrl = 'http://localhost:3000/api/categories';
+  private apiUrl = 'https://ecom-backend-production-5341.up.railway.app/api/categories';
 
   constructor(private http: HttpClient) {}
 
