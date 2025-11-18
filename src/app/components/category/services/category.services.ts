@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { environment } from '../../../../environments/environment.prod';
+
 export interface Product {
   product_id: number;
   name: string;
@@ -22,7 +22,7 @@ export interface Category {
   providedIn: 'root'
 })
 export class CategoryService {
-  private apiUrl = `https://ecom-backend-production-5341.up.railway.app/api/categories`;
+  private apiUrl = 'https://ecom-backend-production-5341.up.railway.app/api/categories';
 
   constructor(private http: HttpClient) {}
 

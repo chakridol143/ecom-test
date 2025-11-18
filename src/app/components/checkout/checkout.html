@@ -10,11 +10,9 @@
 
   <div *ngIf="items.length > 0" class="cart-list">
     <div class="cart-item" *ngFor="let item of items; let i = index">
-      <img [src]="'http://localhost:3000/assets/images/' + item.image_url" alt="{{ item.name }}" class="cart-img">
-      <!-- <p>{{item.description}}</p> -->
+      <img [src]="'https://ecom-backend-production-5341.up.railway.app/assets/images/' + item.image_url" alt="{{ item.name }}" class="cart-img">
       <div class="item-details">
         <h4>{{ item.name }}</h4>
-         <p>{{item.description}}</p>
         <p>Price: ₹{{ item.price }}</p>
       </div>
       <button class="remove-btn" (click)="removeItem(i)">Remove</button>
@@ -40,6 +38,8 @@
       <button class="clear-btn" (click)="clearCart()">Clear Cart</button>
     </div>
   </div>
+  <app-login *ngIf="showLoginPopup" (close)="onLoginClosed()">
+  </app-login>
   <div class="modal-overlay" *ngIf="showDialog" (click)="closeDialog()"></div>
 <div class="dialog-box" *ngIf="showDialog">
   <h2>Purchase Successful </h2>

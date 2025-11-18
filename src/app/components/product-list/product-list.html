@@ -1,7 +1,7 @@
-<div class="container">
+<!-- <div class="container">
   <div class="top-bar"></div>
 
-  <!-- <h2>All Products</h2> -->
+ 
 
   <div *ngIf="loading">Loading…</div>
   <div *ngIf="!loading && error" class="error">{{ error }}</div>
@@ -23,6 +23,25 @@
           <p class="price">{{ product.price | currency:'INR':'symbol':'1.2-2' }}</p>
           <button (click)="addToCart(product)">Add To Cart</button>
         </div>
+        
+        <div *ngIf="selectedCategory" class="full-details-card">
+
+          <img
+            [src]="'http://localhost:3000/assets/images/' + product.image_url"
+            [alt]="product.name"
+            class="product-img"
+            (click)="openProductPopup(product)"
+            (error)="onImgError($event)"
+          />
+
+          <div class="product-info">
+            <h3>{{ product.name }}</h3>
+            <p>{{ product.description }}</p>
+            <p class="price">
+              {{ product.price | currency:'INR':'symbol':'1.2-2' }}
+            </p>
+            <button (click)="addToCart(product)">Add To Cart</button>
+          </div>
       </div>
     </div>
 
@@ -32,7 +51,7 @@
   </div>
 </div>
 
-<!-- Login Prompt Dialog -->
+
 <div class="modal-overlay" *ngIf="showLoginDialog" (click)="closeLoginDialog()"></div>
 
 <div class="login-dialog" *ngIf="showLoginDialog" (click)="closeLoginDialog()">
@@ -48,7 +67,7 @@
 </div>
 
 
-<!-- 🔥 PRODUCT DETAILS POPUP -->
+
 <div class="modal-overlay" *ngIf="showProductPopup" (click)="closeProductPopup()"></div>
 
 <div class="product-popup" *ngIf="showProductPopup">
@@ -71,9 +90,92 @@
       Price: {{ selectedProducts?.price | currency:'INR':'symbol':'1.2-2' }}
     </h3>
 
-    <!-- <button class="popup-add-btn" (click)="addToCart(selectedProducts)">Add To Cart</button> -->
+   
   </div>
 </div>
 
+
+<app-footer></app-footer> -->
+<div class="container">
+  <div class="top-bar"></div>
+
+  <div *ngIf="loading">Loading…</div>
+  <div *ngIf="!loading && error" class="error">{{ error }}</div>
+
+  <div *ngIf="!loading && !error">
+
+    <div class="product-grid" *ngIf="productsToShow.length; else empty">
+
+      <div class="product-card" *ngFor="let product of productsToShow">
+
+       
+        <div *ngIf="!showFullDetails" class="only-name-card">
+            <img
+            [src]="'https://ecom-backend-production-5341.up.railway.app/assets/images/' + product.image_url"
+            [alt]="product.name"
+            class="product-img"
+            (click)="openProductPopup(product)"
+            (error)="onImgError($event)"
+          />
+          <h3 class="only-name" (click)="openProductPopup(product)">
+            {{ product.name }}
+          </h3>
+        </div>
+
+   
+        <div *ngIf="showFullDetails" class="full-details-card">
+
+          <img
+            [src]="'https://ecom-backend-production-5341.up.railway.app/assets/images/' + product.image_url"
+            alt="{{ product.name }}"
+            class="product-img"
+            (click)="openProductPopup(product)"
+            (error)="onImgError($event)"
+          />
+
+          <div class="product-info">
+            <h3>{{ product.name }}</h3>
+            <p>{{ product.description }}</p>
+            <p class="price">{{ product.price | currency:'INR':'symbol':'1.2-2' }}</p>
+
+            <button (click)="addToCart(product)">Add To Cart</button>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <ng-template #empty>
+      <p>No products found.</p>
+    </ng-template>
+
+  </div>
+</div>
+
+<!-- PRODUCT POPUP -->
+<div class="modal-overlay" *ngIf="showProductPopup" (click)="closeProductPopup()"></div>
+
+<div class="product-popup" *ngIf="showProductPopup">
+  <div class="popup-box" (click)="$event.stopPropagation()">
+
+    <button class="popup-close" (click)="closeProductPopup()">✖</button>
+
+    <img
+      class="popup-img"
+      [src]="'https://ecom-backend-production-5341.up.railway.app/assets/images/' + selectedProducts?.image_url"
+      (error)="onImgError($event)"
+    />
+
+    <h2>{{ selectedProducts?.name }}</h2>
+    <p>{{ selectedProducts?.description }}</p>
+
+    <h3 class="popup-price">
+      Price: {{ selectedProducts?.price | currency:'INR':'symbol':'1.2-2' }}
+    </h3>
+
+  </div>
+</div>
 
 <app-footer></app-footer>

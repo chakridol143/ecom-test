@@ -10,8 +10,7 @@
 
     <ul *ngIf="items.length > 0" class="items-list">
       <li *ngFor="let item of items; let i = index" class="cart-item">
-        <img [src]="'http://localhost:3000/assets/images/' + item.image_url" [alt]="item.name">
-        <p>{{item.description}}</p>
+        <img [src]="'http://localhost:59324/assets/images/' + item.image_url" [alt]="item.name">
         <div class="info">
           <div class="name">{{ item.name }}</div>
           <div class="price">₹{{ item.price || 0 }}</div>

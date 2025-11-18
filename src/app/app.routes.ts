@@ -6,6 +6,7 @@ import { Header } from './components/header/header';
 import { Menu } from './components/menu/menu';
 import { Logout } from './logout/logout';
 import { RegisterComponent } from './components/register/register';
+import { Navbar } from './components/navbar/navbar';
 
 
 
@@ -19,4 +20,7 @@ export const routes: Routes = [
   {path:'menu',component:Menu},
   {path:'checkout',component:Checkout},
    {path: 'register', component:RegisterComponent},
+   {
+    path:'navbar', component:Navbar
+   }
 ];

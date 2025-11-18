@@ -1,247 +1,99 @@
-
 .menu-container {
-  display: flex; 
-  height: 95vh;
-  font-family: sans-serif;
-  width: 112.8%;
-  overflow: hidden;
-  margin-top: -8px;
- margin-left: -8px;
- /* padding-bottom: -50px; */
- /* margin-bottom: 10px; */
- margin-right: -1px;
- /* padding-left: 5px; */
-
+  display: flex;
+  width: 100%;
+  background: #f9f9f9;
+  margin-top: 125px;
 }
 
-h1{
-  color: orange;
-}
-
+/* Sidebar */
 .sidebar {
-  width: 275px;
-  background-color: transparent;
-  color: white;
-  padding: 10px;
-  display: grid;
-  grid-template-columns: repeat( 1fr);
-  gap: 11px;
+  width: 260px;
+  background: #ffffff;
+  border-right: 1px solid #e1e1e1;
+  padding: 20px;
+  position: sticky;
+  top: 0;
+  height: 100vh;
   overflow-y: auto;
-  left: 5px;
-  scrollbar-width: none;
-   margin-bottom: 25px;
-   background: url('../../../assets/images/menubg4.avif');
-background-position: no-repeat;
-background-size: cover;
 }
 
 .sidebar h2 {
-  grid-column: span 2;
-  text-align: center;
-  font-family: Arial, Helvetica, sans-serif;
-  /* border-bottom: 2px solid #799e89; */
-  /* padding-bottom: px ; */
-  /* margin-top: -9px; */
-  color: rgb(247, 245, 245);
+  margin-bottom: 15px;
+  font-size: 20px;
 }
 
+/* Category item */
 .menu-item {
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* padding: 5px; */
-  /* padding-top: 10px; */
-  /* border-radius: 12px; */
-  margin-bottom: 35px;
-  /* background-color: rgba(0, 0, 0, 0.1); */
-  /* border: 2px solid rgba(255, 255, 255, 0.4); */
-  /* background: black; */
-  transition: transform 0.4s ease, opacity 0.4s ease;
-  /* box-shadow: 0 20px 20px rgba(0, 0, 0, 0.1); */
+  padding: 14px 10px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  background: #f4f4f4;
   cursor: pointer;
-}
-
-.menu-item:hover {
-  /* background-color: rgb(85, 85, 85); */
-  transform: scale(1.1);
-  opacity: 0.9;
+  transition: 0.3s ease;
+  text-align: center;
 }
 
 .menu-item img {
-  /* width: 140px; */
-  height: 120px;
   border-radius: 10px;
-  object-fit: cover;
-  /* border: 2px solid white; */
-  padding-top: 5px;
+  margin-bottom: 8px;
 }
 
-.menu-item span {
-  /* font-weight: 700 ; */
-  margin-top: 15px;
-  font-size: 18px;
-  color: rgb(252, 251, 251);
-  
-}
-
-.content{
-    /* background-color: #f5f6fa; */
-    width: 1110px;
-    
-    flex: 1;
-     
-    
-    overflow-x: hidden;
-    overflow-y: auto;
-    
-    
-     box-sizing: border-box;
-}
-.content h1{
-  color: black;
-  text-align: center;
-  margin-right: 10%;
-  text-decoration: underline;
-}
-/* 🧱 Container for the grid */
-.menu-con {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* 3–4 per row */
-  gap: 25px;
-  justify-items: center;
-  padding: 40px;
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(6px);
-  /* border-radius: 20px; */
-  /* background-color: rgba(107, 182, 182, 0.541); */
-  height: 100vh;
-  
-}
-
-/* 📦 Each menu item box */
-.menu-list {
-  width: 220px;
-  height: 230px;
-  /* background: linear-gradient(145deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.05)); */
-   background-image: url('https://png.pngtree.com/thumb_back/fw800/background/20240104/pngtree-vectorized-linkedin-banner-with-seamless-gradient-texture-technology-image_13913254.png');
-  border-radius: 15px;
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
-  text-align: center;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  backdrop-filter: blur(10px);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin-top: 30px;
-  /* background-color: aqua; */
-}
-
-/* ✨ Hover animation */
-.menu-list:hover {
-  transform: translateY(-6px) scale(1.03);
-  /* box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
-  border-color: #00b4d8;
-  background: rgba(255, 255, 255, 0.15); */
-}
-
-/* 🖼️ Image style */
-.menu-list img {
-  width: 80px;
-  height: 100px;
-  object-fit: cover;
-  border-radius: 10px;
-  margin-bottom: 10px;
-  transition: transform 0.3s ease;
-}
-
-.menu-list:hover img {
-  transform: scale(1.08);
-}
-
-/* 🏷️ Name below image */
-.menu-list span {
-  font-size: 16px;
+.category-name {
+  font-size: 15px;
   font-weight: 600;
-  color: #ffffff;
-  text-transform: capitalize;
-  letter-spacing: 0.5px;
 }
 
-/* 📱 Responsive tweaks */
-@media (max-width: 992px) {
+/* Hover effect */
+.menu-item:hover {
+  background: #d8c19a;
+  color: white;
+}
+
+/* ACTIVE SELECTED category */
+.menu-item.active {
+  background: #d8c19a;
+  color: white;
+}
+
+/* Content */
+.content {
+  flex: 1;
+  padding: 20px;
+}
+
+/* ------------------ Responsive ------------------ */
+
+@media (max-width: 768px) {
   .menu-container {
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 20px;
+    flex-direction: column;
   }
 
-  .menu-list {
-    width: 180px;
-    height: 200px;
-  }
-}
-
-@media (max-width: 600px) {
-  .menu-con {
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  .sidebar {
+    width: 100%;
+    height: auto;
+    display: flex;
+    overflow-x: auto;
+    white-space: nowrap;
+    border-right: none;
+    border-bottom: 1px solid #ccc;
     gap: 15px;
   }
 
-  .menu-list {
-    width: 150px;
-    height: 180px;
-  }
-
-  .menu-list img {
-    width: 80px;
-    height: 80px;
+  .menu-item {
+    min-width: 130px;
+    padding: 10px;
   }
 }
 
-.ad-slider {
-  height: 200px;
-  margin: 30px auto;
-  overflow: hidden;
-  position: relative;
-  width: 100%;
-  background: #f8f8f8;
-  margin-top: 2px;
-}
-.ad-slide-track {
-  display: flex;
-  width: calc(250px * 10); /* depends on how many slides you have */
-  animation: scroll 20s linear infinite;
-}
-
-.ad-slide {
-  height: 250px;
- width: 1225px;
-  flex-shrink: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.ad-slide img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 8px;
-  transition: transform 0.3s;
-}
-
-/* .ad-slide img:hover {
-  transform: scale(1.05);
-} */
-
-/* Animation for continuous scrolling */
-@keyframes scroll {
-  0% {
-    transform: translateX(0);
+@media (max-width: 480px) {
+  .menu-item {
+    min-width: 110px;
   }
-  100% {
-    transform: translateX(-50%);
+
+  .category-name {
+    font-size: 14px;
   }
 }

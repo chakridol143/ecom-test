@@ -2,10 +2,11 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+
 @Component({
   selector: 'app-category',
   standalone: true,
-  imports: [CommonModule, HttpClientModule],
+  imports: [CommonModule, HttpClientModule, ],
   templateUrl: './category.html',
   styleUrls: ['./category.css']
 })
@@ -19,7 +20,7 @@ export class CategoryComponent implements OnInit {
   @Output() remove = new EventEmitter<number>();
   @Output() clear = new EventEmitter<void>();
   private lastSelectedId: number | null = null;
-  private baseUrl = 'http://localhost:3001/api/categories/with-products/all';
+  private baseUrl = 'https://ecom-backend-production-5341.up.railway.app/api/categories/with-products/all';
   constructor(private http: HttpClient) {}
   ngOnInit(): void {
     this.http.get<any[]>(this.baseUrl).subscribe({
@@ -42,10 +43,10 @@ onSelect(categoryId: number | null) {
   imgUrl(img?: string): string {
     const raw = (img ?? '').replace(/^\/*/, '').trim();
     const encoded = encodeURIComponent(raw);
-    return `http://localhost:3001/assets/images/${encoded}`;
+    return `https://ecom-backend-production-5341.up.railway.app/assets/images/${encoded}`;
   }
   onImgError(ev: Event) {
-    (ev.target as HTMLImageElement).src = 'http://localhost:3001/assets/images/placeholder.png';
+    (ev.target as HTMLImageElement).src = 'https://ecom-backend-production-5341.up.railway.app/assets/images/placeholder.png';
   }
   trackByCategoryId(index: number, item: any) {
   return item?.category_id ?? item?.id ?? index;

@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { environment } from "../../../../environments/environment.prod";
+
 @Injectable({
   providedIn: 'root'
 })
@@ -10,7 +10,7 @@ export class CartService {
   private items: any[] = [];
   private cartSubject = new BehaviorSubject<any[]>([]);
   cart$ = this.cartSubject.asObservable();
-  private apiUrl = `${environment.apiUrl}/api/cart`;
+  private apiUrl = 'https://ecom-backend-production-5341.up.railway.app/api/cart';
 
   constructor(private http: HttpClient) {
     const storedItems = localStorage.getItem(this.key);
@@ -21,38 +21,63 @@ export class CartService {
   }
 
   
-  addToCart(item: any, userId: number, token: string): void {
-    this.items.push(item);
+  // addToCart(item: any, userId: number, token: string): void {
+  //   this.items.push(item);
+  //   this.saveItems();
+
+  //   const payload = {
+  //     user_id: userId,
+  //     product_id: item.id || item.product_id,
+  //     quantity: item.quantity || 1
+  //   };
+
+  //   const headers = new HttpHeaders({ Authorization: `Bearer ${token}` });
+
+  //   this.http.post(`${this.apiUrl}`, payload, { headers }).subscribe({
+  //     next: (res) => console.log(' Cart item added to backend:', res),
+  //     error: (err) => console.error(' Error adding to backend:', err)
+  //   });
+  // }
+
+  addToCart(item: any): void {
+  this.items.push(item);
+  this.saveItems();
+  console.log("Item added to local cart:", item);
+}
+
+  removeFromCart(index: number, user_Id?: number, token?: string): void {
+  if (index >= 0 && index < this.items.length) {
+    const removedItem = this.items[index];
+    this.items.splice(index, 1);
     this.saveItems();
 
-    const payload = {
-      user_id: userId,
-      product_id: item.id || item.product_id,
-      quantity: item.quantity || 1
-    };
+    
+    if (user_Id && removedItem && removedItem.product_id && token) {
+      const headers = new HttpHeaders({ Authorization: `Bearer ${token}` });
 
-    const headers = new HttpHeaders({ Authorization: `Bearer ${token}` });
-
-    this.http.post(`${this.apiUrl}`, payload, { headers }).subscribe({
-      next: (res) => console.log(' Cart item added to backend:', res),
-      error: (err) => console.error(' Error adding to backend:', err)
-    });
-  }
-
-  removeFromCart(index: number, token?: string): void {
-    if (index >= 0 && index < this.items.length) {
-      const removedItem = this.items[index];
-      this.items.splice(index, 1);
-      this.saveItems();
-
-      if (removedItem && removedItem.cart_item_id && token) {
-        const headers = new HttpHeaders({ Authorization: `Bearer ${token}` });
-        this.http.delete(`${this.apiUrl}/${removedItem.cart_item_id}`, { headers }).subscribe({
-          next: (res) => console.log(' Cart item removed:', res),
-          error: (err) => console.error(' Error removing:', err)
+      this.http
+        .delete(`${this.apiUrl}/${user_Id}/${removedItem.product_id}`, { headers })
+        .subscribe({
+          next: (res) => console.log('✅ Cart item removed from backend:', res),
+          error: (err) => console.error('❌ Error removing from backend:', err),
         });
-      }
     }
+
+ 
+    this.cartSubject.next(this.items);
+  }
+}
+getCartByUserId(user_Id: number, token?: string) {
+  return this.http.get(`${this.apiUrl}/user/${user_Id}`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+}
+  setCartItems(items: any[]) {
+    this.items = items;
+    this.cartSubject.next(items);
+    localStorage.setItem(this.key, JSON.stringify(items));
   }
 
   clearCart(localOnly = false): void {
@@ -63,18 +88,27 @@ export class CartService {
 
 
   loadCartForUser(userId: number, token: string): void {
-    if (!userId || !token) return;
-    const headers = new HttpHeaders({ Authorization: `Bearer ${token}` });
+  const headers = new HttpHeaders({ Authorization: `Bearer ${token}` });
 
-    this.http.get<any[]>(`${this.apiUrl}/user/${userId}`, { headers }).subscribe({
-      next: (data) => {
-        this.items = data || [];
-        this.saveItems();
-        console.log(`🛒 Loaded cart for user ${userId}:`, this.items);
-      },
-      error: (err) => console.error(' Error loading user cart:', err)
-    });
-  }
+  this.http.get<any[]>(`${this.apiUrl}/user/${userId}`, { headers }).subscribe({
+    next: (rows) => {
+      
+      this.items = rows.map(row => ({
+        id: row.product_id,
+        product_id: row.product_id,
+        name: row.name,
+        price: row.price,
+        image_url: row.image_url,
+        quantity: row.quantity
+      }));
+
+      this.saveItems();
+      console.log("Loaded cart from DB:", this.items);
+    },
+    error: (err) => console.error('Error loading user cart:', err)
+  });
+}
+
 
   private saveItems(): void {
     localStorage.setItem(this.key, JSON.stringify(this.items));
@@ -88,4 +122,9 @@ export class CartService {
   getItems(): any[] {
     return this.items;
   }
+  onClick(item:any):any{
+    this.items.push(item);
+    this.saveItems();
+  }
 }
+

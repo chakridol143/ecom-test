@@ -8,47 +8,82 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 9999;
 }
 
 .login-box {
-  background: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(10px);
-  border-radius: 15px;
-  padding: 30px;
+  background: #ffffff;
+  width: 350px;
+  padding: 25px;
+  border-radius: 12px;
   text-align: center;
-  color: white;
-  width: 320px;
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  animation: popup 0.3s ease-in-out;
+}
+
+@keyframes popup {
+  0% { transform: scale(0.8); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
 }
 
 .login-box h2 {
-  margin-bottom: 20px;
-  font-size: 24px;
-  color: #fff;
+  margin-bottom: 15px;
+  font-size: 22px;
+  color: #333;
 }
 
-.user-info {
+.user-info p {
+  font-size: 16px;
+  color: #444;
   margin-bottom: 25px;
-  font-size: 18px;
-}
-
-.logout-section {
-  margin-top: 20px;
 }
 
 .logout-btn {
-  background: #ff4b5c;
+  width: 120px;
+  padding: 10px;
+  background: #e63946;
   border: none;
-  color: white;
+  color: #fff;
   font-size: 16px;
-  font-weight: 500;
-  padding: 10px 25px;
   border-radius: 8px;
   cursor: pointer;
   transition: 0.3s;
 }
 
 .logout-btn:hover {
-  background: #d62839;
-  transform: scale(1.05);
+  background: #c82333;
+}
+
+@media (max-width: 768px) {
+  .login-box {
+    width: 300px;
+    padding: 20px;
+  }
+
+  .logout-btn {
+    width: 100px;
+    font-size: 14px;
+  }
+}
+
+
+@media (max-width: 480px) {
+  .login-box {
+    width: 90%;
+    padding: 18px;
+  }
+
+  .login-box h2 {
+    font-size: 20px;
+  }
+
+  .user-info p {
+    font-size: 14px;
+  }
+
+  .logout-btn {
+    width: 100%;
+    padding: 12px;
+    font-size: 15px;
+  }
 }

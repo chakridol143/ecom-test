@@ -14,7 +14,7 @@
   z-index: 1000;
 }
 
-/* Glass styled login box */
+
 .login-box {
   background: rgba(255, 255, 255, 0.15);
   backdrop-filter: blur(12px);
@@ -32,7 +32,7 @@
   letter-spacing: 1px;
 }
 
-/* Input styles */
+
 .form-group {
   margin-bottom: 20px;
   text-align: left;
@@ -97,7 +97,7 @@ input.ng-invalid.ng-touched {
 }
 
 
-/* ✨ Success Dialog Overlay */
+
 .success-overlay {
   position: fixed;
   inset: 0;
@@ -106,7 +106,7 @@ input.ng-invalid.ng-touched {
   backdrop-filter: blur(3px);
 }
 
-/* 💎 Success Dialog Box */
+
 .success-dialog {
   position: fixed;
   top: 50%;
@@ -123,7 +123,7 @@ input.ng-invalid.ng-touched {
   border: 2px solid #4caf50;
 }
 
-/* Text styling */
+
 .success-dialog h2 {
   color: #2e7d32;
   font-size: 20px;
@@ -136,7 +136,7 @@ input.ng-invalid.ng-touched {
   margin-bottom: 20px;
 }
 
-/* OK button */
+
 .success-dialog button {
   background: #4caf50;
   color: white;

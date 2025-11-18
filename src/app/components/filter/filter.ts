@@ -3,14 +3,16 @@ import { Component , OnInit} from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CategoryService } from '../category/services/category.services';
 import { HttpClientModule } from '@angular/common/http';
+import { CategoryComponent } from '../category/category';
+import { ProductService } from '../product-list/services/product.service';
 
 @Component({
   selector: 'app-filter',
   standalone: true,
-  imports: [CommonModule , NgIf, FormsModule, HttpClientModule],
+  imports: [CommonModule , NgIf, FormsModule, HttpClientModule,  ],
   templateUrl: './filter.html',
   styleUrls: ['./filter.css'],
-  providers: [CategoryService]
+  providers: [CategoryService, ProductService]
 })
 export class Filter {
   isFilterOpen = false;
@@ -18,20 +20,24 @@ export class Filter {
   minPriceLimit = 2000;
   maxPriceLimit = 100000;
 
+
+
   filters = {
-    price: 20000,
-      discount: 10,
-    brand: '',
-    material: '',
-    carat: '',
-    type: '',
-    occasion: ''
-  };
+  price: 20000,
+  discount: 10,
+  category: '',
+  material: '',
+  carat: '',
+  type: '',
+  occasion: ''
+};
+
 
   openFilter() {
     this.isFilterOpen = true;
   }
 
+  
   closeFilter() {
     this.isFilterOpen = false;
   }
@@ -49,11 +55,14 @@ export class Filter {
     console.log('Current Discount:', this.filters.discount);
   }
 
+
+
   resetFilters() {
     this.filters = {
       price: 20000,
       discount: 10,
-      brand: '',
+      // brand: '',
+      category:'',
       material: '',
       carat: '',
       type: '',
