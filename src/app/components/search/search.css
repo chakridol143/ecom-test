@@ -1,15 +1,14 @@
-/* SEARCH BAR CONTAINER */
 .search-bar {
   display: flex;
   align-items: center;
   gap: 10px;
   width: 100%;
-  max-width: 550px;       /* Good size for desktop */
+  max-width: 550px;      
   margin: auto;
   padding: 8px;
 }
 
-/* SEARCH INPUT */
+
 .search-bar input {
   flex: 1;
   padding: 10px 15px;
@@ -25,7 +24,7 @@
   box-shadow: 0px 0px 5px rgba(0, 123, 255, 0.4);
 }
 
-/* SEARCH BUTTON */
+
 .search-bar button {
   padding: 10px 18px;
   font-size: 15px;
@@ -41,11 +40,6 @@
   background: #0056b3;
 }
 
-/* ----------------------------------------------------
-   RESPONSIVE BREAKPOINTS
--------------------------------------------------------*/
-
-/* Mobile (small) */
 @media (max-width: 480px) {
   .search-bar {
     flex-direction: column;
@@ -60,7 +54,7 @@
   }
 }
 
-/* Tablets */
+
 @media (max-width: 768px) {
   .search-bar {
     max-width: 100%;
@@ -72,14 +66,14 @@
   }
 }
 
-/* Laptops */
+
 @media (min-width: 769px) and (max-width: 1024px) {
   .search-bar {
     max-width: 600px;
   }
 }
 
-/* Desktop */
+
 @media (min-width: 1200px) {
   .search-bar {
     max-width: 650px;

@@ -1,44 +1,48 @@
-/* ============================
-   OVERLAY BACKDROP
-============================ */
+
 .filter-overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0,0.45);
-  z-index: 2000;
-  display: block;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 9999;
+  animation: fadeIn 0.25s ease-in-out;
 }
 
-/* ============================
-   POPUP CONTAINER
-============================ */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+
 .filter-popup {
   position: fixed;
-  top: 50%;
-  left: 50%;
+  top: 0;
+  right: 0;
   width: 420px;
-  max-height: 90vh;
-  transform: translate(-50%, -50%);
-  background: #fff;
+  height: 100vh;
+  background: #ffffff;
+  box-shadow: -4px 0 15px rgba(0, 0, 0, 0.2);
+  z-index: 10000;
   padding: 20px;
-  border-radius: 14px;
   overflow-y: auto;
-  box-shadow: 0 0 15px rgba(0,0,0,0.25);
-  z-index: 2100;
-  animation: slideUp 0.25s ease-out;
+  animation: slideIn 0.28s ease-out;
+  border-radius: 12px 0 0 12px;
 }
 
-@keyframes slideUp {
-  from { opacity: 0; transform: translate(-50%, -45%); }
-  to   { opacity: 1; transform: translate(-50%, -50%); }
+@keyframes slideIn {
+  from {
+    transform: translateX(60px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
 }
 
-/* ============================
-   FILTER BOX STYLES
-============================ */
+
 .filter-box h2 {
   text-align: center;
   margin-bottom: 18px;
@@ -46,112 +50,101 @@
   font-weight: bold;
 }
 
-form {
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-}
-
-/* ============================
-   FILTER GROUP
-============================ */
 .filter-group {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
+  margin-bottom: 18px;
 }
 
 .filter-group label {
-  font-size: 15px;
+  display: block;
+  margin-bottom: 6px;
   font-weight: 600;
+  font-size: 15px;
 }
 
-.slider input[type=range] {
+
+.filter-group select {
   width: 100%;
-  accent-color: #d48f17;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 15px;
+  background: white;
 }
 
-select,
-input[type=range] {
-  padding: 10px;
-  border-radius: 8px;
-  border: 1px solid #bbb;
-  font-size: 14px;
+
+.slider input[type="range"] {
+  width: 100%;
+  appearance: none;
+  height: 6px;
+  background: #ddd;
+  border-radius: 4px;
   outline: none;
 }
 
-/* ============================
-   ACTION BUTTONS
-============================ */
+.slider input[type="range"]::-webkit-slider-thumb {
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  background: #007bff;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+
 .filter-actions {
   display: flex;
   gap: 12px;
+  margin-top: 25px;
 }
 
 .apply-btn,
 .reset-btn {
   flex: 1;
-  padding: 10px;
+  padding: 12px;
+  border-radius: 8px;
   border: none;
-  border-radius: 10px;
-  font-size: 15px;
+  font-size: 16px;
   cursor: pointer;
 }
 
 .apply-btn {
-  background: #0077ff;
+  background: #0072ff;
   color: white;
 }
 
 .reset-btn {
-  background: #eaeaea;
+  background: #ff4747;
+  color: white;
 }
 
-/* ============================
-   RESPONSIVE DESIGN
-============================ */
-
-/* Tablet */
-@media (max-width: 1024px) {
+@media (max-width: 600px) {
   .filter-popup {
-    width: 380px;
-  }
-}
-
-/* Mobile Large */
-@media (max-width: 768px) {
-  .filter-popup {
-    width: 90%;
-    max-height: 88vh;
+    width: 100%;
+    height: 90vh;
+    bottom: 0;
+    border-radius: 20px 20px 0 0;
     padding: 18px;
+    animation: slideUp 0.35s ease-out;
   }
 
-  .filter-box h2 {
-    font-size: 20px;
-  }
-}
-
-/* Mobile Small */
-@media (max-width: 480px) {
-  .filter-popup {
-    width: 95%;
-    padding: 15px;
-  }
-
-  .filter-box h2 {
-    font-size: 18px;
+  @keyframes slideUp {
+    from { transform: translateY(80px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
   }
 
   .filter-actions {
     flex-direction: column;
   }
+}
 
-  .apply-btn,
-  .reset-btn {
-    width: 100%;
+@media (max-width: 900px) {
+  .filter-popup {
+    width: 70%;
   }
+}
 
-  .filter-group label {
-    font-size: 14px;
+@media (min-width: 1400px) {
+  .filter-popup {
+    width: 480px;
   }
 }

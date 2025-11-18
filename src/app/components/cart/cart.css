@@ -159,11 +159,6 @@
   font-size: 15px;
 }
 
-/* -----------------------------
-   RESPONSIVE MEDIA QUERIES
------------------------------- */
-
-/* Tablets (Portrait / Landscape) */
 @media (max-width: 1024px) {
   .cart-container {
     top: 16px;
@@ -182,7 +177,7 @@
   }
 }
 
-/* Mobile Devices */
+
 @media (max-width: 600px) {
   .cart-container {
     top: 12px;
@@ -202,7 +197,7 @@
 
 }
 
-/* Very Small Screens */
+
 @media (max-width: 400px) {
   .cart-container {
     top: 10px;

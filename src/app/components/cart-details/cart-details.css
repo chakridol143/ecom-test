@@ -1,6 +1,4 @@
-/* ================================
-   OVERLAY BACKDROP
-================================ */
+
 .cart-details-overlay {
   position: fixed;
   top: 0;
@@ -15,9 +13,7 @@
   z-index: 2500;
 }
 
-/* ================================
-   CART PANEL
-================================ */
+
 .cart-details-panel {
   width: 380px;
   max-height: 90vh;
@@ -34,9 +30,7 @@
   to   { transform: translateX(0); opacity: 1; }
 }
 
-/* ================================
-   HEADER
-================================ */
+
 .header {
   display: flex;
   align-items: center;
@@ -56,9 +50,7 @@
   cursor: pointer;
 }
 
-/* ================================
-   EMPTY STATE
-================================ */
+
 .empty {
   text-align: center;
   padding: 20px 0;
@@ -66,9 +58,7 @@
   color: #666;
 }
 
-/* ================================
-   ITEM LIST
-================================ */
+
 .items-list {
   list-style: none;
   padding: 0;
@@ -119,9 +109,7 @@
   opacity: 0.85;
 }
 
-/* ================================
-   FOOTER
-================================ */
+
 .footer {
   margin-top: 20px;
 }
@@ -160,11 +148,7 @@
   opacity: 0.9;
 }
 
-/* =====================================
-   🔥 RESPONSIVE DESIGN STARTS HERE
-===================================== */
 
-/* Tablets */
 @media (max-width: 1024px) {
   .cart-details-panel {
     width: 330px;
@@ -176,7 +160,7 @@
   }
 }
 
-/* Mobile Large */
+
 @media (max-width: 768px) {
   .cart-details-overlay {
     justify-content: center;
@@ -193,7 +177,7 @@
   }
 }
 
-/* Mobile Small */
+
 @media (max-width: 480px) {
   .cart-details-panel {
     width: 95%;

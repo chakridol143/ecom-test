@@ -1,4 +1,3 @@
-/* HEADER WRAPPER */
 .header-container {
   width: 100%;
   background: #ffffff;
@@ -8,18 +7,18 @@
   justify-content: space-between;
   gap: 20px;
   border-bottom: 1px solid #ddd;
-  position: sticky;
+  position: fixed;
   top: 0;
   z-index: 1000;
 }
 
-/* LOGO */
+
 .logo img {
   height: 55px;
   object-fit: contain;
 }
 
-/* AUTH BUTTONS (Login / Logout / Filter) */
+
 .auth-buttons {
   display: flex;
   align-items: center;
@@ -49,11 +48,7 @@
   font-weight: 600;
 }
 
-/* --------------------------
-      RESPONSIVE DESIGN
---------------------------- */
 
-/* TABLETS */
 @media (max-width: 1024px) {
   .header-container {
     padding: 8px 15px;
@@ -76,7 +71,7 @@
   }
 }
 
-/* MOBILE */
+
 @media (max-width: 768px) {
   .header-container {
     flex-direction: column;
@@ -107,7 +102,7 @@
   }
 }
 
-/* EXTRA SMALL MOBILE */
+
 @media (max-width: 480px) {
   .header-container {
     gap: 10px;
@@ -118,6 +113,6 @@
   }
 
   .user-name {
-    display: none; /* hides long text on small screens */
+    display: none; 
   }
 }

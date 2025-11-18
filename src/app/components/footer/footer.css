@@ -34,11 +34,7 @@
   text-decoration: underline;
 }
 
-/* ---------------------
-   🌐 Responsive Design
----------------------- */
 
-/* Tablets & Small Laptops */
 @media (max-width: 1024px) {
   .footer-container p {
     font-size: 15px;
@@ -48,7 +44,7 @@
   }
 }
 
-/* Mobile Devices */
+
 @media (max-width: 600px) {
   .footer-container {
     padding: 12px;

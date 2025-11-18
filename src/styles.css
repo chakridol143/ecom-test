@@ -1,36 +1,34 @@
-/* RESET */
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* Body setup */
+
 html, body {
   width: 100%;
   height: 100%;
   font-family: 'Roboto', sans-serif;
   background-color: #f9f9f9;
-  /* overflow-x: hidden; */
+  overflow-x: hidden;
 }
 
-/* Mobile-first responsive base */
 body {
   display: block;
 }
 
-/* Make Angular root fill the screen */
 app-root {
   display: block;
   min-height: 100vh;
 }
 
-/* Text smooth */
+
 body, input, button {
   font-family: 'Roboto', sans-serif;
 }
 
-/* Improve tap highlight on mobiles */
+
 * {
   -webkit-tap-highlight-color: transparent;
 }

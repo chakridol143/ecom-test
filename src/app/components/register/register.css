@@ -1,6 +1,4 @@
-/* -----------------------------
-   OVERLAY 
-------------------------------*/
+
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -12,9 +10,6 @@
   z-index: 999;
 }
 
-/* -----------------------------
-   POPUP CONTAINER 
-------------------------------*/
 .register-popup {
   position: fixed;
   top: 50%;
@@ -44,9 +39,7 @@
   }
 }
 
-/* -----------------------------
-   FORM STYLES
-------------------------------*/
+
 h2 {
   text-align: center;
   margin-bottom: 15px;
@@ -83,9 +76,6 @@ input:focus {
   font-size: 12px;
 }
 
-/* -----------------------------
-   BUTTONS 
-------------------------------*/
 button {
   width: 100%;
   padding: 11px;
@@ -111,11 +101,6 @@ button:hover {
   background: #333 !important;
 }
 
-/* -----------------------------
-   RESPONSIVE BREAKPOINTS 
-------------------------------*/
-
-/* Mobile (extra small) */
 @media (max-width: 480px) {
   .register-box {
     padding: 15px;
@@ -135,7 +120,7 @@ button:hover {
   }
 }
 
-/* Tablets */
+
 @media (min-width: 481px) and (max-width: 768px) {
   .register-popup {
     max-width: 480px;
@@ -146,14 +131,14 @@ button:hover {
   }
 }
 
-/* Laptops */
+
 @media (min-width: 769px) and (max-width: 1024px) {
   .register-popup {
     max-width: 500px;
   }
 }
 
-/* Desktop Large Screens */
+
 @media (min-width: 1200px) {
   .register-popup {
     max-width: 520px;

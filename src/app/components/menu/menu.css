@@ -1,17 +1,11 @@
-/* ---------------------------
-   MAIN LAYOUT
-----------------------------*/
 .menu-container {
   display: flex;
   width: 100%;
-  min-height: 100vh;
   background: #f9f9f9;
- overflow: hidden;
+  margin-top: 125px;
 }
 
-/* ---------------------------
-   SIDEBAR
-----------------------------*/
+/* Sidebar */
 .sidebar {
   width: 260px;
   background: #ffffff;
@@ -20,7 +14,6 @@
   position: sticky;
   top: 0;
   height: 100vh;
-  margin-top: 42px;
   overflow-y: auto;
 }
 
@@ -29,69 +22,50 @@
   font-size: 20px;
 }
 
-/* CATEGORY ITEM */
+/* Category item */
 .menu-item {
   display: flex;
-  flex-direction: column;   /* Put image on top, text below */
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
   padding: 14px 10px;
-  border-radius: 8px;
-  margin-bottom: 10px;
-  background: #f1f1f1;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  background: #f4f4f4;
   cursor: pointer;
   transition: 0.3s ease;
-}
-
-.menu-item span {
-  margin-top: 8px;
-  font-size: 16px;
-  font-weight: 500;
   text-align: center;
 }
 
-
-.menu-item:hover {
-  background: #d8c19a;
-  color: #fff;
+.menu-item img {
+  border-radius: 10px;
+  margin-bottom: 8px;
 }
 
-/* category name only */
 .category-name {
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 600;
 }
 
-/* ---------------------------
-   CONTENT AREA
-----------------------------*/
+/* Hover effect */
+.menu-item:hover {
+  background: #d8c19a;
+  color: white;
+}
+
+/* ACTIVE SELECTED category */
+.menu-item.active {
+  background: #d8c19a;
+  color: white;
+}
+
+/* Content */
 .content {
   flex: 1;
   padding: 20px;
-  min-height: 100vh;
-  margin-top: 42px;
 }
 
-/* ---------- PRODUCTS TITLE ---------- */
-.content h1 {
-  margin: 20px 0;
-}
+/* ------------------ Responsive ------------------ */
 
-/* ---------------------------
-   RESPONSIVE DESIGN
-----------------------------*/
-
-/* ---------- LARGE TABLETS ---------- */
-@media (max-width: 1024px) {
-  .sidebar {
-    width: 220px;
-  }
-  .category-name {
-    font-size: 14px;
-  }
-}
-
-/* ---------- TABLETS ---------- */
 @media (max-width: 768px) {
   .menu-container {
     flex-direction: column;
@@ -101,49 +75,25 @@
     width: 100%;
     height: auto;
     display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    position: relative;
+    overflow-x: auto;
+    white-space: nowrap;
     border-right: none;
     border-bottom: 1px solid #ccc;
+    gap: 15px;
   }
 
   .menu-item {
-    width: calc(33.33% - 10px);
-    justify-content: center;
+    min-width: 130px;
+    padding: 10px;
   }
 }
 
-/* ---------- MOBILE ---------- */
-@media (max-width: 600px) {
-  .sidebar {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-  }
-
+@media (max-width: 480px) {
   .menu-item {
-    width: calc(50% - 8px);
-    padding: 10px;
+    min-width: 110px;
   }
 
   .category-name {
     font-size: 14px;
-  }
-
-  .content {
-    padding: 10px;
-  }
-}
-
-/* ---------- SMALL MOBILE ---------- */
-@media (max-width: 400px) {
-  .menu-item {
-    width: 100%;
-    text-align: center;
-  }
-
-  .category-name {
-    font-size: 15px;
   }
 }
