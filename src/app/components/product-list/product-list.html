@@ -154,20 +154,6 @@
   </div>
 </div>
 
-<!-- LOGIN POPUP -->
-<div class="modal-overlay" *ngIf="showLoginDialog" (click)="closeLoginDialog()"></div>
-<div class="login-dialog" *ngIf="showLoginDialog" (click)="closeLoginDialog()">
-  <div class="dialog-box">
-    <h2>Login Required</h2>
-    <p>You need to log in to add items to your cart.</p>
-
-    <div class="dialog-actions">
-      <button class="login-btn" (click)="goToLogin()">Login</button>
-      <button class="cancel-btn" (click)="closeLoginDialog()">Cancel</button>
-    </div>
-  </div>
-</div>
-
 <!-- PRODUCT POPUP -->
 <div class="modal-overlay" *ngIf="showProductPopup" (click)="closeProductPopup()"></div>
 

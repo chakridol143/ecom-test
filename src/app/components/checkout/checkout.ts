@@ -2,10 +2,12 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CartService } from '../cart/services/cart.services';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { login } from '../login/login';
+import { LoginService } from '../login/services/login.service';
 
 @Component({
   selector: 'app-checkout',
-  imports: [CommonModule],
+  imports: [CommonModule, login],
   templateUrl:'./checkout.html',
   styleUrl: './checkout.css'
 })
@@ -13,13 +15,14 @@ export class Checkout {
 
   @Input() items : any[] = [];
   @Output() close = new EventEmitter<void>();
+  showLoginPopup: boolean = false;
 
   totalAmount : number = 0;
   gstAmount : number = 0;
   grandTotal : number = 0;
   showDialog: boolean = false;
 
-  constructor(private cartService : CartService, private router:Router) {}
+  constructor(private cartService : CartService, private router:Router, private loginService: LoginService) {}
 
   ngOnInit():void{
     this.items = this.cartService.getItems();
@@ -41,14 +44,39 @@ export class Checkout {
     this.grandTotal = this.totalAmount + this.gstAmount; 
    }
 
-   buyNow(){
-    if(this.items.length ===0){
+  //  buyNow(){
+  //   if(this.items.length ===0){
+  //     alert('Your cart is empty. Please add items to cart before proceeding to buy.');
+  //     return;
+  //   }
+  //    this.showDialog = true; 
+    
+
+  //  }
+  buyNow(){
+    if(this.items.length === 0){
       alert('Your cart is empty. Please add items to cart before proceeding to buy.');
       return;
     }
-     this.showDialog = true; 
-    
-   }
+
+    //  User NOT logged in → Show login popup
+    if(!this.loginService.isLoggedIn()){
+      this.showLoginPopup = true;
+      return;
+    }
+
+    // ✔ User logged in → show success dialog
+    this.showDialog = true;
+  }
+
+  onLoginClosed() {
+    this.showLoginPopup = false;
+
+    // After login → continue to checkout
+    if(this.loginService.isLoggedIn()) {
+      this.showDialog = true;
+    }
+  }
 
     confirmPurchase() {
     this.clearCart();

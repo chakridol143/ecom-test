@@ -150,7 +150,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Footer } from "../footer/footer";
 import { CartService } from '../cart/services/cart.services';
-import { LoginService } from '../login/services/login.service';
+
 
 @Component({
   selector: 'app-products',
@@ -186,7 +186,7 @@ export class ProductList implements OnInit, OnChanges {
   constructor(
     private http: HttpClient,
     private cart: CartService,
-    private loginService: LoginService
+  
   ) {}
 
   ngOnInit() {
@@ -244,36 +244,22 @@ export class ProductList implements OnInit, OnChanges {
     (evt.target as HTMLImageElement).src = 'assets/placeholder.png';
   }
 
+  // openLoginDialog() {
+  //   this.showLoginDialog = true;
+  // }
 
-  // Login
-   addToCart(product: any) {
-    const userId = this.loginService.getUserId();
-    const token = this.loginService.getToken();
+  // closeLoginDialog() {
+  //   this.showLoginDialog = false;
+  // }
 
-    console.log('🧾 Checking login →', { userId, token });
+  // goToLogin() {
+  //   this.showLoginDialog = false;
+  //   window.location.href = '/login';
+  // }
 
-    if (!userId || !token) {
-      alert('Please log in to add items to cart');
-      return;
-    }
-
-    this.cart.addToCart(product, userId, token);
+addToCart(product: any) {
+    this.cart.addToCart(product); // only local cart
   }
-
-  openLoginDialog() {
-    this.showLoginDialog = true;
-  }
-
-  closeLoginDialog() {
-    this.showLoginDialog = false;
-  }
-
-  goToLogin() {
-    this.showLoginDialog = false;
-    window.location.href = '/login';
-  }
-
-
   // Product Popup
   openProductPopup(product: any) {
     this.selectedProducts = product;

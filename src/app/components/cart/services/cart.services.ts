@@ -21,23 +21,29 @@ export class CartService {
   }
 
   
-  addToCart(item: any, userId: number, token: string): void {
-    this.items.push(item);
-    this.saveItems();
+  // addToCart(item: any, userId: number, token: string): void {
+  //   this.items.push(item);
+  //   this.saveItems();
 
-    const payload = {
-      user_id: userId,
-      product_id: item.id || item.product_id,
-      quantity: item.quantity || 1
-    };
+  //   const payload = {
+  //     user_id: userId,
+  //     product_id: item.id || item.product_id,
+  //     quantity: item.quantity || 1
+  //   };
 
-    const headers = new HttpHeaders({ Authorization: `Bearer ${token}` });
+  //   const headers = new HttpHeaders({ Authorization: `Bearer ${token}` });
 
-    this.http.post(`${this.apiUrl}`, payload, { headers }).subscribe({
-      next: (res) => console.log(' Cart item added to backend:', res),
-      error: (err) => console.error(' Error adding to backend:', err)
-    });
-  }
+  //   this.http.post(`${this.apiUrl}`, payload, { headers }).subscribe({
+  //     next: (res) => console.log(' Cart item added to backend:', res),
+  //     error: (err) => console.error(' Error adding to backend:', err)
+  //   });
+  // }
+
+  addToCart(item: any): void {
+  this.items.push(item);
+  this.saveItems();
+  console.log("Item added to local cart:", item);
+}
 
   removeFromCart(index: number, user_Id?: number, token?: string): void {
   if (index >= 0 && index < this.items.length) {

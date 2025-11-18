@@ -6,6 +6,7 @@
   width: 100%;
   min-height: 100vh;
   background: #f9f9f9;
+ overflow: hidden;
 }
 
 /* ---------------------------
@@ -19,6 +20,7 @@
   position: sticky;
   top: 0;
   height: 100vh;
+  margin-top: 42px;
   overflow-y: auto;
 }
 
@@ -67,6 +69,7 @@
   flex: 1;
   padding: 20px;
   min-height: 100vh;
+  margin-top: 42px;
 }
 
 /* ---------- PRODUCTS TITLE ---------- */
