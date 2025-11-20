@@ -6,10 +6,11 @@ import { ProductList } from '../product-list/product-list';
 import { Cart } from '../cart/cart';
 import { SearchBusService } from '../search/services/search-bus.service'; 
 import { Slider } from '../slider/slider';
+import { Navbar } from '../navbar/navbar';
 @Component({
   selector: 'app-menu',
   standalone: true,
-  imports: [CommonModule, HttpClientModule, ProductList, Cart,Slider],
+  imports: [CommonModule, HttpClientModule, ProductList, Cart,Slider, Navbar],
   templateUrl: './menu.html',
   styleUrls: ['./menu.css']
 })
@@ -82,4 +83,11 @@ export class Menu implements OnInit, OnDestroy {
     this.cartItems.push(item);
     this.cartCount = this.cartItems.length;
   }
+
+  selectedProduct: any = null;
+
+onProductSelected(product: any) {
+  this.selectedProduct = product;
+}
+
 }

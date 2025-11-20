@@ -1,5 +1,23 @@
+<app-navbar
+  (productClicked)="onProductSelected($event)">
+</app-navbar>
+
+
 <div class="menu-container">
+  <div class="content" *ngIf="selectedProduct">
+
+    <div class="product-card">
+      <img [src]="'https://ecom-backend-production-5341.up.railway.app/assets/images/' + selectedProduct.image_url" />
+
+      <h1>{{ selectedProduct.name }}</h1>
+      <p>{{ selectedProduct.description }}</p>
+      <h3>₹{{ selectedProduct.price }}</h3>
+    </div>
+
+  </div>
   
+
+   <ng-container *ngIf="!selectedProduct">
   <div class="sidebar">
     <h2>Category</h2>
 
@@ -31,4 +49,5 @@
     <app-cart [cartCount]="cartCount" [items]="cartItems"></app-cart>
 
   </div>
+  </ng-container>
 </div>

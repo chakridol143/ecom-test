@@ -226,7 +226,7 @@ export class Navbar implements OnInit {
   constructor(private categoryService: CategoryService,  private productService: ProductService ) {}
 
   ngOnInit() {
-    this.categoryService.getAllCategories().subscribe({
+    this.categoryService.getAllCategories().subscribe({ 
       next: (data) => {
         this.categories = data || [];
         this.loading = false;
@@ -277,4 +277,15 @@ loadProducts(catId: number) {
 
   });
 }
+
+@Output() productClicked = new EventEmitter<any>();
+
+onProductClick(product: any) {
+  this.productClicked.emit(product);
+}
+
+onImageError(event: any) {
+  event.target.src = 'assets/images/placeholder.png';
+}
+
 }

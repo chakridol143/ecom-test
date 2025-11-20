@@ -22,6 +22,7 @@ app.use('/api/products', productRoutes);
 app.use('/api/auth',loginRoutes);
 app.use("/api/cart", cartRoutes);
 app.use("/api/checkout", checkoutRoutes);
+//app.use("api/auth", loginRoutes)
 
 
 app.listen(59324, () => {
