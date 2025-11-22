@@ -10,7 +10,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
   templateUrl: './category.html',
   styleUrls: ['./category.css']
 })
-export class CategoryComponent implements OnInit {
+export class category implements OnInit {
   @Output() categorySelected = new EventEmitter<number | null>();
   categories: any[] = [];
   loading = true;

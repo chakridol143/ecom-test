@@ -1,36 +1,56 @@
-
+/* ==========================================================
+   CART SIDEBAR OVERLAY
+========================================================== */
 .cart-details-overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0,0.4);
+  background: rgba(0,0,0,0.45);
+  backdrop-filter: blur(5px);
+
   display: flex;
-  align-items: flex-start;
-  justify-content: flex-end;
+  align-items: flex-end;      /* Cart grows upward */
+  justify-content: flex-end;  /* Right side */
+
   padding: 20px;
   z-index: 2500;
+  animation: fadeIn 0.25s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
 }
 
 
+/* ==========================================================
+   CART SIDEBAR PANEL — GROWS UPWARD
+========================================================== */
 .cart-details-panel {
-  width: 380px;
-  max-height: 90vh;
-  background: #fff;
-  border-radius: 12px;
-  padding: 20px;
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 22px;
   overflow-y: auto;
-  box-shadow: 0 0 12px rgba(0,0,0,0.25);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.30);
   animation: slideIn 0.3s ease-out;
+  margin-bottom: 7%;
+  width: 480px;
+  max-height: 70vh;           /* Grows upward */
+  margin-top: 0 !important;   /* Remove downward offset */
+  align-self: flex-end;       /* Stick to bottom always */
 }
 
 @keyframes slideIn {
-  from { transform: translateX(40px); opacity: 0; }
-  to   { transform: translateX(0); opacity: 1; }
+  from { transform: translateY(20px); opacity: 0; }
+  to   { transform: translateY(0); opacity: 1; }
 }
 
 
+/* ==========================================================
+   HEADER
+========================================================== */
 .header {
   display: flex;
   align-items: center;
@@ -41,24 +61,32 @@
 .header h3 {
   font-size: 20px;
   margin: 0;
+  font-weight: 700;
 }
 
 .close-btn {
   background: transparent;
   border: none;
-  font-size: 20px;
+  font-size: 22px;
   cursor: pointer;
+  color: #444;
 }
 
 
+/* ==========================================================
+   EMPTY STATE
+========================================================== */
 .empty {
   text-align: center;
-  padding: 20px 0;
-  font-size: 16px;
-  color: #666;
+  padding: 30px 0;
+  font-size: 17px;
+  color: #777;
 }
 
 
+/* ==========================================================
+   CART ITEMS
+========================================================== */
 .items-list {
   list-style: none;
   padding: 0;
@@ -68,16 +96,16 @@
 .cart-item {
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 12px 8px;
+  gap: 14px;
+  padding: 12px 6px;
   border-bottom: 1px solid #ddd;
 }
 
 .cart-item img {
-  width: 60px;
-  height: 60px;
+  width: 65px;
+  height: 65px;
   object-fit: cover;
-  border-radius: 8px;
+  border-radius: 10px;
 }
 
 .info {
@@ -91,32 +119,38 @@
 
 .price {
   font-size: 14px;
-  color: #444;
-  margin-top: 3px;
+  color: #3a7a3a;
+  font-weight: 600;
+  margin-top: 4px;
 }
 
 .remove-btn {
   background: #ff4f4f;
   color: #fff;
   border: none;
-  padding: 5px 10px;
+  padding: 6px 10px;
   border-radius: 6px;
   cursor: pointer;
   font-size: 12px;
+  transition: 0.2s;
 }
 
 .remove-btn:hover {
-  opacity: 0.85;
+  opacity: 0.9;
 }
 
 
+/* ==========================================================
+   FOOTER TOTAL & BUTTONS
+========================================================== */
 .footer {
   margin-top: 20px;
 }
 
 .total {
-  font-size: 18px;
+  font-size: 19px;
   margin-bottom: 12px;
+  font-weight: 700;
 }
 
 .actions {
@@ -128,15 +162,16 @@
 .clear-btn,
 .checkout-btn {
   flex: 1;
-  padding: 10px;
+  padding: 12px;
   font-size: 15px;
   cursor: pointer;
   border-radius: 8px;
   border: none;
+  font-weight: 600;
 }
 
 .clear-btn {
-  background: #ddd;
+  background: #e5e5e5;
 }
 
 .checkout-btn {
@@ -145,31 +180,39 @@
 }
 
 .checkout-btn:hover {
-  opacity: 0.9;
+  opacity: 0.92;
 }
 
 
+/* ==========================================================
+   TABLET RESPONSIVE (≤ 1024px)
+========================================================== */
 @media (max-width: 1024px) {
   .cart-details-panel {
-    width: 330px;
+    width: 340px;
   }
 
   .cart-item img {
-    width: 55px;
-    height: 55px;
+    width: 58px;
+    height: 58px;
   }
 }
 
 
+/* ==========================================================
+   MOBILE RESPONSIVE (≤ 768px)
+========================================================== */
 @media (max-width: 768px) {
   .cart-details-overlay {
     justify-content: center;
-    padding: 10px;
+    align-items: flex-end;  /* still bottom */
+    padding: 12px;
   }
 
   .cart-details-panel {
     width: 90%;
-    max-height: 88vh;
+    max-height: 70vh;
+    padding: 18px;
   }
 
   .header h3 {
@@ -178,10 +221,14 @@
 }
 
 
+/* ==========================================================
+   SMALL MOBILE (≤ 480px)
+========================================================== */
 @media (max-width: 480px) {
   .cart-details-panel {
     width: 95%;
-    padding: 15px;
+    padding: 16px;
+    border-radius: 14px;
   }
 
   .cart-item {
@@ -201,5 +248,57 @@
   .clear-btn,
   .checkout-btn {
     width: 100%;
+  }
+
+  .name {
+    font-size: 14px;
+  }
+}
+
+
+/* ==========================================================
+   EXTRA SMALL MOBILE (≤ 380px)
+========================================================== */
+@media (max-width: 380px) {
+  .cart-details-panel {
+    width: 96%;
+    padding: 14px;
+  }
+
+  .header h3 {
+    font-size: 16px;
+  }
+
+  .cart-item img {
+    width: 100%;
+    height: auto;
+  }
+}
+
+
+/* ==========================================================
+   LARGE SCREEN / TV (≥ 1600px)
+========================================================== */
+@media (min-width: 1600px) {
+  .cart-details-panel {
+    width: 480px;
+    padding: 26px;
+  }
+
+  .cart-item img {
+    width: 75px;
+    height: 75px;
+  }
+
+  .name {
+    font-size: 17px;
+  }
+
+  .price {
+    font-size: 16px;
+  }
+
+  .total {
+    font-size: 21px;
   }
 }

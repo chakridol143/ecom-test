@@ -24,9 +24,6 @@ export class login {
     this.loginService.login(this.email, this.password).subscribe({
       next: (res) => {
         this.loginService.saveSession(res.token, res.user);
-        // alert("Login Successful");
-        // this.router.navigate(['/menu']);
-        // this.close.emit();
         this.showDialog = true;
       },
       error: () => {
@@ -37,7 +34,7 @@ export class login {
 
   closeDialog() {
     this.showDialog = false;
-    this.router.navigate(['/menu']); // 👈 Redirect after closing
+    this.router.navigate(['/menu']); 
     this.close.emit();
   }
   

@@ -32,3 +32,11 @@ body, input, button {
 * {
   -webkit-tap-highlight-color: transparent;
 }
+body::-webkit-scrollbar {
+  display: none;
+}
+
+body {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

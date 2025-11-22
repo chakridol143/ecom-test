@@ -23,6 +23,7 @@ export class CartDetails {
   }
 
    onClose() {
+    this.router.navigate(['/menu'])
     this.close.emit();
   }
 
@@ -32,6 +33,7 @@ export class CartDetails {
 
 onCheck() {
    this.router.navigate(['/checkout'])
+   this.close.emit();
     }
 
 }

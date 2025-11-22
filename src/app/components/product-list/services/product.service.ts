@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http';
 
 @Injectable({ providedIn: 'root' })
 export class ProductService {
-  private baseUrl = 'https://ecom-backend-production-5341.up.railway.app/products';
+  private baseUrl = 'https://ecom-backend-production-5341.up.railway.app/api/products';
 
   constructor(private http: HttpClient) {}
 

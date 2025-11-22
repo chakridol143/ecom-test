@@ -1,15 +1,16 @@
 import { CommonModule, NgIf } from '@angular/common';
-import { Component , OnInit} from '@angular/core';
+import { Component , EventEmitter, OnInit, Output} from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CategoryService } from '../category/services/category.services';
 import { HttpClientModule } from '@angular/common/http';
-import { CategoryComponent } from '../category/category';
 import { ProductService } from '../product-list/services/product.service';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-filter',
   standalone: true,
-  imports: [CommonModule , NgIf, FormsModule, HttpClientModule,  ],
+  imports: [CommonModule , NgIf, FormsModule, HttpClientModule],
   templateUrl: './filter.html',
   styleUrls: ['./filter.css'],
   providers: [CategoryService, ProductService]
@@ -20,6 +21,15 @@ export class Filter {
   minPriceLimit = 2000;
   maxPriceLimit = 100000;
 
+    categories: any[] = []; // <-- store categories here
+  loading = true;
+  errorMessage = '';
+
+  products: any[] = [];
+
+  @Output() productSelected = new EventEmitter<any>();
+  
+   constructor(private categoryService: CategoryService , private productService: ProductService , private router: Router) {}
 
 
   filters = {
@@ -42,10 +52,49 @@ export class Filter {
     this.isFilterOpen = false;
   }
 
-  applyFilters() {
-    console.log('Applied Filters:', this.filters);
-    this.closeFilter();
+  // applyFilters() {
+  //   console.log('Applied Filters:', this.filters);
+  //   this.closeFilter();
+  // }
+
+//   applyFilters() {
+//   this.router.navigate(['/filter-results'], {
+//     queryParams: {
+//       product: this.filters.material   // selected product
+//     }
+//   });
+// }
+
+// applyFilters() {
+//   const foundProduct = this.products.find(
+//     p => p.name === this.filters.material
+//   );
+
+//   if (foundProduct) {
+//     this.productSelected.emit(foundProduct);
+//   }
+
+//   this.closeFilter();
+// }
+
+
+applyFilters() {
+  const foundProduct = this.products.find(
+    p => p.name === this.filters.material
+  );
+
+  if (foundProduct) {
+    this.router.navigate(['/filter-results'], {
+      queryParams: {
+        product: foundProduct.name
+      }
+    });
+  } else {
+    console.log("No matching product found");
   }
+
+  this.closeFilter();
+}
 
   updatePrice() {
     console.log('Current Price:', this.filters.price);
@@ -71,13 +120,6 @@ export class Filter {
   }
 
 
-
-  categories: any[] = []; // <-- store categories here
-  loading = true;
-  errorMessage = '';
-
-  constructor(private categoryService: CategoryService) {}
-
   ngOnInit() {
     this.loadCategories();
   }
@@ -94,6 +136,23 @@ export class Filter {
         this.loading = false;
       }
     });
+  }
+  onCategoryChange() {
+    if (!this.filters.category) {
+      this.products = [];
+      return;
+    }
+
+    const categoryId = Number(this.filters.category);
+
+     this.productService.getProductsByCategory(categoryId)
+      .subscribe({
+        next: (res) => {
+          this.products = res || [];
+          console.log("Loaded Products:", this.products);
+        },
+        error: (err) => console.error("Product load error:", err)
+      });
   }
 }
 

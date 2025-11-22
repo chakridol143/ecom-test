@@ -5,7 +5,6 @@
 <div class="filter-popup" *ngIf="isFilterOpen">
   <div class="filter-box">
     <h2>Jewellery Filters</h2>
-
     <form>
         <!-- Price -->
 <div class="filter-group">
@@ -44,7 +43,7 @@
 <div class="filter-group">
   <label>Category</label>
 
-  <select [(ngModel)]="filters.category" name="category">
+  <select [(ngModel)]="filters.category" name="category" (change)="onCategoryChange()">
     <option value="">All Categories</option>
 
     <option 
@@ -55,23 +54,19 @@
 
   </select>
 </div>
-
-
-
-
-
       <!-- Material -->
       <div class="filter-group">
-        <label>Material</label>
-        <select [(ngModel)]="filters.material" name="material">
-          <option value="">Any Material</option>
-          <option>Gold</option>
-          <option>Silver</option>
-          <option>Diamond</option>
-          <option>Platinum</option>
-          <option>Gemstone</option>
-        </select>
-      </div>
+  <label>Products</label>
+
+  <select [(ngModel)]="filters.material" name="material" >
+    <option value="">Select Product</option>
+
+    <option *ngFor="let p of products" [value]="p.name">
+      {{ p.name }}
+    </option>
+  </select>
+</div>
+
 
       <!-- Carat -->
       <div class="filter-group">

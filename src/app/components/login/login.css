@@ -1,38 +1,62 @@
+/* ============================================================
+   BACKDROP OVERLAY
+============================================================ */
 .modal-overlay {
   position: fixed;
   inset: 0;
   background: rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(5px);
   z-index: 999;
+  animation: fadeIn 0.25s ease-out;
 }
 
+/* Centered Login Container */
 .login-popup {
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 1000;
+  width: auto;
 }
 
-
+/* ============================================================
+   LOGIN BOX - GLASS EFFECT
+============================================================ */
 .login-box {
   background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(12px);
+  backdrop-filter: blur(15px);
   border-radius: 20px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
   padding: 40px;
   width: 350px;
   color: white;
   text-align: center;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  animation: popupScale 0.35s ease-out;
+}
+
+@keyframes popupScale {
+  from {
+    transform: translate(-50%, -60%) scale(0.88);
+    opacity: 0;
+  }
+  to {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
 }
 
 .login-box h2 {
   margin-bottom: 20px;
   letter-spacing: 1px;
+  font-size: 24px;
+  font-weight: 600;
 }
 
-
+/* ============================================================
+   FORM STYLES
+============================================================ */
 .form-group {
   margin-bottom: 20px;
   text-align: left;
@@ -42,70 +66,74 @@ label {
   display: block;
   font-size: 14px;
   margin-bottom: 6px;
+  font-weight: 500;
 }
 
 input {
   width: 100%;
-  padding: 10px;
+  padding: 12px;
   border: none;
   border-radius: 8px;
   outline: none;
   font-size: 15px;
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(255, 255, 255, 0.85);
   color: #333;
 }
 
-button {
-  width: 100%;
-  padding: 12px;
-  background: linear-gradient(90deg, #007bff, #00bfff);
-  border: none;
-  border-radius: 8px;
-  color: white;
-  font-size: 16px;
-  font-weight: bold;
-  cursor: pointer;
-  margin-top: 10px;
-  transition: 0.3s;
+input.ng-invalid.ng-touched {
+  border: 1px solid #ff4d4d;
+  background-color: rgba(255, 0, 0, 0.06);
 }
 
-button:hover {
-  background: linear-gradient(90deg, #0056b3, #0099ff);
-}
-
-.close-btn {
-  background: #dc3545;
-}
-
-@media (max-width: 480px) {
-  .login-box {
-    width: 90%;
-    padding: 25px;
-  }
-}
-
-
+/* Error Text */
 .error {
   color: #ff6666;
   font-size: 13px;
   margin-top: 4px;
 }
 
-input.ng-invalid.ng-touched {
-  border: 1px solid #ff4d4d;
-  background-color: rgba(255, 0, 0, 0.05);
+/* ============================================================
+   BUTTONS
+============================================================ */
+button {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  font-weight: 600;
+  margin-top: 10px;
+  transition: 0.3s ease;
 }
 
+/* Main Login Button */
+button:not(.close-btn) {
+  background: linear-gradient(90deg, #007bff, #00bfff);
+}
+button:not(.close-btn):hover {
+  background: linear-gradient(90deg, #0066d4, #0099ee);
+}
 
+/* Close Button */
+.close-btn {
+  background: #dc3545;
+}
+.close-btn:hover {
+  background: #c12d3c;
+}
 
+/* ============================================================
+   SUCCESS POPUP
+============================================================ */
 .success-overlay {
   position: fixed;
   inset: 0;
   background: rgba(0, 0, 0, 0.6);
   z-index: 2000;
-  backdrop-filter: blur(3px);
+  backdrop-filter: blur(4px);
 }
-
 
 .success-dialog {
   position: fixed;
@@ -113,8 +141,8 @@ input.ng-invalid.ng-touched {
   left: 50%;
   transform: translate(-50%, -50%);
   background: linear-gradient(145deg, #ffffff, #e8f5e9);
-  border-radius: 12px;
-  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.3);
+  border-radius: 14px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.3);
   padding: 30px 40px;
   text-align: center;
   z-index: 2001;
@@ -122,7 +150,6 @@ input.ng-invalid.ng-touched {
   animation: fadeIn 0.3s ease;
   border: 2px solid #4caf50;
 }
-
 
 .success-dialog h2 {
   color: #2e7d32;
@@ -136,7 +163,7 @@ input.ng-invalid.ng-touched {
   margin-bottom: 20px;
 }
 
-
+/* Success Button */
 .success-dialog button {
   background: #4caf50;
   color: white;
@@ -153,14 +180,51 @@ input.ng-invalid.ng-touched {
   transform: translateY(-2px);
 }
 
-/* Animation */
+/* Fade Animation */
 @keyframes fadeIn {
-  from {
-    transform: translate(-50%, -55%);
-    opacity: 0;
+  from { transform: translate(-50%, -55%); opacity: 0; }
+  to   { transform: translate(-50%, -50%); opacity: 1; }
+}
+
+
+/* ============================================================
+   MOBILE RESPONSIVE
+============================================================ */
+
+@media (max-width: 380px) {
+  .login-box {
+    width: 90%;
+    padding: 26px;
   }
-  to {
-    transform: translate(-50%, -50%);
-    opacity: 1;
+
+  .success-dialog {
+    width: 90%;
+    padding: 24px;
+  }
+
+  input {
+    padding: 11px;
+    font-size: 14px;
+  }
+
+  button {
+    padding: 11px;
+    font-size: 15px;
+  }
+}
+
+/* Extra small phones (≤ 360px) */
+@media (max-width: 360px) {
+  .login-box {
+    width: 94%;
+    padding: 20px;
+  }
+
+  .login-box h2 {
+    font-size: 20px;
+  }
+
+  button {
+    font-size: 14px;
   }
 }

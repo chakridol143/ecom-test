@@ -50,7 +50,7 @@ export class RegisterComponent {
         if (res?.token && res?.user) {
           this.auth.saveSession(res.token, res.user);
         }
-        this.router.navigate(['login']);
+        this.router.navigate(['menu']);
         this.close.emit();
       },
       error: (err) => {
