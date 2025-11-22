@@ -18,8 +18,8 @@ export const routes: Routes = [
   { path: 'login', component: login },
   { path: 'logout', component: Logout },
   { path: 'cartdetails', component: CartDetails },
-  { path: 'header', component: Header },
-  { path: 'menu', component: Menu },
+  { path: 'menu', component: Header },
+  // { path: 'menu', component: Menu },
   { path: 'checkout', component: Checkout },
   { path: 'register', component: RegisterComponent },
   {

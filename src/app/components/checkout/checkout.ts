@@ -21,7 +21,7 @@ export class Checkout {
   gstAmount : number = 0;
   grandTotal : number = 0;
   showDialog: boolean = false;
-
+  
   constructor(private cartService : CartService, private router:Router, private loginService: LoginService) {}
 
   ngOnInit():void{
@@ -43,41 +43,24 @@ export class Checkout {
     this.gstAmount = this.totalAmount * 0.18;
     this.grandTotal = this.totalAmount + this.gstAmount; 
    }
-
-  //  buyNow(){
-  //   if(this.items.length ===0){
-  //     alert('Your cart is empty. Please add items to cart before proceeding to buy.');
-  //     return;
-  //   }
-  //    this.showDialog = true; 
-    
-
-  //  }
   buyNow(){
     if(this.items.length === 0){
       alert('Your cart is empty. Please add items to cart before proceeding to buy.');
       return;
     }
-
-    //  User NOT logged in → Show login popup
     if(!this.loginService.isLoggedIn()){
       this.showLoginPopup = true;
       return;
     }
-
-    // ✔ User logged in → show success dialog
     this.showDialog = true;
   }
 
   onLoginClosed() {
     this.showLoginPopup = false;
-
-    // After login → continue to checkout
     if(this.loginService.isLoggedIn()) {
       this.showDialog = true;
     }
   }
-
     confirmPurchase() {
     this.clearCart();
     this.showDialog = false;
