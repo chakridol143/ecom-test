@@ -1,85 +1,89 @@
 /* ============================================================
-   MAIN WRAPPER
+   MAIN PRODUCT CONTAINER (Professional Layout)
 ============================================================ */
 .container {
-  width: 95%;
-  padding: 10px 20px;
+  width: 92%;
+  max-width: 1400px;
+  margin: auto;
+  padding: 20px 0;
   box-sizing: border-box;
 }
 
-
 /* ============================================================
-   PRODUCT GRID — DESKTOP (3 COLUMNS)
+   PRODUCT GRID — RESPONSIVE, CLEAN, PROFESSIONAL
 ============================================================ */
 .product-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  margin-top: 20px;
+  grid-template-columns: repeat(4, 1fr); 
+  gap: 50px;
+  padding-top: 20px;
 }
 
 
 /* ============================================================
-   PRODUCT CARD
+   PRODUCT CARD (Modern UI)
 ============================================================ */
-.product-card {
-  padding: 12px;
-  border-radius: 10px;
+/* .product-card {
+  background: #92656ca9;
+  border-radius: 12px;
+  padding: 15px;
+  box-shadow: 0px 4px 15px rgba(0,0,0,0.08);
   transition: 0.3s ease;
-  cursor: pointer;
-}
+  overflow: hidden;
+  position: relative;
+} */
 
-.product-card:hover {
-  transform: translateY(-5px);
-}
-
-/* Product Image */
 .product-img {
-  width: 80%;
+  width: 100%;
   height: 250px;
   object-fit: fill;
-  border-radius: 8px;
+  border-radius: 10px;
+  transition: transform 0.4s ease, box-shadow 0.3s ease;
+  height: 4%;
 }
 
-/* Name only display */
-.only-name-card {
+.product-card:hover .product-img {
+  transform: scale(1.08);
+  box-shadow: 0px 15px 30px rgba(0,0,0,0.23);
+}
+
+
+/* ============================================================
+   NAME + PRICE
+============================================================ */
+.product-info {
+  margin-top: 12px;
   text-align: center;
-}
-
-.only-name-card h3.only-name {
-  font-size: 18px;
-  margin-top: 10px;
-  font-weight: 600;
-  color: #333;
-  cursor: pointer;
-}
-
-/* Full details card */
-.full-details-card {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
 }
 
 .product-info h3 {
-  margin: 5px 0;
+  margin: 8px 0;
   font-size: 20px;
-  text-align: center;
+  font-weight: 700;
+  color: #333;
 }
 
 .price {
-  color: #d9534f;
+  font-size: 18px;
   font-weight: bold;
-  text-align: center;
+  color: #d9534f;
 }
 
+
+/* ============================================================
+   ADD TO CART BUTTON
+============================================================ */
 .product-info button {
-  background: #000;
-  color: #fff;
-  border: none;
-  padding: 8px 12px;
+  margin-top: 10px;
+  width: 100%;
+  background: #8d646b;
+  color: white;
+  padding: 10px;
   border-radius: 6px;
+  border: none;
   cursor: pointer;
+  font-size: 16px;
+  transition: 0.3s ease;
 }
 
 .product-info button:hover {
@@ -88,7 +92,7 @@
 
 
 /* ============================================================
-   LOGIN POPUP
+   POPUP + LOGIN POPUP
 ============================================================ */
 .modal-overlay {
   position: fixed;
@@ -100,68 +104,25 @@
   backdrop-filter: blur(2px);
   z-index: 90;
 }
-
-.login-dialog {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: #ffffff;
-  width: 350px;
-  padding: 20px;
-  border-radius: 12px;
+h1{
   text-align: center;
-  z-index: 100;
 }
 
-.login-dialog h2 {
-  margin-bottom: 10px;
-}
-
-.dialog-actions button {
-  margin: 10px;
-  padding: 8px 14px;
-  border: none;
-  border-radius: 6px;
-}
-
-.login-btn {
-  background: #28a745;
-  color: white;
-}
-
-.cancel-btn {
-  background: #dc3545;
-  color: white;
-}
-
-
-/* ============================================================
-   PRODUCT POPUP
-============================================================ */
+.login-dialog,
 .product-popup {
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 380px;
   background: #fff;
+  width: 380px;
+  padding: 20px;
   border-radius: 12px;
+  text-align: center;
   z-index: 100;
 }
 
-.popup-box {
-  padding: 20px;
-  text-align: center;
-}
-
-.popup-img {
-  width: 100%;
-  height: 260px;
-  object-fit: cover;
-  border-radius: 10px;
-}
-
+/* Close button */
 .popup-close {
   border: none;
   background: transparent;
@@ -172,31 +133,129 @@
   cursor: pointer;
 }
 
-@media (min-width: 880px) and (max-width: 950px) {
-  .product-img {
-    height: 200px;
-    width: 250px;
-  }
+/* ===================== TESTIMONIALS ===================== */
+
+.testimonials-container {
+  width: 90%;
+  max-width: 1300px;
+  margin: 80px auto;
+  text-align: center;
 }
-@media (min-width: 820px) and (max-width: 879px){
-      .product-img {
-    height: 200px;
-    width: 250px;
-  }
+
+.section-title {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 50px;
 }
-/* ============================================================
-   TABLET VIEW (≤ 992px)
-============================================================ */
-@media (max-width: 992px) {
-  .product-grid {
+
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px;
+}
+
+.testimonial-card {
+  padding: 25px;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.08);
+  transition: 0.3s ease;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-6px);
+}
+
+.stars {
+  color: #c79a8e;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.testimonial-card h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.testimonial-card p {
+  font-size: 14px;
+  color: #777;
+  margin-bottom: 10px;
+}
+
+.author {
+  font-weight: 600;
+  color: #444;
+}
+
+/* MOBILE */
+@media (max-width: 900px) {
+  .testimonials-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
+@media (max-width: 600px) {
+  .testimonials-grid {
+    grid-template-columns: 1fr;
+  }
+}
 
+/* ===================== FEATURES SECTION ===================== */
+.features-section {
+  margin: 80px auto;
+  padding: 50px 0;
+  width: 90%;
+  max-width: 1300px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  text-align: center;
+  gap: 30px;
+}
+
+.feature-box {
+  text-align: center;
+}
+
+.feature-icon {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 15px;
+}
+
+.feature-box h4 {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.feature-box p {
+  color: #777;
+  font-size: 14px;
+}
+
+/* MOBILE */
+@media (max-width: 900px) {
+  .features-section {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 600px) {
+  .features-section {
+    grid-template-columns: 1fr;
+  }
+}
 
 /* ============================================================
-   MOBILE VIEW (≤ 600px) — SMALLER IMAGES + NAMES
+   RESPONSIVE BREAKPOINTS
 ============================================================ */
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .product-img { height: 220px; }
+}
+
+/* Mobile */
 @media (max-width: 600px) {
 
   .product-grid {
@@ -204,78 +263,26 @@
     gap: 12px;
   }
 
-  .product-card {
-    padding: 6px;
-  }
+  .product-img { height: 150px; }
 
-  .product-img {
-    height: 120px;
-    border-radius: 8px;
-  }
+  .product-info h3 { font-size: 15px; }
+  .price { font-size: 14px; }
 
-  .only-name-card h3.only-name {
+  .product-info button {
     font-size: 14px;
-    margin-top: 6px;
-  }
-
-  .popup-img {
-    height: 200px;
-  }
-
-  .login-dialog,
-  .product-popup {
-    width: 92%;
+    padding: 7px;
   }
 }
 
-
-/* ============================================================
-   EXTRA SMALL MOBILE (≤ 480px)
-============================================================ */
-@media (max-width: 480px) {
-
-  .product-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-    /* padding-right: 25px; */
-    margin-top: 10px;
-    margin-left: 105px;
-  }
-
-  .product-card {
-    padding: 5px;
-  }
-
-  .product-img {
-    height: 75px;
-    border-radius: 6px;
-  }
-
-  .only-name-card h3.only-name {
-    font-size: 13px;
-  }
-
-  .popup-img {
-    height: 180px;
-  }
+/* Extra Small Mobile */
+@media (max-width: 400px) {
+  .product-img { height: 120px; }
+  .product-info h3 { font-size: 13px; }
 }
 
-
-/* ============================================================
-   ULTRA SMALL DEVICES (≤ 380px)
-============================================================ */
-@media (max-width: 380px) {
-
+/* Ultra-Small */
+@media (max-width: 330px) {
   .product-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 8px;
-  }
-
-  .product-img {
-    height: 55px;
-  }
-
-  .only-name-card h3.only-name {
-    font-size: 12px;
+    grid-template-columns: 1fr;
   }
 }

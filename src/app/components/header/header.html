@@ -2,7 +2,7 @@
   <div class="logo">
     <img src="../../../assets/images/JewelerLogo.png" alt="">
   </div>
-  <!-- <h1>Ecommerce</h1> -->
+  <!-- <h1>Genperm</h1> -->
   <!-- 🔍 Search Component -->
   <app-search (searchEvent)="onSearch($event)"></app-search>
 
@@ -26,5 +26,15 @@
  
 </header>
 
+
 <!-- 🧹 Keep filter component OUTSIDE header -->
 <app-filter #filterComponent></app-filter>
+<app-navbar (productClicked)="onProductSelected($event)"></app-navbar>
+ <div class="content" *ngIf="selectedProduct">
+    <div class="product-card">
+      <img [src]="'https://ecom-backend-production-5341.up.railway.app/assets/images/'+ selectedProduct.image_url" />
+      <h1>{{ selectedProduct.name }}</h1>
+      <p>{{ selectedProduct.description }}</p>
+      <h3>₹{{ selectedProduct.price }}</h3>
+    </div>
+  </div>

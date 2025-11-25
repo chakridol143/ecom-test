@@ -1,0 +1,85 @@
+<div class="releases-container">
+
+  <div class="close-wrapper">
+    <button class="close-btn" (click)="close.emit()">✖</button>
+  </div>
+
+  <div *ngFor="let item of products; let p = index" class="product-section">
+
+    <!-- Product Title -->
+    <h2 class="product-title">{{ item.title }}</h2>
+
+    <div class="media-wrapper">
+
+      <!-- left images vertically -->
+      <div class="thumbs-vertical">
+        <div class="thumb video-thumb" [class.active]="activeIndex[p] === -1" (click)="setActive(p, -1)"><img
+            src="../assets/images/e2.avif" alt="Video"></div>
+
+        <div class="thumb" *ngFor="let img of item.images; let i = index" (click)="setActive(p, i)"
+          [class.active]="activeIndex[p] === i">
+          <img [src]="img">
+        </div>
+      </div>
+
+      <!-- vedio display -->
+      <div class="main-media">
+        <video *ngIf="activeIndex[p] === -1" controls muted autoplay>
+          <source [src]="item.video" type="video/mp4">
+        </video>
+        <img *ngIf="activeIndex[p] !== -1" [src]="item.images[activeIndex[p]]" />
+      </div>
+
+      <div class="product-details">
+
+  <h2 class="product-title">{{ item.title }}</h2>
+
+
+  <div class="pricing-section">
+    <span class="price">₹{{ item.price }}</span>
+    <span class="old-price">₹{{ item.oldPrice }}</span>
+    <span class="discount">{{ item.discount }}</span>
+  </div>
+
+  <p class="tax" *ngIf="item.taxIncluded">Tax included.</p>
+
+  <!-- Quantity -->
+  <div class="quantity-box">Quantity
+    <button>-</button>
+    <span>1</span>
+    <button>+</button>
+  </div>
+
+  <!-- Add / Buy Buttons -->
+  <div class="btn-row">
+    <button class="add-cart-btn">Add to cart</button>
+    <button class="buy-btn">Buy it now</button>
+  </div>
+
+  
+
+</div>
+
+
+      <!-- Slide Arrows -->
+      <!-- <button class="arrow left" (click)="prev(p)">❮</button>
+      <button class="arrow right" (click)="next(p)">❯</button> -->
+    </div>
+
+  </div>
+
+  <h2 class="extra-title">More Designs For You</h2>
+
+  <div class="video-grid">
+    <div class="video-item" *ngFor="let item of videoGrid">
+      <video [src]="item.video" muted loop (mouseenter)="playVideo($event)" (mouseleave)="pauseVideo($event)"></video>
+
+
+      <p class="name">{{ item.name }}</p>
+      <p class="price">₹{{ item.price }}</p>
+    </div>
+  </div>
+
+
+
+</div>

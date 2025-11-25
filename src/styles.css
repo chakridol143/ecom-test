@@ -1,4 +1,4 @@
-
+/* 
 * {
   margin: 0;
   padding: 0;
@@ -26,6 +26,7 @@ app-root {
 
 body, input, button {
   font-family: 'Roboto', sans-serif;
+  
 }
 
 
@@ -39,4 +40,11 @@ body::-webkit-scrollbar {
 body {
   -ms-overflow-style: none;
   scrollbar-width: none;
+} */
+/* body{
+  background-color:#f1acb8a3 ;
 }
+*{
+  padding: 0;
+  margin: 0;
+} */

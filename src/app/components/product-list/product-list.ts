@@ -6,7 +6,6 @@ import { Footer } from "../footer/footer";
 import { CartService } from '../cart/services/cart.services';
 
 
-
 @Component({
   selector: 'app-products',
   standalone: true,
@@ -33,11 +32,14 @@ export class ProductList implements OnInit, OnChanges {
   // ⭐ NEW FLAG
   showFullDetails = false;
 
+  // private apiHost = 'http://localhost:3000';
+  // private apiHost1 = 'http://localhost:3001'
+  // private productsUrl = `${this.apiHost}/api/products`;
+  // private categoryProductsUrl = `${this.apiHost1}/api/category`;
   private apiHost = 'https://ecom-backend-production-5341.up.railway.app';
   private apiHost1 = 'https://ecom-backend-production-5341.up.railway.app'
   private productsUrl = `${this.apiHost}/api/products`;
   private categoryProductsUrl = `${this.apiHost1}/api/category`;
-
   constructor(
     private http: HttpClient,
     private cart: CartService,

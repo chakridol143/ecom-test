@@ -5,6 +5,8 @@ import { CategoryService } from '../category/services/category.services';
 import { HttpClientModule } from '@angular/common/http';
 import { ProductService } from '../product-list/services/product.service';
 import { Router } from '@angular/router';
+import { ProductSelectionService } from './filter-results.services';
+
 
 
 @Component({
@@ -29,7 +31,7 @@ export class Filter {
 
   @Output() productSelected = new EventEmitter<any>();
   
-   constructor(private categoryService: CategoryService , private productService: ProductService , private router: Router) {}
+   constructor(private categoryService: CategoryService , private productService: ProductService , private router: Router, private productSelection: ProductSelectionService) {}
 
 
   filters = {
@@ -52,31 +54,7 @@ export class Filter {
     this.isFilterOpen = false;
   }
 
-  // applyFilters() {
-  //   console.log('Applied Filters:', this.filters);
-  //   this.closeFilter();
-  // }
-
-//   applyFilters() {
-//   this.router.navigate(['/filter-results'], {
-//     queryParams: {
-//       product: this.filters.material   // selected product
-//     }
-//   });
-// }
-
-// applyFilters() {
-//   const foundProduct = this.products.find(
-//     p => p.name === this.filters.material
-//   );
-
-//   if (foundProduct) {
-//     this.productSelected.emit(foundProduct);
-//   }
-
-//   this.closeFilter();
-// }
-
+  
 
 applyFilters() {
   const foundProduct = this.products.find(
@@ -84,13 +62,9 @@ applyFilters() {
   );
 
   if (foundProduct) {
-    this.router.navigate(['/filter-results'], {
-      queryParams: {
-        product: foundProduct.name
-      }
-    });
+    this.productSelection.selectProduct(foundProduct); // <-- MAGIC HERE
   } else {
-    console.log("No matching product found");
+    console.log("No product found");
   }
 
   this.closeFilter();
@@ -154,5 +128,6 @@ applyFilters() {
         error: (err) => console.error("Product load error:", err)
       });
   }
+  
 }
 

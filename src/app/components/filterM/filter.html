@@ -1,0 +1,120 @@
+<!-- Filter Overlay -->
+<div class="filter-overlay" *ngIf="isFilterOpen" (click)="closeFilter()"></div>
+
+<!-- Filter Popup -->
+<div class="filter-popup" *ngIf="isFilterOpen">
+  <div class="filter-box">
+    <h2>Jewellery Filters</h2>
+    <form>
+        <!-- Price -->
+<div class="filter-group">
+  <label>Price: ₹{{ filters.price | number:'1.0-0' }}</label>
+  <div class="slider">
+    <input
+      type="range"
+      [(ngModel)]="filters.price"
+      name="price"
+      [min]="minPriceLimit"
+      [max]="maxPriceLimit"
+      step="500"
+      (input)="updatePrice()"
+    />
+  </div>
+</div>
+
+<!-- Discount -->
+<div class="filter-group">
+  <label>Discount: {{ filters.discount }}%</label>
+  <div class="slider">
+    <input
+      type="range"
+      [(ngModel)]="filters.discount"
+      name="discount"
+      [min]="0"
+      [max]="100"
+      step="1"
+      (input)="updateDiscount()"
+    />
+  </div>
+</div>
+
+ 
+
+<div class="filter-group">
+  <label>Category</label>
+
+  <select [(ngModel)]="filters.category" name="category" (change)="onCategoryChange()">
+    <option value="">All Categories</option>
+
+    <option 
+      *ngFor="let c of categories" 
+      [value]="c.category_id">
+      {{ c.name }}
+    </option>
+
+  </select>
+</div>
+      <!-- Material -->
+      <div class="filter-group">
+  <label>Products</label>
+
+  <select [(ngModel)]="filters.material" name="material" >
+    <option value="">Select Product</option>
+
+    <option *ngFor="let p of products" [value]="p.name">
+      {{ p.name }}
+    </option>
+  </select>
+</div>
+
+
+      <!-- Carat -->
+      <div class="filter-group">
+        <label>Carat (Purity)</label>
+        <select [(ngModel)]="filters.carat" name="carat">
+          <option value="">Any</option>
+          <option>14K</option>
+          <option>18K</option>
+          <option>22K</option>
+          <option>24K</option>
+        </select>
+      </div>
+
+      <!-- Type -->
+      <div class="filter-group">
+        <label>Type</label>
+        <select [(ngModel)]="filters.type" name="type">
+          <option value="">All Types</option>
+          <option>Ring</option>
+          <option>Earrings</option>
+          <option>Necklace</option>
+          <option>Pendant</option>
+          <option>Bangle</option>
+          <option>Bracelet</option>
+          <option>Chain</option>
+          <option>Anklet</option>
+        </select>
+      </div>
+
+      <!-- Occasion -->
+      <div class="filter-group">
+        <label> Occasion</label>
+        <select [(ngModel)]="filters.occasion" name="occasion">
+          <option value="">Any Occasion</option>
+          <option>Wedding</option>
+          <option>Daily Wear</option>
+          <option>Festive</option>
+          <option>Office Wear</option>
+          <option>Engagement</option>
+        </select>
+      </div>
+
+      <!-- Buttons -->
+      <div class="filter-actions">
+        <button type="button" class="apply-btn" (click)="applyFilters()">Apply</button>
+        <button type="button" class="reset-btn" (click)="resetFilters()">Reset</button>
+      </div>
+
+    </form>
+  </div>
+</div>

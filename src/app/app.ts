@@ -4,6 +4,7 @@ import { Header } from './components/header/header';
 import { Navbar } from './components/navbar/navbar';
 import { Menu } from './components/menu/menu';
 import { Filter } from './components/filter/filter';
+import { Slider } from './components/slider/slider';
 
 
 @Component({
