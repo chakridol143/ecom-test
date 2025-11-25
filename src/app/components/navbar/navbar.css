@@ -1,15 +1,11 @@
-/* ============================================================
-   NAVBAR BASE
-============================================================ */
 .nav {
   background: #fff;
   width: 100%;
   padding: 10px 20px;
   position: fixed;
-  top: 85px; /* Below header */
+  top: 85px;
   left: 0;
   z-index: 999;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
 }
 
 .nav-bar {
@@ -35,11 +31,6 @@
 .nav-item:hover {
   background: #f3f3f3;
 }
-
-
-/* ============================================================
-   DROPDOWN MENU
-============================================================ */
 .dropdown {
   position: absolute;
   top: 38px;
@@ -75,47 +66,27 @@
   background: #f3f3f3;
 }
 
-
-/* ============================================================
-   TABLET VIEW  ≤ 900px
-============================================================ */
 @media (max-width: 900px) {
-  .nav-bar {
-    gap: 15px;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    white-space: nowrap;
-    scrollbar-width: none;
-  }
-
-  .nav-bar::-webkit-scrollbar {
-    display: none;
+  .nav-item:focus-within .dropdown,
+  .nav-item:active .dropdown {
+    display: block !important;
   }
 
   .nav-item {
-    font-size: 14px;
-    padding: 7px 10px;
+    position: relative;
   }
 
-  .dropdown {
-    width: 200px;
+  .nav-item > a,
+  .nav-item > span {
+    display: inline-block;
+    outline: none;
   }
 }
-
-
-/* ============================================================
-   MOBILE VIEW — HIDE NAVBAR (≤ 600px)
-============================================================ */
 @media (max-width: 600px) {
   .nav {
-    display: none !important; /* Completely hide navbar */
+    display: block !important;
   }
 }
-
-
-/* ============================================================
-   SMALL MOBILE (≤ 400px)
-============================================================ */
 @media (max-width: 400px) {
   .nav-item {
     font-size: 12px;

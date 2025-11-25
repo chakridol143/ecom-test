@@ -1,25 +1,23 @@
-/* REMOVE default browser white margin */
 html, body {
   margin: 0;
   padding: 0;
-  background: #8d646b; /* Optional if entire site uses same color */
+  background: #8d646b;
 }
 
-/* ================= FOOTER MAIN ================= */
+/* FOOTER MAIN */
 .footer-main {
   background: #8d646b;
   color: white;
-  padding: 60px 60px;   /* even padding */
+  padding: 60px 60px;
   display: grid;
   grid-template-columns: 1.5fr 1fr 1fr 1fr;
   gap: 40px;
   align-items: flex-start;
   width: 100%;
-  margin: 0;            /* REMOVE white gaps */
   box-sizing: border-box;
 }
 
-/* LEFT NEWSLETTER SECTION */
+/* LEFT SECTION */
 .footer-left h2 {
   font-size: 36px;
   font-weight: 700;
@@ -31,7 +29,6 @@ html, body {
   margin-bottom: 25px;
 }
 
-/* Newsletter email box */
 .email-box {
   display: flex;
   align-items: center;
@@ -71,11 +68,12 @@ html, body {
   margin-bottom: 8px;
   text-decoration: none;
 }
+
 .footer-column a:hover {
   opacity: 1;
 }
 
-/* SOCIAL */
+/* SOCIAL ICONS */
 .footer-social {
   display: flex;
   gap: 12px;
@@ -94,14 +92,13 @@ html, body {
   cursor: pointer;
 }
 
-/* ================= COPYRIGHT BAR ================= */
+/* COPYRIGHT */
 .footer-container {
   background: #8d646b;
   padding: 20px;
   text-align: center;
   border-top: 1px solid rgba(255,255,255,0.2);
   width: 100%;
-  margin: 0;
   box-sizing: border-box;
 }
 
@@ -109,27 +106,33 @@ html, body {
   color: white;
   margin: 0;
 }
+
 .footer-links a {
   color: white;
   margin: 0 5px;
 }
 
-/* RESPONSIVE */
+/* TABLET */
 @media (max-width: 992px) {
   .footer-main {
     grid-template-columns: 1fr 1fr;
+    padding: 50px 40px;
   }
 }
 
+/* MOBILE */
 @media (max-width: 600px) {
   .footer-main {
     grid-template-columns: 1fr;
     text-align: center;
     padding: 40px 20px;
   }
+
   .email-box {
-    margin: 0 auto;
+    margin: 15px auto;
+    width: 90%;
   }
+
   .footer-social {
     justify-content: center;
   }

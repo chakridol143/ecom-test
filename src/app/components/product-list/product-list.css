@@ -1,6 +1,3 @@
-/* ============================================================
-   MAIN PRODUCT CONTAINER (Professional Layout)
-============================================================ */
 .container {
   width: 92%;
   max-width: 1400px;
@@ -9,34 +6,17 @@
   box-sizing: border-box;
 }
 
-/* ============================================================
-   PRODUCT GRID — RESPONSIVE, CLEAN, PROFESSIONAL
-============================================================ */
 .product-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr); 
+  grid-template-columns: repeat(4, 1fr);
   gap: 50px;
   padding-top: 20px;
 }
 
-
-/* ============================================================
-   PRODUCT CARD (Modern UI)
-============================================================ */
-/* .product-card {
-  background: #92656ca9;
-  border-radius: 12px;
-  padding: 15px;
-  box-shadow: 0px 4px 15px rgba(0,0,0,0.08);
-  transition: 0.3s ease;
-  overflow: hidden;
-  position: relative;
-} */
-
 .product-img {
   width: 100%;
   height: 250px;
-  object-fit: fill;
+  object-fit: cover;
   border-radius: 10px;
   transition: transform 0.4s ease, box-shadow 0.3s ease;
   height: 4%;
@@ -47,10 +27,6 @@
   box-shadow: 0px 15px 30px rgba(0,0,0,0.23);
 }
 
-
-/* ============================================================
-   NAME + PRICE
-============================================================ */
 .product-info {
   margin-top: 12px;
   text-align: center;
@@ -69,10 +45,6 @@
   color: #d9534f;
 }
 
-
-/* ============================================================
-   ADD TO CART BUTTON
-============================================================ */
 .product-info button {
   margin-top: 10px;
   width: 100%;
@@ -89,11 +61,13 @@
 .product-info button:hover {
   background: #333;
 }
-
-
-/* ============================================================
-   POPUP + LOGIN POPUP
-============================================================ */
+h2{
+  text-align: center;
+}
+h3{
+  text-align: center;
+  color: green;
+}
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -103,9 +77,6 @@
   background: rgba(0,0,0,0.6);
   backdrop-filter: blur(2px);
   z-index: 90;
-}
-h1{
-  text-align: center;
 }
 
 .login-dialog,
@@ -122,7 +93,6 @@ h1{
   z-index: 100;
 }
 
-/* Close button */
 .popup-close {
   border: none;
   background: transparent;
@@ -132,8 +102,6 @@ h1{
   top: 10px;
   cursor: pointer;
 }
-
-/* ===================== TESTIMONIALS ===================== */
 
 .testimonials-container {
   width: 90%;
@@ -154,54 +122,6 @@ h1{
   gap: 40px;
 }
 
-.testimonial-card {
-  padding: 25px;
-  border-radius: 12px;
-  background: #fff;
-  box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.08);
-  transition: 0.3s ease;
-}
-
-.testimonial-card:hover {
-  transform: translateY(-6px);
-}
-
-.stars {
-  color: #c79a8e;
-  font-size: 20px;
-  margin-bottom: 10px;
-}
-
-.testimonial-card h3 {
-  font-size: 18px;
-  margin-bottom: 10px;
-  color: #333;
-}
-
-.testimonial-card p {
-  font-size: 14px;
-  color: #777;
-  margin-bottom: 10px;
-}
-
-.author {
-  font-weight: 600;
-  color: #444;
-}
-
-/* MOBILE */
-@media (max-width: 900px) {
-  .testimonials-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-@media (max-width: 600px) {
-  .testimonials-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-/* ===================== FEATURES SECTION ===================== */
 .features-section {
   margin: 80px auto;
   padding: 50px 0;
@@ -213,76 +133,142 @@ h1{
   gap: 30px;
 }
 
-.feature-box {
-  text-align: center;
-}
-
-.feature-icon {
-  width: 80px;
-  height: 80px;
-  margin-bottom: 15px;
-}
-
-.feature-box h4 {
-  font-size: 18px;
-  font-weight: 700;
-  margin-bottom: 5px;
-}
-
-.feature-box p {
-  color: #777;
-  font-size: 14px;
-}
-
-/* MOBILE */
-@media (max-width: 900px) {
-  .features-section {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-@media (max-width: 600px) {
-  .features-section {
-    grid-template-columns: 1fr;
-  }
-}
-
-/* ============================================================
-   RESPONSIVE BREAKPOINTS
-============================================================ */
-
-/* Tablet */
-@media (max-width: 1024px) {
-  .product-img { height: 220px; }
-}
-
-/* Mobile */
-@media (max-width: 600px) {
-
+@media (max-width: 903px) and (min-width: 601px) {
   .product-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
   }
-
-  .product-img { height: 150px; }
-
-  .product-info h3 { font-size: 15px; }
-  .price { font-size: 14px; }
-
+  .product-img {
+    height: 220px !important;
+  }
+  .product-info h3 {
+    font-size: 17px;
+  }
+  .price {
+    font-size: 16px;
+  }
   .product-info button {
-    font-size: 14px;
-    padding: 7px;
+    font-size: 15px;
+  }
+  .testimonials-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .features-section {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
-/* Extra Small Mobile */
+@media (max-width: 1024px) {
+  .product-img { height: 200px; }
+}
+
+@media (max-width: 600px) {
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 12px !important;
+    margin-left: 15px;
+   
+  }
+  .product-img {
+    height: 250px !important;
+    object-fit: cover !important;
+  }
+  h1 {
+    margin-top: -20px;
+    text-align: center;
+  }
+  .product-info h3 {
+    font-size: 12px !important;
+  }
+  .price {
+    font-size: 12px !important;
+  }
+  .product-info button {
+    font-size: 12px !important;
+    padding: 6px !important;
+  }
+  .testimonials-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .features-section {
+    grid-template-columns: 1fr !important;
+  }
+}
+
 @media (max-width: 400px) {
   .product-img { height: 120px; }
   .product-info h3 { font-size: 13px; }
 }
 
-/* Ultra-Small */
 @media (max-width: 330px) {
   .product-grid {
     grid-template-columns: 1fr;
+  }
+}
+/* ============================================================
+   MOBILE — TESTIMONIALS (1 per slide, swipe enabled)
+============================================================ */
+@media (max-width: 600px) {
+
+    .testimonials-container {
+    width: 100% !important;
+    margin: 40px auto !important;
+    text-align: center !important;
+    padding: 0 10px !important;
+  }
+
+  .section-title {
+    font-size: 24px !important;
+    margin-bottom: 25px !important;
+  }
+
+  .testimonials-grid {
+    display: flex !important;
+    overflow-x: auto !important;
+    scroll-snap-type: x mandatory;
+    gap: 16px !important;
+    padding-bottom: 10px;
+    scroll-behavior: smooth;
+  }
+
+  .testimonials-grid > div {
+    min-width: 90% !important;
+    flex: 0 0 auto;
+    scroll-snap-align: center;
+    background: #fff;
+    border-radius: 12px;
+    padding: 18px !important;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center !important;
+    box-sizing: border-box;
+  }
+
+  .testimonials-grid > div p,
+  .testimonials-grid > div h3,
+  .testimonials-grid > div span {
+    text-align: center !important;
+    word-wrap: break-word;
+    line-height: 1.4;
+    font-size: 14px !important;
+  }
+
+  .testimonials-grid::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+
+/* ============================================================
+   MOBILE — FEATURES SECTION (2 columns)
+============================================================ */
+@media (max-width: 600px) {
+  .features-section {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 15px !important;
   }
 }

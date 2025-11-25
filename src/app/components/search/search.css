@@ -2,16 +2,22 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  /* width: 100%; */
-  max-width: 550px;      
+  max-width: 550px;
   margin: auto;
   padding: 8px;
   margin-left: 25%;
+  flex-wrap: nowrap !important;      /* 🔥 NO WRAP */
+  white-space: nowrap !important;    /* 🔥 KEEP SIDE-BY-SIDE */
+  overflow-x: auto !important;       /* 🔥 Scroll if too small */
 }
 
+.search-bar::-webkit-scrollbar {
+  display: none; /* clean mobile scroll */
+}
 
 .search-bar input {
-  flex: 1;
+  flex: 1 0 auto !important;         /* 🔥 Don't shrink smaller */
+  min-width: 180px !important;       /* 🔥 Ensure room for button */
   padding: 10px 15px;
   font-size: 15px;
   border: 1px solid #ccc;
@@ -25,8 +31,8 @@
   box-shadow: 0px 0px 5px rgba(0, 123, 255, 0.4);
 }
 
-
 .search-bar button {
+  flex-shrink: 0 !important;         /* 🔥 Button never shrinks */
   padding: 10px 18px;
   font-size: 15px;
   background: #007bff;
@@ -35,31 +41,44 @@
   border-radius: 6px;
   cursor: pointer;
   transition: 0.3s ease;
+  white-space: nowrap !important;     /* 🔥 Prevent text breaking */
 }
 
 .search-bar button:hover {
   background: #0056b3;
 }
 
+/* 🔥 Remove column layout – KEEP DESKTOP LOOK ON MOBILE */
+/* MOBILE (≤ 480px) — Smaller input & button */
 @media (max-width: 480px) {
   .search-bar {
-    flex-direction: column;
-    align-items: stretch;
-    padding: 5px;
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: 6px !important;
+    padding: 4px !important;
+    max-width: 100% !important;
+    margin-left: 0 !important;
   }
 
-  .search-bar input,
+  .search-bar input {
+    min-width: 80px !important;   /* 🔥 Smaller */
+    max-width: 60px !important;   /* 🔥 Controls width */
+    padding: 7px 10px !important;  /* 🔥 Smaller padding */
+    font-size: 13px !important;    /* 🔥 Smaller text */
+  }
+
   .search-bar button {
-    width: 100%;
-    font-size: 14px;
+    padding: 7px 12px !important;  /* 🔥 Smaller button */
+    font-size: 13px !important;    /* 🔥 Smaller text */
+    flex-shrink: 0 !important;
   }
 }
-
 
 @media (max-width: 768px) {
   .search-bar {
     max-width: 100%;
     padding: 8px;
+    margin-left: 0;
   }
 
   .search-bar input {
@@ -67,13 +86,11 @@
   }
 }
 
-
 @media (min-width: 769px) and (max-width: 1024px) {
   .search-bar {
     max-width: 600px;
   }
 }
-
 
 @media (min-width: 1200px) {
   .search-bar {

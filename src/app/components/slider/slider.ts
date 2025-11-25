@@ -16,19 +16,22 @@ export class Slider implements OnInit, OnDestroy {
   @Output() categorySelect = new EventEmitter<number>();
 
   images = [
-    '../../../assets/images/adv1.jpg',
-    '../../../assets/images/adv2.webp',
-    '../../../assets/images/adv3.webp',
-    '../../../assets/images/adv4.webp',
-    '../../../assets/images/adv5.webp'
+    '../../../assets/images/slider1.png',
+    '../../../assets/images/slider3.png',
+    '../../../assets/images/slider4.png',
+    '../../../assets/images/slider5.png',
+    '../../../assets/images/slider6.png',
+    '../../../assets/images/slider8.png'
   ];
 
   sliderMap: { [key: string]: number } = {
-    '../../../assets/images/adv1.jpg': 1,
-    '../../../assets/images/adv2.webp': 8,
-    '../../../assets/images/adv3.webp': 7,
-    '../../../assets/images/adv4.webp': 5,
-    '../../../assets/images/adv5.webp': 2
+    '../../../assets/images/slider1.png': 1,
+    '../../../assets/images/slider3.png': 7,
+    '../../../assets/images/slider4.png': 5,
+    '../../../assets/images/slider5.png': 2,
+    '../../../assets/images/slider6.png':3,
+    '../../../assets/images/slider8.png':4
+
   };
 
   currentIndex = 0;

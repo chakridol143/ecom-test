@@ -78,23 +78,53 @@ export class ProductList implements OnInit, OnChanges {
     return Number.isFinite(id) ? id : null;
   }
 
-  private loadAllProducts() {
-    this.loading = true;
-    this.error = null;
+  // private loadAllProducts() {
+  //   this.loading = true;
+  //   this.error = null;
 
-    this.http.get<any[]>(this.productsUrl).subscribe({
-      next: (data) => {
-        this.allProducts = Array.isArray(data) ? data : [];
-        this.loading = false;
-      },
-      error: (err) => {
-        console.error('Error loading all products:', err);
-        this.error = 'Failed to load products';
-        this.allProducts = [];
-        this.loading = false;
-      }
-    });
+  //   this.http.get<any[]>(this.productsUrl).subscribe({
+  //     next: (data) => {
+  //       this.allProducts = Array.isArray(data) ? data : [];
+  //       this.loading = false;
+  //     },
+  //     error: (err) => {
+  //       console.error('Error loading all products:', err);
+  //       this.error = 'Failed to load products';
+  //       this.allProducts = [];
+  //       this.loading = false;
+  //     }
+  //   });
+  // }
+  private loadAllProducts() {
+  this.loading = true;
+  this.error = null;
+
+  this.http.get<any[]>(this.productsUrl).subscribe({
+    next: (data) => {
+      this.allProducts = (Array.isArray(data) ? data : []).map(product => ({
+        ...product,
+        currentImage: product.image_url // Start with original main image
+      }));
+      this.loading = false;
+    },
+    error: (err) => {
+      console.error('Error loading all products:', err);
+      this.error = 'Failed to load products';
+      this.allProducts = [];
+      this.loading = false;
+    }
+  });
+}
+
+onHoverImage(product: any) {
+  if (product.image_url1) {
+    product.currentImage = product.image_url1;
   }
+}
+
+onLeaveImage(product: any) {
+  product.currentImage = product.image_url;
+}
 
 
   onImgError(evt: Event) {

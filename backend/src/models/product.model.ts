@@ -7,6 +7,11 @@ export interface Product {
   image_url: string;
   created_at: Date;
   category_id:string;
+  image_url1:string;
+  image_url2:string;
+  image_url3:string;
+  image_url4:string;
+
 }
 
 

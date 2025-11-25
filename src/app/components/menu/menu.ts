@@ -25,7 +25,6 @@ import { MensCollections } from '../mens-collections/mens-collections';
     Cart,
     Slider,
     Navbar,
-    Filter,
     WomensCollections,
     Releases,
     Bestsellers,
