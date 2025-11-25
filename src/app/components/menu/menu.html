@@ -1,5 +1,5 @@
 <!-- <app-navbar (productClicked)="onProductSelected($event)"></app-navbar> -->
-
+      <app-slider (categorySelect)="onCategorySelected($event)"></app-slider>
 <app-navbar 
   (womenCollectionClick)="showWomenCollections()"
   (productClicked)="onProductSelected($event)"
@@ -84,7 +84,7 @@
                !showBestsellers && 
                !showMensCollection">
 
-        <app-slider (categorySelect)="onCategorySelected($event)"></app-slider>
+  
 
         <h1 *ngIf="selectedCategory">{{ selectedCategory.name }}</h1>
 
