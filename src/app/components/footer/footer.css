@@ -79,6 +79,7 @@ html, body {
   gap: 12px;
   margin-top: 10px;
 }
+
 .social-btn {
   width: 42px;
   height: 42px;
@@ -90,6 +91,7 @@ html, body {
   justify-content: center;
   cursor: pointer;
 }
+
 /* COPYRIGHT */
 .footer-container {
   background: #8d646b;
