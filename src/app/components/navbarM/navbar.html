@@ -10,11 +10,10 @@
 
         <div class="dropdown-section">
           <h4 class="dropdown-title">Trending</h4>
-          <div class="dropdown-item"  (click)="openBestSellers()">Bestsellers</div>
-          <div class="dropdown-item" (click)="onNewReleasesClick()">New Releases</div>
-          <div class="dropdown-item" (click)="selectMensCollection()">Men's Collection</div>
-         <div class="dropdown-item" (click)="selectWomenCollection()">Women's Collection</div>
-
+          <div class="dropdown-item">Bestsellers</div>
+          <div class="dropdown-item">New Releases</div>
+          <div class="dropdown-item">Men's Collection</div>
+          <div class="dropdown-item">Women's Collection</div>
         </div>
 
         <hr class="divider" />
@@ -30,7 +29,7 @@
     </li>
 
   
-    <!-- <li class="nav-item"
+    <li class="nav-item"
         *ngFor="let cat of categories; trackBy: trackByCategoryId"
         (click)="toggleDropdown(cat.category_id)">
 
@@ -43,7 +42,7 @@
         </div>
       </div>
 
-    </li> -->
+    </li>
 
   </ul>
 </nav>
