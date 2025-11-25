@@ -10,10 +10,11 @@
 
         <div class="dropdown-section">
           <h4 class="dropdown-title">Trending</h4>
-          <div class="dropdown-item">Bestsellers</div>
-          <div class="dropdown-item">New Releases</div>
-          <div class="dropdown-item">Men's Collection</div>
-          <div class="dropdown-item">Women's Collection</div>
+          <div class="dropdown-item"  (click)="openBestSellers()">Bestsellers</div>
+          <div class="dropdown-item" (click)="onNewReleasesClick()">New Releases</div>
+          <div class="dropdown-item" (click)="selectMensCollection()">Men's Collection</div>
+         <div class="dropdown-item" (click)="selectWomenCollection()">Women's Collection</div>
+
         </div>
 
         <hr class="divider" />

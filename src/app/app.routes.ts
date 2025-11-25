@@ -13,6 +13,7 @@ import { FilterResults } from './components/filter-results/filter-results';
 
 
 
+
 export const routes: Routes = [
   // { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: login },
@@ -28,4 +29,5 @@ export const routes: Routes = [
   {
     path: 'filter-results', component: FilterResults
   }
+
 ];

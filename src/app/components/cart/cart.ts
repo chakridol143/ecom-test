@@ -38,12 +38,7 @@ closeDetails(){
   this.showCartPopup = false;
 }
 
-  // cartItemRemove(index: number) {
-  //   const token = sessionStorage.getItem('token')??undefined;
-  //   const user = JSON.parse(sessionStorage.getItem('user')||'{}')
-  //   const user_Id = user.user_Id || user.Id
-  //   this.cart.removeFromCart(index,user_Id,token);
-  // }
+
   cartItemRemove(index: number) {
   const token = sessionStorage.getItem('token') ?? undefined;
   const user = JSON.parse(sessionStorage.getItem('user') || '{}');

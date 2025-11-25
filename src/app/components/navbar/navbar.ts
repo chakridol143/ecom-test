@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Category, CategoryService } from '../category/services/category.services';
 import { ProductService } from '../product-list/services/product.service';
+import { Router } from '@angular/router';
  
 
 @Component({
@@ -20,7 +21,7 @@ export class Navbar implements OnInit {
 
   @Output() categorySelected = new EventEmitter<number | null>();
 
-  constructor(private categoryService: CategoryService,  private productService: ProductService ) {}
+  constructor(private categoryService: CategoryService,  private productService: ProductService, private router: Router ) {}
 
   ngOnInit() {
     this.categoryService.getAllCategories().subscribe({ 
@@ -78,5 +79,43 @@ loadProducts(catId: number) {
 onImageError(event: any) {
   event.target.src = 'assets/images/placeholder.png';
 }
+
+//  womens collections
+// selectWomenCollection() {
+//   this.isAllMenuOpen = false; // close dropdown
+//   this.router.navigate(['/womens-collections']);
+// }
+
+@Output() womenCollectionClick = new EventEmitter<void>();
+
+selectWomenCollection() {
+  this.isAllMenuOpen = false;
+  this.womenCollectionClick.emit();
+}
+
+//new releases
+@Output() newReleasesClick = new EventEmitter<void>();
+
+onNewReleasesClick() {
+  this.newReleasesClick.emit();
+}
+
+//bestsellers
+@Output() bestSellersClick = new EventEmitter<void>();
+
+openBestSellers() {
+  this.bestSellersClick.emit();
+}
+
+//menscollections
+@Output() mensCollectionClick = new EventEmitter<void>();
+
+selectMensCollection() {
+  this.isAllMenuOpen = false;
+  this.mensCollectionClick.emit();
+}
+
+
+
 
 }

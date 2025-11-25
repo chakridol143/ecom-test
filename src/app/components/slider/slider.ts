@@ -16,19 +16,22 @@ export class Slider implements OnInit, OnDestroy {
   @Output() categorySelect = new EventEmitter<number>();
 
   images = [
-    '../../../assets/images/banner-bangle.webp',
-    '../../../assets/images/banner-oddiyaanam_3.webp',
-    '../../../assets/images/banner-ring.webp',
-    '../../../assets/images/banner-pendant.webp',
-    '../../../assets/images/earrings_1.jpg'
+    '../../../assets/images/slider1.png',
+    '../../../assets/images/slider3.png',
+    '../../../assets/images/slider4.png',
+    '../../../assets/images/slider5.png',
+    '../../../assets/images/slider6.png',
+    '../../../assets/images/slider8.png'
   ];
 
   sliderMap: { [key: string]: number } = {
-    '../../../assets/images/banner-bangle.webp': 1,
-    '../../../assets/images/banner-oddiyaanam_3.webp': 8,
-    '../../../assets/images/banner-ring.webp': 7,
-    '../../../assets/images/banner-pendant.webp': 5,
-    '../../../assets/images/earrings_1.jpg': 2
+    '../../../assets/images/slider1.png': 1,
+    '../../../assets/images/slider3.png': 7,
+    '../../../assets/images/slider4.png': 5,
+    '../../../assets/images/slider5.png': 2,
+    '../../../assets/images/slider6.png':3,
+    '../../../assets/images/slider8.png':4
+
   };
 
   currentIndex = 0;
@@ -50,7 +53,7 @@ export class Slider implements OnInit, OnDestroy {
   startAutoSlide() {
     this.autoSlide = setInterval(() => {
       this.nextSlide();
-    }, 3000);
+    }, 5000);
   }
 
   nextSlide() {

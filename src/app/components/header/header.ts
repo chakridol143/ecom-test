@@ -5,11 +5,12 @@ import { Search } from '../search/search';
 import { SearchBusService } from '../search/services/search-bus.service';
 import { LoginService } from '../login/services/login.service';
 import { Filter } from '../filter/filter';
+import { Navbar } from '../navbar/navbar';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [RouterLink, CommonModule, Search, Filter],
+  imports: [RouterLink, CommonModule, Search, Filter,Navbar],
   templateUrl: './header.html',
   styleUrls: ['./header.css']
 })
@@ -43,4 +44,9 @@ export class Header implements OnInit {
   toggleFilter() {
     this.isFilterVisible = !this.isFilterVisible;
   }
+    selectedProduct: any = null;
+
+onProductSelected(product: any) {
+  this.selectedProduct = product;
+}
 }

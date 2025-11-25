@@ -1,6 +1,3 @@
-/* ======================================================
-   FLOATING CART BUTTON (BOTTOM RIGHT)
-====================================================== */
 .cart-container {
   position: fixed;
   bottom: 32px;
@@ -14,8 +11,6 @@
   height: 75px;
   border-radius: 50%;
   padding: 12px;
-  /* background: #fff; */
-  /* box-shadow: 0 4px 12px rgba(0,0,0,0.2); */
   transition: 0.3s ease;
 }
 
@@ -35,10 +30,6 @@
   font-weight: bold;
 }
 
-
-/* ======================================================
-   CART POPUP (RIGHT SIDE PANEL)
-====================================================== */
 .popup-container {
   position: fixed;
   top: 90px;
@@ -49,7 +40,6 @@
   border: 1px solid #ddd;
   padding: 18px;
   z-index: 12000;
-
   box-shadow: 0 6px 18px rgba(0,0,0,0.25);
   animation: slideIn 0.25s ease-out;
   max-height: 70vh;
@@ -61,10 +51,6 @@
   to { opacity: 1; transform: translateX(0); }
 }
 
-
-/* ======================================================
-   CART HEADER
-====================================================== */
 .cart-header {
   display: flex;
   justify-content: space-between;
@@ -85,10 +71,6 @@
   cursor: pointer;
 }
 
-
-/* ======================================================
-   CART ITEMS
-====================================================== */
 .cart-items {
   margin-top: 10px;
 }
@@ -139,10 +121,6 @@
   color: white;
 }
 
-
-/* ======================================================
-   TOTAL + BUTTONS
-====================================================== */
 .cart-total {
   display: flex;
   justify-content: space-between;
@@ -177,10 +155,6 @@
   font-size: 15px;
 }
 
-
-/* ======================================================
-   RESPONSIVE — LAPTOP (≤ 1300px)
-====================================================== */
 @media (max-width: 1300px) {
   .popup-container {
     right: 20px;
@@ -188,21 +162,15 @@
   }
 }
 
-
-/* ======================================================
-   RESPONSIVE — TABLET (≤ 1024px)
-====================================================== */
 @media (max-width: 1024px) {
   .cart-container {
     bottom: 25px;
     right: 18px;
   }
-  
   .cart-icon {
     width: 60px;
     height: 60px;
   }
-
   .popup-container {
     width: 310px;
     right: 16px;
@@ -210,22 +178,16 @@
   }
 }
 
-
-/* ======================================================
-   RESPONSIVE — MOBILE (≤ 768px)
-====================================================== */
 @media (max-width: 768px) {
   .cart-container {
     bottom: 18px;
     right: 16px;
   }
-
   .cart-icon {
     width: 55px;
     height: 55px;
     padding: 10px;
   }
-
   .popup-container {
     width: 88%;
     right: 50%;
@@ -235,78 +197,57 @@
   }
 }
 
-
-/* ======================================================
-   RESPONSIVE — SMALL MOBILE (≤ 500px)
-====================================================== */
 @media (max-width: 500px) {
   .cart-container {
     bottom: 14px;
     right: 14px;
   }
-
   .cart-icon {
     width: 50px;
     height: 50px;
     padding: 8px;
   }
-
   .cart-count {
     font-size: 11px;
     padding: 2px 5px;
   }
-
   .popup-container {
     width: 92%;
     top: 120px;
     padding: 14px;
   }
-
   .item-name {
     font-size: 14px;
   }
 }
 
-
-/* ======================================================
-   RESPONSIVE — VERY SMALL PHONES (≤ 380px)
-====================================================== */
 @media (max-width: 380px) {
   .cart-icon {
     width: 45px;
     height: 45px;
   }
-
   .popup-container {
     width: 94%;
     top: 130px;
   }
-
   .item-image {
     width: 45px;
     height: 45px;
   }
 }
 
-
-/* ======================================================
-   RESPONSIVE — TV / LARGE DISPLAY (≥ 1600px)
-====================================================== */
 @media (min-width: 1600px) {
   .popup-container {
     width: 450px;
     top: 120px;
   }
-
   .cart-icon {
     width: 85px;
     height: 85px;
   }
-
   .item-name {
     font-size: 17px;
   }
-
   .cart-total {
     font-size: 19px;
   }

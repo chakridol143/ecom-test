@@ -20,7 +20,8 @@ export class category implements OnInit {
   @Output() remove = new EventEmitter<number>();
   @Output() clear = new EventEmitter<void>();
   private lastSelectedId: number | null = null;
-  private baseUrl = 'https://ecom-backend-production-5341.up.railway.app/api/categories/with-products/all';
+  // private baseUrl = 'http://localhost:3001/api/categories/with-products/all';
+   private baseUrl = 'https://ecom-backend-production-5341.up.railway.app/api/categories/with-products/all';
   constructor(private http: HttpClient) {}
   ngOnInit(): void {
     this.http.get<any[]>(this.baseUrl).subscribe({
@@ -43,7 +44,8 @@ onSelect(categoryId: number | null) {
   imgUrl(img?: string): string {
     const raw = (img ?? '').replace(/^\/*/, '').trim();
     const encoded = encodeURIComponent(raw);
-    return `https://ecom-backend-production-5341.up.railway.app/assets/images/${encoded}`;
+    // return `http://localhost:3001/assets/images/${encoded}`;
+     return `https://ecom-backend-production-5341.up.railway.app/assets/images/${encoded}`;
   }
   onImgError(ev: Event) {
     (ev.target as HTMLImageElement).src = 'https://ecom-backend-production-5341.up.railway.app/assets/images/placeholder.png';

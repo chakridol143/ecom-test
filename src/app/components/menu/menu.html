@@ -1,53 +1,88 @@
-<app-navbar
-  (productClicked)="onProductSelected($event)">
+<app-slider (categorySelect)="onCategorySelected($event)"></app-slider>
+<app-navbar 
+  (womenCollectionClick)="showWomenCollections()"
+  (productClicked)="onProductSelected($event)"
+  (newReleasesClick)="showNewReleases()"
+  (bestSellersClick)="showBestSellers()"
+  (mensCollectionClick)="showMensCollections()">
 </app-navbar>
-
 
 <div class="menu-container">
   <div class="content" *ngIf="selectedProduct">
-
     <div class="product-card">
-      <img [src]="'https://ecom-backend-production-5341.up.railway.app/assets/images/' + selectedProduct.image_url" />
+      <button class="close-btn" (click)="closeProductView()">✖</button>
 
+      <img [src]="'https://ecom-backend-production-5341.up.railway.app/assets/images/' + selectedProduct.image_url" />
       <h1>{{ selectedProduct.name }}</h1>
       <p>{{ selectedProduct.description }}</p>
       <h3>₹{{ selectedProduct.price }}</h3>
     </div>
-
   </div>
+  <ng-container *ngIf="!selectedProduct">
+    <div class="category-row" *ngIf="categories?.length && 
+                                     !showWomensCollection &&
+                                     !showReleases &&
+                                     !showBestsellers &&
+                                     !showMensCollection">
+
+      <div class="category-box"
+          *ngFor="let category of categories; trackBy: trackByCategoryId"
+          (click)="selectCategory(category)"
+          [class.active]="selectedCategoryId === category.category_id">
+
+        <img 
+          [src]="getImageUrl(category.image_url)"
+          [alt]="category.name"
+          (error)="onImageError($event)"
+        />
+
+        <p>{{ category.name }}</p>
+      </div>
+    </div>
+    <div class="content">
+      <app-womens-collections 
+        *ngIf="showWomensCollection" 
+        (close)="closeWomensCollection()">
+      </app-womens-collections>
+      <app-releases 
+        *ngIf="showReleases" 
+        (close)="closeReleases()">
+      </app-releases>
+
+      <app-bestsellers 
+        *ngIf="showBestsellers" 
+        (close)="closeBestsellers()">
+      </app-bestsellers>
+
+      <app-mens-collections 
+        *ngIf="showMensCollection" 
+        (close)="closeMensCollections()">
+      </app-mens-collections>
+
+      <ng-container 
+        *ngIf="!showWomensCollection && 
+               !showReleases && 
+               !showBestsellers && 
+               !showMensCollection">
+
   
 
-   <ng-container *ngIf="!selectedProduct">
-  <div class="sidebar">
-    <h2>Category</h2>
+        <h1 *ngIf="selectedCategory">{{ selectedCategory.name }}</h1>
 
-    <div class="menu-item"
-      *ngFor="let category of categories; trackBy: trackByCategoryId"
-      (click)="selectCategory(category)"
-      [class.active]="selectedCategoryId === category.id">
+        <app-products 
+          [searchTerm]="searchTerm"
+          [categoryId]="selectedCategoryId"
+          (addToCartEvent)="handleAddToCart($event)">
+        </app-products>
 
-      <img 
-        [src]="getImageUrl(category.image_url)" 
-        [alt]="category.name" 
-        (error)="onImageError($event)" 
-        width="130" height="130"
-      />
-      <span class="category-name">{{ category.name }}</span>
+        <app-cart 
+          [cartCount]="cartCount"
+          [items]="cartItems">
+        </app-cart>
+
+      </ng-container>
+
     </div>
-  </div>
-
-  <div class="content">
-
-    <app-slider (categorySelect)="onCategorySelected($event)"></app-slider>
-
-    <h1 *ngIf="selectedCategory">{{ selectedCategory.name }}</h1>
-
-    <app-products [searchTerm]="searchTerm" [categoryId]="selectedCategoryId"
-      (addToCartEvent)="handleAddToCart($event)">
-    </app-products>
-
-    <app-cart [cartCount]="cartCount" [items]="cartItems"></app-cart>
-
-  </div>
   </ng-container>
+
 </div>
