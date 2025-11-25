@@ -101,12 +101,11 @@ export const getcartByUserId = async(req:Request, res:Response )=>{
 // };
 
 
-// Add new cart item
 export const addCartItem = async (req: Request, res: Response) => {
   const { user_id, product_id, quantity } = req.body;
-  console.log('Received addCartItem request with body:', req.body);
+  console.log("Received addCartItem request with body:", req.body);
 
-  if (typeof user_id === "undefined" || typeof product_id === "undefined" || typeof quantity === "undefined") {
+  if (!user_id || !product_id || !quantity) {
     return res.status(400).json({ error: "Missing required fields" });
   }
 
@@ -114,27 +113,37 @@ export const addCartItem = async (req: Request, res: Response) => {
   const qProductId = Number(product_id);
   const qQuantity = Number(quantity);
 
-  if (Number.isNaN(qUserId) || Number.isNaN(qProductId) || Number.isNaN(qQuantity) || qQuantity <= 0) {
-    return res.status(400).json({ error: "Invalid user_id, product_id or quantity" });
+  if (Number.isNaN(qUserId) || Number.isNaN(qProductId) || Number.isNaN(qQuantity)) {
+    return res.status(400).json({ error: "Invalid inputs" });
   }
 
+  // ✅ FIXED TABLE NAME – this was causing your 500 error!
   const query = `
-    INSERT INTO Cart_Items (user_id, product_id, quantity, added_at)
+    INSERT INTO cart_items (user_id, product_id, quantity, added_at)
     VALUES (?, ?, ?, NOW())
   `;
 
   try {
-    const [result] = await db.query<any>(query, [qUserId, qProductId, qQuantity]);
-    // result.insertId is available for insert
+    const [result] = await db.query<any>(query, [
+      qUserId,
+      qProductId,
+      qQuantity,
+    ]);
+
     return res.status(201).json({
       message: "Cart item added successfully",
       cart_item_id: (result as any).insertId,
     });
-  } catch (err) {
-    console.error("Error adding cart item:", err);
-    return res.status(500).json({ error: "Failed to add cart item" });
+
+  } catch (err: any) {
+    console.error("\n❌ SQL ERROR inserting cart item:", err);
+
+    return res.status(500).json({
+      error: err.sqlMessage || err.message || "Failed to add cart item",
+    });
   }
 };
+
 
 // Update cart item quantity
 export const updateCartItem = async (req: Request, res: Response) => {

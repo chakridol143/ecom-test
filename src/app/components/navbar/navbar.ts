@@ -50,13 +50,13 @@ toggleAllMenu() {
     this.activeDropdown = null;
   }
 }
-// toggleDropdown(catId: number) {
-//   this.activeDropdown = this.activeDropdown === catId ? null : catId;
+toggleDropdown(catId: number) {
+  this.activeDropdown = this.activeDropdown === catId ? null : catId;
 
-//   if (this.activeDropdown) {
-//     this.loadProducts(catId);
-//   }
-// }
+  if (this.activeDropdown) {
+    this.loadProducts(catId);
+  }
+}
 
 products: any[] = [];
 
@@ -69,11 +69,11 @@ loadProducts(catId: number) {
   });
 }
 
-// @Output() productClicked = new EventEmitter<any>();
+@Output() productClicked = new EventEmitter<any>();
 
-// onProductClick(product: any) {
-//   this.productClicked.emit(product);
-// }
+onProductClick(product: any) {
+  this.productClicked.emit(product);
+}
 
 onImageError(event: any) {
   event.target.src = 'assets/images/placeholder.png';

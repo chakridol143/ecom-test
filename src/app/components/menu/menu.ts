@@ -10,7 +10,7 @@ import { Navbar } from '../navbar/navbar';
 @Component({
   selector: 'app-menu',
   standalone: true,
-  imports: [CommonModule, HttpClientModule, ProductList, Cart,Slider, Navbar],
+  imports: [CommonModule, HttpClientModule, ProductList, Cart,Slider,],
   templateUrl: './menu.html',
   styleUrls: ['./menu.css']
 })
@@ -22,7 +22,8 @@ export class Menu implements OnInit, OnDestroy {
   searchTerm = '';
   @Input() cartCount = 0;
   @Input() cartItems: any[] = [];
-  private baseUrl = 'https://ecom-backend-production-5341.up.railway.app/api/categories/with-products/all';
+  // private baseUrl = 'http://localhost:3000/api/categories/with-products/all';
+   private baseUrl = 'https://ecom-backend-production-5341.up.railway.app/api/categories/with-products/all';
   private sub?: Subscription;
   constructor(private http: HttpClient, private searchBus: SearchBusService) { }
   ngOnInit() {
@@ -57,6 +58,7 @@ export class Menu implements OnInit, OnDestroy {
   getImageUrl(img?: string): string {
     const raw = (img ?? '').replace(/^\/*/, '').trim();
     const encoded = encodeURIComponent(raw);
+    // return `http://localhost:3000/assets/images/${encoded}`;
     return `https://ecom-backend-production-5341.up.railway.app/assets/images/${encoded}`;
   }
   onImageError(ev: Event) { (ev.target as HTMLImageElement).src = 'https://ecom-backend-production-5341.up.railway.app/assets/images/placeholder.png'; }
@@ -86,8 +88,8 @@ export class Menu implements OnInit, OnDestroy {
 
   selectedProduct: any = null;
 
-onProductSelected(product: any) {
-  this.selectedProduct = product;
-}
+// onProductSelected(product: any) {
+//   this.selectedProduct = product;
+// }
 
 }

@@ -7,6 +7,7 @@ import { CartService } from '../../cart/services/cart.services';
   providedIn: 'root'
 })
 export class LoginService {
+  // private apiUrl = 'http://localhost:3000/api/auth';
   private apiUrl = 'https://ecom-backend-production-5341.up.railway.app/api/auth';
   private userState = new BehaviorSubject<any>(this.getUser());
   userState$ = this.userState.asObservable();
@@ -38,11 +39,15 @@ export class LoginService {
     sessionStorage.clear();
     this.userState.next(null);
     this.cartService.clearCart(true);
+    localStorage.removeItem('token');
+    localStorage.removeItem('userId');
   }
 
-  isLoggedIn(): boolean {
-    return !!sessionStorage.getItem('token');
-  }
+ isLoggedIn(): boolean {
+  const token = localStorage.getItem('token');
+  return !!token && token.split('.').length === 3; // ensures valid JWT format
+}
+
 
   getUser() {
     return JSON.parse(sessionStorage.getItem('user') || 'null');

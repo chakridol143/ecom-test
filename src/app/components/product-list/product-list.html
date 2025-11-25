@@ -1,6 +1,6 @@
 <div class="container">
   <div class="top-bar"></div>
-
+ <h1>ALL PRODUCTS</h1>  
   <div *ngIf="loading">Loading…</div>
   <div *ngIf="!loading && error" class="error">{{ error }}</div>
 
@@ -10,8 +10,9 @@
 
       <div class="product-card" *ngFor="let product of productsToShow">
 
-       
+      
         <div *ngIf="!showFullDetails" class="only-name-card">
+          
             <img
             [src]="'https://ecom-backend-production-5341.up.railway.app/assets/images/' + product.image_url"
             [alt]="product.name"
@@ -22,6 +23,7 @@
           <h3 class="only-name" (click)="openProductPopup(product)">
             {{ product.name }}
           </h3>
+          <h3 class="only-name" >MRP : {{product.price}} /-</h3>
         </div>
 
    
@@ -66,7 +68,7 @@
 
     <img
       class="popup-img"
-      [src]="'https://ecom-backend-production-5341.up.railway.app/assets/images/' + selectedProducts?.image_url"
+      [src]="'https://ecom-backend-production-5341.up.railway.app/assets/images/'+ selectedProducts?.image_url"
       (error)="onImgError($event)"
     />
 
@@ -79,5 +81,81 @@
 
   </div>
 </div>
+<!-- ===================== TESTIMONIAL SECTION ===================== -->
+<section class="testimonials-container">
+  <h2 class="section-title">What People Are Saying</h2>
+
+  <div class="testimonials-grid">
+    
+    <div class="testimonial-card">
+      <div class="stars">★★★★★</div>
+      <h3>“Exceptional”</h3>
+      <p>
+        The earrings I purchased are even more gorgeous in person. Perfect for
+        any occasion!
+      </p>
+      <span class="author">Kishore</span>
+    </div>
+
+    <div class="testimonial-card">
+      <div class="stars">★★★★★</div>
+      <h3>“Trendy Collections”</h3>
+      <p>
+        The designs are absolutely stunning. I’m totally in love with the craftsmanship!
+      </p>
+      <span class="author">MK</span>
+    </div>
+
+    <div class="testimonial-card">
+      <div class="stars">★★★★★</div>
+      <h3>“Fast Delivery”</h3>
+      <p>
+        Very fast delivery and great packaging. Got many compliments already!
+      </p>
+      <span class="author">Chandu</span>
+    </div>
+
+    <div class="testimonial-card">
+      <div class="stars">★★★★★</div>
+      <h3>“Very Happy”</h3>
+      <p>
+        Absolutely stunning pieces! I’m in love with my new necklace!
+      </p>
+      <span class="author">HithaSri</span>
+    </div>
+
+  </div>
+</section>
+
+
+
+<!-- ===================== FEATURE ICONS SECTION ===================== -->
+<section class="features-section">
+
+  <div class="feature-box">
+    <img src="../../../assets/images/shipping.avif" class="feature-icon" />
+    <h4>Free Shipping</h4>
+    <p>Free shipping on all orders</p>
+  </div>
+
+  <div class="feature-box">
+    <img src="../../../assets/images/support.avif" class="feature-icon" />
+    <h4>Support 24/7</h4>
+    <p>We support 24hr a day</p>
+  </div>
+
+  <div class="feature-box">
+    <img src="../../../assets/images/exchange.avif" class="feature-icon" />
+    <h4>Exchange Policy</h4>
+    <p>100% Buyer Protection</p>
+  </div>
+
+  <div class="feature-box">
+    <img src="../../../assets/images/payment.avif" class="feature-icon" />
+    <h4>Payment Secure</h4>
+    <p>We ensure secure payment</p>
+  </div>
+
+</section>
 
 <app-footer></app-footer>
