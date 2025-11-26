@@ -2,10 +2,14 @@
   <input
     type="text"
     [(ngModel)]="searchTerm"
-    (keyup)="onKeyUp()"         
-    (keydown.enter)="onSearch()" 
+    (keyup)="onKeyUp()"
+    (keydown.enter)="onSearch()"
     placeholder="Search products..."
   />
-  <button (click)="onSearch()">Search</button>
-  <!-- <button *ngIf="searchTerm" (click)="clearSearch()">Clear</button> -->
+
+  <button class="search-btn" (click)="onSearch()"><i class='bx bx-search'></i></button>
+
+  <button class="filter-icon-btn" (click)="onFilter()">
+    <i class='bx bx-filter'></i>
+  </button>
 </div>

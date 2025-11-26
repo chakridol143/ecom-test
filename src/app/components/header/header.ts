@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { Search } from '../search/search';
@@ -10,14 +10,17 @@ import { Navbar } from '../navbar/navbar';
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [RouterLink, CommonModule, Search, Filter,Navbar],
+  imports: [RouterLink, CommonModule, Search, Filter, Navbar],
   templateUrl: './header.html',
   styleUrls: ['./header.css']
 })
 export class Header implements OnInit {
 
   user: any = null;
-   isFilterVisible = false;
+
+  @ViewChild('filterComponent') filterComponent!: Filter;
+
+  menuOpen = false;
 
   constructor(
     private auth: LoginService,
@@ -25,11 +28,12 @@ export class Header implements OnInit {
     private searchBus: SearchBusService
   ) {}
 
-   ngOnInit() {
+  ngOnInit() {
     this.auth.userState$.subscribe((user) => {
       this.user = user;
     });
   }
+
   onSearch(term: string) {
     this.searchBus.setTerm((term || '').trim());
   }
@@ -40,13 +44,13 @@ export class Header implements OnInit {
     this.router.navigate(['/login']);
   }
 
-  
-  toggleFilter() {
-    this.isFilterVisible = !this.isFilterVisible;
+  toggleMenu() {
+    this.menuOpen = !this.menuOpen;
   }
-    selectedProduct: any = null;
 
-onProductSelected(product: any) {
-  this.selectedProduct = product;
-}
+  selectedProduct: any = null;
+
+  onProductSelected(product: any) {
+    this.selectedProduct = product;
+  }
 }

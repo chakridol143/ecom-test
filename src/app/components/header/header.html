@@ -1,40 +1,24 @@
 <header class="header-container">
+
   <div class="logo">
     <img src="../../../assets/images/JewelerLogo.png" alt="">
   </div>
-  <!-- <h1>Genperm</h1> -->
-  <!-- 🔍 Search Component -->
-  <app-search (searchEvent)="onSearch($event)"></app-search>
+  <app-search
+    (searchEvent)="onSearch($event)"
+    (filterEvent)="filterComponent.openFilter()">
+  </app-search>
 
-  <div class="auth-buttons">
+  <div class="auth-buttons desktop-only">
 
-    <!-- 👤 If user not logged in -->
     <ng-container *ngIf="!user; else loggedIn">
       <button class="login-btn" routerLink="/login">Login</button>
     </ng-container>
 
-    <!-- 👋 If user logged in -->
     <ng-template #loggedIn>
       <span class="user-name">Hello {{ user.name }}</span>
       <button class="logout-btn" routerLink="/logout">Logout</button>
     </ng-template>
-
-    <!-- 🧪 Filter Button -->
-    <button class="filter-btn" (click)="filterComponent.openFilter()">Filter</button>
-
   </div>
- 
+
+  <button class="menu-icon mobile-only" (click)="toggleMenu()">☰</button>
 </header>
-
-
-<!-- 🧹 Keep filter component OUTSIDE header -->
-<app-filter #filterComponent></app-filter>
-<app-navbar (productClicked)="onProductSelected($event)"></app-navbar>
- <div class="content" *ngIf="selectedProduct">
-    <div class="product-card">
-      <img [src]="'https://ecom-backend-production-5341.up.railway.app/assets/images/'+ selectedProduct.image_url" />
-      <h1>{{ selectedProduct.name }}</h1>
-      <p>{{ selectedProduct.description }}</p>
-      <h3>₹{{ selectedProduct.price }}</h3>
-    </div>
-  </div>
