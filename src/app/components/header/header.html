@@ -1,40 +1,64 @@
 <header class="header-container">
-  <div class="logo">
-    <img src="../../../assets/images/JewelerLogo.png" alt="">
+
+  <!-- LEFT -->
+  <div class="header-left">
+    <div class="logo">
+      <img src="../../../assets/images/JewelerLogo.png" alt="">
+    </div>
   </div>
-  <!-- <h1>Genperm</h1> -->
-  <!-- 🔍 Search Component -->
-  <app-search (searchEvent)="onSearch($event)"></app-search>
 
-  <div class="auth-buttons">
+  <!-- CENTER (SEARCH) -->
+  <div class="header-center">
+    <app-search
+      (searchEvent)="onSearch($event)"
+      (filterEvent)="filterComponent.openFilter()">
+    </app-search>
+  </div>
 
-    <!-- 👤 If user not logged in -->
+  <!-- RIGHT (DESKTOP ONLY) -->
+  <div class="header-right desktop-only">
+
     <ng-container *ngIf="!user; else loggedIn">
-      <button class="login-btn" routerLink="/login">Login</button>
+      <button routerLink="/login" class="login-btn">Login</button>
+      <button routerLink="/register" class="login-btn">Register</button>
     </ng-container>
 
-    <!-- 👋 If user logged in -->
     <ng-template #loggedIn>
       <span class="user-name">Hello {{ user.name }}</span>
-      <button class="logout-btn" routerLink="/logout">Logout</button>
+      <button class="logout-btn" (click)="logout()">Logout</button>
     </ng-template>
 
-    <!-- 🧪 Filter Button -->
-    <button class="filter-btn" (click)="filterComponent.openFilter()">Filter</button>
-
   </div>
- 
+
+  <app-filter #filterComponent></app-filter>
+
+  <!-- MOBILE BUTTON -->
+  <button class="menu-icon mobile-only" (click)="toggleMenu()">☰</button>
+
 </header>
 
 
-<!-- 🧹 Keep filter component OUTSIDE header -->
-<app-filter #filterComponent></app-filter>
-<app-navbar (productClicked)="onProductSelected($event)"></app-navbar>
- <div class="content" *ngIf="selectedProduct">
-    <div class="product-card">
-      <img [src]="'https://ecom-backend-production-5341.up.railway.app/assets/images/'+ selectedProduct.image_url" />
-      <h1>{{ selectedProduct.name }}</h1>
-      <p>{{ selectedProduct.description }}</p>
-      <h3>₹{{ selectedProduct.price }}</h3>
-    </div>
-  </div>
+<!-- MOBILE MENU -->
+<div class="mobile-menu" [class.open]="menuOpen">
+
+  <ng-container *ngIf="!user; else loggedMobile">
+    <button routerLink="/login" class="menu-btn">Login</button>
+    <button routerLink="/register" class="menu-btn">Register</button>
+  </ng-container>
+
+  <ng-template #loggedMobile>
+    <p class="mobile-hello">Hello {{ user.name }}</p>
+    <button class="menu-btn logout" (click)="logout()">Logout</button>
+  </ng-template>
+
+  <button routerLink="/admin" class="menu-btn">Admin Control Panel</button>
+</div>
+
+<!-- NAVBAR BELOW -->
+<app-navbar 
+  (womenCollectionClick)="showWomenCollections()"
+  (productClicked)="onProductSelected($event)"
+  (newReleasesClick)="showNewReleases()"
+  (bestSellersClick)="showBestSellers()"
+  (mensCollectionClick)="showMensCollections()">
+</app-navbar>

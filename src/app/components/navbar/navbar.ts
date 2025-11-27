@@ -51,14 +51,6 @@ toggleAllMenu() {
     this.activeDropdown = null;
   }
 }
-// toggleDropdown(catId: number) {
-//   this.activeDropdown = this.activeDropdown === catId ? null : catId;
-
-//   if (this.activeDropdown) {
-//     this.loadProducts(catId);
-//   }
-// }
-
 products: any[] = [];
 
 loadProducts(catId: number) {
@@ -70,21 +62,9 @@ loadProducts(catId: number) {
   });
 }
 
-// @Output() productClicked = new EventEmitter<any>();
-
-// onProductClick(product: any) {
-//   this.productClicked.emit(product);
-// }
-
 onImageError(event: any) {
   event.target.src = 'assets/images/placeholder.png';
 }
-
-//  womens collections
-// selectWomenCollection() {
-//   this.isAllMenuOpen = false; // close dropdown
-//   this.router.navigate(['/womens-collections']);
-// }
 
 @Output() womenCollectionClick = new EventEmitter<void>();
 
@@ -114,8 +94,4 @@ selectMensCollection() {
   this.isAllMenuOpen = false;
   this.mensCollectionClick.emit();
 }
-
-
-
-
 }

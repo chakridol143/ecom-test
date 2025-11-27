@@ -15,5 +15,9 @@ export class Search {
 
   onSearch()   { this.searchEvent.emit(this.searchTerm.trim()); }
   onKeyUp()    { this.searchEvent.emit(this.searchTerm.trim()); }
-  // clearSearch(){ this.searchTerm = ''; this.searchEvent.emit(''); }
+ @Output() filterEvent = new EventEmitter<void>();
+
+onFilter() {
+  this.filterEvent.emit();
+}
 }

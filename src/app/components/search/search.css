@@ -1,99 +1,64 @@
-.search-bar {
+/* WRAPPER to enforce max-width */
+.search-wrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+/* MAIN container that controls width */
+.search-container {
   display: flex;
   align-items: center;
-  gap: 10px;
-  max-width: 550px;
-  margin: auto;
-  padding: 8px;
-  margin-left: 25%;
-  flex-wrap: nowrap !important;      /* 🔥 NO WRAP */
-  white-space: nowrap !important;    /* 🔥 KEEP SIDE-BY-SIDE */
-  overflow-x: auto !important;       /* 🔥 Scroll if too small */
+  gap: 12px;
+  max-width: 400px;     /* FINALLY WORKS HERE */
+  width: 100%;
 }
 
-.search-bar::-webkit-scrollbar {
-  display: none; /* clean mobile scroll */
+/* SEARCH BOX should NOT stretch full width */
+.search-box {
+  display: flex;
+  align-items: center;
+  flex: 1;             /* optional */
+  background: #f3fbff;
+  border: 1px solid #b78a93;
+  border-radius: 10px;
+  padding: 6px 12px;
+  min-width: 250px;
+  max-width: 400px;    /* THIS NOW WORKS */
+  height: 38px;
 }
 
-.search-bar input {
-  flex: 1 0 auto !important;         /* 🔥 Don't shrink smaller */
-  min-width: 180px !important;       /* 🔥 Ensure room for button */
-  padding: 10px 15px;
-  font-size: 15px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  outline: none;
-  transition: 0.3s ease;
-}
 
-.search-bar input:focus {
-  border-color: #007bff;
-  box-shadow: 0px 0px 5px rgba(0, 123, 255, 0.4);
-}
-
-.search-bar button {
-  flex-shrink: 0 !important;         /* 🔥 Button never shrinks */
-  padding: 10px 18px;
-  font-size: 15px;
-  background: #007bff;
+/* INPUT */
+.search-box input {
+  flex: 1;
   border: none;
-  color: white;
-  border-radius: 6px;
+  outline: none;
+  font-size: 16px;
+  background: transparent;
+}
+
+/* SEARCH ICON */
+.search-icon {
+  font-size: 22px;
+  color: #333;
   cursor: pointer;
-  transition: 0.3s ease;
-  white-space: nowrap !important;     /* 🔥 Prevent text breaking */
 }
 
-.search-bar button:hover {
-  background: #0056b3;
+/* FILTER BUTTON */
+.filter-btn {
+  border: none;
+  background: #d8b15a;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
 }
 
-/* 🔥 Remove column layout – KEEP DESKTOP LOOK ON MOBILE */
-/* MOBILE (≤ 480px) — Smaller input & button */
-@media (max-width: 480px) {
-  .search-bar {
-    flex-direction: row !important;
-    align-items: center !important;
-    gap: 6px !important;
-    padding: 4px !important;
-    max-width: 100% !important;
-    margin-left: 0 !important;
-  }
-
-  .search-bar input {
-    min-width: 80px !important;   /* 🔥 Smaller */
-    max-width: 60px !important;   /* 🔥 Controls width */
-    padding: 7px 10px !important;  /* 🔥 Smaller padding */
-    font-size: 13px !important;    /* 🔥 Smaller text */
-  }
-
-  .search-bar button {
-    padding: 7px 12px !important;  /* 🔥 Smaller button */
-    font-size: 13px !important;    /* 🔥 Smaller text */
-    flex-shrink: 0 !important;
-  }
-}
-
-@media (max-width: 768px) {
-  .search-bar {
-    max-width: 100%;
-    padding: 8px;
-    margin-left: 0;
-  }
-
-  .search-bar input {
-    font-size: 14px;
-  }
-}
-
-@media (min-width: 769px) and (max-width: 1024px) {
-  .search-bar {
-    max-width: 600px;
-  }
-}
-
-@media (min-width: 1200px) {
-  .search-bar {
-    max-width: 650px;
-  }
+.filter-btn i {
+  color: white;
+  font-size: 20px;
 }

@@ -1,6 +1,6 @@
-/* ============================================================
-   HEADER BASE (Default Desktop)
-============================================================ */
+/* ============================
+   HEADER LAYOUT
+============================ */
 .header-container {
   width: 100%;
   background: white;
@@ -14,6 +14,20 @@
   top: 0;
   left: 0;
   z-index: 9999;
+  flex-wrap: nowrap;
+}
+
+/* LEFT, CENTER, RIGHT GROUPS */
+.header-left,
+.header-center,
+.header-right {
+  display: flex;
+  align-items: center;
+}
+
+.header-center {
+  flex: 1;
+  justify-content: center;
 }
 
 /* LOGO */
@@ -23,267 +37,113 @@
   object-fit: contain;
 }
 
-/* TITLE */
-.header-container h1 {
-  font-size: 28px;
-  font-weight: 700;
-  color: #d8b15a;
-  margin: 0;
-  white-space: nowrap;
-  margin-left: 8%;
-}
-
 /* AUTH BUTTONS */
-.auth-buttons {
+.header-right {
   display: flex;
-  align-items: center;
   gap: 12px;
-  margin-right: 40px;
+  flex-shrink: 0;
+  padding-right: 10px;
 }
 
 .login-btn,
-.logout-btn,
-.filter-btn {
+.logout-btn {
   padding: 9px 16px;
   border: none;
   border-radius: 8px;
   font-size: 15px;
   cursor: pointer;
-  transition: 0.25s ease;
   white-space: nowrap;
   font-weight: 600;
 }
 
-.login-btn { background: #007bff; color: white; }
-.login-btn:hover { background: #0067d4; }
-
-.logout-btn { background: #ff4747; color: white; }
-.logout-btn:hover { background: #e63c3c; }
-
-.filter-btn { background: #d8b15a; color: white; }
-.filter-btn:hover { background: #c9a04d; }
-
-/* SEARCH BAR AREA */
-app-search {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  max-width: 520px;
+.login-btn {
+  background: #007bff;
+  color: white;
 }
 
-
-/* ============================================================
-   LAPTOP VIEW (1366px – 1600px)
-============================================================ */
-@media (min-width: 1366px) and (max-width: 1600px) {
-  .header-container { height: 90px; padding: 0 30px; }
-
-  .header-container h1 { font-size: 30px; margin-left: 6%; }
-
-  .logo img { width: 78px; height: 78px; }
-
-  app-search { max-width: 600px; }
-
-  .auth-buttons { margin-right: 40px; }
-
-  .login-btn, .logout-btn, .filter-btn {
-    font-size: 16px;
-    padding: 10px 18px;
-  }
+.logout-btn {
+  background: #ff4747;
+  color: white;
 }
 
+/* MENU ICON */
+.menu-icon {
+  font-size: 28px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  display: none;
+}
 
-/* ============================================================
-   DESKTOP – FULL HD (1600px – 1920px)
-============================================================ */
-@media (min-width: 1600px) and (max-width: 1920px) {
-  .header-container { height: 95px; padding: 0 40px; }
+/* ================ MOBILE ================ */
 
-  .header-container h1 { font-size: 34px; }
-
-  .logo img { width: 85px; height: 85px; }
-
-  .login-btn, .logout-btn, .filter-btn {
-    font-size: 17px;
-    padding: 11px 20px;
+@media (max-width: 900px) {
+  .desktop-only {
+    display: none !important;
   }
 
-  .auth-buttons { margin-right: 60px; }
-}
-
-
-/* ============================================================
-   TV SCREENS (1921px – 3000px)
-============================================================ */
-@media (min-width: 1921px) {
+  .mobile-only {
+    display: block !important;
+  }
 
   .header-container {
-    height: 110px;
-    padding: 0 80px;
-    gap: 40px;
+    padding: 0 12px !important;
+    height: 70px !important;
   }
 
   .logo img {
-    width: 110px;
-    height: 110px;
+    width: 45px !important;
+    height: 45px !important;
   }
 
-  .header-container h1 {
-    font-size: 48px;
-    margin-left: 5%;
+  .header-center {
+    flex: 1 !important;
+    justify-content: center !important;
+    min-width: 0;
   }
 
-  app-search {
-    max-width: 900px;
-  }
-
-  .login-btn, .logout-btn, .filter-btn {
-    font-size: 22px;
-    padding: 14px 28px;
-  }
-
-  .auth-buttons { margin-right: 100px; }
-}
-
-
-/* ============================================================
-   TABLETS (600px – 900px)
-============================================================ */
-/* FORCE DESKTOP HEADER ON ALL MOBILE/TABLET SCREENS */
-/* FINAL FIX: ALWAYS SINGLE-LINE HEADER ON ALL DEVICES */
-@media (max-width: 903px) {
-  .header-container {
-    width: 100% !important;
-    height: 85px !important;
-    display: flex !important;
-    flex-direction: row !important;
-    flex-wrap: nowrap !important;
-    align-items: center !important;
-    justify-content: flex-start !important;
-    gap: 15px !important;
-    overflow-x: auto !important;
-    white-space: nowrap !important;
-    padding: 0 15px !important;
-  }
-
-  .header-container::-webkit-scrollbar {
-    display: none;
-  }
-
-  .logo img {
-    width: 55px !important;
-    height: 55px !important;
-    flex-shrink: 0 !important;
-  }
-
-  .header-container h1 {
-    font-size: 22px !important;
-    margin: 0 !important;
-    flex-shrink: 0 !important;
-  }
-
-  app-search {
-    flex: 0 0 auto !important;
-    min-width: 180px !important;
-    max-width: 220px !important;
-  }
-
-  .auth-buttons {
-    display: flex !important;
-    flex-shrink: 0 !important;
-    gap: 5px !important;
-  }
-
-  .auth-buttons button {
-    flex-shrink: 0 !important;
-    min-width: 50px !important;
-    padding: 7px 12px !important;
-    font-size: 13px !important;
+  .menu-icon {
+    display: block !important;
+    margin-right: 13px;
   }
 }
 
-
-/* ============================================================
-   LARGE MOBILE (480px – 600px)
-============================================================ */
-@media (max-width: 600px) {
-
-  .header-container {
-    padding: 8px 10px;
-    flex-wrap: nowrap;
-    flex-direction: row;
-    gap: 10px;
-  }
-
-  .logo img { width: 40px; height: 40px; }
-
-  .header-container h1 {
-    font-size: 18px;
-    margin-left: 0;
-  }
-
-  app-search {
-    width: 40%;
-    max-width: 160px;
-  }
-
-  .auth-buttons {
-    gap: 6px;
-    margin-right: 2px;
-  }
-
-  .login-btn, .logout-btn, .filter-btn {
-    padding: 6px 8px;
-    font-size: 12px;
-  }
+/* MOBILE MENU */
+.mobile-menu {
+  position: fixed;
+  top: 70px;
+  right: -260px;
+  width: 230px;
+  background: white;
+  box-shadow: -2px 2px 10px rgba(0,0,0,0.15);
+  padding: 15px;
+  transition: right 0.3s ease-in-out;
+  z-index: 99999;
 }
 
-
-/* ============================================================
-   SMALL MOBILE (≤ 400px)
-============================================================ */
-@media (max-width: 400px) {
-  .header-container {
-    padding: 6px 6px;
-    gap: 5px;
-  }
-
-  .logo img { width: 35px; height: 35px; }
-
-  .header-container h1 {
-    font-size: 15px;
-  }
-
-  app-search {
-    width: 35%;
-    max-width: 140px;
-  }
-
-  .login-btn,
-  .logout-btn,
-  .filter-btn {
-    padding: 6px;
-    font-size: 11px;
-  }
+.mobile-menu.open {
+  right: 0;
 }
 
+.menu-btn {
+  width: 100%;
+  padding: 12px;
+  font-size: 15px;
+  border: none;
+  background: #f5f5f5;
+  margin-bottom: 10px;
+  border-radius: 6px;
+  cursor: pointer;
+}
 
-/* ============================================================
-   ULTRA SMALL MOBILE (≤ 330px)
-============================================================ */
-@media (max-width: 330px) {
-  .header-container h1 {
-    font-size: 12px;
-  }
+.menu-btn.logout {
+  background: #ff4747;
+  color: white;
+}
 
-  .logo img { width: 30px; height: 30px; }
-
-  .auth-buttons {
-    gap: 4px;
-  }
-
-  .login-btn, .logout-btn, .filter-btn {
-    padding: 4px 6px;
-    font-size: 10px;
-  }
+.mobile-hello {
+  font-size: 18px;
+  font-weight: 600;
+  padding: 10px 5px;
 }
