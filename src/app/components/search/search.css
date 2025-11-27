@@ -1,64 +1,77 @@
-/* WRAPPER to enforce max-width */
+/* OUTER WRAPPER — keeps search centered inside header */
 .search-wrapper {
+  width: 100%;
   display: flex;
   justify-content: center;
-  width: 100%;
 }
 
-/* MAIN container that controls width */
+/* FLEX CONTAINER */
 .search-container {
   display: flex;
   align-items: center;
-  gap: 12px;
-  max-width: 400px;     /* FINALLY WORKS HERE */
+  gap: 10px;
+
   width: 100%;
+  max-width: 400px;   /* ⭐True max-width */
+  min-width: 250px;   /* ⭐Mobile minimum */
 }
 
-/* SEARCH BOX should NOT stretch full width */
+/* SEARCH BOX */
 .search-box {
+  flex: 1;
   display: flex;
   align-items: center;
-  flex: 1;             /* optional */
+
   background: #f3fbff;
   border: 1px solid #b78a93;
   border-radius: 10px;
-  padding: 6px 12px;
-  min-width: 250px;
-  max-width: 400px;    /* THIS NOW WORKS */
-  height: 38px;
-}
 
+  padding: 6px 12px;
+  height: 38px;
+
+  width: 100%;
+}
 
 /* INPUT */
 .search-box input {
   flex: 1;
+  font-size: 16px;
   border: none;
   outline: none;
-  font-size: 16px;
   background: transparent;
 }
 
 /* SEARCH ICON */
 .search-icon {
   font-size: 22px;
-  color: #333;
   cursor: pointer;
+  color: #333;
 }
 
 /* FILTER BUTTON */
 .filter-btn {
-  border: none;
-  background: #d8b15a;
-  width: 40px;
-  height: 40px;
+  width: 38px;
+  height: 38px;
   border-radius: 10px;
+
+  border: 1px solid #b78a93;
+  background: white;
+
   display: flex;
   align-items: center;
   justify-content: center;
+
   cursor: pointer;
 }
 
 .filter-btn i {
-  color: white;
-  font-size: 20px;
+  font-size: 22px;
+  color: #333;
+}
+
+/* MOBILE FIX – ensure no overflow */
+@media (max-width: 500px) {
+  .search-container {
+    max-width: 300px;
+  }
 }
