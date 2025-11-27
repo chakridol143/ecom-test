@@ -1,6 +1,7 @@
-
 .menu-container {
   width: 100%;
+  /* header (85px) + navbar (~55px) -> adjust if needed */
+  padding-top: 140px;
 }
 
 .category-row {
@@ -21,7 +22,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-left:10px;
+  margin-left: 10px;
   cursor: pointer;
   transition: transform 0.3s ease;
   flex-shrink: 0;
@@ -47,7 +48,8 @@
 .category-box.active img {
   border-color: #d8c19a;
 }
-h1{
+
+h1 {
   text-align: center;
 }
 

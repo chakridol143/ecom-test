@@ -6,14 +6,13 @@ import { ProductList } from '../product-list/product-list';
 import { Cart } from '../cart/cart';
 import { SearchBusService } from '../search/services/search-bus.service'; 
 import { Slider } from '../slider/slider';
-import { Navbar } from '../navbar/navbar';
 import { Router } from '@angular/router';
 import { ProductSelectionService } from '../filter/filter-results.services';
-import { Filter } from '../filter/filter';
 import { WomensCollections } from '../womens-collections/womens-collections';
 import { Releases } from '../releases/releases';
 import { Bestsellers } from '../bestsellers/bestsellers';
 import { MensCollections } from '../mens-collections/mens-collections';
+import { ViewStateService } from '../services/view-state.service';
 
 @Component({
   selector: 'app-menu',
@@ -24,7 +23,6 @@ import { MensCollections } from '../mens-collections/mens-collections';
     ProductList,
     Cart,
     Slider,
-    Navbar,
     WomensCollections,
     Releases,
     Bestsellers,
@@ -42,33 +40,64 @@ export class Menu implements OnInit, OnDestroy {
   @Input() cartCount = 0;
   @Input() cartItems: any[] = [];
 
+  // view state flags (used in template)
+  showWomensCollection = false;
+  showReleases = false;
+  showBestsellers = false;
+  showMensCollection = false;
+
+  selectedProduct: any = null;
+
   private baseUrl = 'https://ecom-backend-production-5341.up.railway.app/api/categories/with-products/all';
-  private sub?: Subscription;
+  private subs = new Subscription();
 
   constructor(
     private http: HttpClient,
     private searchBus: SearchBusService,
     private productSelection: ProductSelectionService,
     private router: Router,
-    private location: Location
+    private location: Location,
+    private viewState: ViewStateService
   ) {}
 
   ngOnInit() {
+    // load categories
     this.http.get<any[]>(this.baseUrl).subscribe({
       next: (data) => { this.categories = this.dedupeCategories(data || []); },
       error: (err) => { console.error('Error loading categories:', err); },
     });
 
-    this.sub = this.searchBus.term$.subscribe(t => {
-      this.searchTerm = t ?? '';
-    });
+    // subscribe search term
+    this.subs.add(
+      this.searchBus.term$.subscribe(t => {
+        this.searchTerm = t ?? '';
+      })
+    );
 
-    this.productSelection.selectedProduct$.subscribe(product => {
-      if (product) this.selectedProduct = product;
-    });
+    // subscribe view state (from Header / Navbar etc.)
+    this.subs.add(
+      this.viewState.state$.subscribe(state => {
+        this.showWomensCollection = state.showWomensCollection;
+        this.showReleases = state.showReleases;
+        this.showBestsellers = state.showBestsellers;
+        this.showMensCollection = state.showMensCollection;
+        this.selectedProduct = state.selectedProduct;
+      })
+    );
+
+    // subscribe product selection from Filter
+    this.subs.add(
+      this.productSelection.selectedProduct$.subscribe(product => {
+        if (product) {
+          this.viewState.setSelectedProduct(product);
+        }
+      })
+    );
   }
 
-  ngOnDestroy() { this.sub?.unsubscribe(); }
+  ngOnDestroy() {
+    this.subs.unsubscribe();
+  }
 
   // CATEGORY LOGIC
   selectCategory(category: any) {
@@ -94,10 +123,12 @@ export class Menu implements OnInit, OnDestroy {
     const encoded = encodeURIComponent(raw);
     return `https://ecom-backend-production-5341.up.railway.app/assets/images/${encoded}`;
   }
+
   onImageError(ev: Event) { 
     (ev.target as HTMLImageElement).src = 
       'https://ecom-backend-production-5341.up.railway.app/assets/images/placeholder.png'; 
   }
+
   trackByCategoryId(index: number, item: any) { 
     return item?.category_id ?? index; 
   }
@@ -129,60 +160,32 @@ export class Menu implements OnInit, OnDestroy {
     this.cartCount = this.cartItems.length;
   }
 
-  selectedProduct: any = null;
-
-  onProductSelected(product: any) {
-    this.selectedProduct = product;
-  }
-
   loadProductDetails(id: number) {
     const allProducts = this.categories.flatMap(c => c.products || []);
     const product = allProducts.find(p => p.product_id == id);
-    if (product) this.selectedProduct = product;
+    if (product) {
+      this.viewState.setSelectedProduct(product);
+    }
   }
 
-  closeProductView() { this.selectedProduct = null; }
-
-  // ====== COLLECTION VIEW TOGGLES ======
-
-  showWomensCollection = false;
-  showReleases = false;
-  showBestsellers = false;
-  showMensCollection = false;
-
-  private resetViews() {
-    this.showWomensCollection =
-    this.showReleases =
-    this.showBestsellers =
-    this.showMensCollection = false;
-    this.selectedProduct = null;
+  closeProductView() {
+    this.viewState.clearSelectedProduct();
   }
 
-  // WOMEN
-  showWomenCollections() {
-    this.resetViews();
-    this.showWomensCollection = true;
+  // close handlers from collection components
+  closeWomensCollection() {
+    this.viewState.clearCollections();
   }
-  closeWomensCollection() { this.showWomensCollection = false; }
 
-  // RELEASES
-  showNewReleases() {
-    this.resetViews();
-    this.showReleases = true;
+  closeReleases() {
+    this.viewState.clearCollections();
   }
-  closeReleases() { this.showReleases = false; }
 
-  // BESTSELLERS
-  showBestSellers() {
-    this.resetViews();
-    this.showBestsellers = true;
+  closeBestsellers() {
+    this.viewState.clearCollections();
   }
-  closeBestsellers() { this.showBestsellers = false; }
 
-  // MENS
-  showMensCollections() {
-    this.resetViews();
-    this.showMensCollection = true;
+  closeMensCollections() {
+    this.viewState.clearCollections();
   }
-  closeMensCollections() { this.showMensCollection = false; }
 }

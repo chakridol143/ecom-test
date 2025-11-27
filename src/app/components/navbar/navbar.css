@@ -1,11 +1,12 @@
 .nav {
   background: #fff;
   width: 100%;
-  padding: 10px 20px;
+  /* no gap between header and navbar */
+  padding: 0 20px 10px;       /* 0 top, 10 bottom */
   position: fixed;
-  top: 85px;
+  top: 85px;                  /* exactly header height on desktop */
   left: 0;
-  z-index: 999;
+  z-index: 999;               /* below header (9999), above content */
 }
 
 .nav-bar {
@@ -31,6 +32,7 @@
 .nav-item:hover {
   background: #f3f3f3;
 }
+
 .dropdown {
   position: absolute;
   top: 38px;
@@ -66,7 +68,12 @@
   background: #f3f3f3;
 }
 
+/* TABLET / SMALL LAPTOP */
 @media (max-width: 900px) {
+  .nav {
+    top: 70px;               /* match mobile header height */
+  }
+
   .nav-item:focus-within .dropdown,
   .nav-item:active .dropdown {
     display: block !important;
@@ -82,11 +89,15 @@
     outline: none;
   }
 }
+
+/* MOBILE WIDTH */
 @media (max-width: 600px) {
   .nav {
     display: block !important;
   }
 }
+
+/* EXTRA SMALL */
 @media (max-width: 400px) {
   .nav-item {
     font-size: 12px;

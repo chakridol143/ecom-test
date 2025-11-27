@@ -1,82 +1,77 @@
-.search-bar {
+/* OUTER WRAPPER — keeps search centered inside header */
+.search-wrapper {
+  width: 100%;
   display: flex;
-  align-items: center;
-  gap: 10px;
-  max-width: 550px;
-  padding: 8px;
-  flex-wrap: nowrap;
-  white-space: nowrap;
-}
-
-.search-bar input {
-  flex: 1;
-  min-width: 160px;
-  padding: 10px 15px;
-  font-size: 15px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  outline: none;
-}
-
-.search-bar input:focus {
-  border-color: #8d646b;
-  box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
-}
-
-.search-btn {
-  padding: 10px 16px;
-  font-size: 15px;
-  background: #8d646b;
-  border: none;
-  color: white;
-  border-radius: 6px;
-  cursor: pointer;
-  flex-shrink: 0;
-}
-
-.search-btn:hover {
-  background: rgba(141, 100, 107,0.9);
-}
-
-.filter-icon-btn {
-  border: none;
-  background: #d8b15a;
-  padding: 8px 10px;
-  border-radius: 6px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
   justify-content: center;
 }
 
-.filter-icon-btn i {
-  font-size: 20px;
-  color: white;
+/* FLEX CONTAINER */
+.search-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  width: 100%;
+  max-width: 400px;   /* ⭐True max-width */
+  min-width: 250px;   /* ⭐Mobile minimum */
 }
 
-@media (max-width: 480px) {
-  .search-bar {
-    gap: 6px;
-    padding: 4px;
-  }
+/* SEARCH BOX */
+.search-box {
+  flex: 1;
+  display: flex;
+  align-items: center;
 
-  .search-bar input {
-    min-width: 80px;
-    padding: 7px 10px;
-    font-size: 13px;
-  }
+  background: #f3fbff;
+  border: 1px solid #b78a93;
+  border-radius: 10px;
 
-  .search-btn {
-    padding: 7px 10px;
-    font-size: 13px;
-  }
+  padding: 6px 12px;
+  height: 38px;
 
-  .filter-icon-btn {
-    padding: 6px 8px;
-  }
+  width: 100%;
+}
 
-  .filter-icon-btn img {
-    width: 16px;
-    height: 16px;
+/* INPUT */
+.search-box input {
+  flex: 1;
+  font-size: 16px;
+  border: none;
+  outline: none;
+  background: transparent;
+}
+
+/* SEARCH ICON */
+.search-icon {
+  font-size: 22px;
+  cursor: pointer;
+  color: #333;
+}
+
+/* FILTER BUTTON */
+.filter-btn {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+
+  border: 1px solid #b78a93;
+  background: white;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+}
+
+.filter-btn i {
+  font-size: 22px;
+  color: #333;
+}
+
+/* MOBILE FIX – ensure no overflow */
+@media (max-width: 500px) {
+  .search-container {
+    max-width: 300px;
   }
 }

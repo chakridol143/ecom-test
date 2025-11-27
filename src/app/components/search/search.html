@@ -1,15 +1,21 @@
-<div class="search-bar">
-  <input
-    type="text"
-    [(ngModel)]="searchTerm"
-    (keyup)="onKeyUp()"
-    (keydown.enter)="onSearch()"
-    placeholder="Search products..."
-  />
+<div class="search-wrapper">
+  <div class="search-container">
 
-  <button class="search-btn" (click)="onSearch()"><i class='bx bx-search'></i></button>
+    <div class="search-box">
+      <input
+        type="text"
+        [(ngModel)]="searchTerm"
+        (keyup)="onKeyUp()"
+        (keydown.enter)="onSearch()"
+        placeholder="Search products..."
+      />
 
-  <button class="filter-icon-btn" (click)="onFilter()">
-    <i class='bx bx-filter'></i>
-  </button>
+      <i class="bx bx-search search-icon" (click)="onSearch()"></i>
+    </div>
+
+    <button class="filter-btn" (click)="onFilter()">
+      <i class='bx bx-filter'></i>
+    </button>
+
+  </div>
 </div>

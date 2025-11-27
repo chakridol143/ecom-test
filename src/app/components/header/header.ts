@@ -6,6 +6,7 @@ import { SearchBusService } from '../search/services/search-bus.service';
 import { LoginService } from '../login/services/login.service';
 import { Filter } from '../filter/filter';
 import { Navbar } from '../navbar/navbar';
+import { ViewStateService } from '../services/view-state.service';
 
 @Component({
   selector: 'app-header',
@@ -25,7 +26,8 @@ export class Header implements OnInit {
   constructor(
     private auth: LoginService,
     private router: Router,
-    private searchBus: SearchBusService
+    private searchBus: SearchBusService,
+    private viewState: ViewStateService
   ) {}
 
   ngOnInit() {
@@ -48,9 +50,25 @@ export class Header implements OnInit {
     this.menuOpen = !this.menuOpen;
   }
 
-  selectedProduct: any = null;
+  // === Navbar events from <app-navbar> ===
+
+  showWomenCollections() {
+    this.viewState.showWomensCollection();
+  }
+
+  showNewReleases() {
+    this.viewState.showReleases();
+  }
+
+  showBestSellers() {
+    this.viewState.showBestsellers();
+  }
+
+  showMensCollections() {
+    this.viewState.showMensCollection();
+  }
 
   onProductSelected(product: any) {
-    this.selectedProduct = product;
+    this.viewState.setSelectedProduct(product);
   }
 }
