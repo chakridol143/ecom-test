@@ -8,7 +8,7 @@ import loginRoutes from './routers/login.routes';
 import cartRoutes from './routers/cart.router';
 import checkoutRoutes from './routers/checkout.routes'
 import adminProducts from './routers/adminProducts';
-import adminCategories from './routers/adminProducts';
+import adminCategories from './routers/adminCategories';
 // import path from 'path';
 
 const app = express();

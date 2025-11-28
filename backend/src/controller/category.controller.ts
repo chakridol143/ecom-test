@@ -205,7 +205,7 @@ export const getProductsByCategory = async (req: Request, res: Response) => {
 // Create category
 export const create = async (req: Request, res: Response) => {
   try {
-    const { name, slug = null, image_url = null } = req.body;
+    const { name, image_url = null } = req.body;
     const [result]: any = await pool.query('INSERT INTO categories (name, image_url) VALUES (?,  ?)', [name, image_url]);
     res.status(201).json({ success: true, insertId: result.insertId });
   } catch (err) {
