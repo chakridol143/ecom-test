@@ -79,21 +79,46 @@ export class AdminControlPanelComponent implements OnInit {
     this.categoryImage = input.files?.[0] || null;
   }
 
+  // createCategory() {
+  //   if (!this.categoryName.trim()) return;
+
+  //   const fd = new FormData();
+  //   fd.append('name', this.categoryName);
+  //   if (this.categoryImage) fd.append('image', this.categoryImage);
+
+  //   this.catSvc.createCategory(fd).subscribe({
+  //     next: () => {
+  //       this.categoryName = '';
+  //       this.categoryImage = null;
+  //       this.loadCategories();
+  //     }
+  //   });
+  // }
   createCategory() {
-    if (!this.categoryName.trim()) return;
-
-    const fd = new FormData();
-    fd.append('name', this.categoryName);
-    if (this.categoryImage) fd.append('image', this.categoryImage);
-
-    this.catSvc.createCategory(fd).subscribe({
-      next: () => {
-        this.categoryName = '';
-        this.categoryImage = null;
-        this.loadCategories();
-      }
-    });
+  if (!this.categoryName.trim()) {
+    this.errorMessage = 'Category name is required';
+    return;
   }
+
+  const fd = new FormData();
+  fd.append("name", this.categoryName.trim());
+
+  if (this.categoryImage) {
+    fd.append("image_url", this.categoryImage);   // FIXED
+  }
+
+  this.catSvc.createCategory(fd).subscribe({
+    next: () => {
+      this.categoryName = "";
+      this.categoryImage = null;
+      this.loadCategories();
+    },
+    error: (err) => {
+      console.error("CATEGORY CREATE ERROR:", err);
+    }
+  });
+}
+
 
   editCategory(cat: any) {
     this.editingCategory = { ...cat };

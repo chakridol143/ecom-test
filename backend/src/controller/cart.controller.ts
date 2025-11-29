@@ -36,13 +36,15 @@ export const getCartItemById = async (req: Request, res: Response) => {
   }
 };
 
-export const getcartByUserId = async(req:Request, res:Response )=>{
-  const user_Id = Number(req.params.user_Id);
-  if(Number.isNaN(user_Id)){
-    return res.status(400).json({error: 'Invalid User'})
+export const getcartByUserId = async (req: Request, res: Response) => {
+  const userId = Number(req.params.userId);   // FIXED
+
+  if (Number.isNaN(userId)) {
+    return res.status(400).json({ error: "Invalid userId" });
   }
-  const query =
-   `SELECT 
+
+  const query = `
+    SELECT 
       ci.cart_item_id,
       ci.user_id,
       ci.product_id,
@@ -53,20 +55,21 @@ export const getcartByUserId = async(req:Request, res:Response )=>{
       p.description
     FROM Cart_Items ci
     JOIN Products p ON ci.product_id = p.product_id
-    WHERE ci.user_id = ?`;
-  try{
-    const [rows] = await db.query<CartItem[]>(query,[user_Id]);
-    if(!rows || rows.length ===0){
-      return res.status(200).json([]);
-    }
-    res.status(200).json(rows);
+    WHERE ci.user_id = ?
+  `;
 
-  }catch (err){
-    console.error('Error Fetching Users Cart Items',err);
-    return res.status(500).json({ error: "Failed to fetch user's cart items" });
-    
+  try {
+    const [rows] = await db.query<CartItem[]>(query, [userId]);
+
+    return res.status(200).json(rows || []);
+
+  } catch (err) {
+    console.error("❌ Error Fetching User Cart Items:", err);
+    return res.status(500).json({ error: "Failed to fetch user cart items" });
   }
 };
+
+
 
 // export const addMultipleCartItems = async (req: Request, res: Response) => {
 //   const items = req.body; 

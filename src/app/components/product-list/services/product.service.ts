@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
 export class ProductService {
  // private baseUrl = 'http://127.0.0.1:3000/products';
   
-     private baseUrl = 'https://ecom-backend-production-5341.up.railway.app/api/products';
+  private baseUrl = 'https://ecom-backend-production-5341.up.railway.app/api/products';
 
   constructor(private http: HttpClient) {}
 
