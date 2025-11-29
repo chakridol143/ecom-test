@@ -8,9 +8,10 @@ import { CartService } from '../../cart/services/cart.services';
 })
 export class LoginService {
 
-  private apiUrl = 'http://localhost:3000/api/auth';
-  private adminUrl = 'http://localhost:3000/api/auth/admin/login';
-
+  // private apiUrl = 'http://localhost:3000/api/auth';
+  // private adminUrl = 'http://localhost:3000/api/auth/admin/login';
+ private apiUrl = 'https://ecom-backend-production-5341.up.railway.app/api/auth';
+  private adminUrl = 'https://ecom-backend-production-5341.up.railway.app/api/auth/admin/login';
   private userState = new BehaviorSubject<any>(this.getUser());
   userState$ = this.userState.asObservable();
 

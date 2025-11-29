@@ -31,12 +31,12 @@ app.use('/api/admin/categories', adminCategories);
 
 app.use('/assets/images', express.static(path.join(__dirname, '..', 'assets')));
 
-// app.listen(59324, () => {
-//   console.log('https://ecom-backend-production-5341.up.railway.app');
-//   console.log(' Image path served from:', imagesPath);
-// });
-app.listen(3000, () => {
-  console.log(' Server running at http://localhost:3000');
+app.listen(59324, () => {
+  console.log('https://ecom-backend-production-5341.up.railway.app');
   console.log(' Image path served from:', imagesPath);
 });
+// app.listen(3000, () => {
+//   console.log(' Server running at http://localhost:3000');
+//   console.log(' Image path served from:', imagesPath);
+// });
 

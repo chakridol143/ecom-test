@@ -6,7 +6,7 @@
     <ul class="menu">
       <li [class.active]="activeSection === 'categories'" (click)="activeSection = 'categories'">Categories</li>
       <li [class.active]="activeSection === 'products'" (click)="activeSection = 'products'">Products</li>
-      <li>Logout</li>
+      <!-- <li>Logout</li> -->
     </ul>
   </aside>
 
@@ -41,7 +41,7 @@
 
               <ng-container *ngIf="editingCategory?.category_id !== cat.category_id">
                 <td>{{ cat.name }}</td>
-                <td><img *ngIf="cat.image_url" [src]="'http://localhost:3000/assets/images/' + cat.image_url" class="thumb" /></td>
+                <td><img *ngIf="cat.image_url" [src]="'https://ecom-backend-production-5341.up.railway.app/assets/images/' + cat.image_url" class="thumb" /></td>
                 <td class="actions">
                   <button class="edit" (click)="editCategory(cat)">✏</button>
                   <button class="delete" (click)="deleteCategory(cat.category_id)">🗑</button>
@@ -124,7 +124,7 @@
                 <td>{{ p.stock_quantity }}</td>
 
                 <td>
-                  <img *ngIf="p.image_url" [src]="'http://localhost:3000/assets/images/' + p.image_url" class="thumb" />
+                  <img *ngIf="p.image_url" [src]="'https://ecom-backend-production-5341.up.railway.app/assets/images/' + p.image_url" class="thumb" />
                 </td>
 
                 <td class="actions">
@@ -154,7 +154,7 @@
                   <img *ngIf="getPreview('image_url'); else oldImg" [src]="getPreview('image_url')" class="thumb" />
 
                   <ng-template #oldImg>
-                    <img *ngIf="p.image_url" [src]="'http://localhost:3000/assets/images/' + p.image_url" class="thumb" />
+                    <img *ngIf="p.image_url" [src]="'https://ecom-backend-production-5341.up.railway.app/assets/images/' + p.image_url" class="thumb" />
                   </ng-template>
                 </td>
 

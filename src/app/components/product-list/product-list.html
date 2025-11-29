@@ -13,7 +13,7 @@
       
         <div *ngIf="!showFullDetails" class="only-name-card">
           
-          <img [src]="'http://localhost:3000/assets/images/' + product.currentImage"
+          <img [src]="'https://ecom-backend-production-5341.up.railway.app/assets/images/' + product.currentImage"
             alt="{{ product.name }}" class="product-img" (click)="openProductPopup(product)"
             (mouseenter)="onHoverImage(product)" (mouseleave)="onLeaveImage(product)" (error)="onImgError($event)" />
           <h2 class="only-name" (click)="openProductPopup(product)">
@@ -25,7 +25,7 @@
    
         <div *ngIf="showFullDetails" class="full-details-card">
 
-         <img [src]="'http://localhost:3000/assets/images/' + product.currentImage"
+         <img [src]="'https://ecom-backend-production-5341.up.railway.app/assets/images/' + product.currentImage"
             alt="{{ product.name }}" class="product-img" (click)="openProductPopup(product)"
             (mouseenter)="onHoverImage(product)" (mouseleave)="onLeaveImage(product)" (error)="onImgError($event)" />
 
@@ -58,7 +58,7 @@
 
     <img
       class="popup-img"
-      [src]="'http://localhost:3000/assets/images/'+ selectedProducts?.image_url"
+      [src]="'https://ecom-backend-production-5341.up.railway.app/assets/images/'+ selectedProducts?.image_url"
       (error)="onImgError($event)"
     />
 

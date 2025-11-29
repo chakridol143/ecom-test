@@ -48,7 +48,7 @@ export class Menu implements OnInit, OnDestroy {
 
   selectedProduct: any = null;
 
-  private baseUrl = 'http://localhost:3000/api/categories/with-products/all';
+  private baseUrl = 'https://ecom-backend-production-5341.up.railway.app/api/categories/with-products/all';
   private subs = new Subscription();
 
   constructor(
@@ -121,12 +121,12 @@ export class Menu implements OnInit, OnDestroy {
   getImageUrl(img?: string): string {
     const raw = (img ?? '').replace(/^\/*/, '').trim();
     const encoded = encodeURIComponent(raw);
-    return `http://localhost:3000/assets/images/${encoded}`;
+    return `https://ecom-backend-production-5341.up.railway.app/assets/images/${encoded}`;
   }
 
   onImageError(ev: Event) { 
     (ev.target as HTMLImageElement).src = 
-      'http://localhost:3000/assets/images/placeholder.png'; 
+      'https://ecom-backend-production-5341.up.railway.app/assets/images/placeholder.png'; 
   }
 
   trackByCategoryId(index: number, item: any) { 

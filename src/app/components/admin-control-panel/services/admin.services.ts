@@ -15,7 +15,7 @@ function getAuthHeadersObj(): { headers: HttpHeaders } {
   providedIn: 'root'
 })
 export class CategoryService {
-  private apiUrl = 'http://localhost:3000/api/admin/categories';
+  private apiUrl = 'https://ecom-backend-production-5341.up.railway.app/api/categories';
 
   constructor(private http: HttpClient) {}
 
@@ -44,7 +44,8 @@ export class CategoryService {
   providedIn: 'root'
 })
 export class ProductService {
-  private apiUrl = 'http://localhost:3000/api/admin/products';
+  private apiUrl = 'https://ecom-backend-production-5341.up.railway.app/api/products';
+
 
   constructor(private http: HttpClient) {}
 
