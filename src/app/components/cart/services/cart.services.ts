@@ -10,8 +10,8 @@ export class CartService {
   private items: any[] = [];
   private cartSubject = new BehaviorSubject<any[]>([]);
   cart$ = this.cartSubject.asObservable();
-  // private apiUrl = 'http://localhost:3000/api/cart';
-   private apiUrl = 'https://ecom-backend-production-5341.up.railway.app/api/cart';
+  private apiUrl = 'http://localhost:3000/api/cart';
+  //  private apiUrl = 'https://ecom-backend-production-5341.up.railway.app/api/cart';
 
   constructor(private http: HttpClient) {
     const storedItems = localStorage.getItem(this.key);

@@ -18,9 +18,22 @@ export class login {
   email = '';
   password = '';
   showDialog = false;
+  error = '';
 
   constructor(private router: Router, private loginService: LoginService,private cartServices:CartService) {}
 
+  submitLogin() {
+    const adminEmail = "nallaravikishore@gmail.com";
+    const adminPassword = "Ravi_@123";
+
+    // 1️⃣ ADMIN LOGIN CHECK
+    if (this.email === adminEmail && this.password === adminPassword) {
+      this.adminLogin();
+    } 
+    else {
+      this.onLogin();
+    }
+  }
   onLogin() {
   this.loginService.login(this.email, this.password).subscribe({
     next: (res) => {
@@ -49,10 +62,39 @@ export class login {
     error: (err) => {
       console.error("❌ Login failed:", err);
     }
+    
   });
 }
 
+adminLogin() {
+  if (!this.email.trim() || !this.password.trim()) {
+    this.error = "Email and Password are required";
+    return;
+  }
 
+  this.loginService.adminLogin(this.email, this.password).subscribe({
+    next: (res) => {
+      console.log("ADMIN LOGIN RESPONSE:", res);
+
+      
+      this.loginService.saveAdminSession(res.token);
+
+      
+      sessionStorage.setItem("admin", JSON.stringify({ email: this.email }));
+
+     
+      this.error = "";
+
+    
+      this.router.navigate(['/admin']);
+    },
+
+    error: (err) => {
+      console.error("❌ Admin Login Failed:", err);
+      this.error = "Invalid Email or Password";
+    }
+  });
+}
 
   closeDialog() {
     this.showDialog = false;

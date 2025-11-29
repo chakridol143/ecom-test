@@ -1,45 +1,54 @@
 <header class="header-container">
 
-  <!-- LEFT -->
   <div class="header-left">
     <div class="logo">
       <img src="../../../assets/images/JewelerLogo.png" alt="">
     </div>
   </div>
 
-  <!-- CENTER (SEARCH) -->
-  <div class="header-center">
+  <!-- SEARCH BAR ONLY FOR USERS -->
+  <div class="header-center" *ngIf="!adminLoggedIn">
     <app-search
       (searchEvent)="onSearch($event)"
       (filterEvent)="filterComponent.openFilter()">
     </app-search>
   </div>
 
-  <!-- RIGHT (DESKTOP ONLY) -->
   <div class="header-right desktop-only">
 
-    <ng-container *ngIf="!user; else loggedIn">
-      <button routerLink="/login" class="login-btn">Login</button>
-      <button routerLink="/register" class="login-btn">Register</button>
+    <!-- ⭐ USER MENU -->
+    <ng-container *ngIf="!adminLoggedIn">
+      <ng-container *ngIf="!user; else loggedUser">
+        <button routerLink="/login" class="login-btn">Login</button>
+        <button routerLink="/register" class="login-btn">Register</button>
+      </ng-container>
+
+      <ng-template #loggedUser>
+        <span class="user-name">Hello {{ user.name }}</span>
+        <button class="logout-btn" (click)="logoutUser()">Logout</button>
+      </ng-template>
     </ng-container>
 
-    <ng-template #loggedIn>
-      <span class="user-name">Hello {{ user.name }}</span>
-      <button class="logout-btn" (click)="logout()">Logout</button>
-    </ng-template>
+    <!-- ⭐ ADMIN MENU -->
+    <ng-container *ngIf="adminLoggedIn">
+      <span class="user-name admin">Admin Panel</span>
+      <button class="logout-btn" (click)="logoutAdmin()">Logout</button>
+    </ng-container>
 
   </div>
 
-  <app-filter #filterComponent></app-filter>
+  <!-- FILTER ONLY FOR USERS -->
+  <app-filter #filterComponent *ngIf="!adminLoggedIn"></app-filter>
 
-  <!-- MOBILE BUTTON -->
-  <button class="menu-icon mobile-only" (click)="toggleMenu()">☰</button>
+  <!-- MOBILE MENU ICON ONLY FOR USERS -->
+  <button class="menu-icon mobile-only" (click)="toggleMenu()" *ngIf="!adminLoggedIn">
+    ☰
+  </button>
 
 </header>
 
-
-<!-- MOBILE MENU -->
-<div class="mobile-menu" [class.open]="menuOpen">
+<!-- MOBILE MENU ONLY FOR USERS -->
+<div class="mobile-menu" [class.open]="menuOpen" *ngIf="!adminLoggedIn">
 
   <ng-container *ngIf="!user; else loggedMobile">
     <button routerLink="/login" class="menu-btn">Login</button>
@@ -48,17 +57,12 @@
 
   <ng-template #loggedMobile>
     <p class="mobile-hello">Hello {{ user.name }}</p>
-    <button class="menu-btn logout" (click)="logout()">Logout</button>
+    <button class="menu-btn logout" (click)="logoutUser()">Logout</button>
   </ng-template>
 
-  <button routerLink="/admin" class="menu-btn">Admin Control Panel</button>
-</div>
+  <!-- SHOW ADMIN PANEL BUTTON ONLY IF ADMIN NOT LOGGED -->
+  <button routerLink="/admin-login" class="menu-btn" *ngIf="!adminLoggedIn">
+    Admin Control Panel
+  </button>
 
-<!-- NAVBAR BELOW -->
-<app-navbar 
-  (womenCollectionClick)="showWomenCollections()"
-  (productClicked)="onProductSelected($event)"
-  (newReleasesClick)="showNewReleases()"
-  (bestSellersClick)="showBestSellers()"
-  (mensCollectionClick)="showMensCollections()">
-</app-navbar>
+</div>

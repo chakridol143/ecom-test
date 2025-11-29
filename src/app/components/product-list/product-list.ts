@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Footer } from "../footer/footer";
 import { CartService } from '../cart/services/cart.services';
+import { Observable } from 'rxjs';
 
 
 @Component({
@@ -32,20 +33,47 @@ export class ProductList implements OnInit, OnChanges {
   // ⭐ NEW FLAG
   showFullDetails = false;
 
-  // private apiHost = 'http://localhost:3000';
-  // private apiHost1 = 'http://localhost:3001'
-  // private productsUrl = `${this.apiHost}/api/products`;
-  // private categoryProductsUrl = `${this.apiHost1}/api/category`;
-  private apiHost = 'https://ecom-backend-production-5341.up.railway.app';
-  private apiHost1 = 'https://ecom-backend-production-5341.up.railway.app'
+  private apiHost = 'http://localhost:3000';
+  private apiHost1 = 'http://localhost:3001';
+  private adminUrl = 'http://localhost:3000/api/admin/products'
   private productsUrl = `${this.apiHost}/api/products`;
   private categoryProductsUrl = `${this.apiHost1}/api/category`;
+  // private apiHost = 'https://ecom-backend-production-5341.up.railway.app';
+  // private apiHost1 = 'https://ecom-backend-production-5341.up.railway.app'
+  // private productsUrl = `${this.apiHost}/api/products`;
+  // private categoryProductsUrl = `${this.apiHost1}/api/category`;
   constructor(
     private http: HttpClient,
     private cart: CartService,
   
   ) {}
+private getHeaders() {
+    return {
+      headers: {
+        Authorization: 'Bearer ' + localStorage.getItem('adminToken')
+      }
+    };
+  }
+  
+  getAll(): Observable<any> {
+    return this.http.get(this.adminUrl, this.getHeaders());
+  }
 
+  getById(id: number): Observable<any> {
+    return this.http.get(`${this.adminUrl}/${id}`, this.getHeaders());
+  }
+
+  createProduct(data: FormData): Observable<any> {
+    return this.http.post(this.adminUrl, data, this.getHeaders());
+  }
+
+  updateProduct(id: number, data: FormData): Observable<any> {
+    return this.http.put(`${this.adminUrl}/${id}`, data, this.getHeaders());
+  }
+
+  deleteProduct(id: number): Observable<any> {
+    return this.http.delete(`${this.adminUrl}/${id}`, this.getHeaders());
+  }
   ngOnInit() {
     this.loadAllProducts();
   }
@@ -78,23 +106,6 @@ export class ProductList implements OnInit, OnChanges {
     return Number.isFinite(id) ? id : null;
   }
 
-  // private loadAllProducts() {
-  //   this.loading = true;
-  //   this.error = null;
-
-  //   this.http.get<any[]>(this.productsUrl).subscribe({
-  //     next: (data) => {
-  //       this.allProducts = Array.isArray(data) ? data : [];
-  //       this.loading = false;
-  //     },
-  //     error: (err) => {
-  //       console.error('Error loading all products:', err);
-  //       this.error = 'Failed to load products';
-  //       this.allProducts = [];
-  //       this.loading = false;
-  //     }
-  //   });
-  // }
   private loadAllProducts() {
   this.loading = true;
   this.error = null;

@@ -5,7 +5,7 @@
     <div class="product-card">
       <button class="close-btn" (click)="closeProductView()">✖</button>
 
-      <img [src]="'https://ecom-backend-production-5341.up.railway.app/assets/images/' + selectedProduct.image_url" />
+      <img [src]="'http://localhost:3000/assets/images/' + selectedProduct.image_url" />
       <h1>{{ selectedProduct.name }}</h1>
       <p>{{ selectedProduct.description }}</p>
       <h3>₹{{ selectedProduct.price }}</h3>

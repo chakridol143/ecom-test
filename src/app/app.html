@@ -1,7 +1,18 @@
-<!-- <app-slider ></app-slider> -->
-<div>
+<!-- SHOW USER WEBSITE ONLY WHEN ADMIN IS NOT LOGGED -->
+<div *ngIf="!adminLoggedIn">
+
   <app-header></app-header>
-  <app-menu></app-menu>
-  <!-- <app-slider (categorySelect)="onCategorySelected($event)" ></app-slider> -->
+
+  <!-- <app-navbar></app-navbar> -->
+   <app-menu></app-menu>
+
+  <router-outlet></router-outlet>
+
 </div>
-<router-outlet></router-outlet>
+
+<!-- SHOW ADMIN PANEL ONLY FOR ADMIN -->
+<div *ngIf="adminLoggedIn">
+   <app-header></app-header>
+  <app-admin-control-panel></app-admin-control-panel>
+
+</div>

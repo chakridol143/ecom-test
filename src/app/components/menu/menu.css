@@ -1,7 +1,7 @@
 .menu-container {
   width: 100%;
   /* header (85px) + navbar (~55px) -> adjust if needed */
-  padding-top: 140px;
+  padding-top: 50px;
 }
 
 .category-row {

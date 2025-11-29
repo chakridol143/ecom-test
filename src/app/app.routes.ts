@@ -8,10 +8,8 @@ import { Logout } from './logout/logout';
 import { RegisterComponent } from './components/register/register';
 import { Navbar } from './components/navbar/navbar';
 import { FilterResults } from './components/filter-results/filter-results';
-
-
-
-
+import { AdminControlPanelComponent } from './components/admin-control-panel/admin-control-panel';
+import { AdminAuthGuard } from './components/gaurds/admin.auth';
 
 
 export const routes: Routes = [
@@ -20,7 +18,7 @@ export const routes: Routes = [
   { path: 'logout', component: Logout },
   { path: 'cartdetails', component: CartDetails },
   { path: 'menu', component: Header },
-  // { path: 'menu', component: Menu },
+  { path: 'menu', component: Menu },
   { path: 'checkout', component: Checkout },
   { path: 'register', component: RegisterComponent },
   {
@@ -28,6 +26,12 @@ export const routes: Routes = [
   },
   {
     path: 'filter-results', component: FilterResults
+  },
+  {path:'admin', component:AdminControlPanelComponent,canActivate:[AdminAuthGuard]},
+    {
+    path: 'admin-login',
+    loadComponent: () => import('./components/login/login').then(m => m.login)
   }
+
 
 ];

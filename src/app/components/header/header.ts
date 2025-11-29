@@ -11,13 +11,15 @@ import { ViewStateService } from '../services/view-state.service';
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [RouterLink, CommonModule, Search, Filter, Navbar],
+  imports: [RouterLink, CommonModule, Search, Filter,],
   templateUrl: './header.html',
   styleUrls: ['./header.css']
 })
 export class Header implements OnInit {
 
   user: any = null;
+  admin: any = null;
+  adminLoggedIn = false;
 
   @ViewChild('filterComponent') filterComponent!: Filter;
 
@@ -31,8 +33,16 @@ export class Header implements OnInit {
   ) {}
 
   ngOnInit() {
+
+    // USER LOGIN UPDATES LIVE
     this.auth.userState$.subscribe((user) => {
       this.user = user;
+    });
+
+    // ADMIN LOGIN UPDATES LIVE
+    this.auth.adminState$.subscribe((admin) => {
+      this.admin = admin;
+      this.adminLoggedIn = !!admin;
     });
   }
 
@@ -40,17 +50,22 @@ export class Header implements OnInit {
     this.searchBus.setTerm((term || '').trim());
   }
 
-  logout() {
+  logoutUser() {
     this.auth.logout();
     this.user = null;
     this.router.navigate(['/login']);
   }
 
+  logoutAdmin() {
+    this.auth.adminLogout();
+    this.admin = null;
+    this.adminLoggedIn = false;
+    this.router.navigate(['/admin-login']);
+  }
+
   toggleMenu() {
     this.menuOpen = !this.menuOpen;
   }
-
-  // === Navbar events from <app-navbar> ===
 
   showWomenCollections() {
     this.viewState.showWomensCollection();
