@@ -1,13 +1,12 @@
 html, body {
   margin: 0;
   padding: 0;
-  background: #8d646b;
 }
 
 /* FOOTER MAIN */
 .footer-main {
-  background: #8d646b;
-  color: white;
+
+  color: black;
   padding: 60px 60px;
   display: grid;
   grid-template-columns: 1.5fr 1fr 1fr 1fr;
@@ -63,7 +62,7 @@ html, body {
 
 .footer-column a {
   display: block;
-  color: white;
+  color: black;
   opacity: 0.9;
   margin-bottom: 8px;
   text-decoration: none;

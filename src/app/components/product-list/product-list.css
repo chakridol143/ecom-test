@@ -16,15 +16,9 @@
 .product-img {
   width: 100%;
   height: 250px;
-  object-fit: cover;
-  border-radius: 10px;
+  object-fit: fill;
   transition: transform 0.4s ease, box-shadow 0.3s ease;
   height: 4%;
-}
-
-.product-card:hover .product-img {
-  transform: scale(1.08);
-  box-shadow: 0px 15px 30px rgba(0,0,0,0.23);
 }
 
 .product-info {
@@ -61,13 +55,29 @@
 .product-info button:hover {
   background: #333;
 }
-h2{
+
+h2 {
+  font-family: "Libre Baskerville", serif;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #1a1a1a;
   text-align: center;
+  margin-top: 18px;
 }
-h3{
+
+h3 {
+  font-family: "Libre Baskerville", serif;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #1a1a1a;
   text-align: center;
-  color: green;
+  margin-top: 18px;
 }
+
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -167,7 +177,6 @@ h3{
     grid-template-columns: repeat(2, 1fr) !important;
     gap: 12px !important;
     margin-left: 15px;
-   
   }
   .product-img {
     height: 250px !important;
@@ -205,12 +214,9 @@ h3{
     grid-template-columns: 1fr;
   }
 }
-/* ============================================================
-   MOBILE — TESTIMONIALS (1 per slide, swipe enabled)
-============================================================ */
-@media (max-width: 600px) {
 
-    .testimonials-container {
+@media (max-width: 600px) {
+  .testimonials-container {
     width: 100% !important;
     margin: 40px auto !important;
     text-align: center !important;
@@ -238,12 +244,10 @@ h3{
     background: #fff;
     border-radius: 12px;
     padding: 18px !important;
-
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-
     text-align: center !important;
     box-sizing: border-box;
   }
@@ -262,13 +266,23 @@ h3{
   }
 }
 
-
-/* ============================================================
-   MOBILE — FEATURES SECTION (2 columns)
-============================================================ */
 @media (max-width: 600px) {
   .features-section {
     grid-template-columns: repeat(2, 1fr) !important;
     gap: 15px !important;
   }
+}
+
+/* ---------------------------------------------------------
+   LEFT → RIGHT SCROLL ANIMATION
+--------------------------------------------------------- */
+.left-right-animate {
+  opacity: 0;
+  transform: translateX(-60px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.left-right-animate.show {
+  opacity: 1;
+  transform: translateX(0);
 }

@@ -1,4 +1,4 @@
-<app-slider style="left: 0;top: 0;right: 0;" (categorySelect)="onCategorySelected($event)"></app-slider>
+<!-- <app-slider style="left: 0;top: 0;right: 0;" (categorySelect)="onCategorySelected($event)"></app-slider>
 
 <div class="menu-container">
   <div class="content" *ngIf="selectedProduct">
@@ -51,7 +51,11 @@
         *ngIf="showMensCollection" 
         (close)="closeMensCollections()">
       </app-mens-collections>
-
+        <app-productdetails
+  *ngIf="selectedProduct"
+  [product]="selectedProduct"
+  (close)="closeProductView()">
+</app-productdetails>
       <ng-container 
         *ngIf="!showWomensCollection && 
                !showReleases && 
@@ -59,6 +63,96 @@
                !showMensCollection">
 
   
+
+        <h1 *ngIf="selectedCategory">{{ selectedCategory.name }}</h1>
+
+        <app-products 
+          [searchTerm]="searchTerm"
+          [categoryId]="selectedCategoryId"
+          (addToCartEvent)="handleAddToCart($event)">
+        </app-products>
+
+        <app-cart 
+          [cartCount]="cartCount"
+          [items]="cartItems">
+        </app-cart>
+
+      </ng-container>
+
+    </div>
+  </ng-container>
+
+</div> -->
+<!-- Slider: hide on productdetails page -->
+<app-slider *ngIf="!currentRoute.includes('productdetails')"
+            (categorySelect)="onCategorySelected($event)"
+            style="left: 0; top: 0; right: 0;"></app-slider>
+
+<div class="menu-container">
+
+  <div class="content" *ngIf="selectedProduct && currentRoute.includes('productdetails')">
+    <div class="product-card">
+      <button class="close-btn" (click)="closeProductView()">✖</button>
+
+      <img [src]="'https://ecom-backend-production-5341.up.railway.app/assets/images/' + selectedProduct.image_url" />
+      <h1>{{ selectedProduct.name }}</h1>
+      <p>{{ selectedProduct.description }}</p>
+      <h3>₹{{ selectedProduct.price }}</h3>
+    </div>
+  </div>
+
+  <ng-container *ngIf="!selectedProduct || !currentRoute.includes('productdetails')">
+    <div class="category-row" *ngIf="categories?.length && 
+                                     !showWomensCollection &&
+                                     !showReleases &&
+                                     !showBestsellers &&
+                                     !showMensCollection &&
+                                     !currentRoute.includes('productdetails')">
+
+      <div class="category-box"
+          *ngFor="let category of categories; trackBy: trackByCategoryId"
+          (click)="selectCategory(category)"
+          [class.active]="selectedCategoryId === category.category_id">
+
+        <img 
+          [src]="getImageUrl(category.image_url)"
+          [alt]="category.name"
+          (error)="onImageError($event)"
+        />
+
+        <p>{{ category.name }}</p>
+      </div>
+    </div>
+
+    <div class="content">
+      <app-womens-collections 
+        *ngIf="showWomensCollection && !currentRoute.includes('productdetails')" 
+        (close)="closeWomensCollection()">
+      </app-womens-collections>
+
+      <app-releases 
+        *ngIf="showReleases && !currentRoute.includes('productdetails')" 
+        (close)="closeReleases()">
+      </app-releases>
+
+      <app-bestsellers 
+        *ngIf="showBestsellers && !currentRoute.includes('productdetails')" 
+        (close)="closeBestsellers()">
+      </app-bestsellers>
+
+      <app-mens-collections 
+        *ngIf="showMensCollection && !currentRoute.includes('productdetails')" 
+        (close)="closeMensCollections()">
+      </app-mens-collections>
+
+      <app-productdetails
+        *ngIf="selectedProduct && !currentRoute.includes('productdetails')"
+        [product]="selectedProduct"
+        (close)="closeProductView()">
+      </app-productdetails>
+
+
+      <ng-container *ngIf="!currentRoute.includes('productdetails')">
 
         <h1 *ngIf="selectedCategory">{{ selectedCategory.name }}</h1>
 

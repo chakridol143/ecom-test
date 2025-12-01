@@ -1,0 +1,26 @@
+<div class="fullscreen-wrapper" (click)="closeDetails()">
+
+  <div class="details-container" (click)="$event.stopPropagation()">
+    
+    <div class="details-card">
+
+      <img class="details-img"
+           [src]="imgBase + product?.image_url"
+           (error)="onImgError($event)" />
+
+      <div class="details-info">
+        <h2>{{ product?.name }}</h2>
+        <p class="description">{{ product?.description }}</p>
+
+        <h3 class="price">
+          {{ product?.price | currency:'INR':'symbol' }}
+        </h3>
+
+        <button class="add-btn">Add To Cart</button>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

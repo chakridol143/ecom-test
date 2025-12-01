@@ -14,7 +14,7 @@ import { LoginService } from './components/login/services/login.service';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet,Menu,Header,AdminControlPanelComponent,CommonModule], 
+  imports: [RouterOutlet,Header,AdminControlPanelComponent,CommonModule], 
   templateUrl: './app.html',
   styleUrls: ['./app.css']
 })

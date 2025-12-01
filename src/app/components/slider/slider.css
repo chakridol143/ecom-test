@@ -1,8 +1,10 @@
 .slider-container {
   position: relative;
-  width: 100%;
+  width: 102%;
   overflow: hidden;
-  margin-top: 143px;
+  margin-top: -31px;
+  margin-left: -8px;
+  height: 100vh;
 
 }
 
@@ -32,7 +34,7 @@
   object-fit: fill;
 }
 
-.nav-btn {
+/* .nav-btn {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -44,14 +46,14 @@
   cursor: pointer;
   z-index: 20;
   transition: 0.25s;
-}
+} */
 
-.nav-btn.left { left: 12px; }
+/* .nav-btn.left { left: 12px; }
 .nav-btn.right { right: 12px; }
 
 .nav-btn:hover {
   background-color: rgba(0,0,0,0.6);
-}
+} */
 
 
 @media (min-width: 700px) and (max-width: 879px) {

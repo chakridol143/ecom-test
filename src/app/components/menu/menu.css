@@ -1,7 +1,20 @@
+
 .menu-container {
   width: 100%;
-  /* header (85px) + navbar (~55px) -> adjust if needed */
   padding-top: 50px;
+  margin-top: -18%;
+}
+
+/* ---------- LEFT TO RIGHT ANIMATION ---------- */
+@keyframes slideIn {
+  0% {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 .category-row {
@@ -14,6 +27,7 @@
   scrollbar-width: none;
 }
 
+/* Hide scroll bar */
 .category-row::-webkit-scrollbar {
   display: none;
 }
@@ -26,8 +40,21 @@
   cursor: pointer;
   transition: transform 0.3s ease;
   flex-shrink: 0;
+
+  /* animation */
+  opacity: 0;
+  animation: slideIn 1.2s ease forwards;
 }
 
+/* adding delay for each box */
+.category-box:nth-child(1) { animation-delay: 0.1s; }
+.category-box:nth-child(2) { animation-delay: 0.2s; }
+.category-box:nth-child(3) { animation-delay: 0.3s; }
+.category-box:nth-child(4) { animation-delay: 0.4s; }
+.category-box:nth-child(5) { animation-delay: 0.5s; }
+.category-box:nth-child(6) { animation-delay: 0.6s; }
+
+/* ---------- IMAGE STYLE + HOVER EFFECT ---------- */
 .category-box img {
   width: 130px;
   height: 130px;
@@ -35,8 +62,16 @@
   object-fit: contain;
   border: 2px solid #ccc;
   padding: 3px;
+  transition: all 0.4s ease; /* smooth hover */
 }
 
+.category-box:hover img {
+  transform: scale(1.10); /* slow zoom */
+  border-color: #d8c19a;
+  box-shadow: 0 8px 18px rgba(0,0,0,0.18);
+}
+
+/* Text */
 .category-box p {
   margin-top: 10px;
   font-size: 14px;
@@ -53,7 +88,9 @@ h1 {
   text-align: center;
 }
 
+/* ---------- RESPONSIVE ---------- */
 @media (max-width: 903px) {
+
   .category-row {
     justify-content: flex-start !important;
     gap: 40px !important;
@@ -73,6 +110,7 @@ h1 {
 }
 
 @media (max-width: 480px) {
+
   .category-row {
     justify-content: flex-start !important;
     gap: 40px !important;

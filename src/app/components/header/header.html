@@ -1,26 +1,23 @@
-<header class="header-container">
+<!-- <header class="header-container" [class.scrolled]="isScrolled">
 
   <div class="header-left">
     <div class="logo">
-      <img src="../../../assets/images/JewelerLogo.png" alt="">
     </div>
   </div>
 
-  <!-- SEARCH BAR ONLY FOR USERS -->
   <div class="header-center" *ngIf="!adminLoggedIn">
     <app-search
       (searchEvent)="onSearch($event)"
       (filterEvent)="filterComponent.openFilter()">
     </app-search>
   </div>
+  
 
   <div class="header-right desktop-only">
 
-    <!-- ⭐ USER MENU -->
     <ng-container *ngIf="!adminLoggedIn">
       <ng-container *ngIf="!user; else loggedUser">
-        <button routerLink="/login" class="login-btn">Login</button>
-        <button routerLink="/register" class="login-btn">Register</button>
+        <img src="../../../assets/images/login1.png" alt="Cart" class="login" routerLink="/login">
       </ng-container>
 
       <ng-template #loggedUser>
@@ -29,7 +26,6 @@
       </ng-template>
     </ng-container>
 
-    <!-- ⭐ ADMIN MENU -->
     <ng-container *ngIf="adminLoggedIn">
       <span class="user-name admin">Admin Panel</span>
       <button class="logout-btn" (click)="logoutAdmin()">Logout</button>
@@ -37,17 +33,14 @@
 
   </div>
 
-  <!-- FILTER ONLY FOR USERS -->
   <app-filter #filterComponent *ngIf="!adminLoggedIn"></app-filter>
 
-  <!-- MOBILE MENU ICON ONLY FOR USERS -->
   <button class="menu-icon mobile-only" (click)="toggleMenu()" *ngIf="!adminLoggedIn">
     ☰
   </button>
 
 </header>
 
-<!-- MOBILE MENU ONLY FOR USERS -->
 <div class="mobile-menu" [class.open]="menuOpen" *ngIf="!adminLoggedIn">
 
   <ng-container *ngIf="!user; else loggedMobile">
@@ -60,9 +53,105 @@
     <button class="menu-btn logout" (click)="logoutUser()">Logout</button>
   </ng-template>
 
-  <!-- SHOW ADMIN PANEL BUTTON ONLY IF ADMIN NOT LOGGED -->
-  <!-- <button routerLink="/admin-login" class="menu-btn" *ngIf="!adminLoggedIn">
-    Admin Control Panel
-  </button> -->
+<app-navbar 
+  (womenCollectionClick)="showWomenCollections(); closeProductView()"
+  (mensCollectionClick)="showMensCollections();closeProductView()"
+  (newReleasesClick)="showNewReleases();closeProductView()"
+  (bestSellersClick)="showBestSellers();closeProductView()"
+></app-navbar>
+</div> -->
+<header class="header-container" [class.scrolled]="isScrolled">
+
+  <!-- LEFT -->
+  <div class="header-left">
+    <div class="logo">
+      <h2>GENPERM</h2>
+    </div>
+  </div>
+
+  <!-- CENTER -->
+  <div class="header-center" *ngIf="!adminLoggedIn">
+    <app-search
+      (searchEvent)="onSearch($event)"
+      (filterEvent)="filterComponent.openFilter()">
+    </app-search>
+  </div>
+
+  <!-- RIGHT -->
+  <div class="header-right desktop-only">
+
+    <!-- Search Icon -->
+    <img 
+      src="../../../assets/images/search.png" 
+      alt="search" 
+      class="icon search-icon" 
+      (click)="openSearch()"
+    />
+
+    <ng-container *ngIf="!adminLoggedIn">
+      <ng-container *ngIf="!user; else loggedUser">
+        <img src="../../../assets/images/login1.png" class="icon login-icon" routerLink="/login">
+      </ng-container>
+
+      <ng-template #loggedUser>
+        <span class="user-name">Hello {{ user.name }}</span>
+        <button class="logout-btn" (click)="logoutUser()">Logout</button>
+      </ng-template>
+    </ng-container>
+
+    <ng-container *ngIf="adminLoggedIn">
+      <span class="user-name admin">Admin Panel</span>
+      <button class="logout-btn" (click)="logoutAdmin()">Logout</button>
+    </ng-container>
+
+  </div>
+
+  <app-filter #filterComponent *ngIf="!adminLoggedIn"></app-filter>
+
+  <button class="menu-icon mobile-only" (click)="toggleMenu()" *ngIf="!adminLoggedIn">
+    ☰
+  </button>
+
+</header>
+
+
+<!-- ===============================
+     FULL-WIDTH SEARCH OVERLAY
+================================ -->
+<div class="full-search" *ngIf="searchOpen">
+  <div class="search-area">
+
+    <img src="../../../assets/images/search.png" class="search-big-icon">
+
+    <input 
+      placeholder="SEARCH FOR..." 
+      [(ngModel)]="overlaySearch"
+      (keydown.enter)="performSearch()" />
+
+    <span class="close-search" (click)="closeSearch()">✕</span>
+
+  </div>
+</div>
+
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" [class.open]="menuOpen" *ngIf="!adminLoggedIn">
+
+  <ng-container *ngIf="!user; else loggedMobile">
+    <!-- <button routerLink="/login" class="menu-btn">Login</button>
+    <button routerLink="/register" class="menu-btn">Register</button> -->
+  </ng-container>
+
+  <ng-template #loggedMobile>
+    <p class="mobile-hello">Hello {{ user.name }}</p>
+    <button class="menu-btn logout" (click)="logoutUser()">Logout</button>
+  </ng-template>
+
+  <app-navbar 
+    (womenCollectionClick)="showWomenCollections(); closeProductView()"
+    (mensCollectionClick)="showMensCollections(); closeProductView()"
+    (newReleasesClick)="showNewReleases(); closeProductView()"
+    (bestSellersClick)="showBestSellers(); closeProductView()">
+  </app-navbar>
 
 </div>
