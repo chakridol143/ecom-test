@@ -1,40 +1,25 @@
-/* ================================
-   PAGE WRAPPER (no popup)
-================================ */
+
 .details-page-wrapper {
   width: 100%;
   max-width: 1200px;
   margin: 30px auto;
   padding: 20px;
-  /* margin-top: 25%; */
 }
 
-/* ================================
-   PRODUCT CARD (normal layout)
-================================ */
 .details-card {
-  background: #ffffff;
   border-radius: 12px;
   display: flex;
   gap: 0;
   overflow: hidden;
-  box-shadow: 0 3px 18px rgba(0, 0, 0, 0.15);
-  margin-top: 5%;
+  margin-top: 10%;
 }
 
-/* ================================
-   PRODUCT IMAGE
-================================ */
 .details-img {
   width: 45%;
   height: 450px;
   object-fit: fill;
-  background: #f8f8f8;
 }
 
-/* ================================
-   PRODUCT INFO SECTION
-================================ */
 .details-info {
   width: 55%;
   padding: 30px;
@@ -63,7 +48,6 @@
   margin-bottom: 30px;
 }
 
-/* ADD TO CART BTN */
 .add-btn {
   padding: 14px 20px;
   background: #ff004c;
@@ -80,11 +64,6 @@
   transform: translateY(-2px);
 }
 
-/* ================================
-   RESPONSIVE DESIGN
-================================ */
-
-/* Tablets */
 @media (max-width: 900px) {
   .details-card {
     flex-direction: column;
@@ -102,7 +81,6 @@
   }
 }
 
-/* Mobile */
 @media (max-width: 600px) {
   .details-img {
     height: 250px;

@@ -16,20 +16,20 @@ export class Slider implements OnInit, OnDestroy {
   @Output() categorySelect = new EventEmitter<number>();
 
   images = [
-    '../../../assets/images/b1.png',
-    '../../../assets/images/b2.png',
-    '../../../assets/images/b3.png',
-    '../../../assets/images/b4.png',
-    '../../../assets/images/b5.png',
+    '../../../assets/images/bg1.png',
+    '../../../assets/images/bg3.png',
+    '../../../assets/images/bg5.png',
+    '../../../assets/images/bg4.png',
+    '../../../assets/images/bg2.png',
     // '../../../assets/images/slider8.png'
   ];
 
   sliderMap: { [key: string]: number } = {
-    '../../../assets/images/b1.png': 1,
-    '../../../assets/images/b2.png': 7,
-    '../../../assets/images/b3.png': 5,
-    '../../../assets/images/b4.png': 2,
-    '../../../assets/images/b5.png':3,
+    '../../../assets/images/bg1.png': 1,
+    '../../../assets/images/bg3.png': 7,
+    '../../../assets/images/bg5.png': 5,
+    '../../../assets/images/bg4.png': 2,
+    '../../../assets/images/bg2.png':3,
     // '../../../assets/images/slider8.png':4
 
   };

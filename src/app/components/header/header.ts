@@ -114,8 +114,7 @@ import { Navbar } from '../navbar/navbar';
     CommonModule, 
     FormsModule,              
     Search, 
-    Filter,
-    Navbar ],
+    Filter,],
   templateUrl: './header.html',
   styleUrls: ['./header.css']
 })
