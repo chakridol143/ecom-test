@@ -134,6 +134,7 @@ export class login implements OnInit {
     });
 
     google.accounts.id.prompt();
+      console.log("Google Login Button CLICKED");
   }
 
   handleGoogleResponse(response: any) {
