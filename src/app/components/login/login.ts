@@ -128,20 +128,26 @@ loginWithGoogle() {
   console.log("Google Login Button CLICKED");
 
   const checkGoogle = setInterval(() => {
-    if (window.google && google.accounts && google.accounts.id) {
+    if (window.google && google.accounts && google.accounts.oauth2) {
       clearInterval(checkGoogle);
 
-      console.log("Google SDK READY. Initializing login...");
+      console.log("Google SDK READY. Opening popup...");
 
-      google.accounts.id.initialize({
+      const client = google.accounts.oauth2.initCodeClient({
         client_id: "903633108888-060od4a8pomrecrla9kifepblbdtp5b4.apps.googleusercontent.com",
-        callback: (response: any) => this.handleGoogleResponse(response)
+        scope: "email profile openid",
+        ux_mode: "popup",
+        callback: (response: any) => {
+          console.log("GOOGLE POPUP RESPONSE:", response);
+          // TODO: send response.code to backend for token exchange
+        }
       });
 
-      google.accounts.id.prompt();
+      client.requestCode();
     }
   }, 200);
 }
+
 
 
   handleGoogleResponse(response: any) {
