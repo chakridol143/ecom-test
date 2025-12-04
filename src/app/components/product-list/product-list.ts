@@ -11,7 +11,7 @@ import { SearchBusService } from '../search/services/search-bus.service';
 @Component({
   selector: 'app-products',
   standalone: true,
-  imports: [CommonModule, FormsModule, Footer],
+  imports: [CommonModule, FormsModule],
   templateUrl: './product-list.html',
   styleUrls: ['./product-list.css']
 })

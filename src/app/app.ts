@@ -11,13 +11,15 @@ import { LoginService } from './components/login/services/login.service';
 import { filter } from 'rxjs';
 import { category } from './components/category/category';
 import { Cart } from './components/cart/cart';
+import { WatchNshop } from "./watch-nshop/watch-nshop";
+import { Footer } from './components/footer/footer';
 
 
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet,Header,CommonModule,Slider,category,Cart], 
+  imports: [RouterOutlet, Header, CommonModule, Slider, category, Cart, WatchNshop, Footer], 
   templateUrl: './app.html',
   styleUrls: ['./app.css']
 })

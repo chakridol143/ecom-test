@@ -1,0 +1,120 @@
+
+
+
+h2{
+ font-family: "Libre Baskerville", serif;
+  font-size: 20px;
+  font-weight: 400;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  font-weight: bolder;
+  color: #1a1a1a;
+  text-align: center;
+  /* margin-top: -17px; */
+}
+
+
+/* .video-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 0px; 
+  padding: 0 50px;
+  place-items: center;
+   margin-left: 150px;
+  margin-right: 150px;
+}
+
+
+.video-item {
+  width: 100%;
+  max-width: 350px;
+  position: relative;
+  border-radius: 18px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+} */
+.video-grid {
+  margin-top: 30px;
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding: 0 50px;
+  margin-left: 150px;
+  margin-right: 150px;
+  align-items: center;
+}
+
+.video-grid::-webkit-scrollbar {
+  display: none; /* hide scrollbar */
+}
+
+.video-item {
+  flex: 0 0 auto;      
+  width: 260px;        
+  scroll-snap-align: start;
+   width: 100%;
+  max-width: 350px;
+  position: relative;
+  border-radius: 18px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+/* .video-item:hover {
+  transform: scale(1.02);
+} */
+
+.video-item video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 18px;
+  display: block;
+}
+
+
+.video-item p {
+  position: fixed;
+  left: 0;
+  width: 100%;
+  padding: 8px 12px;
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(2px);
+}
+
+
+.video-item .name {
+  bottom: 35px;
+  font-size: 15px;
+  opacity: 0.95;
+}
+
+.video-item .price {
+  bottom: 0;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+
+@media (max-width: 768px) {
+  .video-grid {
+    padding: 0 20px;
+    gap: 8px; 
+  }
+
+  .video-item {
+    max-width: 95%;
+  }
+
+  .extra-title {
+    font-size: 28px;
+  }
+}
