@@ -20,7 +20,10 @@ export class Navbar implements OnInit {
   activeDropdown: number | null = null;
 
   @Output() categorySelected = new EventEmitter<number | null>();
-
+  @Output() womenCollectionClick = new EventEmitter<void>();
+  @Output() newReleasesClick = new EventEmitter<void>();
+  @Output() bestSellersClick = new EventEmitter<void>();
+  @Output() mensCollectionClick = new EventEmitter<void>();
   constructor(private categoryService: CategoryService,  private productService: ProductService, private router: Router ) {}
 
   ngOnInit() {
@@ -66,7 +69,7 @@ onImageError(event: any) {
   event.target.src = 'assets/images/placeholder.png';
 }
 
-@Output() womenCollectionClick = new EventEmitter<void>();
+
 
 selectWomenCollection() {
   this.isAllMenuOpen = false;
@@ -74,21 +77,21 @@ selectWomenCollection() {
 }
 
 //new releases
-@Output() newReleasesClick = new EventEmitter<void>();
+
 
 onNewReleasesClick() {
   this.newReleasesClick.emit();
 }
 
 //bestsellers
-@Output() bestSellersClick = new EventEmitter<void>();
+
 
 openBestSellers() {
   this.bestSellersClick.emit();
 }
 
 //menscollections
-@Output() mensCollectionClick = new EventEmitter<void>();
+
 
 selectMensCollection() {
   this.isAllMenuOpen = false;

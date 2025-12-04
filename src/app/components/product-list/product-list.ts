@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { Footer } from "../footer/footer";
 import { CartService } from '../cart/services/cart.services';
 import { ActivatedRoute, Router } from '@angular/router';
+import { SearchBusService } from '../search/services/search-bus.service';
 
 
 @Component({
@@ -49,18 +50,25 @@ export class ProductList implements OnInit, OnChanges {
     private http: HttpClient,
     private cart: CartService,
   private route: ActivatedRoute,
-  private router: Router
+  private router: Router,
+  private searchBus: SearchBusService
   ) {}
 
-  ngOnInit() {
-    this.route.paramMap.subscribe(params => {
+ngOnInit() {
+
+  this.route.paramMap.subscribe(params => {
     const id = params.get('categoryId');
     this.categoryId = id ? Number(id) : null;
+
     this.showFullDetails = !!this.categoryId;
 
     this.loadAllProducts();
   });
-  }
+
+  this.searchBus.term$.subscribe(term => {
+    this.searchTerm = term.trim();
+  });
+}
 
  
   ngOnChanges() {

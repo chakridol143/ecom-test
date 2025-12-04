@@ -4,9 +4,8 @@
 
 <header class="header-container" [class.scrolled]="isScrolled">
 
-  <!-- LEFT SIDE (Desktop navigation + Mobile toggle) -->
   <div class="header-left">
-    <!-- Desktop Nav -->
+
     <div class="left-nav desktop-only">
       <span (click)="showBestSellers()">Bestsellers</span>
       <span (click)="showNewReleases()">New Releases</span>
@@ -14,19 +13,17 @@
       <span (click)="showWomenCollections()">Women's Collection</span>
     </div>
 
-    <!-- Mobile Toggle -->
+    
     <span class="menu-icon mobile-only" (click)="toggleMenu()">☰</span>
   </div>
 
-  <!-- CENTER LOGO -->
   <div class="logo">
     <img src="../../../assets/images/gen_re.png" alt="logo">
   </div>
 
-  <!-- RIGHT SIDE ICONS -->
   <div class="right-icons">
     <img src="../../../assets/images/search.png" class="icon" (click)="openSearch()" />
-
+  
     <ng-container *ngIf="!user">
       <img src="../../../assets/images/login1.png" class="icon" routerLink="/login" />
     </ng-container>
@@ -39,7 +36,6 @@
 
 </header>
 
-<!-- SEARCH OVERLAY -->
 <div class="full-search" *ngIf="searchOpen">
   <div class="search-area">
     <img src="../../../assets/images/search.png" class="search-big-icon">
@@ -55,7 +51,6 @@
   </div>
 </div>
 
-<!-- MOBILE MENU PANEL -->
 <div class="mobile-menu" [class.open]="menuOpen">
 
   <span (click)="showBestSellers()">Bestsellers</span>

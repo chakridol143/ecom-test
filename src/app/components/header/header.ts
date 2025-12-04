@@ -104,6 +104,8 @@ import { Filter } from '../filter/filter';
 import { ViewStateService } from '../services/view-state.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { Navbar } from '../navbar/navbar';
+
 
 
 @Component({
@@ -111,7 +113,7 @@ import { FormsModule } from '@angular/forms';
   standalone: true,
   imports: [  RouterLink, 
     CommonModule, 
-    FormsModule,              
+    FormsModule,             
     ],
   templateUrl: './header.html',
   styleUrls: ['./header.css']
@@ -127,7 +129,7 @@ export class Header implements OnInit {
   searchOpen = false;
   overlaySearch = '';
 
-  @ViewChild('filterComponent') filterComponent!: Filter;
+  // @ViewChild('filterComponent') filterComponent!: Filter;
 
   @HostListener('window:scroll', [])
   onWindowScroll() {
