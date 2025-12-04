@@ -104,8 +104,7 @@ import { Filter } from '../filter/filter';
 import { ViewStateService } from '../services/view-state.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { Search } from '../search/search';
-import { Navbar } from '../navbar/navbar';
+
 
 @Component({
   selector: 'app-header',
@@ -113,8 +112,7 @@ import { Navbar } from '../navbar/navbar';
   imports: [  RouterLink, 
     CommonModule, 
     FormsModule,              
-    Search, 
-    Filter,],
+    ],
   templateUrl: './header.html',
   styleUrls: ['./header.css']
 })
@@ -126,7 +124,6 @@ export class Header implements OnInit {
   menuOpen = false;
   isScrolled = false;
 
-  /* ➤ SEARCH OVERLAY CONTROL */
   searchOpen = false;
   overlaySearch = '';
 
@@ -144,14 +141,11 @@ export class Header implements OnInit {
     private viewState: ViewStateService
   ) {}
 
+  
   ngOnInit() {
     this.auth.userState$.subscribe(user => this.user = user);
     this.auth.adminState$.subscribe(admin => this.adminLoggedIn = !!admin);
   }
-
-  /* =======================
-      SEARCH FUNCTIONS
-  ======================== */
   openSearch() {
     this.searchOpen = true;
   }
@@ -173,13 +167,13 @@ export class Header implements OnInit {
   logoutUser() {
     this.auth.logout();
     this.user = null;
-    this.router.navigate(['/login']);
+    this.router.navigate(['/app']);
   }
 
   logoutAdmin() {
     this.auth.adminLogout();
     this.adminLoggedIn = false;
-    this.router.navigate(['/admin-login']);
+    this.router.navigate(['/app']);
   }
 
   toggleMenu() {

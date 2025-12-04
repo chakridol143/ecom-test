@@ -15,6 +15,6 @@ userName: any;
   constructor(private router:Router){}
 
   onLogout(){
-    this.router.navigate(['menu']);
+    this.router.navigate(['app']);
   }
 }

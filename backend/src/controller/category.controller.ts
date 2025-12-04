@@ -232,7 +232,7 @@ export const remove = async (req: Request, res: Response) => {
   try {
     const id = Number(req.params.id);
     // remove product_categories rows referencing this category
-    await pool.query('DELETE FROM product_categories WHERE category_id = ?', [id]);
+    // await pool.query('DELETE FROM product_categories WHERE category_id = ?', [id]);
     // delete category
     await pool.query('DELETE FROM categories WHERE category_id = ?', [id]);
     res.json({ success: true });

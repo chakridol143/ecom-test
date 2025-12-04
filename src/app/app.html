@@ -1,18 +1,34 @@
-<!-- SHOW USER WEBSITE ONLY WHEN ADMIN IS NOT LOGGED -->
+<!-- 
 <div *ngIf="!adminLoggedIn">
 
   <app-header></app-header>
 
-  <!-- <app-navbar></app-navbar> -->
-   <!-- <app-menu></app-menu> -->
-
   <router-outlet></router-outlet>
 
 </div>
-
-<!-- SHOW ADMIN PANEL ONLY FOR ADMIN -->
 <div *ngIf="adminLoggedIn">
    <app-header></app-header>
   <app-admin-control-panel></app-admin-control-panel>
 
+</div> -->
+<div *ngIf="!adminLoggedIn">
+<app-header></app-header>
+<!-- <router-outlet></router-outlet> -->
+ </div>
+ <div *ngIf="adminLoggedIn">
+   <app-header></app-header>
+  <!-- <app-admin-control-panel></app-admin-control-panel> -->
+
 </div>
+
+<app-slider style="left: 0;top: 0;right: 0;" (categorySelect)="onCategorySelected($event)" *ngIf="showSliderAndCategories()"></app-slider>
+
+<div class="app-container" *ngIf="showSliderAndCategories()">
+  <app-category></app-category> 
+</div>
+
+<div class="content">
+  <router-outlet></router-outlet>
+</div>
+<app-cart [cartCount]="cartCount" [items]="cartItems">
+</app-cart>

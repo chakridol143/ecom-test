@@ -81,10 +81,9 @@ const upload = multer({
   limits: { fileSize: 5 * 1024 * 1024 }
 });
 
-// IMPORTANT: Add {name:'image'} for categories
 export const uploadFields = multer({ storage }).fields([
-  { name: "image", maxCount: 1 },      // ⭐ CATEGORY image
-  { name: "image_url", maxCount: 1 },  // ⭐ PRODUCT image 1
+  { name: "image", maxCount: 1 },      
+  { name: "image_url", maxCount: 1 },  
   { name: "image_url1", maxCount: 1 },
   { name: "image_url2", maxCount: 1 },
   { name: "image_url3", maxCount: 1 },

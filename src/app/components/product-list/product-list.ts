@@ -1,290 +1,11 @@
-// // import { Component, OnInit, Input, Output, EventEmitter, OnChanges } from '@angular/core';
-// // import { HttpClient } from '@angular/common/http';
-// // import { CommonModule } from '@angular/common';
-// // import { FormsModule } from '@angular/forms';
-// // import { Footer } from "../footer/footer";
-// // import { CartService } from '../cart/services/cart.services';
-// // import { Observable } from 'rxjs';
-
-
-// // @Component({
-// //   selector: 'app-products',
-// //   standalone: true,
-// //   imports: [CommonModule, FormsModule, Footer],
-// //   templateUrl: './product-list.html',
-// //   styleUrls: ['./product-list.css']
-// // })
-// // export class ProductList implements OnInit, OnChanges {
-
-// //   @Output() addToCartEvent = new EventEmitter<any>();
-// //   @Input() searchTerm: string = '';
-// //   @Input() categoryId: number | null = null;
-
-// //   products: any[] = [];
-// //   allProducts: any[] = [];
-// //   loading = false;
-// //   error: string | null = null;
-
-// //   selectedProducts: any = null;
-// //   showProductPopup = false;
-
-// //   showLoginDialog = false;
-
-// //   // ⭐ NEW FLAG
-// //   showFullDetails = false;
-
-// //   // private apiHost = 'http://localhost:3000';
-// //   // private apiHost1 = 'http://localhost:3001';
-// //    private adminUrl = 'https://ecom-backend-production-5341.up.railway.app/api/admin/products';
-// //   // private productsUrl = `${this.apiHost}/api/products`;
-// //   // private categoryProductsUrl = `${this.apiHost1}/api/category`;
-// //    private apiHost = 'https://ecom-backend-production-5341.up.railway.app';
-// //    private apiHost1 = 'https://ecom-backend-production-5341.up.railway.app'
-// //   private productsUrl = `${this.apiHost}/api/products`;
-// //    private categoryProductsUrl = `${this.apiHost1}/api/category`;
-// //   constructor(
-// //     private http: HttpClient,
-// //     private cart: CartService,
-  
-// //   ) {}
-// // private getHeaders() {
-// //     return {
-// //       headers: {
-// //         Authorization: 'Bearer ' + localStorage.getItem('adminToken')
-// //       }
-// //     };
-// //   }
-  
-// //   getAll(): Observable<any> {
-// //     return this.http.get(this.adminUrl, this.getHeaders());
-// //   }
-
-// //   getById(id: number): Observable<any> {
-// //     return this.http.get(`${this.adminUrl}/${id}`, this.getHeaders());
-// //   }
-
-// //   createProduct(data: FormData): Observable<any> {
-// //     return this.http.post(this.adminUrl, data, this.getHeaders());
-// //   }
-
-// //   updateProduct(id: number, data: FormData): Observable<any> {
-// //     return this.http.put(`${this.adminUrl}/${id}`, data, this.getHeaders());
-// //   }
-
-// //   deleteProduct(id: number): Observable<any> {
-// //     return this.http.delete(`${this.adminUrl}/${id}`, this.getHeaders());
-// //   }
-// //   ngOnInit() {
-// //     this.loadAllProducts();
-// //   }
-
- 
-// //   ngOnChanges() {
-// //     this.showFullDetails = !!this.categoryId;
-// //   }
-
-// //   get productsToShow(): any[] {
-// //     let list = this.allProducts;
-
-// //     if (this.categoryId) {
-// //       list = list.filter(p => this.getCategoryId(p) === this.categoryId);
-// //     }
-
-// //     const t = (this.searchTerm || '').trim().toLowerCase();
-// //     if (t) {
-// //       list = list.filter(p => (p?.name ?? '').toLowerCase().includes(t));
-// //     }
-// //     return list;
-// //   }
-
-// //   private getCategoryId(p: any): number | null {
-// //     const id = Number(
-// //       p?.category_id ??
-// //       p?.categoryId ??
-// //       p?.category?.id
-// //     );
-// //     return Number.isFinite(id) ? id : null;
-// //   }
-
-// //   private loadAllProducts() {
-// //   this.loading = true;
-// //   this.error = null;
-
-// //   this.http.get<any[]>(this.productsUrl).subscribe({
-// //     next: (data) => {
-// //       this.allProducts = (Array.isArray(data) ? data : []).map(product => ({
-// //         ...product,
-// //         currentImage: product.image_url // Start with original main image
-// //       }));
-// //       this.loading = false;
-// //     },
-// //     error: (err) => {
-// //       console.error('Error loading all products:', err);
-// //       this.error = 'Failed to load products';
-// //       this.allProducts = [];
-// //       this.loading = false;
-// //     }
-// //   });
-// // }
-
-// // onHoverImage(product: any) {
-// //   if (product.image_url1) {
-// //     product.currentImage = product.image_url1;
-// //   }
-// // }
-
-// // onLeaveImage(product: any) {
-// //   product.currentImage = product.image_url;
-// // }
-
-
-// //   onImgError(evt: Event) {
-// //     (evt.target as HTMLImageElement).src = 'assets/placeholder.png';
-// //   }
-
-// // addToCart(product: any) {
-// //     this.cart.addToCart(product);
-// //   }
-// //   openProductPopup(product: any) {
-// //     this.selectedProducts = product;
-// //     this.showProductPopup = true;
-// //   }
-
-// //   closeProductPopup() {
-// //     this.showProductPopup = false;
-// //     this.selectedProducts = null;
-// //   }
-// // }
-// import { Component, OnInit, Input, Output, EventEmitter, OnChanges } from '@angular/core';
-// import { HttpClient } from '@angular/common/http';
-// import { CommonModule } from '@angular/common';
-// import { FormsModule } from '@angular/forms';
-// import { Footer } from "../footer/footer";
-// import { CartService } from '../cart/services/cart.services';
-// import { Router } from '@angular/router';
-
-// @Component({
-//   selector: 'app-products',
-//   standalone: true,
-//   imports: [CommonModule, FormsModule, Footer],
-//   templateUrl: './product-list.html',
-//   styleUrls: ['./product-list.css']
-// })
-// export class ProductList implements OnInit, OnChanges {
-
-//   @Output() addToCartEvent = new EventEmitter<any>();
-//   @Input() searchTerm: string = '';
-//   @Input() categoryId: number | null = null;
-
-//   allProducts: any[] = [];
-//   loading = false;
-//   error: string | null = null;
-
-//   selectedProducts: any = null;
-//   showProductPopup = false;
-//   showFullDetails = false;
-
-//   private apiBase = 'https://ecom-backend-production-5341.up.railway.app';
-//   private productsUrl = `${this.apiBase}/api/products`;
-
-//   constructor(
-//     private http: HttpClient,
-//     private cart: CartService,
-//     private router:Router
-//   ) {}
-
-//   ngOnInit() {
-//     this.loadAllProducts();
-//   }
-
-//   ngOnChanges() {
-//     this.showFullDetails = !!this.categoryId;
-//   }
-
-//   get productsToShow(): any[] {
-//     let list = this.allProducts;
-
-//     if (this.categoryId) {
-//       list = list.filter(p => this.getCategoryId(p) === this.categoryId);
-//     }
-
-//     const t = (this.searchTerm || '').trim().toLowerCase();
-//     if (t) {
-//       list = list.filter(p => (p?.name ?? '').toLowerCase().includes(t));
-//     }
-
-//     return list;
-//   }
-
-//   private getCategoryId(p: any): number | null {
-//     const id = Number(
-//       p?.category_id ??
-//       p?.categoryId ??
-//       p?.category?.id
-//     );
-//     return Number.isFinite(id) ? id : null;
-//   }
-
-//   private loadAllProducts() {
-//     this.loading = true;
-
-//     this.http.get<any[]>(this.productsUrl).subscribe({
-//       next: data => {
-//         this.allProducts = (data || []).map(p => ({
-//           ...p,
-//           currentImage: p.image_url
-//         }));
-//         this.loading = false;
-//       },
-//       error: err => {
-//         console.error("Product load error:", err);
-//         this.error = "Failed to load products";
-//         this.loading = false;
-//       }
-//     });
-//   }
-
-//   onHoverImage(product: any) {
-//     if (product.image_url1) product.currentImage = product.image_url1;
-//   }
-
-//   onLeaveImage(product: any) {
-//     product.currentImage = product.image_url;
-//   }
-//     onImgError(evt: Event) {
-//     (evt.target as HTMLImageElement).src = 'assets/placeholder.png';
-//   }
-
-//   addToCart(product: any) {
-//     this.cart.addToCart(product);
-//   }
-
-//   openProductPopup(product: any) {
-//     this.selectedProducts = product;
-//     this.showProductPopup = true;
-//   }
-
-//   closeProductPopup() {
-//     this.showProductPopup = false;
-//     this.selectedProducts = null;
-//   }
-//   openProductDetails(product: any) {
-
-//   sessionStorage.setItem("fromProducts", "true");
-
-//   this.router.navigate(['/productdetails', product.product_id]);
-// }
-// }
-import {
-  Component, OnInit, Input, Output, EventEmitter,
-  OnChanges, AfterViewInit, ViewChildren, QueryList, ElementRef
-} from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, OnChanges } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Footer } from "../footer/footer";
 import { CartService } from '../cart/services/cart.services';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-products',
@@ -293,55 +14,57 @@ import { Router } from '@angular/router';
   templateUrl: './product-list.html',
   styleUrls: ['./product-list.css']
 })
-export class ProductList implements OnInit, OnChanges, AfterViewInit {
+export class ProductList implements OnInit, OnChanges {
 
   @Output() addToCartEvent = new EventEmitter<any>();
   @Input() searchTerm: string = '';
   @Input() categoryId: number | null = null;
+  
+  @Input() limit: number | null = null;
+@Input() excludeProductId: number | null = null;
 
+  products: any[] = [];
   allProducts: any[] = [];
   loading = false;
   error: string | null = null;
 
   selectedProducts: any = null;
   showProductPopup = false;
+
+  showLoginDialog = false;
+
+  // ⭐ NEW FLAG
   showFullDetails = false;
 
-  @ViewChildren('animateItem') animateItems!: QueryList<ElementRef>;
-
+  // private apiHost = 'http://localhost:3000';
+  // private apiHost1 = 'http://localhost:3001'
+  // private productsUrl = ${this.apiHost}/api/products;
+  // private categoryProductsUrl = ${this.apiHost1}/api/category;
+  private apiHost = 'https://ecom-backend-production-5341.up.railway.app';
   private apiBase = 'https://ecom-backend-production-5341.up.railway.app';
-  private productsUrl = `${this.apiBase}/api/products`;
-
+  private apiHost1 = 'https://ecom-backend-production-5341.up.railway.app';
+  private productsUrl = `${this.apiHost}/api/products`;
+  private categoryProductsUrl = `${this.apiHost1}/api/category`;
   constructor(
     private http: HttpClient,
     private cart: CartService,
-    private router: Router
+  private route: ActivatedRoute,
+  private router: Router
   ) {}
 
   ngOnInit() {
+    this.route.paramMap.subscribe(params => {
+    const id = params.get('categoryId');
+    this.categoryId = id ? Number(id) : null;
+    this.showFullDetails = !!this.categoryId;
+
     this.loadAllProducts();
+  });
   }
 
+ 
   ngOnChanges() {
     this.showFullDetails = !!this.categoryId;
-  }
-
-  ngAfterViewInit() {
-    setTimeout(() => {
-      this.observeItems();
-    }, 50);
-  }
-
-  observeItems() {
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('show');
-        }
-      });
-    }, { threshold: 0.15 });
-
-    this.animateItems.forEach(item => observer.observe(item.nativeElement));
   }
 
   get productsToShow(): any[] {
@@ -352,71 +75,105 @@ export class ProductList implements OnInit, OnChanges, AfterViewInit {
     }
 
     const t = (this.searchTerm || '').trim().toLowerCase();
-
     if (t) {
       list = list.filter(p => (p?.name ?? '').toLowerCase().includes(t));
     }
-
     return list;
   }
 
   private getCategoryId(p: any): number | null {
-    const id = Number(p?.category_id ?? p?.categoryId ?? p?.category?.id);
+    const id = Number(
+      p?.category_id ??
+      p?.categoryId ??
+      p?.category?.id
+    );
     return Number.isFinite(id) ? id : null;
   }
 
+  // private loadAllProducts() {
+  //   this.loading = true;
+  //   this.error = null;
+
+  //   this.http.get<any[]>(this.productsUrl).subscribe({
+  //     next: (data) => {
+  //       this.allProducts = Array.isArray(data) ? data : [];
+  //       this.loading = false;
+  //     },
+  //     error: (err) => {
+  //       console.error('Error loading all products:', err);
+  //       this.error = 'Failed to load products';
+  //       this.allProducts = [];
+  //       this.loading = false;
+  //     }
+  //   });
+  // }
   private loadAllProducts() {
-    this.loading = true;
+  this.loading = true;
+  this.error = null;
 
-    this.http.get<any[]>(this.productsUrl).subscribe({
-      next: data => {
-        this.allProducts = (data || []).map(p => ({
-          ...p,
-          currentImage: p.image_url
-        }));
+  this.http.get<any[]>(this.productsUrl).subscribe({
+    next: (data) => {
+      this.allProducts = (Array.isArray(data) ? data : []).map(product => ({
+        ...product,
+        currentImage: product.image_url // Start with original main image
+      }));
+      this.loading = false;
+    },
+    error: (err) => {
+      console.error('Error loading all products:', err);
+      this.error = 'Failed to load products';
+      this.allProducts = [];
+      this.loading = false;
+    }
+  });
+}
 
-        this.loading = false;
-
-        setTimeout(() => {
-          this.observeItems();
-        }, 50);
-      },
-      error: err => {
-        this.error = "Failed to load products";
-        this.loading = false;
-      }
-    });
+onHoverImage(product: any) {
+  if (product.image_url1) {
+    product.currentImage = product.image_url1;
   }
+}
 
-  onHoverImage(product: any) {
-    if (product.image_url1) product.currentImage = product.image_url1;
-  }
+onLeaveImage(product: any) {
+  product.currentImage = product.image_url;
+}
 
-  onLeaveImage(product: any) {
-    product.currentImage = product.image_url;
-  }
 
   onImgError(evt: Event) {
     (evt.target as HTMLImageElement).src = 'assets/placeholder.png';
   }
 
-  addToCart(product: any) {
+addToCart(product: any) {
     this.cart.addToCart(product);
   }
+  // openProductPopup(product: any) {
+  //   this.selectedProducts = product;
+  //   this.showProductPopup = true;
+  // }
 
-  openProductPopup(product: any) {
-    this.selectedProducts = product;
-    this.showProductPopup = true;
+  // closeProductPopup() {
+  //   this.showProductPopup = false;
+  //   this.selectedProducts = null;
+  // }
+
+
+  get filtered() {
+  let items = this.products;
+
+  if (this.excludeProductId) {
+    items = items.filter(p => p.product_id !== this.excludeProductId);
   }
 
-  closeProductPopup() {
-    this.showProductPopup = false;
-    this.selectedProducts = null;
+  if (this.limit) {
+    items = items.slice(0, this.limit);
   }
 
-  openProductDetails(product: any) {
-    sessionStorage.setItem("fromProducts", "true");
-    this.router.navigate(['/productdetails', product.product_id]);
-  }
+  return items;
 }
 
+
+openProductDetails(product: any) {
+  this.router.navigate(['/product', product.product_id]);
+}
+
+}

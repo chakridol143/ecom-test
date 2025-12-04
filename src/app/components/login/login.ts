@@ -136,7 +136,7 @@ export class login {
     private cartServices: CartService
   ) {}
   onBackgroundClick(){
-    this.router.navigate(['/menu'])
+    this.router.navigate(['/app'])
   }
   submitLogin() {
     const adminEmail = "nallaravikishore@gmail.com";
@@ -206,12 +206,12 @@ export class login {
 
   closeDialog() {
     this.showDialog = false;
-    this.router.navigate(['/menu']);
+    this.router.navigate(['/app']);
     this.close.emit();
   }
 
   onClose() {
-    this.router.navigate(['/menu']);
+    this.router.navigate(['/app']);
   }
 
 }

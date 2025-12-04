@@ -64,13 +64,13 @@ export class Slider implements OnInit, OnDestroy {
     this.currentIndex = (this.currentIndex - 1 + this.images.length) % this.images.length;
   }
 
-  onSliderClick(img: string) {
-    const categoryId = this.sliderMap[img];
-    if (categoryId) {
-      this.categorySelect.emit(categoryId);
-      this.loadRelatedImages(categoryId);
-    }
-  }
+  // onSliderClick(img: string) {
+  //   const categoryId = this.sliderMap[img];
+  //   if (categoryId) {
+  //     this.categorySelect.emit(categoryId);
+  //     this.loadRelatedImages(categoryId);
+  //   }
+  // }
 
   /** Loads related products only when clicked */
   loadRelatedImages(categoryId: number) {

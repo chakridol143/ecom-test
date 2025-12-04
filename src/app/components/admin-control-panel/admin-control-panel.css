@@ -4,7 +4,20 @@
   background: #f5f6fa;
   font-family: "Segoe UI", sans-serif;
   overflow-x: hidden;
-  margin-top: 5%;
+  margin-top: 6%;
+}
+
+.admin-logo-top {
+  width: 100%;
+  padding: 20px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.admin-logo-top img {
+  width: 160px;
+  height: auto;
 }
 
 .sidebar {
@@ -84,7 +97,6 @@ textarea {
   min-height: 80px;
 }
 
-
 .btn {
   padding: 10px 20px;
   font-size: 15px;
@@ -122,7 +134,6 @@ textarea {
   margin-top: 8px;
   border: 1px solid #ddd;
 }
-
 
 .table-container {
   overflow-x: auto;
@@ -165,84 +176,100 @@ textarea {
 .actions .delete { color: red; }
 .actions .save { color: green; }
 
+@media (min-width: 1600px) {
+  .sidebar {
+    width: 300px;
+    padding: 30px;
+  }
+  .menu li {
+    font-size: 18px;
+    padding: 15px;
+  }
+  .main-panel {
+    padding: 50px;
+  }
+  .card.box {
+    padding: 30px;
+  }
+  .thumb {
+    width: 100px;
+    height: 100px;
+  }
+}
 
-@media (max-width: 1024px) {
+@media (max-width: 1200px) {
+  .admin-wrapper {
+    margin-top: 0;
+  }
   .sidebar {
     width: 200px;
   }
 }
 
+@media (max-width: 1024px) {
+  .sidebar {
+    width: 180px;
+  }
+  .menu li {
+    font-size: 14px;
+  }
+  .thumb {
+    width: 70px;
+    height: 70px;
+  }
+}
 
 @media (max-width: 768px) {
   .admin-wrapper {
     flex-direction: column;
-    
   }
-
   .sidebar {
     width: 100%;
     flex-direction: row;
     justify-content: center;
     padding: 15px 10px;
   }
-
   .menu {
     display: flex;
     gap: 20px;
     justify-content: center;
   }
-
   .menu li {
     margin: 0;
     padding: 10px 16px;
     font-size: 14px;
   }
-
   .main-panel {
     padding: 20px;
   }
-
   .thumb {
-    width: 65px;
-    height: 65px;
+    width: 60px;
+    height: 60px;
   }
 }
 
-
 @media (max-width: 600px) {
-  .admin-wrapper{
-    margin-top: 20%;
+  .admin-wrapper {
+    margin-top: 25%;
   }
   .sidebar {
     flex-direction: column;
     text-align: center;
   }
-
   .menu {
     flex-direction: column;
     width: 100%;
   }
-
   .menu li {
     width: 100%;
   }
-
   .card.box {
     padding: 18px;
   }
-
-  .card.box input,
-  .card.box textarea,
-  .card.box select {
-    font-size: 14px;
-    padding: 10px;
-  }
-
   .btn {
     padding: 9px 16px;
     font-size: 14px;
   }
-
   .thumb {
     width: 55px;
     height: 55px;
@@ -253,22 +280,18 @@ textarea {
   .logo {
     font-size: 22px;
   }
-
   .menu li {
     font-size: 13px;
   }
-
   .data-table th,
   .data-table td {
     font-size: 12px;
     padding: 8px;
   }
-
   .thumb {
     width: 50px;
     height: 50px;
   }
-
   .card.box {
     padding: 15px;
   }
@@ -279,14 +302,15 @@ textarea {
     font-size: 12px;
     padding: 6px;
   }
-
   .btn {
     padding: 7px 14px;
     font-size: 13px;
   }
-
   .thumb {
     width: 45px;
     height: 45px;
+  }
+  .card.box {
+    padding: 12px;
   }
 }

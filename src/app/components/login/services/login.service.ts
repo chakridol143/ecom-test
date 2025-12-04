@@ -18,7 +18,7 @@ export class LoginService {
   private adminState = new BehaviorSubject<any>(this.getAdmin());
   adminState$ = this.adminState.asObservable();
 
-  constructor(private http: HttpClient, private cartService: CartService) {}
+  constructor(private http: HttpClient, private cartService: CartService,) {}
 
   login(email: string, password: string) {
     return this.http.post<any>(`${this.apiUrl}/login`, { email, password });
@@ -60,10 +60,14 @@ export class LoginService {
     this.adminState.next({ token });
   }
 
-  adminLogout() {
-    localStorage.removeItem('adminToken');
-    this.adminState.next(null);
-  }
+  // adminLogout() {
+  //   localStorage.removeItem('adminToken');
+  //   this.adminState.next(null);
+  // }
+adminLogout() {
+  localStorage.removeItem("adminToken");
+  localStorage.removeItem("admin");
+}
 
   getAdmin() {
     return localStorage.getItem('adminToken') ? { token: localStorage.getItem('adminToken') } : null;

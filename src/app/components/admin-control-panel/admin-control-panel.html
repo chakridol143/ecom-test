@@ -1,3 +1,6 @@
+<!-- <div class="admin-logo-top">
+  <img src="../../../assets/images/gen_re.png" alt="logo">
+</div> -->
 <div class="admin-wrapper">
 
   <aside class="sidebar">
@@ -6,7 +9,7 @@
     <ul class="menu">
       <li [class.active]="activeSection === 'categories'" (click)="activeSection = 'categories'">Categories</li>
       <li [class.active]="activeSection === 'products'" (click)="activeSection = 'products'">Products</li>
-      <!-- <li>Logout</li> -->
+      <li (click)="onLog()">Logout</li>
     </ul>
   </aside>
 

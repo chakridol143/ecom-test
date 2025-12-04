@@ -84,7 +84,7 @@
 
 </div> -->
 <!-- Slider: hide on productdetails page -->
-<app-slider *ngIf="!currentRoute.includes('productdetails')"
+<!-- <app-slider *ngIf="!currentRoute.includes('productdetails')"
             (categorySelect)="onCategorySelected($event)"
             style="left: 0; top: 0; right: 0;"></app-slider>
 
@@ -145,12 +145,6 @@
         (close)="closeMensCollections()">
       </app-mens-collections>
 
-      <app-productdetails
-        *ngIf="selectedProduct && !currentRoute.includes('productdetails')"
-        [product]="selectedProduct"
-        (close)="closeProductView()">
-      </app-productdetails>
-
 
       <ng-container *ngIf="!currentRoute.includes('productdetails')">
 
@@ -172,4 +166,42 @@
     </div>
   </ng-container>
 
+</div> -->
+<div class="product-view">
+      <div class="thumbnails">
+        <img *ngFor="let img of selectedProduct.images; index as i" [src]="img" [class.active-thumb]="activeIndex === i"
+          (click)="setActive(i)" />
+      </div>
+
+      <div class="main-media">
+        <img *ngIf="!selectedProduct.images[activeIndex].endsWith('.mp4')" [src]="selectedProduct.images[activeIndex]"
+          class="main-img" />
+          </div>
+        
+        <div class="product-details">
+           <h2 class="product-title">{{ selectedProduct.title }}</h2>
+          <h1 class="name">{{ selectedProduct.name }}</h1>
+          <p class="description">{{ selectedProduct.description }}</p>
+          <h2 class="price ">₹{{ selectedProduct.price }}</h2>
+          <div class="quantity-box">
+            <button (click)="decQty()">-</button>
+            <span>{{ quantity }}</span>
+            <button (click)="incQty()">+</button>
+          </div>
+          <button class="add-cart-btn">Add to Cart</button>
+          <button class="buy-now-btn">Buy it Now</button>
+        </div>
+  </div>
+
+  
+
+<div class="related-products" *ngIf="relatedProducts.length > 0">
+  <h3>You Might Also Prefer</h3>
+  <div class="related-list">
+    <div *ngFor="let item of relatedProducts" class="related-item" (click)="onProductSelected(item)">
+      <img [src]="getImageUrl(item.image_url)" [alt]="item.name" (error)="onImageError($event)" />
+      <h4>{{ item.name }}</h4>
+      <p>₹{{ item.price }}</p>
+    </div>
+  </div>
 </div>
