@@ -302,10 +302,20 @@ export class AdminControlPanelComponent implements OnInit {
   errorMessage = '';
 constructor(private catSvc: CategoryService, private prodSvc: ProductService,private router:Router) {}
 
+  // ngOnInit(): void {
+  //   this.loadCategories();
+  //   this.loadProducts();
+  // }
   ngOnInit(): void {
-    this.loadCategories();
-    this.loadProducts();
-  }
+  this.loadCategories();
+  this.loadProducts();
+
+  window.history.pushState(null, '', window.location.href);
+  window.addEventListener('popstate', () => {
+    window.history.pushState(null, '', window.location.href);
+  });
+}
+
 
   getPreview(key: ProductImageKey): string | undefined {
     return this.productImagePreviews[key];
@@ -477,7 +487,15 @@ constructor(private catSvc: CategoryService, private prodSvc: ProductService,pri
     this.imageKeys.forEach(key => this.productImages[key] = null);
     this.productImagePreviews = {};
   }
-  onLog(){
-    this.router.navigate(['/logout']);
-  }
+ onLog() {
+  // Clear admin token (if using localStorage or sessionStorage)
+  localStorage.removeItem("adminToken");
+
+  // Navigate away
+  this.router.navigate(['/menu']);
+
+  // Prevent back button caching
+  history.pushState(null, '', location.href);
+}
+
 }
