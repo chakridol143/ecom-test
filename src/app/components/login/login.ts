@@ -1,11 +1,11 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Output, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { LoginService } from './services/login.service';
 import { CartService } from '../cart/services/cart.services';
 
-declare const google: any; // ✅ REQUIRED
+declare const google: any; // Important for TypeScript
 
 @Component({
   selector: 'app-login',
@@ -14,7 +14,7 @@ declare const google: any; // ✅ REQUIRED
   templateUrl: './login.html',
   styleUrls: ['./login.css']
 })
-export class login {
+export class login implements OnInit {
 
   @Output() close = new EventEmitter<void>();
 
@@ -30,8 +30,31 @@ export class login {
     private cartServices: CartService
   ) {}
 
-  onBackgroundClick(){
-    this.router.navigate(['/app'])
+  // -----------------------------------------------------
+  // 🚀 LOAD GOOGLE SDK DYNAMICALLY
+  // -----------------------------------------------------
+  ngOnInit(): void {
+    this.loadGoogleSDK();
+  }
+
+  loadGoogleSDK() {
+    const script = document.createElement('script');
+    script.src = "https://accounts.google.com/gsi/client";
+    script.async = true;
+    script.defer = true;
+
+    script.onload = () => {
+      console.log("Google Identity Services SDK Loaded.");
+    };
+
+    document.body.appendChild(script);
+  }
+
+  // -----------------------------------------------------
+  // 🔹 NORMAL LOGIN (Your existing code)
+  // -----------------------------------------------------
+  onBackgroundClick() {
+    this.router.navigate(['/app']);
   }
 
   submitLogin() {
@@ -45,7 +68,6 @@ export class login {
     }
   }
 
-  // 🔹 NORMAL USER LOGIN
   onLogin() {
     this.loginService.login(this.email, this.password).subscribe({
       next: (res) => {
@@ -69,7 +91,6 @@ export class login {
     });
   }
 
-  // 🔹 ADMIN LOGIN
   adminLogin() {
     if (!this.email.trim() || !this.password.trim()) {
       this.error = "Email and Password are required";
@@ -99,9 +120,14 @@ export class login {
   }
 
   // -----------------------------------------------------
-  // ✅ GOOGLE LOGIN BELOW
+  // 🟦 GOOGLE LOGIN
   // -----------------------------------------------------
   loginWithGoogle() {
+    if (!google || !google.accounts || !google.accounts.id) {
+      console.error("Google SDK not loaded yet!");
+      return;
+    }
+
     google.accounts.id.initialize({
       client_id: "903633108888-060od4a8pomrecrla9kifepblbdtp5b4.apps.googleusercontent.com",
       callback: (response: any) => this.handleGoogleResponse(response)
@@ -116,7 +142,8 @@ export class login {
 
     console.log("GOOGLE USER:", user);
 
-    // 👉 TODO: You can send this user/email to your backend to create/login user
+    // 👉 Optional: send to backend to register/login user
+    // this.loginService.googleLogin(user).subscribe(...)
   }
 
   decodeJwt(token: string) {
