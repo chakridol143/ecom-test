@@ -1,0 +1,271 @@
+.product-layout {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  width: 100%;
+}
+
+/* Thumbnail column */
+.thumbnails {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100px;
+  margin-left: 50px;
+  margin-top: 8%;
+  
+}
+
+.thumbnails img {
+  width: 100px;
+  height: 110px;
+  object-fit: cover;
+  border: 2px solid #ccc;
+  border-radius: 6px;
+  cursor: pointer;
+
+}
+
+.active-thumb {
+  border-color: #cfa800;
+}
+
+/* Main image */
+.main-media {
+  width: 700px;
+  height: 700px;
+  /* border-radius: 10px; */
+  /* border: 2px solid #ccc; */
+  overflow: hidden;
+  /* background: #000; */
+  margin-left: 25px;
+}
+
+.main-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  margin-top: 19%;
+}
+
+/* Product Details */
+.product-details {
+  width: 350px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;  
+  margin-right: 5px;
+  margin-left: 5%;
+  margin-top: 10%;
+}
+.product-title {
+    font-size: 16px !important;
+    margin-bottom: 15px !important;
+  }
+
+.sku {
+  font-size: 14px;
+  color: #555;
+}
+
+.pricing-section {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.price {
+  font-size: 26px;
+  font-weight: 700;
+  color: #000;
+}
+
+.old-price {
+  text-decoration: line-through;
+  color: #888;
+}
+
+.discount {
+  background: #b70039;
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 600;
+  width: 90px;
+  height: 20px;
+  font-size: 18px;
+  border-radius: 6px;
+  align-items: center;
+}
+
+.tax {
+  font-size: 14px;
+  color: #666;
+}
+
+.quantity-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.quantity-box button {
+  width: 35px;
+  height: 35px;
+  font-size: 18px;
+  border-radius: 6px;
+}
+
+.btn-row {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.add-cart-btn {
+  background: #d96d7d;
+  color: #fff;
+  padding: 14px;
+  border-radius: 6px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.buy-btn {
+  background: #7b414c;
+  color: #fff;
+  padding: 14px;
+  border-radius: 6px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+
+
+@media (max-width: 600px) {
+  .product-layout {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .thumbnails {
+    flex-direction: row;
+    overflow-x: auto;
+    width: 100%;
+  }
+
+  .thumbnails img {
+    width: 70px;
+    height: 90px;
+  }
+
+  .main-media {
+    width: 100%;
+    height: 300px;
+  }
+
+  .product-details {
+    width: 100%;
+  }
+}
+
+
+/* Related Products Section */
+.related-section {
+  margin-top: 50px;
+  width: 92%;
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 20px 0;
+}
+
+.related-title {
+  font-size: 30px;
+  font-weight: 700;
+  color: rgb(8, 8, 8);
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.related-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+}
+
+.related-card {
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 10px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+  text-align: center;
+  background: #fff;
+}
+
+.related-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 10px 20px rgba(0,0,0,0.2);
+}
+
+.related-card img.related-img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 8px;
+}
+
+.related-card h4 {
+  font-size: 16px;
+  margin: 6px 0;
+  font-weight: 600;
+  color: #333;
+}
+
+.related-card p {
+  font-size: 14px;
+  font-weight: bold;
+  color: #d9534f;
+}
+
+/* Responsive */
+@media (max-width: 903px) and (min-width: 601px) {
+  .related-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .related-card img.related-img {
+    height: 180px;
+  }
+}
+
+@media (max-width: 600px) {
+  .related-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 12px !important;
+  }
+  .related-card img.related-img {
+    height: 150px !important;
+  }
+}
+
+@media (max-width: 400px) {
+  .related-card img.related-img {
+    height: 120px;
+  }
+}
+
+@media (max-width: 330px) {
+  .related-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.description{
+   font-size: 16px !important;
+    margin-bottom: 15px !important;
+}

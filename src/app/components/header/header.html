@@ -1,64 +1,62 @@
-<header class="header-container">
+<div class="shipping-bar">
+  <h4>FREE SHIPPING ALL OVER INDIA</h4>
+</div>
 
-  <!-- LEFT -->
+<header class="header-container" [class.scrolled]="isScrolled">
+
   <div class="header-left">
-    <div class="logo">
-      <img src="../../../assets/images/JewelerLogo.png" alt="">
+
+    <div class="left-nav desktop-only">
+      <span (click)="showBestSellers()">Bestsellers</span>
+      <span (click)="showNewReleases()">New Releases</span>
+      <span (click)="showMensCollections()">Men's Collection</span>
+      <span (click)="showWomenCollections()">Women's Collection</span>
     </div>
+
+    
+    <span class="menu-icon mobile-only" (click)="toggleMenu()">☰</span>
   </div>
 
-  <!-- CENTER (SEARCH) -->
-  <div class="header-center">
-    <app-search
-      (searchEvent)="onSearch($event)"
-      (filterEvent)="filterComponent.openFilter()">
-    </app-search>
+  <div class="logo">
+    <img src="../../../assets/images/gen_re.png" alt="logo">
   </div>
 
-  <!-- RIGHT (DESKTOP ONLY) -->
-  <div class="header-right desktop-only">
-
-    <ng-container *ngIf="!user; else loggedIn">
-      <button routerLink="/login" class="login-btn">Login</button>
-      <button routerLink="/register" class="login-btn">Register</button>
+  <div class="right-icons">
+    <img src="../../../assets/images/search.png" class="icon" (click)="openSearch()" />
+  
+    <ng-container *ngIf="!user">
+      <img src="../../../assets/images/login1.png" class="icon" routerLink="/login" />
     </ng-container>
 
-    <ng-template #loggedIn>
+    <ng-container *ngIf="user">
       <span class="user-name">Hello {{ user.name }}</span>
-      <button class="logout-btn" (click)="logout()">Logout</button>
-    </ng-template>
-
+      <button class="logout-btn" (click)="logoutUser()">Logout</button>
+    </ng-container>
   </div>
-
-  <app-filter #filterComponent></app-filter>
-
-  <!-- MOBILE BUTTON -->
-  <button class="menu-icon mobile-only" (click)="toggleMenu()">☰</button>
 
 </header>
 
+<div class="full-search" *ngIf="searchOpen">
+  <div class="search-area">
+    <img src="../../../assets/images/search.png" class="search-big-icon">
 
-<!-- MOBILE MENU -->
-<div class="mobile-menu" [class.open]="menuOpen">
+    <input 
+      placeholder="SEARCH FOR..."
+      [(ngModel)]="overlaySearch"
+      (keyup)="onSearch(overlaySearch)"
+      (keydown.enter)="performSearch()" 
+    />
 
-  <ng-container *ngIf="!user; else loggedMobile">
-    <button routerLink="/login" class="menu-btn">Login</button>
-    <button routerLink="/register" class="menu-btn">Register</button>
-  </ng-container>
-
-  <ng-template #loggedMobile>
-    <p class="mobile-hello">Hello {{ user.name }}</p>
-    <button class="menu-btn logout" (click)="logout()">Logout</button>
-  </ng-template>
-
-  <button routerLink="/admin" class="menu-btn">Admin Control Panel</button>
+    <span class="close-search" (click)="closeSearch()">✕</span>
+  </div>
 </div>
 
-<!-- NAVBAR BELOW -->
-<app-navbar 
-  (womenCollectionClick)="showWomenCollections()"
-  (productClicked)="onProductSelected($event)"
-  (newReleasesClick)="showNewReleases()"
-  (bestSellersClick)="showBestSellers()"
-  (mensCollectionClick)="showMensCollections()">
-</app-navbar>
+<div class="mobile-menu" [class.open]="menuOpen">
+
+  <span (click)="showBestSellers()">Bestsellers</span>
+  <span (click)="showNewReleases()">New Releases</span>
+  <span (click)="showMensCollections()">Men's Collection</span>
+  <span (click)="showWomenCollections()">Women's Collection</span>
+
+</div>
+

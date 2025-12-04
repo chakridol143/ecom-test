@@ -4,6 +4,8 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Footer } from "../footer/footer";
 import { CartService } from '../cart/services/cart.services';
+import { ActivatedRoute, Router } from '@angular/router';
+import { SearchBusService } from '../search/services/search-bus.service';
 
 
 @Component({
@@ -18,6 +20,9 @@ export class ProductList implements OnInit, OnChanges {
   @Output() addToCartEvent = new EventEmitter<any>();
   @Input() searchTerm: string = '';
   @Input() categoryId: number | null = null;
+  
+  @Input() limit: number | null = null;
+@Input() excludeProductId: number | null = null;
 
   products: any[] = [];
   allProducts: any[] = [];
@@ -34,21 +39,36 @@ export class ProductList implements OnInit, OnChanges {
 
   // private apiHost = 'http://localhost:3000';
   // private apiHost1 = 'http://localhost:3001'
-  // private productsUrl = `${this.apiHost}/api/products`;
-  // private categoryProductsUrl = `${this.apiHost1}/api/category`;
+  // private productsUrl = ${this.apiHost}/api/products;
+  // private categoryProductsUrl = ${this.apiHost1}/api/category;
   private apiHost = 'https://ecom-backend-production-5341.up.railway.app';
-  private apiHost1 = 'https://ecom-backend-production-5341.up.railway.app'
+  private apiBase = 'https://ecom-backend-production-5341.up.railway.app';
+  private apiHost1 = 'https://ecom-backend-production-5341.up.railway.app';
   private productsUrl = `${this.apiHost}/api/products`;
   private categoryProductsUrl = `${this.apiHost1}/api/category`;
   constructor(
     private http: HttpClient,
     private cart: CartService,
-  
+  private route: ActivatedRoute,
+  private router: Router,
+  private searchBus: SearchBusService
   ) {}
 
-  ngOnInit() {
+ngOnInit() {
+
+  this.route.paramMap.subscribe(params => {
+    const id = params.get('categoryId');
+    this.categoryId = id ? Number(id) : null;
+
+    this.showFullDetails = !!this.categoryId;
+
     this.loadAllProducts();
-  }
+  });
+
+  this.searchBus.term$.subscribe(term => {
+    this.searchTerm = term.trim();
+  });
+}
 
  
   ngOnChanges() {
@@ -134,13 +154,34 @@ onLeaveImage(product: any) {
 addToCart(product: any) {
     this.cart.addToCart(product);
   }
-  openProductPopup(product: any) {
-    this.selectedProducts = product;
-    this.showProductPopup = true;
+  // openProductPopup(product: any) {
+  //   this.selectedProducts = product;
+  //   this.showProductPopup = true;
+  // }
+
+  // closeProductPopup() {
+  //   this.showProductPopup = false;
+  //   this.selectedProducts = null;
+  // }
+
+
+  get filtered() {
+  let items = this.products;
+
+  if (this.excludeProductId) {
+    items = items.filter(p => p.product_id !== this.excludeProductId);
   }
 
-  closeProductPopup() {
-    this.showProductPopup = false;
-    this.selectedProducts = null;
+  if (this.limit) {
+    items = items.slice(0, this.limit);
   }
+
+  return items;
+}
+
+
+openProductDetails(product: any) {
+  this.router.navigate(['/product', product.product_id]);
+}
+
 }

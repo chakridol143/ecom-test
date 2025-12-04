@@ -16,21 +16,21 @@ export class Slider implements OnInit, OnDestroy {
   @Output() categorySelect = new EventEmitter<number>();
 
   images = [
-    '../../../assets/images/slider1.png',
-    '../../../assets/images/slider3.png',
-    '../../../assets/images/slider4.png',
-    '../../../assets/images/slider5.png',
-    '../../../assets/images/slider6.png',
-    '../../../assets/images/slider8.png'
+    '../../../assets/images/cr1.png',
+    '../../../assets/images/cr2.png',
+    '../../../assets/images/cr3.png',
+    '../../../assets/images/cr4.png',
+    '../../../assets/images/cr5.png',
+    // '../../../assets/images/slider8.png'
   ];
 
   sliderMap: { [key: string]: number } = {
-    '../../../assets/images/slider1.png': 1,
-    '../../../assets/images/slider3.png': 7,
-    '../../../assets/images/slider4.png': 5,
-    '../../../assets/images/slider5.png': 2,
-    '../../../assets/images/slider6.png':3,
-    '../../../assets/images/slider8.png':4
+    '../../../assets/images/cr1.png': 1,
+    '../../../assets/images/cr2.png': 7,
+    '../../../assets/images/cr3.png': 5,
+    '../../../assets/images/cr4.png': 2,
+    '../../../assets/images/cr5.png':3,
+    // '../../../assets/images/slider8.png':4
 
   };
 
@@ -64,13 +64,13 @@ export class Slider implements OnInit, OnDestroy {
     this.currentIndex = (this.currentIndex - 1 + this.images.length) % this.images.length;
   }
 
-  onSliderClick(img: string) {
-    const categoryId = this.sliderMap[img];
-    if (categoryId) {
-      this.categorySelect.emit(categoryId);
-      this.loadRelatedImages(categoryId);
-    }
-  }
+  // onSliderClick(img: string) {
+  //   const categoryId = this.sliderMap[img];
+  //   if (categoryId) {
+  //     this.categorySelect.emit(categoryId);
+  //     this.loadRelatedImages(categoryId);
+  //   }
+  // }
 
   /** Loads related products only when clicked */
   loadRelatedImages(categoryId: number) {

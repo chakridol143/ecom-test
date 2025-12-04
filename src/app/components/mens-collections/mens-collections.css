@@ -2,6 +2,16 @@
   width: 100%;
   padding: 15px 10px;
 }
+p{
+  font-family: "Libre Baskerville", serif;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #1a1a1a;
+  text-align: center;
+  margin-top: 18px;
+}
 
 .category h3 {
   font-size: 20px;
