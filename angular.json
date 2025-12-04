@@ -13,23 +13,19 @@
         "build": {
           "builder": "@angular/build:application",
           "options": {
-  "browser": "src/main.ts",
-  "polyfills": [
-    "zone.js"
-  ],
-  "tsConfig": "tsconfig.app.json",
-  "assets": [
-    "src/favicon.ico",
-    "src/assets"
-  ],
-  "styles": [
-    "src/styles.css"
-  ],
-  "scripts": [
-    "https://accounts.google.com/gsi/client"
-  ]
-}
-,
+            "browser": "src/main.ts",
+            "polyfills": [
+              "zone.js"
+            ],
+            "tsConfig": "tsconfig.app.json",
+            "assets": [
+              "src/favicon.ico",
+              "src/assets"
+            ],
+            "styles": [
+              "src/styles.css"
+            ]
+          },
           "configurations": {
             "production": {
               "budgets": [
