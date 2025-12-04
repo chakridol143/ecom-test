@@ -1,117 +1,11 @@
-// import { Component, EventEmitter, Output } from '@angular/core';
-// import { CommonModule } from '@angular/common';
-// import { FormsModule } from '@angular/forms';
-// import { Router, RouterLink } from '@angular/router';
-// import { LoginService } from './services/login.service';
-// import { CartService } from '../cart/services/cart.services';
-
-// @Component({
-//   selector: 'app-login',
-//   standalone: true,
-//   imports: [CommonModule, FormsModule, RouterLink],
-//   templateUrl: './login.html',
-//   styleUrls: ['./login.css']
-// })
-// export class login {
-
-//   @Output() close = new EventEmitter<void>();
-//   email = '';
-//   password = '';
-//   showDialog = false;
-//   error = '';
-
-//   constructor(private router: Router, private loginService: LoginService,private cartServices:CartService) {}
-
-//   submitLogin() {
-//     const adminEmail = "nallaravikishore@gmail.com";
-//     const adminPassword = "Ravi_@123";
-
-//     // 1️⃣ ADMIN LOGIN CHECK
-//     if (this.email === adminEmail && this.password === adminPassword) {
-//       this.adminLogin();
-//     } 
-//     else {
-//       this.onLogin();
-//     }
-//   }
-//   onLogin() {
-//   this.loginService.login(this.email, this.password).subscribe({
-//     next: (res) => {
-//        this.loginService.saveSession(res.token, res.user);
-//         this.showDialog = true;
-//       console.log("LOGIN RESPONSE:", res);
-
-//       const userId = res.user?.user_id; 
-//       const token = res.token;
-
-//       if (!userId) {
-//         console.error("❌ userId still undefined. Wrong key in login response.");
-//         return;
-//       }
-
-//       // Save to localStorage
-//       localStorage.setItem("userId", userId.toString());
-//       localStorage.setItem("token", token);
-
-//       // Merge Local Cart → DB
-//       this.cartServices.mergeCartAfterLogin(userId, token);
-
-//       // Close popup and refresh checkout
-//       this.close.emit();   // Trigger parent event to hide popup
-//     },
-//     error: (err) => {
-//       console.error("❌ Login failed:", err);
-//     }
-    
-//   });
-// }
-
-// adminLogin() {
-//   if (!this.email.trim() || !this.password.trim()) {
-//     this.error = "Email and Password are required";
-//     return;
-//   }
-
-//   this.loginService.adminLogin(this.email, this.password).subscribe({
-//     next: (res) => {
-//       console.log("ADMIN LOGIN RESPONSE:", res);
-
-      
-//       this.loginService.saveAdminSession(res.token);
-
-      
-//       sessionStorage.setItem("admin", JSON.stringify({ email: this.email }));
-
-     
-//       this.error = "";
-
-    
-//       this.router.navigate(['/admin']);
-//     },
-
-//     error: (err) => {
-//       console.error("❌ Admin Login Failed:", err);
-//       this.error = "Invalid Email or Password";
-//     }
-//   });
-// }
-
-//   closeDialog() {
-//     this.showDialog = false;
-//     this.router.navigate(['/menu']); 
-//     this.close.emit();
-//   }
-  
-//   onClose() {
-//     this.router.navigate(['menu']);
-//   }
-// }
 import { Component, EventEmitter, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { LoginService } from './services/login.service';
 import { CartService } from '../cart/services/cart.services';
+
+declare const google: any; // ✅ REQUIRED
 
 @Component({
   selector: 'app-login',
@@ -135,9 +29,11 @@ export class login {
     private loginService: LoginService,
     private cartServices: CartService
   ) {}
+
   onBackgroundClick(){
     this.router.navigate(['/app'])
   }
+
   submitLogin() {
     const adminEmail = "nallaravikishore@gmail.com";
     const adminPassword = "Ravi_@123";
@@ -155,23 +51,17 @@ export class login {
       next: (res) => {
         this.loginService.saveSession(res.token, res.user);
         this.showDialog = true;
-        console.log("LOGIN RESPONSE:", res);
 
         const userId = res.user?.user_id;
         const token = res.token;
 
-        if (!userId) {
-          console.error("❌ userId is undefined. Wrong backend response.");
-          return;
-        }
+        if (!userId) return;
 
         localStorage.setItem("userId", userId.toString());
         localStorage.setItem("token", token);
 
-        // merge guest cart → db
         this.cartServices.mergeCartAfterLogin(userId, token);
-
-        this.close.emit(); // close popup
+        this.close.emit();
       },
       error: (err) => {
         console.error("❌ Login failed:", err);
@@ -188,17 +78,11 @@ export class login {
 
     this.loginService.adminLogin(this.email, this.password).subscribe({
       next: (res) => {
-        console.log("ADMIN LOGIN RESPONSE:", res);
-
         this.loginService.saveAdminSession(res.token);
         sessionStorage.setItem("admin", JSON.stringify({ email: this.email }));
-
-        this.error = "";
         this.router.navigate(['/admin']);
       },
-
-      error: (err) => {
-        console.error("❌ Admin Login Failed:", err);
+      error: () => {
         this.error = "Invalid Email or Password";
       }
     });
@@ -214,4 +98,28 @@ export class login {
     this.router.navigate(['/app']);
   }
 
+  // -----------------------------------------------------
+  // ✅ GOOGLE LOGIN BELOW
+  // -----------------------------------------------------
+  loginWithGoogle() {
+    google.accounts.id.initialize({
+      client_id: "903633108888-060od4a8pomrecrla9kifepblbdtp5b4.apps.googleusercontent.com",
+      callback: (response: any) => this.handleGoogleResponse(response)
+    });
+
+    google.accounts.id.prompt();
+  }
+
+  handleGoogleResponse(response: any) {
+    const credential = response.credential;
+    const user = this.decodeJwt(credential);
+
+    console.log("GOOGLE USER:", user);
+
+    // 👉 TODO: You can send this user/email to your backend to create/login user
+  }
+
+  decodeJwt(token: string) {
+    return JSON.parse(atob(token.split('.')[1]));
+  }
 }
