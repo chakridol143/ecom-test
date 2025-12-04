@@ -77,7 +77,7 @@ h2{
 
 
 .video-item p {
-  position: fixed;
+  position: absolute;
   left: 0;
   width: 100%;
   padding: 8px 12px;
@@ -90,8 +90,7 @@ h2{
   backdrop-filter: blur(2px);
 }
 
-
-.video-item .name {
+ .video-item .name {
   bottom: 35px;
   font-size: 15px;
   opacity: 0.95;
@@ -101,7 +100,7 @@ h2{
   bottom: 0;
   font-size: 15px;
   font-weight: 700;
-}
+} 
 
 
 @media (max-width: 768px) {
