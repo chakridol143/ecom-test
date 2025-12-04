@@ -6,6 +6,11 @@ import { LoginService } from './services/login.service';
 import { CartService } from '../cart/services/cart.services';
 
 declare const google: any; // Important for TypeScript
+declare global {
+  interface Window {
+    google: any;
+  }
+}
 
 @Component({
   selector: 'app-login',
@@ -119,23 +124,25 @@ export class login implements OnInit {
     this.router.navigate(['/app']);
   }
 
-  // -----------------------------------------------------
-  // 🟦 GOOGLE LOGIN
-  // -----------------------------------------------------
-  loginWithGoogle() {
-    if (!google || !google.accounts || !google.accounts.id) {
-      console.error("Google SDK not loaded yet!");
-      return;
+loginWithGoogle() {
+  console.log("Google Login Button CLICKED");
+
+  const checkGoogle = setInterval(() => {
+    if (window.google && google.accounts && google.accounts.id) {
+      clearInterval(checkGoogle);
+
+      console.log("Google SDK READY. Initializing login...");
+
+      google.accounts.id.initialize({
+        client_id: "903633108888-060od4a8pomrecrla9kifepblbdtp5b4.apps.googleusercontent.com",
+        callback: (response: any) => this.handleGoogleResponse(response)
+      });
+
+      google.accounts.id.prompt();
     }
+  }, 200);
+}
 
-    google.accounts.id.initialize({
-      client_id: "903633108888-060od4a8pomrecrla9kifepblbdtp5b4.apps.googleusercontent.com",
-      callback: (response: any) => this.handleGoogleResponse(response)
-    });
-
-    google.accounts.id.prompt();
-      console.log("Google Login Button CLICKED");
-  }
 
   handleGoogleResponse(response: any) {
     const credential = response.credential;
