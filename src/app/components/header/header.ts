@@ -182,21 +182,21 @@ export class Header implements OnInit {
     this.menuOpen = !this.menuOpen;
   }
 
-   showWomenCollections() {
-    this.viewState.showWomensCollection();
-  }
+  //  showWomenCollections() {
+  //   this.viewState.showWomensCollection();
+  // }
 
-  showNewReleases() {
-    this.viewState.showReleases();
-  }
+  // showNewReleases() {
+  //   this.viewState.showReleases();
+  // }
 
-  showBestSellers() {
-    this.viewState.showBestsellers();
-  }
+  // showBestSellers() {
+  //   this.viewState.showBestsellers();
+  // }
 
-  showMensCollections() {
-    this.viewState.showMensCollection();
-  }
+  // showMensCollections() {
+  //   this.viewState.showMensCollection();
+  // }
   selectedProduct: any = null;
   onProductSelected(product: any) {
     this.viewState.setSelectedProduct(product);
@@ -204,4 +204,10 @@ export class Header implements OnInit {
   closeProductView(){
     this.selectedProduct = null;
   }
+  goto(route: string) {
+  this.router.navigate([route]);
+}
+logoClick() {
+  this.router.navigate(['']);
+}
 }

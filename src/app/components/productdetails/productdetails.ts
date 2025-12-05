@@ -140,6 +140,14 @@ onLeaveImage(item: any) {
   this.router.navigate(['/product', productId]);
 }
 
+onScroll(event: any) {
+  const media = event.target;
+  if (media.scrollLeft > 20) {
+    media.classList.add('scrolled');
+  } else {
+    media.classList.remove('scrolled');
+  }
+}
 
 
 }

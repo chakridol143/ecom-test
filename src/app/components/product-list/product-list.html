@@ -282,7 +282,6 @@
 
    
         <div *ngIf="showFullDetails" class="full-details-card">
-          <h1></h1>
          <img [src]="'https://ecom-backend-production-5341.up.railway.app/assets/images/' + product.currentImage"
             alt="{{ product.name }}" class="product-img" (click)="openProductDetails(product)"
             (mouseenter)="onHoverImage(product)" (mouseleave)="onLeaveImage(product)" (error)="onImgError($event)" />

@@ -3,7 +3,6 @@ html, body {
   padding: 0;
 }
 
-/* MAIN FOOTER (Desktop Layout) */
 .footer-main {
   background: #8d646b;
   padding: 60px;
@@ -255,6 +254,23 @@ html, body {
     padding-bottom: 10px;
     scroll-behavior: smooth;
   }
+  .testimonial-card h3{
+    font-family: "Libre Baskerville", serif;
+    font-size: 16px;
+    font-weight: 400;
+    text-transform: uppercase;
+    color: #1a1a1a;
+    text-align: center;
+  }
+   .testimonial-card p{
+    font-family: "Libre Baskerville", serif;
+    font-size: 10px;
+    font-weight: 400;
+    text-transform: uppercase;
+    color: #1a1a1a;
+    text-align: center;
+    margin-top: 5px;
+   }
   .only-name{
     letter-spacing: 1px;
     font-size: 10px;

@@ -2,7 +2,7 @@
   position: relative;
   width: 100%;
   overflow: hidden;
-  margin-top: 135px;
+  margin-top: 53px;
   height: 50%;
 }
 
@@ -49,6 +49,6 @@
 -------------------------------------------------------------- */
 @media (max-width: 480px) {
   .slider-container {
-    margin-top: 74px !important;
+    margin-top: 73px !important;
   }
 }
