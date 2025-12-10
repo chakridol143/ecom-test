@@ -7,10 +7,10 @@
   <div class="header-left">
 
     <div class="left-nav desktop-only">
-      <span (click)="showBestSellers()">Bestsellers</span>
-      <span (click)="showNewReleases()">New Releases</span>
-      <span (click)="showMensCollections()">Men's Collection</span>
-      <span (click)="showWomenCollections()">Women's Collection</span>
+     <span (click)="goto('/bestsellers')">Bestsellers</span>
+      <span (click)="goto('/releases')">New Releases</span>
+      <span (click)="goto('/mens')">Men's Collection</span>
+      <span (click)="goto('/womens')">Women's Collection</span>
     </div>
 
     
@@ -52,11 +52,10 @@
 </div>
 
 <div class="mobile-menu" [class.open]="menuOpen">
-
-  <span (click)="showBestSellers()">Bestsellers</span>
-  <span (click)="showNewReleases()">New Releases</span>
-  <span (click)="showMensCollections()">Men's Collection</span>
-  <span (click)="showWomenCollections()">Women's Collection</span>
+<span (click)="goto('/bestsellers')">Bestsellers</span>
+      <span (click)="goto('/releases')">New Releases</span>
+      <span (click)="goto('/mens')">Men's Collection</span>
+      <span (click)="goto('/womens')">Women's Collection</span>
 
 </div>
 

@@ -182,21 +182,8 @@ export class Header implements OnInit {
     this.menuOpen = !this.menuOpen;
   }
 
-   showWomenCollections() {
-    this.viewState.showWomensCollection();
-  }
-
-  showNewReleases() {
-    this.viewState.showReleases();
-  }
-
-  showBestSellers() {
-    this.viewState.showBestsellers();
-  }
-
-  showMensCollections() {
-    this.viewState.showMensCollection();
-  }
+ 
+  
   selectedProduct: any = null;
   onProductSelected(product: any) {
     this.viewState.setSelectedProduct(product);
@@ -204,4 +191,9 @@ export class Header implements OnInit {
   closeProductView(){
     this.selectedProduct = null;
   }
+
+  goto(route: string) {
+  // this.isAllMenuOpen = false; // optional: close dropdown
+  this.router.navigate([route]);
+}
 }

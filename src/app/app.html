@@ -30,7 +30,8 @@
 <div class="content">
   <router-outlet></router-outlet>
 </div>
-<div><app-watch-nshop></app-watch-nshop></div>
 <app-cart [cartCount]="cartCount" [items]="cartItems">
 </app-cart>
+<div *ngIf="showSliderAndCategories()"><app-watch-nshop></app-watch-nshop></div>
+<div *ngIf="showSliderAndCategories()"><app-banner1></app-banner1></div>
 <app-footer></app-footer>

@@ -1,4 +1,4 @@
-
+<!-- 
   <div class="close-wrapper">
     <button class="close-btn" (click)="close.emit()">✖</button>
   </div>
@@ -58,4 +58,13 @@
   </div>
 </div>
 <hr />
+ -->
 
+ 
+<div class="gallery">
+  <div class="item" *ngFor="let p of products">
+    <img class="img img-1" [src]="p.img1" />
+    <img class="img img-2" [src]="p.img2" />
+    <p class="title">{{ p.name }}</p>
+  </div>
+</div>
