@@ -13,7 +13,8 @@ import { category } from './components/category/category';
 import { Cart } from './components/cart/cart';
 import { WatchNshop } from "./watch-nshop/watch-nshop";
 import { Footer } from './components/footer/footer';
-import { Banner1 } from "./banner1/banner1";
+import { Banner1 } from './components/banner1/banner1';
+
 
 
 

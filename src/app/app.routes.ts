@@ -48,7 +48,8 @@ import { NgModule } from '@angular/core';
 import { Productdetails } from './components/productdetails/productdetails';
 import { AdminControlPanelComponent } from './components/admin-control-panel/admin-control-panel';
 import { AdminAuthGuard } from './components/gaurds/admin.auth';
-import { Banner1 } from './banner1/banner1';
+import { Banner1 } from './components/banner1/banner1';
+
 
 
 
