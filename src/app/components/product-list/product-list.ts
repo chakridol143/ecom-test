@@ -2,7 +2,6 @@ import { Component, OnInit, Input, Output, EventEmitter, OnChanges } from '@angu
 import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { Footer } from "../footer/footer";
 import { CartService } from '../cart/services/cart.services';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SearchBusService } from '../search/services/search-bus.service';

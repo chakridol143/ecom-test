@@ -9,13 +9,16 @@ import { category } from './components/category/category';
 import { Cart } from './components/cart/cart';
 import { WatchNshop } from "./watch-nshop/watch-nshop";
 import { Footer } from './components/footer/footer';
+import { Banner1 } from './components/banner1/banner1';
+
 
 
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, Header, CommonModule, Slider, category, WatchNshop, Footer], 
+
+  imports: [RouterOutlet, Header, CommonModule, Slider, category, WatchNshop, Footer, Banner1], 
   templateUrl: './app.html',
   styleUrls: ['./app.css']
 })

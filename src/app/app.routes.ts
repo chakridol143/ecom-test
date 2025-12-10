@@ -47,6 +47,8 @@ import { NgModule } from '@angular/core';
 import { Productdetails } from './components/productdetails/productdetails';
 import { AdminControlPanelComponent } from './components/admin-control-panel/admin-control-panel';
 import { AdminAuthGuard } from './components/gaurds/admin.auth';
+import { Banner1 } from './components/banner1/banner1';
+
 
 
 
@@ -70,6 +72,7 @@ export const routes: Routes = [
   { path: 'cart', component: Cart }  ,
   { path: 'bestsellers', component: Bestsellers },
 { path: 'releases', component: Releases },
+{ path: 'banner1', component: Banner1 },
 { path: 'mens', component: MensCollections },
 { path: 'womens', component: WomensCollections },
 { path: 'menu', component: Menu },

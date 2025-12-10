@@ -1,0 +1,32 @@
+<div class="mens-section">
+
+  <div class="left-big">
+    <img [src]="bigImg.img1" class="big-img" />
+  </div>
+
+  <div class="right-small">
+
+    <h2 class="heading">Mens Collection</h2>
+    <button class="shop-btn">Shop now</button>
+
+    <div class="small-grid">
+      <img 
+        [src]="small1.img1"
+        class="small-img"
+        (click)="showFrom((currentIndex + 1) % products.length)"
+      />
+
+      <img 
+        [src]="small2.img1"
+        class="small-img"
+        (click)="showFrom((currentIndex + 2) % products.length)"
+      />
+    </div>
+
+    <div class="arrows">
+      <button (click)="prev()">&#10094;</button>
+      <button (click)="next()">&#10095;</button>
+    </div>
+
+  </div>
+</div>
