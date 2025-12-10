@@ -35,7 +35,6 @@ import { Logout } from './logout/logout';
 import { RegisterComponent } from './components/register/register';
 import { Navbar } from './components/navbar/navbar';
 import { Slider } from './components/slider/slider';
-import { category } from './components/category/category';
 import { ProductList } from './components/product-list/product-list';
 import { Cart } from './components/cart/cart';
 import { MensCollections } from './components/mens-collections/mens-collections';
@@ -65,11 +64,8 @@ export const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'navbar', component: Navbar },
   { path: 'slider', component: Slider },
-  // { path: 'category', component: category },
   { path: '', component: ProductList },
   { path: 'products/:categoryId', component: ProductList },
-
-  
   { path: '', redirectTo: 'ProductList', pathMatch: 'full' },
   { path: 'cart', component: Cart }  ,
   { path: 'bestsellers', component: Bestsellers },
