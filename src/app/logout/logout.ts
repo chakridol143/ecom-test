@@ -15,6 +15,6 @@ export class Logout {
     logout() {
     this.auth.logout();
     this.user = null;
-    this.router.navigate(['/menu']);
+    this.router.navigate(['/login']);
   }
 }

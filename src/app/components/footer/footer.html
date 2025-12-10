@@ -1,65 +1,160 @@
-<!-- ================= FOOTER MAIN SECTION ================= -->
-<section class="footer-main">
-  <div class="footer-left">
-    <h2>Let’s get in touch</h2>
-    <p>Sign up for our newsletter and receive 10% off your purchase</p>
+<section class="testimonials-container">
+  <h2 class="section-title">What People Are Saying</h2>
 
-    <div class="email-box">
-      <span class="email-icon">✉</span>
-      <input type="email" placeholder="Enter your email">
-      <button class="email-submit">→</button>
+  <div class="testimonials-grid">
+    
+    <div class="testimonial-card">
+      <div class="stars">★★★★★</div>
+      <h3>“Trendy Collections”</h3>
+      <p>
+        The designs are absolutely stunning.
+        
+      </p>
+      <span class="author">MK</span>
     </div>
-  </div>
 
-  <div class="footer-column">
-    <h3>Mega Menu</h3>
-    <a href="#">New Arrivals</a>
-    <a href="#">Jewellery Sets</a>
-    <a href="#">Earrings</a>
-    <a href="#">Rings</a>
-    <a href="#">Accessories</a>
-    <a href="#">Shop by Category</a>
-    <a href="#">Shop by Collection</a>
-  </div>
-
-  <div class="footer-column">
-    <h3>Information</h3>
-    <a href="#">About us</a>
-    <a href="#">Shipping Policy</a>
-    <a href="#">International Orders</a>
-    <a href="#">Return, Refunds & Cancellations</a>
-    <a href="#">Terms of Service</a>
-    <a href="#">Privacy Policy</a>
-    <a href="#">Blogs</a>
-  </div>
-
-  <div class="footer-column">
-    <h3>Our store</h3>
-    <p><strong>Contact Details:</strong></p>
-    <p>Phone: +91-8470006006</p>
-
-    <div class="footer-social">
-      <div class="social-btn">f</div>
-      <div class="social-btn">📷</div>
-      <div class="social-btn">✕</div>
+    <div class="testimonial-card">
+      <div class="stars">★★★★★</div>
+       <h3>“Exceptional”</h3>
+      <p>
+        The earrings I purchased are even more gorgeous in person.
+      </p>
+      <span class="author">Kishore</span>
     </div>
-  </div>
-  <!-- <p>&copy; 2025 <strong>Vending Machine</strong>. All Rights Reserved.</p>
 
-  <div class="footer-links">
-    <a href="#">Terms & Conditions</a>
-    <span>|</span>
-    <a href="#">Privacy Policy</a>
-  </div> -->
+    <div class="testimonial-card">
+      <div class="stars">★★★★★</div>
+      <h3>“Fast Delivery”</h3>
+      <p>
+        Very fast delivery and great packaging.
+     
+      </p>
+      <span class="author">Chandu</span>
+    </div>
+
+    <div class="testimonial-card">
+      <div class="stars">★★★★★</div>
+      <h3>“Very Happy”</h3>
+      <p>
+        Absolutely stunning pieces!
+
+      </p>
+      <span class="author">HithaSri</span>
+    </div>
+
+  </div>
 </section>
 
-<!-- ================= COPYRIGHT SECTION ================= -->
-<!-- <footer class="footer-container">
-  <p>&copy; 2025 <strong>Vending Machine</strong>. All Rights Reserved.</p>
 
-  <div class="footer-links">
-    <a href="#">Terms & Conditions</a>
-    <span>|</span>
-    <a href="#">Privacy Policy</a>
+
+<!-- ===================== FEATURE ICONS SECTION ===================== -->
+<section class="features-section">
+
+  <div class="feature-box">
+    <img src="../../../assets/images/shipping.avif" class="feature-icon" />
+    <h4>Free Shipping</h4>
+    <p>Free shipping on all orders</p>
   </div>
-</footer> -->
+
+  <div class="feature-box">
+    <img src="../../../assets/images/support.avif" class="feature-icon" />
+    <h4>Support 24/7</h4>
+    <p>We support 24hr a day</p>
+  </div>
+
+  <div class="feature-box">
+    <img src="../../../assets/images/exchange.avif" class="feature-icon" />
+    <h4>Exchange Policy</h4>
+    <p>100% Buyer Protection</p>
+  </div>
+
+  <div class="feature-box">
+    <img src="../../../assets/images/payment.avif" class="feature-icon" />
+    <h4>Payment Secure</h4>
+    <p>We ensure secure payment</p>
+  </div>
+
+</section>
+
+
+<section class="footer-main">
+
+  <!-- CONTACT SECTION -->
+  <div class="footer-group">
+
+    <div class="footer-toggle" (click)="toggleSection('contact')">
+      Let’s get in touch <span>⌄</span>
+    </div>
+
+    <div class="footer-content" [class.active]="openSection === 'contact'">
+      <h2>Let’s get in touch</h2>
+      <p>Sign up for our newsletter and receive 10% off your purchase</p>
+
+      <div class="email-box">
+        <span class="email-icon">✉</span>
+        <input type="email" placeholder="Enter your email">
+        <button class="email-submit">→</button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- MEGA MENU -->
+  <div class="footer-group">
+
+    <div class="footer-toggle" (click)="toggleSection('mega')">
+      Mega Menu <span>⌄</span>
+    </div>
+
+    <div class="footer-content footer-column" [class.active]="openSection === 'mega'">
+      <a href="#">New Arrivals</a>
+      <a href="#">Jewellery Sets</a>
+      <a href="#">Earrings</a>
+      <a href="#">Rings</a>
+      <a href="#">Accessories</a>
+      <a href="#">Shop by Category</a>
+      <a href="#">Shop by Collection</a>
+    </div>
+
+  </div>
+
+  <!-- INFORMATION -->
+  <div class="footer-group">
+
+    <div class="footer-toggle" (click)="toggleSection('info')">
+      Information <span>⌄</span>
+    </div>
+
+    <div class="footer-content footer-column" [class.active]="openSection === 'info'">
+      <a href="#">About us</a>
+      <a href="#">Shipping Policy</a>
+      <a href="#">International Orders</a>
+      <a href="#">Return, Refunds & Cancellations</a>
+      <a href="#">Terms of Service</a>
+      <a href="#">Privacy Policy</a>
+      <a href="#">Blogs</a>
+    </div>
+
+  </div>
+
+  <!-- STORE -->
+  <div class="footer-group">
+
+    <div class="footer-toggle" (click)="toggleSection('store')">
+      Our store <span>⌄</span>
+    </div>
+
+    <div class="footer-content footer-column" [class.active]="openSection === 'store'">
+      <p><strong>Contact Details:</strong></p>
+      <p>Phone: +91 9000905029</p>
+
+      <div class="footer-social">
+        <div class="social-btn">f</div>
+        <div class="social-btn">📷</div>
+        <div class="social-btn">✕</div>
+      </div>
+    </div>
+
+  </div>
+
+</section>

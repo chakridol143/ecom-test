@@ -12,8 +12,12 @@ import { FormsModule } from '@angular/forms';
 export class Search {
   searchTerm = '';
   @Output() searchEvent = new EventEmitter<string>();
-
+   @Output() filterEvent = new EventEmitter<void>();
   onSearch()   { this.searchEvent.emit(this.searchTerm.trim()); }
   onKeyUp()    { this.searchEvent.emit(this.searchTerm.trim()); }
-  // clearSearch(){ this.searchTerm = ''; this.searchEvent.emit(''); }
+
+
+onFilter() {
+  this.filterEvent.emit();
+}
 }

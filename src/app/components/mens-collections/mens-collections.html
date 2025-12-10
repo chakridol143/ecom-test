@@ -1,61 +1,9 @@
 
-  <div class="close-wrapper">
-    <button class="close-btn" (click)="close.emit()">✖</button>
-  </div>
-
-
-<div class="category">
-  <h3>Rings</h3>
-  <div class="grid">
-     <div class="product" *ngFor="let item of rings">
-    <img [src]="item.image" />
-    <p class="name">{{ item.name }}</p>
-    <p class="price">₹{{ item.price }}</p>
+ 
+<div class="gallery">
+  <div class="item" *ngFor="let p of products">
+    <img class="img img-1" [src]="p.img1" />
+    <img class="img img-2" [src]="p.img2" />
+    <p class="title">{{ p.name }}</p>
   </div>
 </div>
-<hr />
-
-<div class="category">
-  <h3>Bracelets</h3>
-  <div class="grid">
-     <div class="product" *ngFor="let item of bracelets">
-    <img [src]="item.image" />
-    <p class="name">{{ item.name }}</p>
-    <p class="price">₹{{ item.price }}</p>
-  </div>
-</div>
-<hr />
-
-<div class="category">
-  <h3>Chains</h3>
-  <div class="grid">
-     <div class="product" *ngFor="let item of chains">
-    <img [src]="item.image" />
-    <p class="name">{{ item.name }}</p>
-    <p class="price">₹{{ item.price }}</p>
-  </div>
-</div>
-<hr />
-
-<div class="category">
-  <h3>Rings</h3>
-  <div class="grid">
-     <div class="product" *ngFor="let item of rings">
-    <img [src]="item.image" />
-    <p class="name">{{ item.name }}</p>
-    <p class="price">₹{{ item.price }}</p>
-  </div>
-</div>
-<hr />
-
-<div class="category">
-  <h3>Kids Collections</h3>
-  <div class="grid">
-     <div class="product" *ngFor="let item of kidsCollections">
-    <img [src]="item.image" />
-    <p class="name">{{ item.name }}</p>
-    <p class="price">₹{{ item.price }}</p>
-  </div>
-</div>
-<hr />
-

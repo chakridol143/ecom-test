@@ -1,21 +1,15 @@
-/* ============================================================
-   SLIDER CONTAINER
-============================================================ */
 .slider-container {
   position: relative;
-  width: 102%;
-  margin: 0 auto;
+  width: 100%;
   overflow: hidden;
-  /* border-radius: 12px; */
-  margin-top: 9%;
-  /* margin-right: 15px; */
-  margin-left: -9px;
+  margin-top: 53px;
+  height: 50%;
 }
 
-/* Outer slider wrapper */
 .slider {
   width: 100%;
   overflow: hidden;
+  margin-left: 0;
 }
 
 .slides {
@@ -23,10 +17,10 @@
   transition: transform 0.45s ease-in-out;
 }
 
-/* Each slide */
 .slide {
   min-width: 100%;
-  height: 400px;
+  height: 550px;
+  margin: 0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -35,167 +29,26 @@
 .slide img {
   width: 100%;
   height: 100%;
-  object-fit: fill;
-  cursor: pointer;
-  /* border-radius: 12px; */
-}
-
-/* ============================================================
-   NAVIGATION BUTTONS
-============================================================ */
-.nav-btn {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  /* background-color: rgba(0, 0, 0, 0.45); */
-  border: none;
-  /* color: #fff; */
-  font-size: 32px;
-  padding: 8px 14px;
-  cursor: pointer;
-  z-index: 20;
-  border-radius: 50%;
-  transition: 0.25s ease;
-}
-
-.nav-btn.left {
-  left: 10px;
-}
-
-.nav-btn.right {
-  right: 10px;
-}
-
-.nav-btn:hover {
-  background-color: rgba(0, 0, 0, 0.75);
-}
-
-/* ============================================================
-   PRODUCT CARD STYLING
-============================================================ */
-.product-card {
-  width: 100%;
-  background: #ffffff;
-  padding: 14px;
-  border-radius: 12px;
-  box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.08);
-}
-
-.product-card img {
-  width: 100%;
-  height: 260px;
   object-fit: cover;
-  border-radius: 10px;
 }
 
-
-
-/* ============================================================
-   RESPONSIVE BREAKPOINTS
-============================================================ */
-@media (min-width: 820px) and (max-width: 879px){
-  .slider-container{
-    margin-top: 50px;
-    height: 3%;
-  }
+/* RESPONSIVE HEIGHT BREAKPOINTS */
+@media (min-width: 700px) and (max-width: 879px) {
+  .slide { height: 420px; }
 }
-/* ----------- 933px × 651px EXACT FIX (Tablet Landscape) ----------- */
-@media (min-width: 880px) and (max-width: 950px) {
-
-  /* Fix slider position */
-  .slider-container {
-    margin-top: 47px;
-    width: 100%;
-  }
-
-  /* Adjust slide size */
-  .slide {
-    height: 210px !important;
-  }
-
-  .slide img {
-    object-fit: cover;
-    border-radius: 10px;
-  }
-
-  /* Fix product images to prevent stretching */
-  .product-card img {
-    height: 230px !important;
-    object-fit: cover;
-  }
-
-  /* Adjust nav buttons */
-  .nav-btn {
-    font-size: 28px;
-    padding: 6px 12px;
-  }
+@media (min-width: 580px) and (max-width: 699px) {
+  .slide { height: 420px; }
+}
+@media (min-width: 340px) and (max-width: 579px) {
+  .slide { height: 250px; }
 }
 
-/* ----------- 768px (Tablet Portrait) ----------- */
-@media (max-width: 768px) {
-  .slider-container {
-    width: 94%;
-  }
-
-  .slide {
-    height: 170px;
-  }
-
-  .nav-btn {
-    font-size: 26px;
-    padding: 6px 10px;
-  }
-
-  .product-card img {
-    height: 200px;
-  }
-}
-
-/* ----------- 480px (Mobile Screens) ----------- */
+/* -------------------------------------------------------------
+   ✅ MOBILE ONLY CHANGE (YOUR REQUEST)
+   margin-top: -15px for screens <= 480px
+-------------------------------------------------------------- */
 @media (max-width: 480px) {
   .slider-container {
-    width: 69%;
-    margin-right: -13px;
-    margin-top: 2px;
-  }
-
-  .slide {
-    height: 110px;
-    margin-top: 10px;
-  }
-
-  .slide img {
-    border-radius: 8px;
-  }
-
-  .nav-btn {
-    font-size: 20px;
-    padding: 4px 8px;
-  }
-
-  .nav-btn.left {
-    left: 6px;
-  }
-  .nav-btn.right {
-    right: 6px;
-  }
-
-  .product-card img {
-    height: 170px;
-  }
-}
-
-/* ----------- 380px (Extra Small Devices) ----------- */
-@media (max-width: 380px) {
-  .slider-container {
-    width: 98%;
-  }
-
-  .slide {
-    height: 95px;
-  }
-
-  .product-card img {
-    height: 150px;
+    margin-top: 73px !important;
   }
 }

@@ -10,7 +10,7 @@
 
   <div *ngIf="items.length > 0" class="cart-list">
     <div class="cart-item" *ngFor="let item of items; let i = index">
-      <img [src]="'https://ecom-backend-production-5341.up.railway.app/assets/images/' + item.image_url" alt="{{ item.name }}" class="cart-img">
+      <img [src]=" 'https://ecom-backend-production-5341.up.railway.app/assets/images/' + item.image_url" alt="{{ item.name }}" class="cart-img">
       <div class="item-details">
         <h4>{{ item.name }}</h4>
         <p>Price: ₹{{ item.price }}</p>

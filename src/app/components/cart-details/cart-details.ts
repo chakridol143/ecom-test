@@ -23,17 +23,16 @@ export class CartDetails {
   }
 
    onClose() {
-    this.router.navigate(['/menu'])
     this.close.emit();
   }
 
     onClear() {
     this.clear.emit();
-  }
+}
 
 onCheck() {
    this.router.navigate(['/checkout'])
    this.close.emit();
-    }
+  }
 
 }

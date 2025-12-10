@@ -1,37 +1,28 @@
-<div class="cart-details-overlay" (click)="onClose()">
-  <div class="cart-details-panel"
-       role="dialog"
-       aria-modal="true"
-       (click)="$event.stopPropagation()">
+<div class="cart-page">
 
-    <div class="header">
-      <h3>🛒 Your Cart ({{ items.length }})</h3>
-      <button class="close-btn" (click)="onClose()" aria-label="Close cart">✕</button>
-    </div>
+  <h2>Your Cart ({{ items.length }})</h2>
 
-    <div *ngIf="items.length === 0" class="empty">Your cart is empty</div>
+  <div *ngIf="items.length === 0" class="empty">Your cart is empty</div>
 
-    <ul *ngIf="items.length > 0" class="items-list">
-      <li *ngFor="let item of items; let i = index" class="cart-item">
-        <img [src]="'https://ecom-backend-production-5341.up.railway.app/assets/images/'  + item.image_url" [alt]="item.name">
-        <div class="info">
-          <div class="name">{{ item.name }}</div>
-          <div class="price">₹{{ item.price || 0 }}</div>
-        </div>
-        <button class="remove-btn" (click)="onRemove(i)" aria-label="Remove item">Remove</button>
-      </li>
-    </ul>
+  <ul *ngIf="items.length > 0" class="items-list">
+    <li *ngFor="let item of items; let i = index" class="cart-item">
+      <img [src]="'https://ecom-backend-production-5341.up.railway.app/assets/images/' + item.image_url">
 
-    <div class="footer" *ngIf="items.length > 0">
-      <div class="total">
-        Total: <strong>₹{{ getTotal() }}</strong>
+      <div class="info">
+        <div class="name">{{ item.name }}</div>
+        <div class="price">₹{{ item.price }}</div>
       </div>
 
-      <div class="actions">
-        <button class="clear-btn" (click)="onClear()">Clear</button>
-        <button class="checkout-btn" (click)="onCheck()">Checkout</button>
-      </div>
-    </div>
+      <button class="remove-btn" (click)="onRemove(i)">Remove</button>
+    </li>
+  </ul>
 
+  <div *ngIf="items.length > 0" class="footer">
+    <div class="total">Total: ₹{{ getTotal() }}</div>
+
+    <div class="actions">
+      <button class="clear-btn" (click)="onClear()">Clear</button>
+      <button class="checkout-btn" (click)="onCheck()">Checkout</button>
+    </div>
   </div>
 </div>

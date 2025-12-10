@@ -1,11 +1,9 @@
-<nav class="nav">
+<!-- <nav class="nav">
   <ul class="nav-bar">
-
-    <!-- ALL MENU -->
     <li class="nav-item" (click)="toggleAllMenu()">
       <span class="nav-icon">☰</span> All
 
-      <!-- REMOVE <ul> → USE <div> -->
+    
       <div class="dropdown" *ngIf="isAllMenuOpen">
 
         <div class="dropdown-section">
@@ -28,22 +26,102 @@
 
       </div>
     </li>
+  </ul>
+</nav> -->
+<!-- <nav class="nav">
+  <ul class="nav-bar">
+    <li class="nav-item">
 
-  
-    <!-- <li class="nav-item"
-        *ngFor="let cat of categories; trackBy: trackByCategoryId"
-        (click)="toggleDropdown(cat.category_id)">
+      <span class="nav-icon">☰</span> All
 
-      {{ cat.name }}
+      <div class="normal-list">
 
-    
-      <div class="dropdown" *ngIf="activeDropdown === cat.category_id">
-        <div class="dropdown-item" *ngFor="let p of products" (click)="onProductClick(p)">
-          {{ p.name }}
+        <div class="list-section">
+          <h4 class="list-title">Trending</h4>
+
+          <div class="list-item" (click)="openBestSellers()">Bestsellers</div>
+          <div class="list-item" (click)="onNewReleasesClick()">New Releases</div>
+          <div class="list-item" (click)="selectMensCollection()">Men's Collection</div>
+          <div class="list-item" (click)="selectWomenCollection()">Women's Collection</div>
         </div>
+
+        <hr class="divider" />
+
+        <div class="list-section">
+          <h4 class="list-title">Help & Settings</h4>
+
+          <div class="list-item">Your Account</div>
+          <div class="list-item">Customer Service</div>
+          <div class="list-item">Sign in</div>
+        </div>
+
       </div>
 
+    </li>
+
+  </ul>
+</nav> -->
+<!-- <nav class="nav-vertical">
+
+  <div class="menu-title">
+    <span class="nav-icon">☰</span> All
+  </div>
+
+  <div class="list-section">
+    <h4 class="list-title">Trending</h4>
+    <div class="list-item" (click)="openBestSellers()">Bestsellers</div>
+    <div class="list-item" (click)="onNewReleasesClick()">New Releases</div>
+    <div class="list-item" (click)="selectMensCollection()">Men's Collection</div>
+    <div class="list-item" (click)="selectWomenCollection()">Women's Collection</div>
+  </div>
+
+  <hr class="divider">
+
+  <div class="list-section">
+    <h4 class="list-title">Help & Settings</h4>
+    <div class="list-item">Your Account</div>
+    <div class="list-item">Customer Service</div>
+    <div class="list-item">Sign in</div>
+  </div>
+
+</nav> -->
+
+<nav class="nav-horizontal">
+
+  <ul class="nav-row">
+<!-- 
+    <li class="nav-item">
+      Trending
+    </li> -->
+
+    <li class="nav-item" (click)="openBestSellers()">
+      Bestsellers
+    </li>
+
+    <li class="nav-item" (click)="onNewReleasesClick()">
+      New Releases
+    </li>
+
+    <li class="nav-item" (click)="selectMensCollection()">
+      Men's Collection
+    </li>
+
+    <li class="nav-item" (click)="selectWomenCollection()">
+      Women's Collection
+    </li>
+<!-- 
+    <li class="nav-item">
+      Your Account
+    </li>
+
+    <li class="nav-item">
+      Customer Service
+    </li>
+
+    <li class="nav-item">
+      Sign in
     </li> -->
 
   </ul>
+
 </nav>

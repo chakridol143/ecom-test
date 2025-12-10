@@ -1,7 +1,38 @@
-<!-- <app-slider ></app-slider> -->
-<div>
+<!-- 
+<div *ngIf="!adminLoggedIn">
+
   <app-header></app-header>
-  <app-menu></app-menu>
-  <!-- <app-slider (categorySelect)="onCategorySelected($event)" ></app-slider> -->
+
+  <router-outlet></router-outlet>
+
 </div>
-<router-outlet></router-outlet>
+<div *ngIf="adminLoggedIn">
+   <app-header></app-header>
+  <app-admin-control-panel></app-admin-control-panel>
+
+</div> -->
+<div *ngIf="!adminLoggedIn">
+<app-header></app-header>
+<!-- <router-outlet></router-outlet> -->
+ </div>
+ <div *ngIf="adminLoggedIn">
+   <app-header></app-header>
+  <!-- <app-admin-control-panel></app-admin-control-panel> -->
+
+</div>
+
+<app-slider style="left: 0;top: 0;right: 0;" (categorySelect)="onCategorySelected($event)" *ngIf="showSliderAndCategories()"></app-slider>
+
+<div class="app-container" *ngIf="showSliderAndCategories()">
+  <app-category></app-category> 
+</div>
+
+<div class="content">
+  <router-outlet></router-outlet>
+</div>
+
+<!-- <app-cart [cartCount]="cartCount" [items]="cartItems">
+</app-cart> -->
+<div *ngIf="showSliderAndCategories()"><app-watch-nshop></app-watch-nshop></div>
+<div *ngIf="showSliderAndCategories()"><app-banner1></app-banner1></div>
+<app-footer></app-footer>

@@ -1,0 +1,133 @@
+<!-- <div class="product-view" *ngIf="product">
+<div class="product-layout">
+
+ 
+  <div class="thumbnails">
+    <img *ngFor="let img of images; let i = index"
+         [src]="img"
+         [class.active-thumb]="activeIndex === i"
+         (click)="setActive(i)">
+  </div>
+
+
+  <div class="main-media">
+    <img [src]="images[activeIndex]" class="main-img">
+  </div>
+
+  <div class="product-details">
+    <h1 class="">{{product.description}}</h1>
+    <h2 class="product-title">{{ product.name }}</h2>
+     <div class="pricing-section">
+    <span class="price">₹{{ product.price }}</span>
+    <span class="old-price">₹{{ product.oldPrice }}</span>
+    <span class="discount">save 50%</span>
+  </div>
+  <p class="tax" *ngIf="product.taxIncluded">Tax included.</p>
+
+    <div class="quantity-box">Quantity
+      <button>-</button>
+      <span>1</span>
+      <button>+</button>
+    </div>
+
+    <div class="btn-row">
+    <button class="add-cart-btn">Add to cart</button>
+    <button class="buy-btn">Buy it now</button>
+  </div>
+  </div>
+
+</div>
+
+
+<section class="related-section" *ngIf="relatedProducts.length > 0">
+  <h3 class="related-title">You Might Also Prefer</h3>
+
+  <div class="related-grid">
+    <div class="related-card"
+         *ngFor="let item of relatedProducts"
+         (click)="openProductDetails(item.product_id)">
+
+      <img [src]="getRelatedImage(item)"
+           alt="{{ item.name }}"
+           class="related-img" (mouseenter)="onHoverImage(item)" (mouseleave)="onLeaveImage(item)"  (error)="onImgError($event)"/>
+
+      <h4>{{ item.name }}</h4>
+      <p>₹{{ item.price }}</p>
+    </div>
+  </div>
+</section>
+
+
+
+
+</div> -->
+
+<div class="product-view" *ngIf="product">
+
+  <div class="product-layout">
+
+    <div class="thumbnails">
+      <img *ngFor="let img of images; let i = index"
+           [src]="img"
+           [class.active-thumb]="activeIndex === i"
+           (click)="setActive(i)">
+    </div>
+
+    <div class="main-media" (scroll)="onScroll($event)">
+  <img *ngFor="let img of images" [src]="img">
+</div>
+
+
+    <div class="big-image-grid">
+      <img *ngFor="let img of images" [src]="img">
+    </div>
+
+    <div class="product-details">
+      <h1>{{product.description}}</h1>
+      <h2 class="product-title">{{ product.name }}</h2>
+
+      <div class="pricing-section">
+        <span class="price">₹{{ product.price }}</span>
+        <span class="old-price">₹{{ product.oldPrice }}</span>
+        <span class="discount">save 50%</span>
+      </div>
+
+      <p class="tax" *ngIf="product.taxIncluded">Tax included.</p>
+
+      <div class="quantity-box">
+        Quantity
+        <button>-</button>
+        <span>1</span>
+        <button>+</button>
+      </div>
+
+      <div class="btn-row">
+        <button class="add-cart-btn">Add to cart</button>
+        <button class="buy-btn">Buy it now</button>
+      </div>
+    </div>
+
+  </div>
+
+  <section class="related-section" *ngIf="relatedProducts.length > 0">
+    <h3 class="related-title">You Might Also Prefer</h3>
+
+    <div class="related-grid">
+      <div class="related-card"
+           *ngFor="let item of relatedProducts"
+           (click)="openProductDetails(item.product_id)">
+
+        <img [src]="getRelatedImage(item)"
+             alt="{{ item.name }}"
+             class="related-img"
+             (mouseenter)="onHoverImage(item)"
+             (mouseleave)="onLeaveImage(item)"
+             (error)="onImgError($event)" />
+
+        <h4>{{ item.name }}</h4>
+        <p>₹{{ item.price }}</p>
+      </div>
+    </div>
+  </section>
+
+</div>

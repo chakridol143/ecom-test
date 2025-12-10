@@ -1,128 +1,64 @@
-/* ============================================================
-   NAVBAR BASE
-============================================================ */
-.nav {
-  background: #fff;
+/* HORIZONTAL NAVBAR */
+.nav-horizontal {
   width: 100%;
-  padding: 10px 20px;
+  background: transparent;
+  padding: 12px 25px;
   position: fixed;
-  top: 85px; /* Below header */
+  top: 85px;
   left: 0;
   z-index: 999;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
 }
 
-.nav-bar {
+.nav-row {
   display: flex;
   align-items: center;
-  gap: 25px;
-  padding: 0;
+  gap: 28px;          /* spacing between menu items */
   list-style: none;
   margin: 0;
-  flex-wrap: wrap;
+  padding: 0;
+  flex-wrap: wrap;    /* wrap when screen gets small */
 }
 
+/* MENU ITEM STYLE */
 .nav-item {
-  position: relative;
+  padding: 8px 10px;
   cursor: pointer;
-  padding: 8px 12px;
+  font-size: 15px;
   font-weight: 600;
-  transition: 0.3s ease;
+  color: #333;
+
+  transition: background 0.25s ease, color 0.25s ease;
   border-radius: 6px;
   white-space: nowrap;
 }
 
 .nav-item:hover {
-  background: #f3f3f3;
+  background: #f2f2f2;
+  color: #000;
 }
 
-
-/* ============================================================
-   DROPDOWN MENU
-============================================================ */
-.dropdown {
-  position: absolute;
-  top: 38px;
-  left: 0;
-  background: #fff;
-  width: 240px;
-  padding: 10px 0;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  box-shadow: 0px 5px 18px rgba(0, 0, 0, 0.15);
-  animation: fadeIn 0.2s ease-in-out;
-  max-height: 350px;
-  overflow-y: auto;
-  display: none;
-}
-
-.nav-item:hover .dropdown {
-  display: block;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(5px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.dropdown-item {
-  padding: 10px 15px;
-  cursor: pointer;
-  transition: 0.2s;
-}
-
-.dropdown-item:hover {
-  background: #f3f3f3;
-}
-
-
-/* ============================================================
-   TABLET VIEW  ≤ 900px
-============================================================ */
+/* MOBILE RESPONSIVE */
 @media (max-width: 900px) {
-  .nav-bar {
-    gap: 15px;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    white-space: nowrap;
-    scrollbar-width: none;
+  .nav-horizontal {
+    top: 70px;
+    padding: 10px 15px;
   }
 
-  .nav-bar::-webkit-scrollbar {
-    display: none;
+  .nav-row {
+    gap: 18px;
   }
 
   .nav-item {
     font-size: 14px;
-    padding: 7px 10px;
-  }
-
-  .dropdown {
-    width: 200px;
   }
 }
 
-
-/* ============================================================
-   MOBILE VIEW — HIDE NAVBAR (≤ 600px)
-============================================================ */
-@media (max-width: 600px) {
-  .nav {
-    display: none !important; /* Completely hide navbar */
+@media (max-width: 450px) {
+  .nav-row {
+    gap: 12px;
   }
-}
 
-
-/* ============================================================
-   SMALL MOBILE (≤ 400px)
-============================================================ */
-@media (max-width: 400px) {
   .nav-item {
     font-size: 12px;
-    padding: 6px;
-  }
-
-  .dropdown {
-    width: 180px;
   }
 }

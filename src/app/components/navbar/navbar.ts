@@ -20,7 +20,10 @@ export class Navbar implements OnInit {
   activeDropdown: number | null = null;
 
   @Output() categorySelected = new EventEmitter<number | null>();
-
+  @Output() womenCollectionClick = new EventEmitter<void>();
+  @Output() newReleasesClick = new EventEmitter<void>();
+  @Output() bestSellersClick = new EventEmitter<void>();
+  @Output() mensCollectionClick = new EventEmitter<void>();
   constructor(private categoryService: CategoryService,  private productService: ProductService, private router: Router ) {}
 
   ngOnInit() {
@@ -51,14 +54,6 @@ toggleAllMenu() {
     this.activeDropdown = null;
   }
 }
-// toggleDropdown(catId: number) {
-//   this.activeDropdown = this.activeDropdown === catId ? null : catId;
-
-//   if (this.activeDropdown) {
-//     this.loadProducts(catId);
-//   }
-// }
-
 products: any[] = [];
 
 loadProducts(catId: number) {
@@ -70,23 +65,11 @@ loadProducts(catId: number) {
   });
 }
 
-// @Output() productClicked = new EventEmitter<any>();
-
-// onProductClick(product: any) {
-//   this.productClicked.emit(product);
-// }
-
 onImageError(event: any) {
   event.target.src = 'assets/images/placeholder.png';
 }
 
-//  womens collections
-// selectWomenCollection() {
-//   this.isAllMenuOpen = false; // close dropdown
-//   this.router.navigate(['/womens-collections']);
-// }
 
-@Output() womenCollectionClick = new EventEmitter<void>();
 
 selectWomenCollection() {
   this.isAllMenuOpen = false;
@@ -94,28 +77,24 @@ selectWomenCollection() {
 }
 
 //new releases
-@Output() newReleasesClick = new EventEmitter<void>();
+
 
 onNewReleasesClick() {
   this.newReleasesClick.emit();
 }
 
 //bestsellers
-@Output() bestSellersClick = new EventEmitter<void>();
+
 
 openBestSellers() {
   this.bestSellersClick.emit();
 }
 
 //menscollections
-@Output() mensCollectionClick = new EventEmitter<void>();
+
 
 selectMensCollection() {
   this.isAllMenuOpen = false;
   this.mensCollectionClick.emit();
 }
-
-
-
-
 }

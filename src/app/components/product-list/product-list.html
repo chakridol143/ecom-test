@@ -1,6 +1,5 @@
-<div class="container">
+<!-- <div class="container">
   <div class="top-bar"></div>
- <h1>ALL PRODUCTS</h1>  
   <div *ngIf="loading">Loading…</div>
   <div *ngIf="!loading && error" class="error">{{ error }}</div>
 
@@ -13,33 +12,24 @@
       
         <div *ngIf="!showFullDetails" class="only-name-card">
           
-            <img
-            [src]="'https://ecom-backend-production-5341.up.railway.app/assets/images/' + product.image_url"
-            [alt]="product.name"
-            class="product-img"
-            (click)="openProductPopup(product)"
-            (error)="onImgError($event)"
-          />
-          <h3 class="only-name" (click)="openProductPopup(product)">
+          <img [src]="'https://ecom-backend-production-5341.up.railway.app/assets/images/' + product.currentImage"
+            alt="{{ product.name }}" class="product-img" (click)="openProductDetails(product)"
+            (mouseenter)="onHoverImage(product)" (mouseleave)="onLeaveImage(product)" (error)="onImgError($event)" />
+          <h2 class="only-name" >
             {{ product.name }}
-          </h3>
+          </h2>
           <h3 class="only-name" >MRP : {{product.price}} /-</h3>
         </div>
 
    
         <div *ngIf="showFullDetails" class="full-details-card">
 
-          <img
-            [src]="'https://ecom-backend-production-5341.up.railway.app/assets/images/' + product.image_url"
-            alt="{{ product.name }}"
-            class="product-img"
-            (click)="openProductPopup(product)"
-            (error)="onImgError($event)"
-          />
+         <img [src]="'https://ecom-backend-production-5341.up.railway.app/assets/images/' + product.currentImage"
+            alt="{{ product.name }}" class="product-img" (click)="openProductDetails(product)"
+            (mouseenter)="onHoverImage(product)" (mouseleave)="onLeaveImage(product)" (error)="onImgError($event)" />
 
           <div class="product-info">
             <h3>{{ product.name }}</h3>
-            <!-- <p>{{ product.description }}</p> -->
             <p class="price">{{ product.price | currency:'INR':'symbol':'1.2-2' }}</p>
 
             <button (click)="addToCart(product)">Add To Cart</button>
@@ -58,7 +48,6 @@
   </div>
 </div>
 
-<!-- PRODUCT POPUP -->
 <div class="modal-overlay" *ngIf="showProductPopup" (click)="closeProductPopup()"></div>
 
 <div class="product-popup" *ngIf="showProductPopup">
@@ -81,7 +70,6 @@
 
   </div>
 </div>
-<!-- ===================== TESTIMONIAL SECTION ===================== -->
 <section class="testimonials-container">
   <h2 class="section-title">What People Are Saying</h2>
 
@@ -91,8 +79,7 @@
       <div class="stars">★★★★★</div>
       <h3>“Exceptional”</h3>
       <p>
-        The earrings I purchased are even more gorgeous in person. Perfect for
-        any occasion!
+        The earrings I purchased are even more gorgeous in person.
       </p>
       <span class="author">Kishore</span>
     </div>
@@ -101,7 +88,8 @@
       <div class="stars">★★★★★</div>
       <h3>“Trendy Collections”</h3>
       <p>
-        The designs are absolutely stunning. I’m totally in love with the craftsmanship!
+        The designs are absolutely stunning.
+        
       </p>
       <span class="author">MK</span>
     </div>
@@ -110,7 +98,8 @@
       <div class="stars">★★★★★</div>
       <h3>“Fast Delivery”</h3>
       <p>
-        Very fast delivery and great packaging. Got many compliments already!
+        Very fast delivery and great packaging.
+     
       </p>
       <span class="author">Chandu</span>
     </div>
@@ -119,7 +108,8 @@
       <div class="stars">★★★★★</div>
       <h3>“Very Happy”</h3>
       <p>
-        Absolutely stunning pieces! I’m in love with my new necklace!
+        Absolutely stunning pieces!
+
       </p>
       <span class="author">HithaSri</span>
     </div>
@@ -127,9 +117,6 @@
   </div>
 </section>
 
-
-
-<!-- ===================== FEATURE ICONS SECTION ===================== -->
 <section class="features-section">
 
   <div class="feature-box">
@@ -158,4 +145,263 @@
 
 </section>
 
-<app-footer></app-footer>
+<app-footer></app-footer> -->
+
+<!-- <div class="container">
+  <div class="top-bar"></div>
+
+  <div *ngIf="loading">Loading…</div>
+  <div *ngIf="!loading && error" class="error">{{ error }}</div>
+
+  <div *ngIf="!loading && !error">
+    <div class="product-grid" *ngIf="productsToShow.length; else empty">
+      <div class="product-card left-right-animate" #animateItem *ngFor="let product of productsToShow">
+
+        <div *ngIf="!showFullDetails" class="only-name-card">
+          <img [src]="'https://ecom-backend-production-5341.up.railway.app/assets/images/' + product.currentImage"
+               alt="{{ product.name }}" class="product-img"
+               (click)="openProductDetails(product)"
+               (mouseenter)="onHoverImage(product)"
+               (mouseleave)="onLeaveImage(product)"
+               (error)="onImgError($event)" />
+
+          <h2 class="only-name">{{ product.name }}</h2>
+          <h3 class="only-name">MRP : {{ product.price }} /-</h3>
+        </div>
+
+        <div *ngIf="showFullDetails" class="full-details-card">
+          <img [src]="'https://ecom-backend-production-5341.up.railway.app/assets/images/' + product.currentImage"
+               alt="{{ product.name }}" class="product-img"
+               (click)="openProductDetails(product)"
+               (mouseenter)="onHoverImage(product)"
+               (mouseleave)="onLeaveImage(product)"
+               (error)="onImgError($event)" />
+
+          <div class="product-info">
+            <h3>{{ product.name }}</h3>
+            <p class="price">{{ product.price | currency:'INR':'symbol':'1.2-2' }}</p>
+            <button (click)="addToCart(product)">Add To Cart</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <ng-template #empty>
+      <p>No products found.</p>
+    </ng-template>
+  </div>
+</div>
+
+
+
+<section class="testimonials-container">
+  <h2 class="section-title">What People Are Saying</h2>
+
+  <div class="testimonials-grid">
+    <div class="testimonial-card left-right-animate" #animateItem>
+      <div class="stars">★★★★★</div>
+      <h3>“Exceptional”</h3>
+      <p>The earrings I purchased are even more gorgeous in person.</p>
+      <span class="author">Kishore</span>
+    </div>
+
+    <div class="testimonial-card left-right-animate" #animateItem>
+      <div class="stars">★★★★★</div>
+      <h3>“Trendy Collections”</h3>
+      <p>The designs are absolutely stunning.</p>
+      <span class="author">MK</span>
+    </div>
+
+    <div class="testimonial-card left-right-animate" #animateItem>
+      <div class="stars">★★★★★</div>
+      <h3>“Fast Delivery”</h3>
+      <p>Very fast delivery and great packaging.</p>
+      <span class="author">Chandu</span>
+    </div>
+
+    <div class="testimonial-card left-right-animate" #animateItem>
+      <div class="stars">★★★★★</div>
+      <h3>“Very Happy”</h3>
+      <p>Absolutely stunning pieces!</p>
+      <span class="author">HithaSri</span>
+    </div>
+  </div>
+</section>
+
+<section class="features-section">
+  <div class="feature-box left-right-animate" #animateItem>
+    <img src="../../../assets/images/shipping.avif" class="feature-icon" />
+    <h4>Free Shipping</h4>
+    <p>Free shipping on all orders</p>
+  </div>
+
+  <div class="feature-box left-right-animate" #animateItem>
+    <img src="../../../assets/images/support.avif" class="feature-icon" />
+    <h4>Support 24/7</h4>
+    <p>We support 24hr a day</p>
+  </div>
+
+  <div class="feature-box left-right-animate" #animateItem>
+    <img src="../../../assets/images/exchange.avif" class="feature-icon" />
+    <h4>Exchange Policy</h4>
+    <p>100% Buyer Protection</p>
+  </div>
+
+  <div class="feature-box left-right-animate" #animateItem>
+    <img src="../../../assets/images/payment.avif" class="feature-icon" />
+    <h4>Payment Secure</h4>
+    <p>We ensure secure payment</p>
+  </div>
+</section>
+
+<app-footer></app-footer> -->
+<div class="container">
+  <div class="top-bar"></div>
+ <!-- <h1>ALL PRODUCTS</h1>   -->
+  <div *ngIf="loading">Loading…</div>
+  <div *ngIf="!loading && error" class="error">{{ error }}</div>
+
+  <div *ngIf="!loading && !error">
+
+    <div class="product-grid" *ngIf="productsToShow.length; else empty">
+
+      <div class="product-card" *ngFor="let product of productsToShow">
+
+      
+        <div *ngIf="!showFullDetails" class="only-name-card">
+          
+          <img [src]="'https://ecom-backend-production-5341.up.railway.app/assets/images/' + product.currentImage"
+            alt="{{ product.name }}" class="product-img" (click)="openProductDetails(product)"
+            (mouseenter)="onHoverImage(product)" (mouseleave)="onLeaveImage(product)" (error)="onImgError($event)" />
+          <h2 class="only-name" (click)="openProductDetails(product)">
+            {{ product.name }}
+          </h2>
+          <h3 class="only-name" >MRP : {{product.price}} /-</h3>
+        </div>
+
+   
+        <div *ngIf="showFullDetails" class="full-details-card">
+         <img [src]="'https://ecom-backend-production-5341.up.railway.app/assets/images/' + product.currentImage"
+            alt="{{ product.name }}" class="product-img" (click)="openProductDetails(product)"
+            (mouseenter)="onHoverImage(product)" (mouseleave)="onLeaveImage(product)" (error)="onImgError($event)" />
+
+          <div class="product-info">
+            <h3>{{ product.name }}</h3>
+            <p class="price">{{ product.price | currency:'INR':'symbol':'1.2-2' }}</p>
+
+            <button (click)="addToCart(product)">Add To Cart</button>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <ng-template #empty>
+      <p>No products found.</p>
+    </ng-template>
+
+  </div>
+</div>
+
+<!-- <div class="modal-overlay" *ngIf="showProductPopup" (click)="closeProductPopup()"></div>
+
+<div class="product-popup" *ngIf="showProductPopup">
+  <div class="popup-box" (click)="$event.stopPropagation()">
+
+    <button class="popup-close" (click)="closeProductPopup()">✖</button>
+
+    <img
+      class="popup-img"
+      [src]="'https://ecom-backend-production-5341.up.railway.app/assets/images/'+ selectedProducts?.image_url"
+      (error)="onImgError($event)"
+    />
+
+    <h2>{{ selectedProducts?.name }}</h2>
+    <p>{{ selectedProducts?.description }}</p>
+
+    <h3 class="popup-price">
+      Price: {{ selectedProducts?.price | currency:'INR':'symbol':'1.2-2' }}
+    </h3>
+
+  </div>
+</div> -->
+<!-- <section class="testimonials-container">
+  <h2 class="section-title">What People Are Saying</h2>
+
+  <div class="testimonials-grid">
+    
+    <div class="testimonial-card">
+      <div class="stars">★★★★★</div>
+      <h3>“Exceptional”</h3>
+      <p>
+        The earrings I purchased are even more gorgeous in person.
+      </p>
+      <span class="author">Kishore</span>
+    </div>
+
+    <div class="testimonial-card">
+      <div class="stars">★★★★★</div>
+      <h3>“Trendy Collections”</h3>
+      <p>
+        The designs are absolutely stunning.
+        
+      </p>
+      <span class="author">MK</span>
+    </div>
+
+    <div class="testimonial-card">
+      <div class="stars">★★★★★</div>
+      <h3>“Fast Delivery”</h3>
+      <p>
+        Very fast delivery and great packaging.
+     
+      </p>
+      <span class="author">Chandu</span>
+    </div>
+
+    <div class="testimonial-card">
+      <div class="stars">★★★★★</div>
+      <h3>“Very Happy”</h3>
+      <p>
+        Absolutely stunning pieces!
+
+      </p>
+      <span class="author">HithaSri</span>
+    </div>
+
+  </div>
+</section>
+
+
+
+<section class="features-section">
+
+  <div class="feature-box">
+    <img src="../../../assets/images/shipping.avif" class="feature-icon" />
+    <h4>Free Shipping</h4>
+    <p>Free shipping on all orders</p>
+  </div>
+
+  <div class="feature-box">
+    <img src="../../../assets/images/support.avif" class="feature-icon" />
+    <h4>Support 24/7</h4>
+    <p>We support 24hr a day</p>
+  </div>
+
+  <div class="feature-box">
+    <img src="../../../assets/images/exchange.avif" class="feature-icon" />
+    <h4>Exchange Policy</h4>
+    <p>100% Buyer Protection</p>
+  </div>
+
+  <div class="feature-box">
+    <img src="../../../assets/images/payment.avif" class="feature-icon" />
+    <h4>Payment Secure</h4>
+    <p>We ensure secure payment</p>
+  </div>
+
+</section>
+ -->

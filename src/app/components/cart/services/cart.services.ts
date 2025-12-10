@@ -20,7 +20,39 @@ export class CartService {
       this.cartSubject.next(this.items);
     }
   }
-  mergeCartAfterLogin(user_Id: number, token: string) {
+//   mergeCartAfterLogin(user_Id: number, token: string) {
+//   const items = this.getItems();
+
+//   if (!items || items.length === 0) {
+//     console.log("No local items to sync.");
+//     return;
+//   }
+
+//   items.forEach(item => {
+
+//     if (!item.product_id) {
+//       console.warn("⛔ Skipping invalid item:", item);
+//       return;
+//     }
+
+//     const payload = {
+//       userId: user_Id,
+//       productId: item.product_id,
+//       quantity: item.quantity || 1
+//     };
+
+//     console.log("SENDING PAYLOAD:", payload);
+
+//     this.http.post(this.apiUrl, payload).subscribe({
+//       next: res => console.log("Added to DB:", res),
+//       error: err => console.error("❌ Error saving:", err)
+//     });
+
+//   });
+
+//   console.log("All local cart items synced to DB.");
+// }
+mergeCartAfterLogin(user_Id: number, token: string) {
   const items = this.getItems();
 
   if (!items || items.length === 0) {
@@ -52,7 +84,6 @@ export class CartService {
 
   console.log("All local cart items synced to DB.");
 }
-
 
 
 // addToCart(item: any) {
@@ -110,7 +141,7 @@ export class CartService {
     // LOGGING for debugging — remove in production
     console.log("ADD TO CART called:", { product_id: item.product_id, isLoggedIn, userIdStr });
 
-    if (!isLoggedIn) {
+    if (isLoggedIn) {
       // logged in -> send to backend
       const user_id = Number(userIdStr);
       const headers = new HttpHeaders({ Authorization: `Bearer ${token}` });
@@ -136,12 +167,6 @@ export class CartService {
           this.saveItems();
         }
       });
-
-    } else {
-      // guest -> only localStorage
-      console.log("🟡 Guest user — saving item only in localStorage");
-      this.items.push(item);
-      this.saveItems();
     }
   }
 
@@ -185,7 +210,9 @@ getCartByUserId(user_Id: number, token?: string) {
 
   clearCart(localOnly = false): void {
     this.items = [];
-    this.saveItems();
+    localStorage.removeItem(this.key);
+    this.cartSubject.next([])
+    // this.saveItems();
     if (localOnly) return;
   }
 

@@ -1,0 +1,22 @@
+<div>
+  <h2>Watch and shop</h2>
+
+  <div class="video-grid">
+    <div class="video-item" *ngFor="let item of videoGrid">
+      <video
+        #vid
+        [src]="item.video"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="auto"
+        
+      ><p class="name">{{ item.name }}</p>
+      <p class="price">₹{{ item.price }}</p></video>
+
+      <!-- <p class="name">{{ item.name }}</p>
+      <p class="price">₹{{ item.price }}</p> -->
+    </div>
+  </div>
+</div>

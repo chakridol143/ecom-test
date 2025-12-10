@@ -1,13 +1,76 @@
-<div class="cart-container" (click)="toggleCartDetails()">
-  <img src="../../../assets/images/addToCart1.avif" alt="Cart" class="cart-icon">
+<!-- <div class="cart-container" (click)="toggleCartDetails()">
+  <img src="../../../assets/images/cart.png" alt="Cart" class="cart-icon">
   <span class="cart-count" *ngIf="cartCount > 0">{{ cartCount }}</span>
-</div>
+</div> -->
 
-<app-cart-details
+<!-- <app-cart-details
   *ngIf="showCartPopup"
   [items]="items"
   (close)="closeDetails()"
   (remove)="cartItemRemove($event)"
   (clear)="handleClear()">
-</app-cart-details>
+</app-cart-details> -->
+
+<!-- <div class="cart-page">
+
+  <h2>Your Cart</h2>
+
+  <div *ngIf="items.length > 0; else emptyCart">
+    <div class="cart-item" *ngFor="let item of items; let i = index">
+      <img [src]="item.image" class="item-image">
+
+      <div class="item-info">
+        <h3>{{ item.name }}</h3>
+        <p>{{ item.description }}</p>
+        <p class="item-price">₹{{ item.price }}</p>
+      </div>
+
+      <button class="remove-btn" (click)="cartItemRemove(i)">Remove</button>
+    </div>
+
+    <div class="cart-actions">
+      <button class="clear-btn" (click)="handleClear()">Clear Cart</button>
+    </div>
+  </div>
+
+  <ng-template #emptyCart>
+    <p class="empty-message">Your cart is empty.</p>
+  </ng-template>
+
+</div> -->
+<div class="cart-page">
+
+  <h2 class="cart-title">Your Cart ({{ items.length }})</h2>
+
+  <div *ngIf="items.length === 0" class="empty">
+    <p>Your cart is empty</p>
+  </div>
+
+  <ul *ngIf="items.length > 0" class="items-list">
+    <li *ngFor="let item of items; let i = index" class="cart-item">
+
+      <img 
+        [src]="'https://ecom-backend-production-5341.up.railway.app/assets/images/' + item.image_url"
+        class="item-image"
+      />
+
+      <div class="info">
+        <div class="name">{{ item.name }}</div>
+        <div class="price">₹{{ item.price }}</div>
+      </div>
+
+      <button class="remove-btn" (click)="cartItemRemove(i)">Remove</button>
+    </li>
+  </ul>
+
+  <div *ngIf="items.length > 0" class="footer">
+    <div class="total">Total: ₹{{ getTotal() }}</div>
+
+    <div class="actions">
+      <button class="clear-btn" (click)="handleClear()">Clear</button>
+      <button class="checkout-btn" (click)="checkout()">Checkout</button>
+    </div>
+  </div>
+
+</div>
 
