@@ -42,12 +42,13 @@ import { WomensCollections } from './components/womens-collections/womens-collec
 import { Bestsellers } from './components/bestsellers/bestsellers';
 import { Releases } from './components/releases/releases';
 
-import { Menu } from './components/menu/menu';
+// import { Menu } from './components/menu/menu';
 import { NgModule } from '@angular/core';
 import { Productdetails } from './components/productdetails/productdetails';
 import { AdminControlPanelComponent } from './components/admin-control-panel/admin-control-panel';
 import { AdminAuthGuard } from './components/gaurds/admin.auth';
 import { Banner1 } from './components/banner1/banner1';
+import { KidsCollections } from './kids-collections/kids-collections';
 
 
 
@@ -75,11 +76,11 @@ export const routes: Routes = [
 { path: 'banner1', component: Banner1 },
 { path: 'mens', component: MensCollections },
 { path: 'womens', component: WomensCollections },
-{ path: 'menu', component: Menu },
+// { path: 'menu', component: Menu },
 {path: 'admin',component: AdminControlPanelComponent,canActivate: [AdminAuthGuard]},
 {path: 'admin-login',loadComponent: () =>import('./components/login/login').then(m => m.login)},
-{ path: 'product/:id', component: Productdetails }
-
+{ path: 'product/:id', component: Productdetails },
+{ path: 'KidsCollections', component: KidsCollections }
 
 ];
 

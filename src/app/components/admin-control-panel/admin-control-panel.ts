@@ -492,7 +492,7 @@ constructor(private catSvc: CategoryService, private prodSvc: ProductService,pri
   localStorage.removeItem("adminToken");
 
   // Navigate away
-  this.router.navigate(['/menu']);
+  this.router.navigate(['/']);
 
   // Prevent back button caching
   history.pushState(null, '', location.href);

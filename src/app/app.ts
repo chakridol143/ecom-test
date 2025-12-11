@@ -69,7 +69,8 @@ export class App implements OnInit {
     this.currentRoute.startsWith('/product') ||
     this.currentRoute.startsWith('/admin') ||
     this.currentRoute.startsWith('/login') ||
-    this.currentRoute.startsWith('/cart') 
+    this.currentRoute.startsWith('/cart') ||
+    this.currentRoute.startsWith('/KidsCollections')
   );
 }
 onCategorySelected(id: number | null) {
@@ -87,5 +88,9 @@ onCategorySelected(id: number | null) {
     this.cartCount = this.cartItems.length;
   }
 
+showHeaderOnly(): boolean {
+  // Routes where only the header should appear
+  return this.currentRoute.startsWith('/login') || this.currentRoute.startsWith('/logout') || this.currentRoute.startsWith('/admin');
+}
 
   }

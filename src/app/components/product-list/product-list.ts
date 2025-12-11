@@ -5,12 +5,13 @@ import { FormsModule } from '@angular/forms';
 import { CartService } from '../cart/services/cart.services';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SearchBusService } from '../search/services/search-bus.service';
+import { Footer } from "../footer/footer";
 
 
 @Component({
   selector: 'app-products',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, Footer],
   templateUrl: './product-list.html',
   styleUrls: ['./product-list.css']
 })

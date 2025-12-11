@@ -206,7 +206,7 @@ export class login {
 
   closeDialog() {
     this.showDialog = false;
-    this.router.navigate(['/app']);
+    this.router.navigate(['/']);
     this.close.emit();
   }
 

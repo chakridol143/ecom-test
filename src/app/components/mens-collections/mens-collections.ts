@@ -10,7 +10,7 @@ import { Component } from '@angular/core';
 export class MensCollections {
   products = [
    
-    { img1: '../../../assets/images/3-1.webp', img2: 'assets/images/3-2.webp', name: 'bangels'},
+    { img1: '../../../assets/images/3-2.webp', img2: 'assets/images/3-1.webp', name: 'bangels'},
     { img1: '../../../assets/images/4-1.webp', img2: '../../../assets/images/4-2.webp' ,name:'bangels'},
     { img1: '../../../assets/images/5-1.webp', img2: '../../../assets/images/5-1.webp' , name:'bagnesl' },
     { img1: '../../../assets/images/Black Onyx Signet Ring - Gold1.webp', img2: '../../../assets/images/Black Onyx Signet Ring - Gold2.webp' , name:'Black Onyx Signet Ring '},

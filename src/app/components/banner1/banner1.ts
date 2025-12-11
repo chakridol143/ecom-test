@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { AfterViewInit, Component, ElementRef, QueryList, ViewChildren } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-banner1',
@@ -8,18 +9,19 @@ import { AfterViewInit, Component, ElementRef, QueryList, ViewChildren } from '@
   styleUrl: './banner1.css'
 })
 export class Banner1 {
+  constructor(private router: Router) {}
 
 
   products = [
-    { img1: '../../../assets/images/3-1.webp', name: 'Bangles' },
-    { img1: '../../../assets/images/4-1.webp', name: 'Bangles' },
-    { img1: '../../../assets/images/5-1.webp', name: 'Bangles' },
-    { img1: '../../../assets/images/Gold Figaro Bracelet1.webp', name: 'Figaro Bracelet' },
-    { img1: '../../../assets/images/Gold Rope Bracelet (5MM)1.webp', name: 'Rope Bracelet' },
-    { img1: '../../../assets/images/Cross Drop (Gold)1.webp', name: 'Cross Drop' },
-    { img1: '../../../assets/images/Hammered Band Ring - Gold1.webp', name: 'Hammered Ring' },
-    { img1: '../../../assets/images/Mini Bar - Gold1.webp', name: 'Mini Bar' },
-    { img1: '../../../assets/images/Tigers Eye Signet Ring - Gold1.webp', name: 'Tiger Signet' }
+    { img1: '../../../assets/images/North Star - Gold2.webp', name: 'Bangles' },
+    { img1: '../../../assets/images/Tigers Eye Signet Ring - Gold2.webp', name: 'Bangles' },
+    { img1: '../../../assets/images/5-2.webp', name: 'Bangles' },
+    { img1: '../../../assets/images/Gold Figaro Bracelet2.webp', name: 'Figaro Bracelet' },
+    { img1: '../../../assets/images/Gold Rope Bracelet (5MM)2.webp', name: 'Rope Bracelet' },
+    { img1: '../../../assets/images/Cross Drop (Gold)2.webp', name: 'Cross Drop' },
+    { img1: '../../../assets/images/Hammered Band Ring - Gold2.webp', name: 'Hammered Ring' },
+    { img1: '../../../assets/images/Mini Bar - Gold2.webp', name: 'Mini Bar' },
+    { img1: '../../../assets/images/Tigers Eye Signet Ring - Gold2.webp', name: 'Tiger Signet' }
   ];
 
   currentIndex = 0;
@@ -47,5 +49,14 @@ export class Banner1 {
 
   showFrom(index: number) {
     this.currentIndex = index;
+  }
+
+  
+
+  goToMens() {
+    this.router.navigate(['/mens']);
+  }
+  goToKids(){
+    this.router.navigate(['/KidsCollections'])
   }
 }
