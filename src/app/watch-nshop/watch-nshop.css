@@ -27,10 +27,10 @@ h2 {
   cursor: pointer;
   transition: transform 0.2s ease;
 }
-
+/* 
 .video-item:hover {
   transform: scale(1.03);
-}
+} */
 
 .video-item video {
   width: 100%;
@@ -65,17 +65,42 @@ h2 {
   font-weight: 700;
 }
 
-@media (max-width: 1024px) {
-  .video-grid {
-    padding: 0 40px;
-    gap: 18px;
-  }
-
-  .video-item {
-    max-width: 300px;
-  }
+/* ============================= */
+/* 🖥️ DESKTOP & LAPTOP VIEW */
+/* 4 in a row + horizontal scroll */
+/* ============================= */
+@media (min-width: 1025px) {
+.video-grid {
+  display: flex;
+  overflow-x: auto;
+  margin-left: -60px;
+  padding: 0 80px;
+  gap: 5px;                     /* Removed gap */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
+.video-grid::-webkit-scrollbar {
+  display: none;
+}
+
+.video-item {
+  flex: 0 0 25%;              /* EXACT 4 items in a row */
+  max-width: 20%;
+  scroll-snap-align: start;
+  height: 450px;
+  border-radius: 0;           /* Removed radius */
+}
+
+.video-item video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0;         
+
+}
+
+}
 @media (max-width: 768px) {
 
   .video-grid {
@@ -115,26 +140,44 @@ h2 {
 @media (max-width: 480px) {
 
   .video-grid {
-    padding-left: 15px; 
-    padding-right: 15px; 
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
     gap: 12px;
+    padding: 0 15px;
   }
 
   .video-item {
-    flex: 0 0 100%;
-    max-width: 100%;
-    height: 500px;  
+    flex: 0 0 90%;         
+    max-width: 80%;
+    height: 500px;         
+    scroll-snap-align: center;
+    border-radius: 12px;
+    margin-right: 10px;
+  }
+
+  .video-item video,
+  .video-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
   }
 
   .video-item p {
     font-size: 13px;
+    margin-top: 8px;
+    text-align: center;
   }
 }
 
 
 @media (max-width: 360px) {
+
   .video-item {
-    height: 250px;  
+    flex: 0 0 95%;        
+    max-width: 95%;
+    height: 260px;
   }
 
   .video-item p {
@@ -142,13 +185,3 @@ h2 {
   }
 }
 
-@media (max-width: 360px) {
-  .video-item {
-    flex: 0 0 92%;
-    max-width: 92%;
-  }
-
-  .video-item p {
-    font-size: 12px;
-  }
-}

@@ -10,6 +10,31 @@ import { AfterViewInit, Component, ElementRef, QueryList, ViewChildren } from '@
 export class WatchNshop  implements AfterViewInit{
 
 videoGrid = [
+   {
+      name: "Handcrafted with love",
+      price: 6999,
+      video :  "../../../assets/videos/design.mp4"
+    },
+    {
+      name: "Grace color and Handcrafted beauty",
+      price: 4999,
+      video :  "../../../assets/videos/design1.mp4"
+    },
+    {
+      name: "Pearl ",
+      price: 8599,
+        video :  "../../../assets/videos/design2.mp4"
+    },
+    {
+      name: "Bridal look",
+      price: 7899,
+         video :  "../../../assets/videos/design3.mp4"
+    },
+      {
+      name: "Bridal look",
+      price: 7899,
+         video :  "../../../assets/videos/design4.mp4"
+    },
      {
       name: "Handcrafted with love",
       price: 6999,

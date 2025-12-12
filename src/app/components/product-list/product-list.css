@@ -1,288 +1,3 @@
-/* .container {
-  width: 92%;
-  max-width: 1400px;
-  margin: auto;
-  padding: 20px 0;
-  box-sizing: border-box;
-}
-
-.product-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 50px;
-  padding-top: 20px;
-}
-
-.product-img {
-  width: 100%;
-  height: 450px;
-  object-fit: fill;
-}
-
-.product-info {
-  margin-top: 12px;
-  text-align: center;
-}
-
-.product-info h3 {
-  margin: 8px 0;
-  font-size: 20px;
-  font-weight: 700;
-  color: #333;
-}
-
-.price {
-  font-size: 18px;
-  font-weight: bold;
-  color: #d9534f;
-}
-.full-details-card{
-  margin-top: 35%;
-}
-
-.product-info button {
-  margin-top: 10px;
-  width: 100%;
-  background: #8d646b;
-  color: white;
-  padding: 10px;
-  border-radius: 6px;
-  border: none;
-  cursor: pointer;
-  font-size: 16px;
-}
-
-.product-info button:hover {
-  background: #333;
-}
-
-h2, h3 {
-  font-family: "Libre Baskerville", serif;
-  font-size: 14px;
-  font-weight: 400;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  color: #1a1a1a;
-  text-align: center;
-  margin-top: 18px;
-}
-
-.modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.6);
-  backdrop-filter: blur(2px);
-  z-index: 90;
-}
-
-.login-dialog,
-.product-popup {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: #fff;
-  width: 380px;
-  padding: 20px;
-  border-radius: 12px;
-  text-align: center;
-  z-index: 100;
-}
-
-.popup-close {
-  border: none;
-  background: transparent;
-  font-size: 22px;
-  position: absolute;
-  right: 15px;
-  top: 10px;
-  cursor: pointer;
-}
-
-.testimonials-container {
-  width: 90%;
-  max-width: 1300px;
-  margin: 80px auto;
-  text-align: center;
-}
-.testimonials-container h2{
-  font-family: "Libre Baskerville", serif;
-  font-size: 24px;
-  font-weight: 400;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  color: #1a1a1a;
-  text-align: center;
-}
-.testimonial-card p{
- font-family: "Libre Baskerville", serif;
-  font-size: 12px;
-  font-weight: 400;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  color: #1a1a1a;
-  text-align: center;
-  margin-top: 5px;
-}
-.testimonial-card span{
-  font-family: "Libre Baskerville", serif;
-  font-size: 12px;
-  font-weight: 400;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  color: #1a1a1a;
-  text-align: center;
-  margin-top: 5px
-}
-.section-title {
-  font-size: 32px;
-  font-weight: 700;
-  margin-bottom: 50px;
-}
-
-.testimonials-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 40px;
-}
-
-.features-section {
-  margin: 80px auto;
-  padding: 50px 0;
-  width: 90%;
-  max-width: 1300px;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  text-align: center;
-  gap: 30px;
-}
-.feature-box h4,p{
-  font-family: "Libre Baskerville", serif;
-  font-size: 12px;
-  font-weight: 400;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  color: #1a1a1a;
-  text-align: center;
-  line-height: 19px;
-  }
-
-
-@media (max-width: 903px) and (min-width: 601px) {
-  .product-grid {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
-  }
-  .product-img { height: 220px; }
-  .product-info h3 { font-size: 17px; }
-  .price { font-size: 16px; }
-  .product-info button { font-size: 15px; }
-  .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
-  .features-section { grid-template-columns: repeat(2, 1fr); }
-}
-
-
-@media (max-width: 1024px) {
-  .product-img { height: 200px; }
-}
-
-
-@media (max-width: 600px) {
-
-  .testimonials-container {
-    width: 100%;
-    margin: 40px auto;
-    text-align: center;
-    padding: 0 10px;
-  }
-
-  .testimonials-grid {
-    display: flex !important;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    gap: 16px;
-    padding-bottom: 10px;
-    scroll-behavior: smooth;
-  }
-  .only-name{
-    letter-spacing: 1px;
-    font-size: 10px;
-    margin-left: 25px;
-    margin-right: 10px;
-  }
-  .testimonials-grid > div {
-    min-width: 90%;
-    flex: 0 0 auto;
-    scroll-snap-align: center;
-    background: #fff;
-    border-radius: 12px;
-    padding: 20px;
-    box-sizing: border-box;
-  }
-
-  .testimonials-grid::-webkit-scrollbar {
-    display: none;
-  }
-  .features-section {
-    grid-template-columns: repeat(2, 1fr) !important;
-    gap: 15px;
-  }
-  .feature-box h4,p{
-  font-family: "Libre Baskerville", serif;
-  font-size: 12px;
-  font-weight: 400;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  color: #1a1a1a;
-  text-align: center;
-  line-height: 19px;
-  }
-}
-
-
-@media (max-width: 400px) {
-  .product-img { height: 150px; }
-  .product-info h3 { font-size: 11px; }
-  .price { font-size: 10px; }
-}
-
-@media (max-width: 330px) {
-  .product-grid { grid-template-columns: 1fr; }
-}
-
-.left-right-animate,
-.left-right-animate.show {
-  opacity: 1;
-  transform: none;
-  transition: none;
-}
-
-@media (min-width: 1025px) {
-
-  .product-img {
-    height: 320px !important;
-    object-fit: cover !important;
-    transition: transform 0.35s ease, box-shadow 0.35s ease;
-    border-radius: 6px;
-  }
-
-
-  .product-img:hover {
-    transform: scale(1.07);
-    box-shadow: 0 8px 25px rgba(0,0,0,0.25);
-  }
-}
-
-
-@media (min-width: 1400px) {
-  .product-img {
-    height: 360px !important;
-  }
-}
- */
 .container {
   width: 92%;
   max-width: 1400px;
@@ -309,11 +24,11 @@ h2, h3 {
   transition: 0.25s ease;
 }
 
-.product-img:hover {
+/* .product-img:hover {
   transform: scale(1.05);
-}
+} */
 
-.only-name-card h2 {
+/* .only-name-card h2 {
   font-family: "Libre Baskerville", serif;
   font-size: 14px;
   font-weight: 400;
@@ -322,9 +37,9 @@ h2, h3 {
   color: #1a1a1a;
   text-align: center;
   margin-top: 18px;
-}
+} */
 
-.only-name-card h3 {
+/* .only-name-card h3 {
  font-family: "Libre Baskerville", serif;
   font-size: 14px;
   font-weight: 400;
@@ -333,7 +48,7 @@ h2, h3 {
   color: #1a1a1a;
   text-align: center;
   margin-top: 18px;
-}
+} */
 
 .full-details-card {
   padding: 15px;
@@ -395,11 +110,30 @@ h2, h3 {
   .product-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 25px;
-  margin-left: -25px;
-  padding-left: 5px;
+  gap: 15px;
+  margin-left: -10px;
+  margin-right: 10px;
   }
-
+  /* .only-name-card h2 {
+  font-family: "Libre Baskerville", serif;
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #1a1a1a;
+  text-align: center;
+  margin-top: 2px;
+  } */
+  /* .only-name-card h3 {
+  font-family: "Libre Baskerville", serif;
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #1a1a1a;
+  text-align: center;
+  margin-top: 9px;
+  } */
   .product-img {
     height: 270px;
   }
@@ -430,22 +164,22 @@ h2, h3 {
   text-align: center;
   line-height: 19px;
   }
-  .testimonials-container {
+  /* .testimonials-container {
     width: 100%;
     margin: 40px auto;
     text-align: center;
     padding: 0 10px;
-  }
+  } */
 
-  .testimonials-grid {
+  /* .testimonials-grid {
     display: flex !important;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
     gap: 16px;
     padding-bottom: 10px;
     scroll-behavior: smooth;
-  }
-  .only-name{
+  } */
+  /* .only-name{
     letter-spacing: 1px;
     font-size: 10px;
     margin-left: 25px;
@@ -459,8 +193,8 @@ h2, h3 {
     border-radius: 12px;
     padding: 20px;
     box-sizing: border-box;
-  }
-
+  } */
+/* 
   .testimonials-grid::-webkit-scrollbar {
     display: none;
   }
@@ -478,9 +212,9 @@ h2, h3 {
   text-align: center;
   line-height: 19px;
   }
-}
+} */
 
-@media (max-width: 400px) {
+/* @media (max-width: 400px) {
   .product-img {
     height: 120px;
   }
@@ -492,9 +226,9 @@ h2, h3 {
   .only-name-card h2 {
     font-size: 11px;
   }
-}
+} */
 
-@media (max-width: 330px) {
+/* @media (max-width: 330px) {
   .product-grid {
     grid-template-columns: 1fr !important;
   }
@@ -502,4 +236,83 @@ h2, h3 {
   .product-img {
     height: 180px;
   }
+} */
+
+
+}
+
+/* hithaa */
+
+
+
+.scroll-row {
+  display: flex;
+  overflow-x: auto;
+  gap: 20px;
+  padding: 25px;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+    margin-left: 20px;
+   margin-right: 20px;
+}
+
+.scroll-row::-webkit-scrollbar {
+  display: none;
+}
+
+.scroll-card {
+  min-width: 200px;
+  flex: 0 0 auto;
+ 
+}
+
+.only-name-card {
+  text-align: center;
+  cursor: pointer;
+  
+ 
+  
+}
+
+.only-name-card .product-img {
+  min-width: 180px;
+  width: 100%;
+  height: 450px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.only-name {
+  font-size: 14px;
+  font-weight: 400;
+  
+  text-transform: uppercase;
+  color: black;
+  margin-top: 10px;
+  text-align: center;
+  font-family: "Libre Baskerville", serif;
+  min-width: 180px;
+}
+
+.scroll-wrapper {
+  width: 100%;
+  overflow: hidden;
+  padding: 20px 0;
+}
+
+.auto-scroll {
+  display: flex;
+  gap: 20px;
+  width: max-content;
+  animation: scroll-left 180s linear infinite;
+  
+}
+
+@keyframes scroll-left {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+}
 }

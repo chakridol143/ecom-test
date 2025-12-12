@@ -1,17 +1,3 @@
-<!-- 
-<div *ngIf="!adminLoggedIn">
-
-  <app-header></app-header>
-
-  <router-outlet></router-outlet>
-
-</div>
-<div *ngIf="adminLoggedIn">
-   <app-header></app-header>
-  <app-admin-control-panel></app-admin-control-panel>
-
-</div> -->
-
 <app-header></app-header>
 
 
@@ -25,8 +11,6 @@
   <router-outlet></router-outlet>
 </div>
 
-<!-- <app-cart [cartCount]="cartCount" [items]="cartItems">
-</app-cart> -->
 <div *ngIf="!showHeaderOnly() && showSliderAndCategories()"><app-banner1></app-banner1></div>
 <div *ngIf="!showHeaderOnly() && showSliderAndCategories()"><app-watch-nshop></app-watch-nshop></div>
 

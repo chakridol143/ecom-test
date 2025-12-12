@@ -16,11 +16,12 @@ export class Slider implements OnInit, OnDestroy {
   @Output() categorySelect = new EventEmitter<number>();
 
   images = [
-    '../../../assets/images/cr4.png',
-    '../../../assets/images/cr2.png',
-    '../../../assets/images/cr3.png',
-    '../../../assets/images/cr5.png',
-    '../../../assets/images/cr1.png',
+    '../../../assets/images/Beige and Brown Minimal Festive Sale Banner.png',
+    '../../../assets/images/Ivory and Brown Minimalist Elegant Jewelry Summer Sale Facebook Post.png',
+    '../../../assets/images/Brown and White Minimalist Jewelry New Collection Facebook Post.png',
+    '../../../assets/images/Neutral Collage Sale Web Banner.png',
+    '../../../assets/images/Beige Minimalist Mothers Day Sale Promotional Banner (1).png',
+    
     // '../../../assets/images/slider8.png'
   ];
 
