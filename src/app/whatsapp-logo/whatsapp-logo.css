@@ -1,0 +1,33 @@
+/* Common styles for both fixed images */
+.fixed-image {
+  position: fixed;
+  z-index: 1000; /* stay on top */
+}
+
+/* WhatsApp position - bottom left */
+.fixed-image.whatsapp {
+  bottom: 20px;
+  right: 20px;
+  width: 70px;
+  margin-right: 25px;
+  margin-bottom: 80px;
+  height: 70px;
+  
+}
+
+/* Talker position - bottom right */
+.fixed-image.talker {
+  bottom: 20px;
+  right: 20px;
+  /* width: 70px; */
+  margin-right: 25px;
+  /* height: 70px; */
+}
+
+/* Image styling */
+.logo {
+  width: 70px; /* adjust size */
+  height: 70px;
+  cursor: pointer;
+  
+}

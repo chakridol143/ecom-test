@@ -10,6 +10,7 @@ import { Cart } from './components/cart/cart';
 import { WatchNshop } from "./watch-nshop/watch-nshop";
 import { Footer } from './components/footer/footer';
 import { Banner1 } from './components/banner1/banner1';
+import { WhatsappLogo } from './whatsapp-logo/whatsapp-logo';
 
 
 
@@ -18,7 +19,7 @@ import { Banner1 } from './components/banner1/banner1';
   selector: 'app-root',
   standalone: true,
 
-  imports: [RouterOutlet, Header, CommonModule, Slider, category, WatchNshop, Footer, Banner1], 
+  imports: [RouterOutlet, Header, CommonModule, Slider, category, WatchNshop, Footer, Banner1,WhatsappLogo], 
   templateUrl: './app.html',
   styleUrls: ['./app.css']
 })

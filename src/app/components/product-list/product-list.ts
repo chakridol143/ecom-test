@@ -19,7 +19,10 @@ export class ProductList implements OnInit {
 
   @Output() addToCartEvent = new EventEmitter<any>();
   @Input() searchTerm: string = '';
-  @Input() categoryId: number | null = null;
+  // @Input() categoryId: number | null = null;
+  viewMode: 'scroll' | 'full' | 'names' = 'scroll';
+categoryId: number | null = null;
+
   
   @Input() limit: number | null = null;
 @Input() excludeProductId: number | null = null;
@@ -57,13 +60,9 @@ export class ProductList implements OnInit {
   ) {}
 
 ngOnInit() {
-
   this.route.paramMap.subscribe(params => {
     const id = params.get('categoryId');
     this.categoryId = id ? Number(id) : null;
-
-    this.showFullDetails = !!this.categoryId;
-
     this.loadAllProducts();
   });
 
@@ -71,10 +70,14 @@ ngOnInit() {
     this.searchTerm = term.trim();
   });
 
-   this.route.queryParamMap.subscribe(params => {
-      const view = params.get('view');
-      this.showFullDetails = view === 'full';
-    });
+  //  this.route.queryParamMap.subscribe(params => {
+  //     const view = params.get('view');
+  //     this.showFullDetails = view === 'full';
+  //   });
+  this.route.data.subscribe(data => {
+    this.viewMode = data['view'] ?? 'scroll';
+    this.showFullDetails = this.viewMode === 'full';
+  });
 }
 
  
@@ -191,10 +194,14 @@ openProductDetails(product: any) {
   this.router.navigate(['/product', product.product_id]);
 }
 
- viewAllProducts() {
-    this.router.navigate(['/products'], {
-      queryParams: { view: 'names' }
-    });
-  }
+//  viewAllProducts() {
+//     this.router.navigate(['/products'], {
+//       queryParams: { view: 'names' }
+//     });
+//   }
+
+viewAllProducts() {
+  this.router.navigate(['/products/view-all']);
+}
 
 }

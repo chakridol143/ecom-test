@@ -1,43 +1,68 @@
+<!-- ================= LOADING & ERROR ================= -->
 <div *ngIf="loading">Loading…</div>
 <div *ngIf="!loading && error" class="error">{{ error }}</div>
 
 <div *ngIf="!loading && !error">
 
-  <div class="scroll-wrapper" *ngIf="!showFullDetails">
+  <!-- ================================================= -->
+  <!-- =============== AUTO SCROLL VIEW ================ -->
+  <!-- ================================================= -->
+  <div *ngIf="viewMode === 'scroll'" class="scroll-wrapper">
 
     <div class="auto-scroll">
-      <!-- First Loop -->
       <div class="scroll-card" *ngFor="let product of productsToShow">
         <div class="only-name-card">
 
-          <img [src]="'https://ecom-backend-production-5341.up.railway.app/assets/images/' + product.currentImage"
-            class="product-img" alt="{{ product.name }}" (click)="openProductDetails(product)"
-            (mouseenter)="onHoverImage(product)" (mouseleave)="onLeaveImage(product)" (error)="onImgError($event)" />
+          <img
+            [src]="'https://ecom-backend-production-5341.up.railway.app/assets/images/' + product.currentImage"
+            class="product-img"
+            alt="{{ product.name }}"
+            (click)="openProductDetails(product)"
+            (mouseenter)="onHoverImage(product)"
+            (mouseleave)="onLeaveImage(product)"
+            (error)="onImgError($event)"
+          />
 
           <h2 class="only-name" (click)="openProductDetails(product)">
             {{ product.name }}
           </h2>
+
         </div>
       </div>
     </div>
+
     <div class="view-all-container">
       <button class="shop2-btn" (click)="viewAllProducts()">View All</button>
     </div>
-  </div>
-  
 
-  <div *ngIf="showFullDetails" class="product-grid">
+  </div>
+
+
+  <!-- ================================================= -->
+  <!-- =============== FULL DETAILS GRID ================ -->
+  <!-- =========== (CATEGORY / PRODUCTS/:ID) ============ -->
+  <!-- ================================================= -->
+  <div *ngIf="viewMode === 'full'" class="product-grid">
 
     <div class="product-card" *ngFor="let product of productsToShow">
 
       <div class="full-details-card">
 
-        <img [src]="'https://ecom-backend-production-5341.up.railway.app/assets/images/' + product.currentImage"
-          alt="{{ product.name }}" class="product-img" (click)="openProductDetails(product)"
-          (mouseenter)="onHoverImage(product)" (mouseleave)="onLeaveImage(product)" (error)="onImgError($event)" />
+        <img
+          [src]="'https://ecom-backend-production-5341.up.railway.app/assets/images/' + product.currentImage"
+          class="product-img"
+          alt="{{ product.name }}"
+          (click)="openProductDetails(product)"
+          (mouseenter)="onHoverImage(product)"
+          (mouseleave)="onLeaveImage(product)"
+          (error)="onImgError($event)"
+        />
+
         <div class="product-info">
           <h3>{{ product.name }}</h3>
-          <p class="price">{{ product.price | currency:'INR':'symbol':'1.2-2' }}</p>
+          <p class="price">
+            {{ product.price | currency:'INR':'symbol':'1.2-2' }}
+          </p>
           <button (click)="addToCart(product)">Add To Cart</button>
         </div>
 
@@ -47,6 +72,38 @@
 
   </div>
 
+
+  <!-- ================================================= -->
+  <!-- =============== VIEW ALL GRID =================== -->
+  <!-- ========== (NAME + MRP ONLY GRID) =============== -->
+  <!-- ================================================= -->
+  <div *ngIf="viewMode === 'names'" class="product-grid">
+
+    <div class="product-card" *ngFor="let product of productsToShow">
+
+      <div class="only-name-card">
+
+        <img
+          [src]="'https://ecom-backend-production-5341.up.railway.app/assets/images/' + product.currentImage"
+          class="product-img"
+          alt="{{ product.name }}"
+          (click)="openProductDetails(product)"
+          (mouseenter)="onHoverImage(product)"
+          (mouseleave)="onLeaveImage(product)"
+          (error)="onImgError($event)"
+        />
+
+        <h2 class="only-name">{{ product.name }}</h2>
+        <h3 class="only-name">MRP : {{ product.price }} /-</h3>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- ================= EMPTY STATE ================= -->
   <ng-template #empty>
     <p>No products found.</p>
   </ng-template>

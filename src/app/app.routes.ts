@@ -49,6 +49,7 @@ import { AdminControlPanelComponent } from './components/admin-control-panel/adm
 import { AdminAuthGuard } from './components/gaurds/admin.auth';
 import { Banner1 } from './components/banner1/banner1';
 import { KidsCollections } from './kids-collections/kids-collections';
+import { WhatsappLogo } from './whatsapp-logo/whatsapp-logo';
 
 
 
@@ -62,26 +63,35 @@ export const routes: Routes = [
   { path: 'login', component: login },
   { path: 'logout', component: Logout },
   { path: 'cartdetails', component: CartDetails },
- 
   { path: 'checkout', component: Checkout },
   { path: 'register', component: RegisterComponent },
   { path: 'navbar', component: Navbar },
   { path: 'slider', component: Slider },
-  { path: '', component: ProductList },
-  { path: 'products/:categoryId', component: ProductList },
-  { path: '', redirectTo: 'ProductList', pathMatch: 'full' },
   { path: 'cart', component: Cart }  ,
   { path: 'bestsellers', component: Bestsellers },
 { path: 'releases', component: Releases },
 { path: 'banner1', component: Banner1 },
 { path: 'mens', component: MensCollections },
 { path: 'womens', component: WomensCollections },
-// { path: 'menu', component: Menu },
 {path: 'admin',component: AdminControlPanelComponent,canActivate: [AdminAuthGuard]},
 {path: 'admin-login',loadComponent: () =>import('./components/login/login').then(m => m.login)},
-{ path: 'product/:id', component: Productdetails },
 { path: 'KidsCollections', component: KidsCollections },
-{ path: 'products', component: ProductList },
+
+// { path: 'products', component: ProductList },
+//   { path: '', component: ProductList },
+//   { path: 'products/:categoryId', component: ProductList },
+//    { path: '', redirectTo: 'ProductList', pathMatch: 'full' },
+//    { path: 'product/:id', component: Productdetails },
+
+{ path: '', component: ProductList }, // HOME scroll view
+
+{ path: 'products', component: ProductList }, // scroll
+{ path: 'products/view-all', component: ProductList, data: { view: 'names' } }, // ✅ NEW GRID
+{ path: 'products/:categoryId', component: ProductList, data: { view: 'full' } }, //when clicking on category
+
+{ path: 'product/:id', component: Productdetails }, //product details
+
+{ path: 'whatsapp', component: WhatsappLogo }
 
 ];
 
