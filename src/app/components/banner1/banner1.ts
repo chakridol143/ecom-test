@@ -50,9 +50,6 @@ export class Banner1 {
   showFrom(index: number) {
     this.currentIndex = index;
   }
-
-  
-
   goToMens() {
     this.router.navigate(['/mens']);
   }
