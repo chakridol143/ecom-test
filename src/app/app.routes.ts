@@ -80,7 +80,8 @@ export const routes: Routes = [
 {path: 'admin',component: AdminControlPanelComponent,canActivate: [AdminAuthGuard]},
 {path: 'admin-login',loadComponent: () =>import('./components/login/login').then(m => m.login)},
 { path: 'product/:id', component: Productdetails },
-{ path: 'KidsCollections', component: KidsCollections }
+{ path: 'KidsCollections', component: KidsCollections },
+{ path: 'products', component: ProductList },
 
 ];
 
