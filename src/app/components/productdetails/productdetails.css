@@ -1,7 +1,6 @@
 .product-layout {
   display: flex;
   gap: 20px;
-  /* align-items: flex-start; */
   width: 100%;
   margin-top: 110px;
 }
@@ -56,15 +55,16 @@
   margin: 0;
 }
 .product-details h1 {
-  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-family:  "Libre Baskerville", serif;
   font-size: 20px;
   font-weight: 400px;
   letter-spacing: 3px;
   text-transform: uppercase;
   color: #1a1a1a;
-  text-align: center;
+  text-align: left;
   line-height: 22px;
   width: 500px;
+  margin-top: 20px;
 }
 
 .product-title {
@@ -73,9 +73,10 @@
   font-weight: bold;
   letter-spacing: 1px;
   text-transform: uppercase;
-  text-align: center;
+  text-align: left;
   margin-top: 15px;
    width: 500px;
+   margin-top: 20px;
 }
 
 .pricing-section {
@@ -85,23 +86,50 @@
   margin-top: 25px;
 }
 
-.price { font-weight: bold; font-size: 15px; }
+.price { font-weight: bold; font-size: 20px; font-family: "Libre Baskerville", serif;  }
 .old-price { text-decoration: line-through; }
-.discount { background: #b70039; color: #fff; font-size: 16px; padding: 1px 6px; }
+.discount { background: rgb(235, 54, 54); color: #fff; font-size: 16px; padding: 1px 6px; font-family: "Libre Baskerville", serif; }
 
-.quantity-box { display: flex; gap: 12px; align-items: center; }
+.quantity-box { display: flex; gap: 12px; align-items: center; font-family: "Libre Baskerville", serif; font-size: 16px; margin-top: 20px; }
 
 .btn-row { display: flex; flex-direction: column; gap: 12px; }
 
-.add-cart-btn, .buy-btn {
+.add-cart-btn {
+  --btn-bg: 0, 0, 0;       
+  --btn-text: 0, 0, 0;     
+  --btn-text-hover: 255,255,255; 
+  
+  margin-top: 20px;
+  font-family:  "Libre Baskerville", serif;
+  appearance: none;
+  border: 1.5px solid rgb(var(--btn-bg));
+  border-radius: 1px;
   padding: 14px;
-  border-radius: 6px;
   font-size: 16px;
   cursor: pointer;
-  border: none;
+
+  color: rgb(var(--btn-text));
+  background-color: transparent;
+
+
+  background-image:
+    linear-gradient(rgb(var(--btn-bg)), rgb(var(--btn-bg))),
+    linear-gradient(transparent, transparent);
+
+  background-size: 0% 100%, 100% 100%;
+  background-position: left;
+  background-repeat: no-repeat;
+
+  transition:
+    background-size 0.45s cubic-bezier(.785,.135,.15,.86),
+    color 0.45s cubic-bezier(.785,.135,.15,.86);
 }
-.add-cart-btn { background: #d96d7d; color: white; }
-.buy-btn { background: #7b414c; color: white; }
+.add-cart-btn:hover {
+  background-size: 100% 100%, 100% 100%;
+  color: rgb(var(--btn-text-hover));
+}
+
+
 
 .big-image-grid {
   display: none;

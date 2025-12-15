@@ -20,35 +20,9 @@
   width: 100%;
   height: 450px;
   object-fit: fill;
-  border-radius: 8px;
+  border-radius: 1px;
   transition: 0.25s ease;
 }
-
-/* .product-img:hover {
-  transform: scale(1.05);
-} */
-
-/* .only-name-card h2 {
-  font-family: "Libre Baskerville", serif;
-  font-size: 14px;
-  font-weight: 400;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  color: #1a1a1a;
-  text-align: center;
-  margin-top: 18px;
-} */
-
-/* .only-name-card h3 {
- font-family: "Libre Baskerville", serif;
-  font-size: 14px;
-  font-weight: 400;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  color: #1a1a1a;
-  text-align: center;
-  margin-top: 18px;
-} */
 
 .full-details-card {
   padding: 15px;
@@ -114,26 +88,6 @@
   margin-left: -10px;
   margin-right: 10px;
   }
-  /* .only-name-card h2 {
-  font-family: "Libre Baskerville", serif;
-  font-size: 10px;
-  font-weight: 400;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  color: #1a1a1a;
-  text-align: center;
-  margin-top: 2px;
-  } */
-  /* .only-name-card h3 {
-  font-family: "Libre Baskerville", serif;
-  font-size: 10px;
-  font-weight: 400;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  color: #1a1a1a;
-  text-align: center;
-  margin-top: 9px;
-  } */
   .product-img {
     height: 270px;
   }
