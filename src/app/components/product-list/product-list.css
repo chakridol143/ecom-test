@@ -24,38 +24,6 @@
   transition: 0.25s ease;
 }
 
-<<<<<<< HEAD
-/* .product-img:hover {
-  transform: scale(1.05);
-} */
-
-/* .only-name-card h2 {
-  font-family: "Libre Baskerville", serif;
-  font-size: 14px;
-  font-weight: 400;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  color: #1a1a1a;
-  text-align: center;
-  margin-top: 18px;
-} */
-
-/* .only-name-card h3 {
- font-family: "Libre Baskerville", serif;
-  font-size: 14px;
-  font-weight: 400;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  color: #1a1a1a;
-  text-align: center;
-  margin-top: 18px;
-} */
-
-/* ================= FULL DETAILS → SAME AS ONLY NAME ================= */
-
-/* Card alignment */
-=======
->>>>>>> 47536a0cf11f2f6916d3c8ab40b2c02e65d8b50e
 .full-details-card {
   text-align: center;
   cursor: pointer;
