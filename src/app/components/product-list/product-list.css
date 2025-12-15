@@ -278,7 +278,7 @@
 }
 
 .shop2-btn {
-  position: static;       /* ❌ no absolute */
+  /* position: static;       
   padding: 12px 28px;
   font-size: 16px;
   font-weight: 600;
@@ -290,11 +290,40 @@
   border-radius: 1px;
 
   cursor: pointer;
-  transition: 0.25s ease;
+  transition: 0.25s ease; */
+  --btn-bg: 0, 0, 0;       
+  --btn-text: 0, 0, 0;     
+  --btn-text-hover: 255,255,255; 
+  
+  margin-top: 20px;
+  font-family:  "Libre Baskerville", serif;
+  appearance: none;
+  border: 1.5px solid rgb(var(--btn-bg));
+  border-radius: 1px;
+  padding: 12px 28px;
+  font-size: 16px;
+  cursor: pointer;
+  
+
+  color: rgb(var(--btn-text));
+  background-color: transparent;
+
+
+  background-image:
+    linear-gradient(rgb(var(--btn-bg)), rgb(var(--btn-bg))),
+    linear-gradient(transparent, transparent);
+
+  background-size: 0% 100%, 100% 100%;
+  background-position: left;
+  background-repeat: no-repeat;
+
+  transition:
+    background-size 0.45s cubic-bezier(.785,.135,.15,.86),
+    color 0.45s cubic-bezier(.785,.135,.15,.86);
 }
 
 .shop2-btn:hover {
-  background: #333;
-  color: white;
-  transform: scale(1.05);
+  background-size: 100% 100%, 100% 100%;
+  color: rgb(var(--btn-text-hover));
 }
+
