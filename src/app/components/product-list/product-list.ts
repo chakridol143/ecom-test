@@ -15,7 +15,7 @@ import { SearchBusService } from '../search/services/search-bus.service';
   templateUrl: './product-list.html',
   styleUrls: ['./product-list.css']
 })
-export class ProductList implements OnInit, OnChanges {
+export class ProductList implements OnInit {
 
   @Output() addToCartEvent = new EventEmitter<any>();
   @Input() searchTerm: string = '';
@@ -46,6 +46,8 @@ export class ProductList implements OnInit, OnChanges {
   private apiHost1 = 'https://ecom-backend-production-5341.up.railway.app';
   private productsUrl = `${this.apiHost}/api/products`;
   private categoryProductsUrl = `${this.apiHost1}/api/category`;
+
+
   constructor(
     private http: HttpClient,
     private cart: CartService,
@@ -68,12 +70,17 @@ ngOnInit() {
   this.searchBus.term$.subscribe(term => {
     this.searchTerm = term.trim();
   });
+
+   this.route.queryParamMap.subscribe(params => {
+      const view = params.get('view');
+      this.showFullDetails = view === 'full';
+    });
 }
 
  
-  ngOnChanges() {
-    this.showFullDetails = !!this.categoryId;
-  }
+  // ngOnChanges() {
+  //   this.showFullDetails = !!this.categoryId;
+  // }
 
   get productsToShow(): any[] {
     let list = this.allProducts;
@@ -183,5 +190,11 @@ addToCart(product: any) {
 openProductDetails(product: any) {
   this.router.navigate(['/product', product.product_id]);
 }
+
+ viewAllProducts() {
+    this.router.navigate(['/products'], {
+      queryParams: { view: 'names' }
+    });
+  }
 
 }
