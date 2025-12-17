@@ -6,10 +6,10 @@
 }
 .big-image-grid {
   display: none;
-  margin-right: 15%;
-  margin-left: 15%;
-  gap: 10px;
-  border-radius: 10px solid black;
+  margin-right: 25%;
+  margin-left: 25%;
+  gap: 4px;
+  /* border-radius: 50%; */
 
 }
 
@@ -49,6 +49,39 @@
   object-fit: cover;
   margin-top: 19%;
 }
+.finish-wrapper {
+  width: 100%;
+  max-width: 520px;
+  margin-top: 10px;
+}
+
+.finish-label {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 6px;
+  color: #000;
+  font-family: "Libre Baskerville", serif;
+
+
+}
+
+.finish-select {
+  width: 100%;
+  padding: 14px 12px;
+  background: #fff;
+  font-size: 13px;
+  font-family: "Libre Baskerville", serif;
+  outline: none;
+  cursor: pointer;
+  padding: 14px;
+  border: 1px solid #b6aeae;
+}
+
+.finish-select:focus {
+  border-color: #b6aeae;
+  border: 1px solid #b6aeae;
+}
+
 
 .product-details {
   width: 500px;
@@ -56,7 +89,7 @@
   flex-direction: column;
   gap: 14px;
   margin: 0;
-  margin-left: -140px;
+  margin-left: -260px;
   font-weight: lighter;
 }
 .product-details h1 {
@@ -91,15 +124,71 @@
   margin-top: 25px;
 }
 
-.price { font-weight: bold; font-size: 20px; font-family: "Libre Baskerville", serif;  }
+.description h3{
+  font-family: "Libre Baskerville", serif;
+  letter-spacing: 1px;
+  color: #383737;
+  text-align: left;
+  margin-top: 20px;
+  font-size: 15px;
+  font-weight: normal;
+}
+
+.accordion {
+  width: 100%;
+  max-width: 650px;
+  border-top: 1px solid #e5e5e5;
+}
+
+.accordion-item {
+  border-bottom: 1px solid #e5e5e5;
+  color: #383737;
+}
+
+.accordion-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 0;
+  cursor: pointer;
+  font-size: 13px;
+  letter-spacing: 2px;
+  font-weight: 500;
+  color: #383737;
+}
+
+.icon {
+  font-size: 18px;
+  line-height: 1;
+}
+
+.accordion-body {
+  padding: 0 0 18px 0;
+  font-size: 14px;
+  color: #333;
+}
+
+.accordion-body p {
+  margin: 0;
+}
+
+.info-link {
+  text-decoration: underline;
+  color: #000;
+  font-weight: 500;
+}
+
+
+.price {  font-size: 20px; font-family: "Libre Baskerville", serif;  color: #383737;  }
 .old-price { text-decoration: line-through; }
-.discount { background: rgb(235, 54, 54); color: #fff; font-size: 16px; padding: 1px 6px; font-family: "Libre Baskerville", serif; }
 .quantity-box {
   display: flex;
   align-items: center;
   gap: 10px;
   margin-top: 15px;
 }
+.discount { background: rgb(236, 79, 79); color: #fff; font-size: 16px; padding: 1px 6px; font-family: "Libre Baskerville", serif; }
+
 
 .quantity-box button {
   width: 35px;
@@ -184,7 +273,6 @@
     width: 100%;
     height: 430px;
     object-fit: cover;
-    border-radius: 10px;
   }
 
   /* RIGHT PANEL — FIXED PRODUCT DETAILS */
@@ -240,7 +328,7 @@
 
 .related-section {
   margin-top: 50px;
-  width: 92%;
+  width: 100%;
   max-width: 1400px;
   margin-left: auto;
   margin-right: auto;

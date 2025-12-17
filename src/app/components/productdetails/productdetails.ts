@@ -195,19 +195,21 @@
 
 // src/app/product-details/product-details.component.ts
 import { CommonModule, NgFor } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, NgModule, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { ProductList } from '../product-list/product-list';
 import { ProductService } from '../product-list/services/product.service';
 import { CartService } from '../cart/services/cart.services';
 
+import { FormsModule } from '@angular/forms';
+
 
 
 @Component({
   selector: 'app-product-details',
   standalone: true,
-  imports: [CommonModule, HttpClientModule, NgFor],
+  imports: [CommonModule, HttpClientModule, NgFor, FormsModule],
   templateUrl: './productdetails.html',
   styleUrls: ['./productdetails.css']
 })
@@ -217,6 +219,8 @@ export class Productdetails implements OnInit {   // ✅ Fixed class name
   relatedProducts: any[] = [];
   activeIndex = 0;
   quantity = 1;
+  openSection: string | null = 'shipping';
+  
 
   private baseImg = 'https://ecom-backend-production-c71b.up.railway.app/assets/images/';
 
@@ -259,24 +263,13 @@ export class Productdetails implements OnInit {   // ✅ Fixed class name
     });
   }
 
-  // loadRelatedProducts(categoryId: number, currentProductId: number) {
-  //   this.productService.getProductsByCategory(categoryId).subscribe({
-  //     next: (products: any[]) => {
-  //       this.relatedProducts = products
-  //         .filter((p: any) => p.product_id !== currentProductId)
-  //         .slice(0, 4);
-          
-  //     },
-  //     error: (err: any) => console.error('Related products load failed', err)
-  //   });
-  // }
+ 
 
   loadRelatedProducts(categoryId: number, currentProductId: number) {
   this.productService.getProductsByCategory(categoryId).subscribe({
     next: (products: any[]) => {
       this.relatedProducts = products
         .filter((p: any) => p.product_id !== currentProductId)
-        .slice(0, 4)
         .map(p => ({
           ...p,
           currentImage: this.baseImg + ( p.image_url || p.image_url1 || '')
@@ -289,26 +282,6 @@ export class Productdetails implements OnInit {   // ✅ Fixed class name
 
   setActive(index: number) { this.activeIndex = index; }
  
-   incQty() {
-  this.quantity++;
-  this.syncQuantityWithCart();
-}
-
-   decQty() {
-  if (this.quantity > 1) {
-    this.quantity--;
-    this.syncQuantityWithCart();
-  }
-}
-
- private syncQuantityWithCart() {
-  if (!this.product) return;
-  const cartItem = this.cartService.getItems().find(i => i.product_id === this.product.product_id);
-  if (cartItem) {
-    // Update existing item quantity in cart in real-time
-    this.cartService.updateQuantity(this.product.product_id, this.quantity);
-  }
-}   
 
 
   openProduct(product: any) {
@@ -366,7 +339,14 @@ onScroll(event: any) {
     media.classList.remove('scrolled');
   }
 }
+finishes: string[] = [
+    '24k Gold Plated',
+    '18k Gold Plated',
+    'Rose Gold',
+    'Silver Plated'
+  ];
 
+selectedFinish = '24k Gold Plated';
   addToCart() {
   if (!this.product) return;
 
@@ -381,6 +361,29 @@ onScroll(event: any) {
   this.cartService.addToCart(cartItem);
 }
 
+incQty() {
+  this.quantity++;
+  this.syncQuantityWithCart();
+}
+
+   decQty() {
+  if (this.quantity > 1) {
+    this.quantity--;
+    this.syncQuantityWithCart();
+  }
+}
+
+ private syncQuantityWithCart() {
+  if (!this.product) return;
+  const cartItem = this.cartService.getItems().find(i => i.product_id === this.product.product_id);
+  if (cartItem) {
+    // Update existing item quantity in cart in real-time
+    this.cartService.updateQuantity(this.product.product_id, this.quantity);
+  }
+}
 
 
+  toggle(section: string) {
+    this.openSection = this.openSection === section ? null : section;
+  }
 }
