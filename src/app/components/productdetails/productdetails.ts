@@ -23,7 +23,7 @@ export class Productdetails implements OnInit {   // ✅ Fixed class name
   activeIndex = 0;
   quantity = 1;
 
-  private baseImg = 'https://ecom-backend-production-5341.up.railway.app/assets/images/';
+  private baseImg = 'https://ecom-backend-production-c71b.up.railway.app/assets/images/';
 
   constructor(
     private route: ActivatedRoute,

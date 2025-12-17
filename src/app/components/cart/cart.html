@@ -1,43 +1,4 @@
-<!-- <div class="cart-container" (click)="toggleCartDetails()">
-  <img src="../../../assets/images/cart.png" alt="Cart" class="cart-icon">
-  <span class="cart-count" *ngIf="cartCount > 0">{{ cartCount }}</span>
-</div> -->
 
-<!-- <app-cart-details
-  *ngIf="showCartPopup"
-  [items]="items"
-  (close)="closeDetails()"
-  (remove)="cartItemRemove($event)"
-  (clear)="handleClear()">
-</app-cart-details> -->
-
-<!-- <div class="cart-page">
-
-  <h2>Your Cart</h2>
-
-  <div *ngIf="items.length > 0; else emptyCart">
-    <div class="cart-item" *ngFor="let item of items; let i = index">
-      <img [src]="item.image" class="item-image">
-
-      <div class="item-info">
-        <h3>{{ item.name }}</h3>
-        <p>{{ item.description }}</p>
-        <p class="item-price">₹{{ item.price }}</p>
-      </div>
-
-      <button class="remove-btn" (click)="cartItemRemove(i)">Remove</button>
-    </div>
-
-    <div class="cart-actions">
-      <button class="clear-btn" (click)="handleClear()">Clear Cart</button>
-    </div>
-  </div>
-
-  <ng-template #emptyCart>
-    <p class="empty-message">Your cart is empty.</p>
-  </ng-template>
-
-</div> -->
 <div class="cart-page">
 
   <h2 class="cart-title">Your Cart ({{ items.length }})</h2>
@@ -50,7 +11,7 @@
     <li *ngFor="let item of items; let i = index" class="cart-item">
 
       <img 
-        [src]="'https://ecom-backend-production-5341.up.railway.app/assets/images/' + item.image_url"
+        [src]="'https://ecom-backend-production-c71b.up.railway.app/assets/images/' + item.image_url"
         class="item-image"
       />
 

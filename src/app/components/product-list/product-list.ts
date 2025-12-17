@@ -44,9 +44,8 @@ categoryId: number | null = null;
   // private apiHost1 = 'http://localhost:3001'
   // private productsUrl = ${this.apiHost}/api/products;
   // private categoryProductsUrl = ${this.apiHost1}/api/category;
-  private apiHost = 'https://ecom-backend-production-5341.up.railway.app';
-  private apiBase = 'https://ecom-backend-production-5341.up.railway.app';
-  private apiHost1 = 'https://ecom-backend-production-5341.up.railway.app';
+  private apiHost = 'https://ecom-backend-production-c71b.up.railway.app';
+  private apiHost1 = 'https://ecom-backend-production-c71b.up.railway.app';
   private productsUrl = `${this.apiHost}/api/products`;
   private categoryProductsUrl = `${this.apiHost1}/api/category`;
 

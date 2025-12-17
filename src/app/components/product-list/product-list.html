@@ -14,7 +14,7 @@
         <div class="only-name-card">
 
           <img
-            [src]="'https://ecom-backend-production-5341.up.railway.app/assets/images/' + product.currentImage"
+            [src]="'https://ecom-backend-production-c71b.up.railway.app/assets/images/' + product.currentImage"
             class="product-img"
             alt="{{ product.name }}"
             (click)="openProductDetails(product)"
@@ -49,7 +49,7 @@
       <div class="full-details-card">
 
         <img
-          [src]="'https://ecom-backend-production-5341.up.railway.app/assets/images/' + product.currentImage"
+          [src]="'https://ecom-backend-production-c71b.up.railway.app/assets/images/' + product.currentImage"
           class="product-img"
           alt="{{ product.name }}"
           (click)="openProductDetails(product)"
@@ -63,7 +63,7 @@
           <p class="price">
             {{ product.price | currency:'INR':'symbol':'1.2-2' }}
           </p>
-          <button (click)="addToCart(product)">Add To Cart</button>
+          <!-- <button (click)="addToCart(product)">Add To Cart</button> -->
         </div>
 
       </div>
@@ -84,7 +84,7 @@
       <div class="only-name-card">
 
         <img
-          [src]="'https://ecom-backend-production-5341.up.railway.app/assets/images/' + product.currentImage"
+          [src]="'https://ecom-backend-production-c71b.up.railway.app/assets/images/' + product.currentImage"
           class="product-img"
           alt="{{ product.name }}"
           (click)="openProductDetails(product)"

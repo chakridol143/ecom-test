@@ -7,11 +7,8 @@ import { CartService } from '../../cart/services/cart.services';
   providedIn: 'root'
 })
 export class LoginService {
-
-  // private apiUrl = 'http://localhost:3000/api/auth';
-  // private adminUrl = 'http://localhost:3000/api/auth/admin/login';
- private apiUrl = 'https://ecom-backend-production-5341.up.railway.app/api/auth';
-  private adminUrl = 'https://ecom-backend-production-5341.up.railway.app/api/auth/admin/login';
+ private apiUrl = 'https://ecom-backend-production-c71b.up.railway.app/api/auth';
+  private adminUrl = 'https://ecom-backend-production-c71b.up.railway.app/api/auth/admin/login';
   private userState = new BehaviorSubject<any>(this.getUser());
   userState$ = this.userState.asObservable();
 
@@ -60,10 +57,6 @@ export class LoginService {
     this.adminState.next({ token });
   }
 
-  // adminLogout() {
-  //   localStorage.removeItem('adminToken');
-  //   this.adminState.next(null);
-  // }
 adminLogout() {
   localStorage.removeItem("adminToken");
   localStorage.removeItem("admin");
