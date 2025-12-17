@@ -24,6 +24,13 @@ export class LoginService {
   register(data: any) {
     return this.http.post<any>(`${this.apiUrl}/register`, data);
   }
+ googleRegister(credential: string) {
+  return this.http.post(
+    'https://ecom-backend-production-c71b.up.railway.app/api/auth/google',
+    { token: credential }
+  );
+}
+
 
   saveSession(token: string, user: any) {
     sessionStorage.setItem('token', token);

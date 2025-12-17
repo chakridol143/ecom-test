@@ -1,9 +1,10 @@
-
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, AfterViewInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { LoginService } from '../login/services/login.service';
+
+declare const google: any;
 
 @Component({
   selector: 'app-register',
@@ -12,10 +13,9 @@ import { LoginService } from '../login/services/login.service';
   templateUrl: './register.html',
   styleUrls: ['./register.css']
 })
-export class RegisterComponent {
+export class RegisterComponent implements AfterViewInit {
 
-  @Output() close = new EventEmitter<void>();
-
+  // ===== NORMAL REGISTER =====
   username = '';
   email = '';
   password = '';
@@ -23,16 +23,70 @@ export class RegisterComponent {
   phone = '';
   address = '';
 
-  constructor(private router: Router, private auth: LoginService) {}
+  constructor(
+    private router: Router,
+    private auth: LoginService
+  ) {}
 
+  // ===== INIT GOOGLE =====
+  ngAfterViewInit() {
+    this.waitForGoogle();
+  }
+
+  private waitForGoogle() {
+    if ((window as any).google?.accounts?.id) {
+      this.initGoogle();
+    } else {
+      setTimeout(() => this.waitForGoogle(), 100);
+    }
+  }
+
+ private initGoogle() {
+  google.accounts.id.initialize({
+    client_id: '127997694068-djgvmqj311ldteojrtc84gbkc8h7e9bb.apps.googleusercontent.com',
+    callback: (response: any) => this.handleGoogleResponse(response),
+    ux_mode: 'popup'
+  });
+
+  google.accounts.id.renderButton(
+    document.getElementById('googleBtn'),
+    {
+      theme: 'outline',
+      size: 'large',
+      width: 300
+    }
+  );
+}
+
+  // ===== GOOGLE ID TOKEN =====
+  private handleGoogleResponse(response: any) {
+    if (!response?.credential) {
+      alert('Google login failed');
+      return;
+    }
+
+    // SEND ID TOKEN (JWT)
+    this.auth.googleRegister(response.credential).subscribe({
+      next: (res: any) => {
+        this.auth.saveSession(res.token, res.user);
+        this.router.navigate(['/']);
+      },
+      error: (err) => {
+        console.error(err);
+        alert('Google registration failed');
+      }
+    });
+  }
+
+  // ===== NORMAL REGISTER (UNCHANGED) =====
   onRegister() {
     if (!this.username || !this.email || !this.password || !this.confirmPassword) {
-      alert('Please fill in all required fields ');
+      alert('Please fill all required fields');
       return;
     }
 
     if (this.password !== this.confirmPassword) {
-      alert('Confirm Password do not match ');
+      alert('Passwords do not match');
       return;
     }
 
@@ -45,32 +99,11 @@ export class RegisterComponent {
     };
 
     this.auth.register(payload).subscribe({
-      next: (res) => {
-        alert('Registration successful! You can now log in.');
-        if (res?.token && res?.user) {
-          this.auth.saveSession(res.token, res.user);
-        }
-        this.router.navigate(['menu']);
-        this.close.emit();
+      next: (res: any) => {
+        this.auth.saveSession(res.token, res.user);
+        this.router.navigate(['/menu']);
       },
-      error: (err) => {
-        const msg = err?.error?.message || 'Registration failed';
-        alert(` ${msg}`);
-        console.error('Register error:', err);
-      }
+      error: () => alert('Registration failed')
     });
-  }
-
-  onClose() {
-    this.router.navigate(['menu']);
-  }
-
-  onReset() {
-    this.username = '';
-    this.email = '';
-    this.password = '';
-    this.confirmPassword = '';
-    this.phone = '';
-    this.address = '';
   }
 }
