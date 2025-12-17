@@ -2,24 +2,27 @@ import { Component, OnInit, Input, Output, EventEmitter, OnChanges } from '@angu
 import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { Footer } from "../footer/footer";
 import { CartService } from '../cart/services/cart.services';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SearchBusService } from '../search/services/search-bus.service';
 
 
+
 @Component({
   selector: 'app-products',
   standalone: true,
-  imports: [CommonModule, FormsModule, Footer],
+  imports: [CommonModule, FormsModule],
   templateUrl: './product-list.html',
   styleUrls: ['./product-list.css']
 })
-export class ProductList implements OnInit, OnChanges {
+export class ProductList implements OnInit {
 
   @Output() addToCartEvent = new EventEmitter<any>();
   @Input() searchTerm: string = '';
-  @Input() categoryId: number | null = null;
+  // @Input() categoryId: number | null = null;
+  viewMode: 'scroll' | 'full' | 'names' = 'scroll';
+categoryId: number | null = null;
+
   
   @Input() limit: number | null = null;
 @Input() excludeProductId: number | null = null;
@@ -46,6 +49,8 @@ export class ProductList implements OnInit, OnChanges {
   private apiHost1 = 'https://ecom-backend-production-5341.up.railway.app';
   private productsUrl = `${this.apiHost}/api/products`;
   private categoryProductsUrl = `${this.apiHost1}/api/category`;
+
+
   constructor(
     private http: HttpClient,
     private cart: CartService,
@@ -55,25 +60,30 @@ export class ProductList implements OnInit, OnChanges {
   ) {}
 
 ngOnInit() {
-
   this.route.paramMap.subscribe(params => {
     const id = params.get('categoryId');
     this.categoryId = id ? Number(id) : null;
-
-    this.showFullDetails = !!this.categoryId;
-
     this.loadAllProducts();
   });
 
   this.searchBus.term$.subscribe(term => {
     this.searchTerm = term.trim();
   });
+
+  //  this.route.queryParamMap.subscribe(params => {
+  //     const view = params.get('view');
+  //     this.showFullDetails = view === 'full';
+  //   });
+  this.route.data.subscribe(data => {
+    this.viewMode = data['view'] ?? 'scroll';
+    this.showFullDetails = this.viewMode === 'full';
+  });
 }
 
  
-  ngOnChanges() {
-    this.showFullDetails = !!this.categoryId;
-  }
+  // ngOnChanges() {
+  //   this.showFullDetails = !!this.categoryId;
+  // }
 
   get productsToShow(): any[] {
     let list = this.allProducts;
@@ -86,7 +96,7 @@ ngOnInit() {
     if (t) {
       list = list.filter(p => (p?.name ?? '').toLowerCase().includes(t));
     }
-    return list;
+    return list.reverse();
   }
 
   private getCategoryId(p: any): number | null {
@@ -182,6 +192,16 @@ addToCart(product: any) {
 
 openProductDetails(product: any) {
   this.router.navigate(['/product', product.product_id]);
+}
+
+//  viewAllProducts() {
+//     this.router.navigate(['/products'], {
+//       queryParams: { view: 'names' }
+//     });
+//   }
+
+viewAllProducts() {
+  this.router.navigate(['/products/view-all']);
 }
 
 }

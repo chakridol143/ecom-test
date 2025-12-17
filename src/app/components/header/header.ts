@@ -96,7 +96,7 @@
 //     this.selectedProduct = null;
 //   }
 // }
-import { Component, HostListener, OnInit, ViewChild } from '@angular/core';
+import { Component, HostListener, Input, OnInit, ViewChild } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { SearchBusService } from '../search/services/search-bus.service';
 import { LoginService } from '../login/services/login.service';
@@ -105,6 +105,8 @@ import { ViewStateService } from '../services/view-state.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Navbar } from '../navbar/navbar';
+import { CartDetails } from '../cart-details/cart-details';
+import { CartService } from '../cart/services/cart.services';
 
 
 
@@ -113,7 +115,8 @@ import { Navbar } from '../navbar/navbar';
   standalone: true,
   imports: [  RouterLink, 
     CommonModule, 
-    FormsModule,             
+    FormsModule, 
+    CartDetails            
     ],
   templateUrl: './header.html',
   styleUrls: ['./header.css']
@@ -128,7 +131,9 @@ export class Header implements OnInit {
 
   searchOpen = false;
   overlaySearch = '';
-
+  showCartPopup: boolean = false;
+  @Input() items : any[] = [];
+  @Input() cartCount : number = 0;
   // @ViewChild('filterComponent') filterComponent!: Filter;
 
   @HostListener('window:scroll', [])
@@ -140,14 +145,31 @@ export class Header implements OnInit {
     private auth: LoginService,
     private router: Router,
     private searchBus: SearchBusService,
-    private viewState: ViewStateService
+    private viewState: ViewStateService,
+    private cart:CartService
   ) {}
 
   
   ngOnInit() {
     this.auth.userState$.subscribe(user => this.user = user);
     this.auth.adminState$.subscribe(admin => this.adminLoggedIn = !!admin);
+     this.cart.cart$.subscribe(items=>{
+      this.items = items;
+      this.cartCount = items.length;
+    })
+    this.items = this.cart.getItems();
+    this.cartCount = this.items.length;
   }
+  closeDetails(){
+  this.showCartPopup = false;
+}
+  cartItemRemove(index: number) {
+  const token = sessionStorage.getItem('token') ?? undefined;
+  const user = JSON.parse(sessionStorage.getItem('user') || '{}');
+  const user_Id = user.user_id || user.id;
+
+  this.cart.removeFromCart(index, user_Id, token);
+}
   openSearch() {
     this.searchOpen = true;
   }
@@ -181,22 +203,7 @@ export class Header implements OnInit {
   toggleMenu() {
     this.menuOpen = !this.menuOpen;
   }
-
-   showWomenCollections() {
-    this.viewState.showWomensCollection();
-  }
-
-  showNewReleases() {
-    this.viewState.showReleases();
-  }
-
-  showBestSellers() {
-    this.viewState.showBestsellers();
-  }
-
-  showMensCollections() {
-    this.viewState.showMensCollection();
-  }
+ 
   selectedProduct: any = null;
   onProductSelected(product: any) {
     this.viewState.setSelectedProduct(product);
@@ -204,4 +211,21 @@ export class Header implements OnInit {
   closeProductView(){
     this.selectedProduct = null;
   }
+
+logoClick() {
+  this.router.navigate(['']);
+}
+  toggleCartDetails(){
+    this.showCartPopup = !this.showCartPopup;
+}
+ handleClear() {
+    this.cart.clearCart();
+  }
+
+
+  goto(route: string) {
+  // this.isAllMenuOpen = false; // optional: close dropdown
+  this.router.navigate([route]);
+}
+
 }

@@ -81,7 +81,7 @@ export class Productdetails implements OnInit {   // ✅ Fixed class name
         .slice(0, 4)
         .map(p => ({
           ...p,
-          currentImage: p.image_url || p.image_url1 || ''
+          currentImage: this.baseImg + ( p.image_url || p.image_url1 || '')
         }));
     },
     error: (err: any) => console.error('Related products load failed', err)
@@ -122,12 +122,12 @@ getRelatedImage(item: any): string {
 
  onHoverImage(item: any) {
   if (item.image_url1) {
-    item.currentImage = item.image_url1; // show second image on hover
+    item.currentImage = this.baseImg + item.image_url1; // show second image on hover
   }
 }
 
 onLeaveImage(item: any) {
-  item.currentImage = item.image_url; // revert to main image
+  item.currentImage = this.baseImg + (item.image_url || '') // revert to main image
 }
 
 
@@ -140,6 +140,14 @@ onLeaveImage(item: any) {
   this.router.navigate(['/product', productId]);
 }
 
+onScroll(event: any) {
+  const media = event.target;
+  if (media.scrollLeft > 20) {
+    media.classList.add('scrolled');
+  } else {
+    media.classList.remove('scrolled');
+  }
+}
 
 
 }

@@ -1,50 +1,103 @@
+/* ============================= */
+/* 🔵 GLOBAL RESET & BASE SETUP */
+/* ============================= */
 
 * {
-  margin: 0;
   padding: 0;
+  margin: 0;
   box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
 }
 
-
-html, body {
+html {
+  scroll-behavior: smooth;
   width: 100%;
-  height: 100%;
-  font-family: 'Roboto', sans-serif;
-  background-color: #f9f9f9;
   overflow-x: hidden;
 }
 
-body {
-  display: block;
+/* Mobile safe-area padding (iPhone notch support) */
+/* html {
+  padding-top: env(safe-area-inset-top);
+  padding-bottom: env(safe-area-inset-bottom);
+} */
+
+/* body {
+  width: 100%;
+  height: 100%;
+  font-family: 'Roboto', sans-serif;
+  overflow-x: hidden;
+  background-color: #ffffff;
+  line-height: 1.4;
+} */
+
+/* Prevent horizontal scroll */
+body, html {
+  max-width: 100vw;
+  overflow-x: hidden;
 }
 
+/* Hide scrollbar in WebKit */
+body::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar in Firefox */
+body {
+  /* scrollbar-width: none; */
+  -ms-overflow-style: none;
+}
+
+/* Ensure Angular root takes full height */
 app-root {
   display: block;
   min-height: 100vh;
 }
 
-
-body, input, button {
+/* Common typography for forms */
+input, button {
   font-family: 'Roboto', sans-serif;
-  
 }
 
+/* ============================= */
+/* 🔵 RESPONSIVE FONT SCALING */
+/* ============================= */
 
-* {
-  -webkit-tap-highlight-color: transparent;
-}
-body::-webkit-scrollbar {
-  display: none;
+/* Big laptops & desktops */
+@media (min-width: 1400px) {
+  body {
+    font-size: 18px;
+  }
 }
 
-body {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-} 
- body{
-  /* background-color:#f1acb8a3 ; */
+/* Tablets */
+@media (max-width: 1024px) {
+  body {
+    font-size: 16px;
+  }
 }
-*{
-  padding: 0;
-  margin: 0;
+
+/* Mobile devices */
+@media (max-width: 768px) {
+  body {
+    font-size: 15px;
+  }
+
+  html, body {
+    padding: 0;
+    margin: 0;
+  }
+}
+
+/* Small mobile */
+@media (max-width: 480px) {
+  body {
+    font-size: 14px;
+  }
+}
+
+/* Extra small mobile */
+@media (max-width: 360px) {
+  body {
+    font-size: 13px;
+  }
 }

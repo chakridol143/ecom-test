@@ -12,7 +12,7 @@ export class AdminAuthGuard implements CanActivate {
     const token = localStorage.getItem('adminToken');
 
     if (!token) {
-      this.router.navigate(['/admin-login']);
+      this.router.navigate(['/menu']);
       return false;
     }
 
