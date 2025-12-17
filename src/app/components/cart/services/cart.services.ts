@@ -10,8 +10,7 @@ export class CartService {
   private items: any[] = [];
   private cartSubject = new BehaviorSubject<any[]>([]);
   cart$ = this.cartSubject.asObservable();
-  // private apiUrl = 'http://localhost:3000/api/cart';
-   private apiUrl = 'https://ecom-backend-production-5341.up.railway.app/api/cart';
+   private apiUrl = 'https://ecom-backend-production-c71b.up.railway.app/api/cart';
 
   constructor(private http: HttpClient) {
     const storedItems = localStorage.getItem(this.key);
@@ -20,38 +19,7 @@ export class CartService {
       this.cartSubject.next(this.items);
     }
   }
-//   mergeCartAfterLogin(user_Id: number, token: string) {
-//   const items = this.getItems();
 
-//   if (!items || items.length === 0) {
-//     console.log("No local items to sync.");
-//     return;
-//   }
-
-//   items.forEach(item => {
-
-//     if (!item.product_id) {
-//       console.warn("⛔ Skipping invalid item:", item);
-//       return;
-//     }
-
-//     const payload = {
-//       userId: user_Id,
-//       productId: item.product_id,
-//       quantity: item.quantity || 1
-//     };
-
-//     console.log("SENDING PAYLOAD:", payload);
-
-//     this.http.post(this.apiUrl, payload).subscribe({
-//       next: res => console.log("Added to DB:", res),
-//       error: err => console.error("❌ Error saving:", err)
-//     });
-
-//   });
-
-//   console.log("All local cart items synced to DB.");
-// }
 mergeCartAfterLogin(user_Id: number, token: string) {
   const items = this.getItems();
 
@@ -84,49 +52,6 @@ mergeCartAfterLogin(user_Id: number, token: string) {
 
   console.log("All local cart items synced to DB.");
 }
-
-
-// addToCart(item: any) {
-//   if (!item.product_id) {
-//     console.error("Item missing product_id:", item);
-//     return;
-//   }
-
-//   const userId = localStorage.getItem("userId");
-//   const token = localStorage.getItem("token");
-
-//   if (userId && token) {
-//     // ✅ LOGGED IN → SAVE DIRECTLY TO DATABASE
-//     const headers = new HttpHeaders({ Authorization: `Bearer ${token}` });
-
-//     const payload = {
-//       user_id: Number(userId),
-//       product_id: item.product_id,
-//       quantity: item.quantity || 1
-//     };
-
-//     this.http.post(this.apiUrl, payload, { headers })
-//       .subscribe({
-//         next: (res) => {
-//           console.log("✔ Cart item saved to DB:", res);
-
-//           // update local cart too
-//           this.items.push(item);
-//           this.saveItems();
-//         },
-//         error: (err) => {
-//           console.error("❌ Error saving item to DB:", err);
-//         }
-//       });
-
-//   } else {
-//     // 🟡 GUEST USER → SAVE TO LOCAL STORAGE
-//     this.items.push(item);
-//     this.saveItems();
-
-//     console.log("🟡 Item saved to LOCAL cart:", item);
-//   }
-// }
  addToCart(item: any) {
     if (!item || !item.product_id) {
       console.error("Item missing product_id:", item);

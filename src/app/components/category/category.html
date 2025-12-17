@@ -1,27 +1,4 @@
 
-<!-- <div class="category-list">
-  <div class="category-item"
-       (click)="onSelect(null)"
-       (dblclick)="$event.preventDefault(); $event.stopPropagation()">
-    <img src="assets/all.png" alt="All" class="category-img" />
-    <span class="category-name">All</span>
-  </div>
-  <div class="category-item"
-       *ngFor="let c of categories; trackBy: trackByCategoryId"
-       (click)="onSelect(c?.category_id)"
-       (dblclick)="$event.preventDefault(); $event.stopPropagation()">
-    <img
-      [src]="imgUrl(c?.image_url)"
-      [alt]="c?.name"
-      class="category-img"
-      (error)="onImgError($event)"
-      width="130"
-      height="130"
-    />
-    <span class="category-name" style="color: red;">{{ c?.name }}</span>
-  </div>
-</div> -->
-
 <div class="category-row">
 <div class="category-box"
           *ngFor="let category of categories; trackBy: trackByCategoryId"

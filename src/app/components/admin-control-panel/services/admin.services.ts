@@ -2,17 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-// function getAuthHeadersObj(): { headers: HttpHeaders } {
-//   const token =
-//    localStorage.getItem('adminToken') ||
-//     localStorage.getItem('admin_token') ||
-//     localStorage.getItem('token')
-//   return {
-//     headers: new HttpHeaders({
-//       Authorization: `Bearer ${token}`
-//     })
-//   };
-// }
 function getAuthHeadersObj(): { headers: HttpHeaders } {
   const token =
     localStorage.getItem("adminToken") ||     // FIXED
@@ -30,7 +19,7 @@ function getAuthHeadersObj(): { headers: HttpHeaders } {
   providedIn: 'root'
 })
 export class CategoryService {
-  private apiUrl = 'https://ecom-backend-production-5341.up.railway.app/api/admin/categories';
+  private apiUrl = 'https://ecom-backend-production-c71b.up.railway.app/api/admin/categories';
 
   constructor(private http: HttpClient) {}
 
@@ -59,7 +48,7 @@ export class CategoryService {
   providedIn: 'root'
 })
 export class ProductService {
-  private apiUrl = 'https://ecom-backend-production-5341.up.railway.app/api/admin/products';
+  private apiUrl = 'https://ecom-backend-production-c71b.up.railway.app/api/admin/products';
 
 
   constructor(private http: HttpClient) {}
