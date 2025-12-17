@@ -160,9 +160,9 @@ onLeaveImage(product: any) {
     (evt.target as HTMLImageElement).src = 'assets/placeholder.png';
   }
 
-addToCart(product: any) {
-    this.cart.addToCart(product);
-  }
+// addToCart(product: any) {
+//     this.cart.addToCart(product);
+//   }
   // openProductPopup(product: any) {
   //   this.selectedProducts = product;
   //   this.showProductPopup = true;

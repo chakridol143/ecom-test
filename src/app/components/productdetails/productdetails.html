@@ -18,15 +18,15 @@
 
       <p class="tax" *ngIf="product.taxIncluded">Tax included.</p>
 
-      <div class="quantity-box">
+     <div class="quantity-box">
         Quantity
-        <button>-</button>
-        <span>1</span>
-        <button>+</button>
+        <button (click)="decQty()">-</button>
+        <span>{{quantity }}</span>
+        <button (click)="incQty()">+</button>
       </div>
 
       <div class="btn-row">
-        <button class="add-cart-btn">Add to Cart</button>
+        <button class="add-cart-btn" (click)="addToCart()">Add to Cart</button>
         <!-- <button class="buy-btn">Buy it now</button> -->
       </div>
     </div>
