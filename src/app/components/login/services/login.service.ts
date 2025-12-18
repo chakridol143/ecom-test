@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject } from 'rxjs';
-import { CartService } from '../../cart/services/cart.services';
+import { CartService } from '../../cart-details/services/cart.services';
+
 
 @Injectable({
   providedIn: 'root'
@@ -46,6 +47,8 @@ export class LoginService {
     sessionStorage.setItem('user', JSON.stringify(user));
     this.userState.next(user);
 
+    this.cartService.clearCart(true);
+
     const userId = this.getUserId();
     if (userId) {
       // Load cart after login
@@ -57,7 +60,7 @@ export class LoginService {
     sessionStorage.clear();
     localStorage.removeItem('userId');
     localStorage.removeItem('token');
-
+    this.cartService.clearCart(true);
     this.userState.next(null);
   }
 

@@ -1,9 +1,9 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { CartService } from '../cart/services/cart.services';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { login } from '../login/login';
 import { LoginService } from '../login/services/login.service';
+import { CartService } from '../cart-details/services/cart.services';
 
 @Component({
   selector: 'app-checkout',

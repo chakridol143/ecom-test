@@ -129,12 +129,12 @@ import { ViewStateService } from '../services/view-state.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { CartDetails } from '../cart-details/cart-details';
-import { CartService } from '../cart/services/cart.services';
+import { CartService } from '../cart-details/services/cart.services';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [RouterLink, CommonModule, FormsModule, CartDetails],
+  imports: [RouterLink, CommonModule, FormsModule,CartDetails],
   templateUrl: './header.html',
   styleUrls: ['./header.css']
 })

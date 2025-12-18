@@ -9,7 +9,6 @@ import { RegisterComponent } from './components/register/register';
 import { Navbar } from './components/navbar/navbar';
 import { Slider } from './components/slider/slider';
 import { ProductList } from './components/product-list/product-list';
-import { Cart } from './components/cart/cart';
 import { MensCollections } from './components/mens-collections/mens-collections';
 import { WomensCollections } from './components/womens-collections/womens-collections';
 import { Bestsellers } from './components/bestsellers/bestsellers';
@@ -40,7 +39,7 @@ export const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'navbar', component: Navbar },
   { path: 'slider', component: Slider },
-  { path: 'cart', component: Cart }  ,
+  // { path: 'cart', component: Cart }  ,
   { path: 'bestsellers', component: Bestsellers },
 { path: 'releases', component: Releases },
 { path: 'banner1', component: Banner1 },

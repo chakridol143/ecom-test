@@ -3,7 +3,8 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { LoginService } from './services/login.service';
-import { CartService } from '../cart/services/cart.services';
+import { CartService } from '../cart-details/services/cart.services';
+
 
 declare const google: any;
 

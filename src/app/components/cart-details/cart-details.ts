@@ -44,7 +44,8 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Router } from '@angular/router';
-import { CartService } from '../cart/services/cart.services';
+import { CartService } from './services/cart.services';
+
 
 @Component({
   selector: 'app-cart-details',

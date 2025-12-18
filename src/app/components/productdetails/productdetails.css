@@ -11,16 +11,10 @@
 .big-image-grid {
   display: none;
 
-  margin-right: 15%;
-  margin-left: 15%;
-  gap: 10px;
-  border-radius: 1px solid black;
-height: 520px;
-margin-bottom: 10px;
-
   margin-right: 25%;
   margin-left: 25%;
   gap: 4px;
+  /* border-radius: 50%; */
 
 }
 
@@ -396,29 +390,84 @@ height: 430px;
   text-align: center;
 }
 
+
 .related-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  display: flex;
   gap: 20px;
+
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  padding-bottom: 15px;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+
+  scrollbar-width: none; /* Firefox */
+}
+
+.related-grid::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
 }
 
 .related-card {
-  /* border: 1px solid #ddd; */
-  /* border-radius: 10px; */
-  /* padding: 10px; */
+  flex: 0 0 auto;
+  width: 300px;           /* controls card width */
+  scroll-snap-align: start;
   cursor: pointer;
-  transition: 0.2s;
-  text-align: center;
-  /* background: #fff; */
 }
 
 .related-card img {
   width: 100%;
-  height: 430px;
+  height: 420px;
   object-fit: cover;
-  margin-bottom: 20px;
-  /* border-radius: 8px; */
+  margin-bottom: 15px;
 }
+
+.related-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+/* Scroll Buttons */
+.scroll-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: none;
+
+  background: rgba(255,255,255,0.9);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 10;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.scroll-btn.left {
+  left: -60px;
+}
+
+.scroll-btn.right {
+  right: -60px;
+}
+
+/* Hide arrows on mobile (optional) */
+@media (max-width: 600px) {
+  .scroll-btn {
+    display: none;
+  }
+}
+
 
 @media (max-width: 903px) and (min-width: 601px) {
   .related-grid {
@@ -443,9 +492,3 @@ height: 430px;
     grid-template-columns: 1fr;
   }
 }
-
-/* .description {
-  font-size: 1px;
-  margin-bottom: 15px;
-
-} */
