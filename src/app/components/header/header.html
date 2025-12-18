@@ -1,4 +1,3 @@
-
 <div class="shipping-bar">
   <h4>FREE SHIPPING ALL OVER INDIA</h4>
 </div>
@@ -9,9 +8,6 @@
     <div class="left-nav desktop-only">
       <span (click)="goto('/bestsellers')">Bestsellers</span>
       <span (click)="goto('/releases')">New Releases</span>
-      <!-- <span (click)="goto('/mens')">Men's Collection</span>
-      <span (click)="goto('/womens')">Women's Collection</span>
-      <span (click)="goto('/KidsCollections')">Kidz Collection</span> -->
     </div>
 
     <span class="menu-icon mobile-only" (click)="toggleMenu()">☰</span>
@@ -22,20 +18,37 @@
   </div>
 
   <div class="right-icons">
-    <img src="../../../assets/images/search.png" class="icon" (click)="openSearch()" />
-     <div class="cart-container" routerLink="/cart">
-    <img src="../../../assets/images/cart.png" alt="Cart" class="cart-icon">
-    <span class="cart-count" *ngIf="cartCount > 0">{{ cartCount }}</span>
-  </div>
+    <img
+      src="../../../assets/images/search.png"
+      class="icon"
+      (click)="openSearch()"
+    />
+
+    <div class="cart-container" (click)="toggleCartDetails()">
+      <img
+        src="../../../assets/images/cart.png"
+        alt="Cart"
+        class="cart-icon"
+      />
+      <span class="cart-count" *ngIf="cartCount > 0">
+        {{ cartCount }}
+      </span>
+    </div>
+
     <app-cart-details
-  *ngIf="showCartPopup"
-  [items]="items"
-  (close)="closeDetails()"
-  (remove)="cartItemRemove($event)"
-  (clear)="handleClear()">
-</app-cart-details>
+      *ngIf="showCartPopup"
+      [items]="items"
+      (close)="closeDetails()"
+      (remove)="cartItemRemove($event)"
+      (clear)="handleClear()">
+    </app-cart-details>
+
     <ng-container *ngIf="!user">
-      <img src="../../../assets/images/login1.png" class="icon" routerLink="/login" />
+      <img
+        src="../../../assets/images/login1.png"
+        class="icon"
+        routerLink="/login"
+      />
     </ng-container>
 
     <ng-container *ngIf="user">
@@ -44,22 +57,22 @@
     </ng-container>
   </div>
 
-
-
 </header>
+
 
 <div class="full-search" *ngIf="searchOpen">
   <div class="search-area">
     <img src="../../../assets/images/search.png" class="search-big-icon">
-    <input 
+    <input
       placeholder="SEARCH FOR..."
       [(ngModel)]="overlaySearch"
       (keyup)="onSearch(overlaySearch)"
-      (keydown.enter)="performSearch()" 
+      (keydown.enter)="performSearch()"
     />
     <span class="close-search" (click)="closeSearch()">✕</span>
   </div>
 </div>
+
 
 <div class="mobile-menu" [class.open]="menuOpen">
   <span (click)="goto('/bestsellers')">Bestsellers</span>

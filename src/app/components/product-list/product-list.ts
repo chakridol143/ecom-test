@@ -16,6 +16,9 @@ import { SearchBusService } from '../search/services/search-bus.service';
   styleUrls: ['./product-list.css']
 })
 export class ProductList implements OnInit {
+addToCart(_t28: any) {
+throw new Error('Method not implemented.');
+}
 
   @Output() addToCartEvent = new EventEmitter<any>();
   @Input() searchTerm: string = '';
@@ -160,9 +163,9 @@ onLeaveImage(product: any) {
     (evt.target as HTMLImageElement).src = 'assets/placeholder.png';
   }
 
-addToCart(product: any) {
-    this.cart.addToCart(product);
-  }
+// addToCart(product: any) {
+//     this.cart.addToCart(product);
+//   }
   // openProductPopup(product: any) {
   //   this.selectedProducts = product;
   //   this.showProductPopup = true;

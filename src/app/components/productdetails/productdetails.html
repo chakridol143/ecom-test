@@ -7,31 +7,75 @@
     </div>
 
     <div class="product-details">
-      <h1>{{ product.description }}</h1>
-      <h2 class="product-title">{{ product.name }}</h2>
-
-      <div class="pricing-section">
+        <h3 class="product-title">{{ product.name }}</h3>
+           <div class="pricing-section">
         <span class="price">₹{{ product.price }}</span>
         <span class="old-price">₹{{ product.oldPrice }}</span>
         <span class="discount">save 50%</span>
       </div>
-
-      <p class="tax" *ngIf="product.taxIncluded">Tax included.</p>
-
-      <div class="quantity-box">
-        Quantity
-        <button>-</button>
-        <span>1</span>
-        <button>+</button>
+       <div class="quantity-box">
+  
+        <button (click)="decQty()">-</button>
+        <span>{{quantity }}</span>
+        <button (click)="incQty()">+</button>
       </div>
+
+      <div class="finish-wrapper">
+  <label class="finish-label">Finish:</label>
+
+    
+  <select class="finish-select" [(ngModel)]="selectedFinish">
+    <option *ngFor="let finish of finishes" [value]="finish">
+      {{ finish }}
+    </option>
+  </select>
+</div>
 
       <div class="btn-row">
-        <button class="add-cart-btn">Add to Cart</button>
+        <button class="add-cart-btn" (click)="addToCart()">Add to Cart</button>
+
         <!-- <button class="buy-btn">Buy it now</button> -->
       </div>
+      <div class = "description">
+        <h3>{{ product.description }}</h3>
+      </div>
+<div class="accordion">
+
+  <!-- SHIPPING -->
+  <div class="accordion-item">
+    <div class="accordion-header" (click)="toggle('shipping')">
+      <span>SHIPPING</span>
+      <span class="icon">{{ openSection === 'shipping' ? '−' : '+' }}</span>
     </div>
 
+    <div class="accordion-body" *ngIf="openSection === 'shipping'">
+      <p>
+        Orders shipped within 2 – 3 working days
+        <em>For More Information Click </em>
+        <a href="#" class="info-link">Here</a>
+      </p>
+    </div>
   </div>
+
+  <!-- MATERIAL -->
+  <div class="accordion-item">
+    <div class="accordion-header" (click)="toggle('material')">
+      <span>MATERIAL</span>
+      <span class="icon">{{ openSection === 'material' ? '−' : '+' }}</span>
+    </div>
+
+    <div class="accordion-body" *ngIf="openSection === 'material'">
+      <p>Brass base with premium 24k gold plating.</p>
+    </div>
+  </div>
+
+</div>
+
+
+      <p class="tax" *ngIf="product.taxIncluded">Tax included.</p>
+    </div>
+    
+
 
   <section class="related-section" *ngIf="relatedProducts.length > 0">
     <h3 class="related-title">You Might Also Prefer</h3>

@@ -10,8 +10,8 @@ import {
 
 const router = express.Router();
 
-// 🔥 IMPORTANT — Place user route BEFORE :id route
-router.get("/user/:user_Id", getcartByUserId);
+// router.get("/user/:user_Id", getcartByUserId);
+router.get('/api/cart/:userId', getcartByUserId);
 
 router.get("/", getAllCartItems);
 router.get("/:id", getCartItemById);

@@ -57,7 +57,9 @@ app-root {
 input, button {
   font-family: 'Roboto', sans-serif;
 }
-
+body.cart-open {
+  overflow: hidden !important;
+}
 /* ============================= */
 /* 🔵 RESPONSIVE FONT SCALING */
 /* ============================= */

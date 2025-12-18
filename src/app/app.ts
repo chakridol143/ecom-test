@@ -70,9 +70,13 @@ export class App implements OnInit {
     this.currentRoute.startsWith('/product') ||
     this.currentRoute.startsWith('/admin') ||
     this.currentRoute.startsWith('/login') ||
+
     this.currentRoute.startsWith('/cart') ||
     this.currentRoute.startsWith('/KidsCollections') ||
      this.currentRoute.startsWith('/checkout')
+
+    // this.currentRoute.startsWith('/cart') ||
+   
   );
 }
 onCategorySelected(id: number | null) {
