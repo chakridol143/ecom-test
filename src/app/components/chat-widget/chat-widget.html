@@ -1,0 +1,33 @@
+<button class="chat-toggle-btn" (click)="toggleChat()">
+  ✨ Chat with us!
+</button>
+
+<div class="chat-container" *ngIf="isOpen">
+  
+  <div class="chat-header">
+    <div>
+      <span style="font-size: 11px; opacity: 0.9; display: block; letter-spacing: 1px; font-weight: 600;">GENPERM</span>
+      <h3 style="margin:0; font-size: 17px;">Jewelry Specialist</h3>
+    </div>
+    <button (click)="toggleChat()" style="font-size: 24px; line-height: 1;">&times;</button>
+  </div>
+
+  <div class="chat-messages" #scrollContainer>
+    <div *ngFor="let msg of messages" 
+         [ngClass]="{'user-msg': msg.sender === 'user', 'bot-msg': msg.sender === 'bot'}">
+      {{ msg.text }}
+    </div>
+    
+    <div *ngIf="isLoading" class="bot-msg loading">
+      Typing...
+    </div>
+  </div>
+
+  <div class="chat-input">
+    <input [(ngModel)]="userInput" 
+           (keyup.enter)="sendMessage()" 
+           placeholder="Ask about our collection..." />
+    <button (click)="sendMessage()">➤</button>
+  </div>
+
+</div>

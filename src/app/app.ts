@@ -6,12 +6,11 @@ import { CommonModule } from '@angular/common';
 import { LoginService } from './components/login/services/login.service';
 import { filter } from 'rxjs';
 import { category } from './components/category/category';
-import { Cart } from './components/cart/cart';
 import { WatchNshop } from "./watch-nshop/watch-nshop";
 import { Footer } from './components/footer/footer';
 import { Banner1 } from './components/banner1/banner1';
 import { WhatsappLogo } from './whatsapp-logo/whatsapp-logo';
-
+import { ChatWidgetComponent } from './components/chat-widget/chat-widget';
 
 
 
@@ -19,7 +18,7 @@ import { WhatsappLogo } from './whatsapp-logo/whatsapp-logo';
   selector: 'app-root',
   standalone: true,
 
-  imports: [RouterOutlet, Header, CommonModule, Slider, category, WatchNshop, Footer, Banner1,WhatsappLogo], 
+  imports: [RouterOutlet, Header, CommonModule, Slider, category, WatchNshop, Footer, Banner1,WhatsappLogo, ChatWidgetComponent], 
   templateUrl: './app.html',
   styleUrls: ['./app.css']
 })
@@ -70,8 +69,13 @@ export class App implements OnInit {
     this.currentRoute.startsWith('/product') ||
     this.currentRoute.startsWith('/admin') ||
     this.currentRoute.startsWith('/login') ||
+    this.currentRoute.startsWith('/register') ||
     this.currentRoute.startsWith('/cart') ||
-    this.currentRoute.startsWith('/KidsCollections')
+    this.currentRoute.startsWith('/KidsCollections') ||
+     this.currentRoute.startsWith('/checkout')
+
+    // this.currentRoute.startsWith('/cart') ||
+   
   );
 }
 onCategorySelected(id: number | null) {
@@ -91,7 +95,8 @@ onCategorySelected(id: number | null) {
 
 showHeaderOnly(): boolean {
   // Routes where only the header should appear
-  return this.currentRoute.startsWith('/login') || this.currentRoute.startsWith('/logout') || this.currentRoute.startsWith('/admin');
+    
+  return this.currentRoute.startsWith('/login') ||this.currentRoute.startsWith('/register') || this.currentRoute.startsWith('/logout') || this.currentRoute.startsWith('/admin') || this.currentRoute.startsWith('/checkout');
 }
 
   }

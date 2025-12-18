@@ -1,34 +1,39 @@
-// src/app/product-details/product-details.component.ts
 import { CommonModule, NgFor } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, NgModule, OnInit, viewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-
 import { HttpClientModule } from '@angular/common/http';
-import { ProductList } from '../product-list/product-list';
 import { ProductService } from '../product-list/services/product.service';
-
+import { FormsModule } from '@angular/forms';
+import { ViewChild,ElementRef } from '@angular/core';
+import { CartService } from '../cart-details/services/cart.services';
 
 
 @Component({
   selector: 'app-product-details',
   standalone: true,
-  imports: [CommonModule, HttpClientModule, NgFor],
+  imports: [CommonModule, HttpClientModule, NgFor, FormsModule],
   templateUrl: './productdetails.html',
   styleUrls: ['./productdetails.css']
 })
-export class Productdetails implements OnInit {   // ✅ Fixed class name
+export class Productdetails implements OnInit {  
 
   product: any = null;
   relatedProducts: any[] = [];
   activeIndex = 0;
   quantity = 1;
+  openSection: string | null = 'shipping';
+  @ViewChild('relatedScroll', { static: false })
+  relatedScroll!: ElementRef;
+
 
   private baseImg = 'https://ecom-backend-production-c71b.up.railway.app/assets/images/';
 
+    
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private productService: ProductService  // ✅ Injected ProductService
+    private productService: ProductService ,
+    private cartService : CartService
   ) {}
 
   ngOnInit() {
@@ -53,45 +58,29 @@ export class Productdetails implements OnInit {   // ✅ Fixed class name
         ].filter(Boolean).map(img => this.baseImg + img);
 
         this.activeIndex = 0;
-
-        // Load related products
         this.loadRelatedProducts(data.category_id, data.product_id);
       },
       error: (err: any) => console.error('Product load failed', err)
     });
   }
 
-  // loadRelatedProducts(categoryId: number, currentProductId: number) {
-  //   this.productService.getProductsByCategory(categoryId).subscribe({
-  //     next: (products: any[]) => {
-  //       this.relatedProducts = products
-  //         .filter((p: any) => p.product_id !== currentProductId)
-  //         .slice(0, 4);
-          
-  //     },
-  //     error: (err: any) => console.error('Related products load failed', err)
-  //   });
-  // }
+ 
 
-  loadRelatedProducts(categoryId: number, currentProductId: number) {
+ loadRelatedProducts(categoryId: number, currentProductId: number) {
   this.productService.getProductsByCategory(categoryId).subscribe({
     next: (products: any[]) => {
       this.relatedProducts = products
-        .filter((p: any) => p.product_id !== currentProductId)
-        .slice(0, 4)
+        .filter(p => p.product_id !== currentProductId)
         .map(p => ({
           ...p,
-          currentImage: this.baseImg + ( p.image_url || p.image_url1 || '')
+          currentImage: this.baseImg + (p.image_url || p.image_url1 || '')
         }));
     },
-    error: (err: any) => console.error('Related products load failed', err)
+    error: err => console.error('Related products load failed', err)
   });
 }
 
-
   setActive(index: number) { this.activeIndex = index; }
-  incQty() { this.quantity++; }
-  decQty() { if (this.quantity > 1) this.quantity--; }
 
   openProduct(product: any) {
     this.router.navigate(['/product', product.product_id]);
@@ -101,16 +90,12 @@ export class Productdetails implements OnInit {   // ✅ Fixed class name
     return this.baseImg + img;
   }
 
-  // ✅ Add getter for template usage
   get images(): string[] {
     return this.product?.images ?? [];
   }
 
-  // inside ProductDetailsComponent
 openProductDetails(productId: number) {
-  // Navigate to the same product details page with the new product id
   this.router.navigate(['/product', productId]).then(() => {
-    // Reload the product after navigation
     this.loadProduct(productId);
   });
 }
@@ -122,12 +107,12 @@ getRelatedImage(item: any): string {
 
  onHoverImage(item: any) {
   if (item.image_url1) {
-    item.currentImage = this.baseImg + item.image_url1; // show second image on hover
+    item.currentImage = this.baseImg + item.image_url1; 
   }
 }
 
 onLeaveImage(item: any) {
-  item.currentImage = this.baseImg + (item.image_url || '') // revert to main image
+  item.currentImage = this.baseImg + (item.image_url || '') 
 }
 
 
@@ -148,6 +133,60 @@ onScroll(event: any) {
     media.classList.remove('scrolled');
   }
 }
+finishes: string[] = [
+    '24k Gold Plated',
+    '18k Gold Plated',
+    'Rose Gold',
+    'Silver Plated'
+  ];
 
+selectedFinish = '24k Gold Plated';
+  addToCart() {
+  if (!this.product) return;
+
+  const cartItem = {
+    product_id: this.product.product_id,
+    name: this.product.name,
+    price: this.product.price,
+    image_url: this.product.image_url,
+    quantity: this.quantity
+  };
+
+  this.cartService.addToCart(cartItem);
+}
+
+incQty() {
+  this.quantity++;
+  this.syncQuantityWithCart();
+}
+
+   decQty() {
+  if (this.quantity > 1) {
+    this.quantity--;
+    this.syncQuantityWithCart();
+  }
+}
+
+ private syncQuantityWithCart() {
+  if (!this.product) return;
+  const cartItem = this.cartService.getItems().find(i => i.product_id === this.product.product_id);
+  if (cartItem) {
+    this.cartService.updateQuantity(this.product.product_id, this.quantity);
+  }
+}
+
+
+  toggle(section: string) {
+    this.openSection = this.openSection === section ? null : section;
+  }
+
+scrollRelated(direction: 'left' | 'right') {
+  const scrollAmount = 320;
+
+  this.relatedScroll.nativeElement.scrollBy({
+    left: direction === 'left' ? -scrollAmount : scrollAmount,
+    behavior: 'smooth'
+  });
+}
 
 }

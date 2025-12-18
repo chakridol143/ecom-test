@@ -1,80 +1,54 @@
-<div class="login-container">
-  <div class="login-card">
+<div class="register-page-container">
 
-    <h2>Create Account</h2>
-    <p>Register to get started</p>
+  <div class="register-card">
 
-    <!-- NORMAL REGISTER -->
+    <h2 class="title">Create Account</h2>
+    <p class="subtitle">Register to get started</p>
+
+    <!-- FORM -->
     <form (ngSubmit)="onRegister()" #f="ngForm">
 
-      <input
-        type="text"
-        name="username"
-        [(ngModel)]="username"
-        placeholder="Full Name"
-        required
-      />
+      <div class="input-group">
+        <label>Full Name</label>
+        <input type="text" name="username" [(ngModel)]="username" required />
+      </div>
 
-      <input
-        type="email"
-        name="email"
-        [(ngModel)]="email"
-        placeholder="Email"
-        required
-      />
+      <div class="input-group">
+        <label>Email</label>
+        <input type="email" name="email" [(ngModel)]="email" required />
+      </div>
 
-      <input
-        type="password"
-        name="password"
-        [(ngModel)]="password"
-        placeholder="Password"
-        required
-      />
+      <div class="input-group">
+        <label>Password</label>
+        <input type="password" name="password" [(ngModel)]="password" required minlength="6" />
+      </div>
 
-      <input
-        type="password"
-        name="confirmPassword"
-        [(ngModel)]="confirmPassword"
-        placeholder="Confirm Password"
-        required
-      />
+      <div class="input-group">
+        <label>Confirm Password</label>
+        <input type="password" name="confirmPassword" [(ngModel)]="confirmPassword" required />
+      </div>
 
-      <input
-        type="text"
-        name="phone"
-        [(ngModel)]="phone"
-        placeholder="Phone"
-      />
+      <div class="input-group">
+        <label>Phone</label>
+        <input type="text" name="phone" [(ngModel)]="phone" />
+      </div>
 
-      <input
-        type="text"
-        name="address"
-        [(ngModel)]="address"
-        placeholder="Address"
-      />
+      <div class="input-group">
+        <label>Address</label>
+        <input type="text" name="address" [(ngModel)]="address" />
+      </div>
 
-      <button type="submit">
-        Register
-      </button>
+      <button class="btn-login" type="submit">Register</button>
 
     </form>
 
-    <!-- ✅ GOOGLE OAUTH BUTTON -->
-    <button
-      type="button"
-      id="googleBtn"
-      style="margin-top:15px; width:100%;">
-      <img
-        src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg"
-        width="18"
-        style="margin-right:8px;"
-      />
-      Continue with Google
-    </button>
+    <!-- GOOGLE BUTTON -->
+    <div id="googleBtn" class="google-wrapper"></div>
 
-    <a routerLink="/login">
-      Already have an account? Login
-    </a>
+    <div class="links">
+      <a routerLink="/login">Already have an account? Login</a>
+    </div>
 
   </div>
+
 </div>

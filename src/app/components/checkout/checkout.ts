@@ -1,9 +1,9 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { CartService } from '../cart/services/cart.services';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { login } from '../login/login';
 import { LoginService } from '../login/services/login.service';
+import { CartService } from '../cart-details/services/cart.services';
 
 @Component({
   selector: 'app-checkout',
@@ -22,7 +22,7 @@ export class Checkout {
   grandTotal : number = 0;
   showDialog: boolean = false;
   
-  constructor(private cartService : CartService, private router:Router, private loginService: LoginService) {}
+  constructor(private cartService : CartService, private router:Router, public loginService: LoginService) {}
 
   ngOnInit():void{
     this.items = this.cartService.getItems();

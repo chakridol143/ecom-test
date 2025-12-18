@@ -8,15 +8,12 @@
 .product-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-    gap: 8px;
-    margin-left: 80px;
-    margin-right: 80px
+  gap: 15px;
 }
 
 .product-card {
   text-align: center;
   cursor: pointer;
- 
 }
 
 .product-img {
@@ -39,7 +36,7 @@
 .full-details-card .product-img {
   margin-top: 120px;
   min-width: 180px;
-  width: 100%;
+  width: 90%;
   height: 450px !important;
   object-fit: cover;
   border-radius: 1px;
@@ -71,6 +68,7 @@
 
 /* Button aligned clean */
 .full-details-card button {
+  font-family: "Libre Baskerville", serif;
   margin: 14px auto 0;
   width: 90%;
   padding: 10px;
@@ -112,8 +110,7 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 15px;
-  margin-left: -10px;
-  margin-right: 10px;
+
   }
   .product-img {
     height: 270px;

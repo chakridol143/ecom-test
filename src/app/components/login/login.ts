@@ -1,10 +1,12 @@
-
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Output, AfterViewInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { LoginService } from './services/login.service';
-import { CartService } from '../cart/services/cart.services';
+import { CartService } from '../cart-details/services/cart.services';
+
+
+declare const google: any;
 
 @Component({
   selector: 'app-login',
@@ -13,7 +15,7 @@ import { CartService } from '../cart/services/cart.services';
   templateUrl: './login.html',
   styleUrls: ['./login.css']
 })
-export class login {
+export class login implements AfterViewInit {
 
   @Output() close = new EventEmitter<void>();
 
@@ -28,9 +30,71 @@ export class login {
     private loginService: LoginService,
     private cartServices: CartService
   ) {}
-  onBackgroundClick(){
-    this.router.navigate(['/app'])
+
+
+  ngAfterViewInit() {
+    this.waitForGoogle();
   }
+
+  private waitForGoogle() {
+    if ((window as any).google?.accounts?.id) {
+      this.initGoogle();
+    } else {
+      setTimeout(() => this.waitForGoogle(), 100);
+    }
+  }
+
+  private initGoogle() {
+    google.accounts.id.initialize({
+      client_id: "127997694068-djgvmqj311ldteojrtc84gbkc8h7e9bb.apps.googleusercontent.com",
+      callback: (response: any) => this.handleGoogleLogin(response),
+      ux_mode: "popup",
+      auto_select: false,
+      use_fedcm_for_prompt: false
+    });
+
+    google.accounts.id.renderButton(
+      document.getElementById("googleLoginBtn")!,
+      {
+        theme: "outline",
+        size: "large",
+        width: "100%"
+      }
+    );
+  }
+
+  private handleGoogleLogin(response: any) {
+    if (!response?.credential) return;
+
+    this.loginService.googleRegister(response.credential).subscribe({
+      next: (res: any) => {
+        this.loginService.saveSession(res.token, res.user);
+
+        const userId = res.user?.user_id;
+        const token = res.token;
+
+        if (userId) {
+          localStorage.setItem('userId', userId.toString());
+          localStorage.setItem('token', token);
+          this.cartServices.mergeCartAfterLogin(userId, token);
+        }
+        this.showDialog = false;
+
+        this.close.emit();
+
+        this.router.navigate(['/']);
+      },
+      error: (err) => {
+        console.error("Google login failed:", err);
+        alert("Google Login failed");
+      }
+    });
+  }
+
+  onBackgroundClick() {
+    this.router.navigate(['/app']);
+  }
+
   submitLogin() {
     const adminEmail = "nallaravikishore@gmail.com";
     const adminPassword = "Ravi_@123";
@@ -42,37 +106,30 @@ export class login {
     }
   }
 
-  // 🔹 NORMAL USER LOGIN
   onLogin() {
     this.loginService.login(this.email, this.password).subscribe({
       next: (res) => {
         this.loginService.saveSession(res.token, res.user);
         this.showDialog = true;
-        console.log("LOGIN RESPONSE:", res);
 
         const userId = res.user?.user_id;
         const token = res.token;
 
-        if (!userId) {
-          console.error("❌ userId is undefined. Wrong backend response.");
-          return;
-        }
+        if (!userId) return;
 
         localStorage.setItem("userId", userId.toString());
         localStorage.setItem("token", token);
 
-        // merge guest cart → db
         this.cartServices.mergeCartAfterLogin(userId, token);
 
-        this.close.emit(); // close popup
+        this.close.emit();
       },
       error: (err) => {
-        console.error("❌ Login failed:", err);
+        console.error("Login failed:", err);
       }
     });
   }
 
-  // 🔹 ADMIN LOGIN
   adminLogin() {
     if (!this.email.trim() || !this.password.trim()) {
       this.error = "Email and Password are required";
@@ -81,17 +138,13 @@ export class login {
 
     this.loginService.adminLogin(this.email, this.password).subscribe({
       next: (res) => {
-        console.log("ADMIN LOGIN RESPONSE:", res);
-
         this.loginService.saveAdminSession(res.token);
         sessionStorage.setItem("admin", JSON.stringify({ email: this.email }));
-
         this.error = "";
         this.router.navigate(['/admin']);
       },
-
       error: (err) => {
-        console.error("❌ Admin Login Failed:", err);
+        console.error("Admin Login Failed:", err);
         this.error = "Invalid Email or Password";
       }
     });
@@ -106,5 +159,4 @@ export class login {
   onClose() {
     this.router.navigate(['/app']);
   }
-
 }
