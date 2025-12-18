@@ -22,7 +22,7 @@ import { AdminAuthGuard } from './components/gaurds/admin.auth';
 import { Banner1 } from './components/banner1/banner1';
 import { KidsCollections } from './kids-collections/kids-collections';
 import { WhatsappLogo } from './whatsapp-logo/whatsapp-logo';
-
+import { ChatWidgetComponent } from './components/chat-widget/chat-widget';
 
 
 

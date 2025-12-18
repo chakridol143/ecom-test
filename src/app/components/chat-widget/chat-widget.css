@@ -1,0 +1,180 @@
+/* ===========================
+   THEME: Genperm Luxury (Black & Gold)
+   =========================== */
+
+/* 1. The Floating Button */
+.chat-toggle-btn {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  /* Gradient Gold to match jewelry vibe */
+  background: linear-gradient(135deg, #1a1a1a 0%, #000000 100%);
+  color: #d4af37; /* Gold Text */
+  border: 2px solid #d4af37; /* Gold Border */
+  padding: 16px 24px;
+  border-radius: 50px;
+  font-size: 16px;
+  font-family: 'Playfair Display', serif; /* Elegant Font */
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  z-index: 9999;
+  transition: transform 0.3s ease;
+}
+
+.chat-toggle-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4); /* Gold Glow */
+}
+
+/* 2. The Chat Window */
+.chat-container {
+  position: fixed;
+  bottom: 90px;
+  right: 30px;
+  width: 360px;
+  height: 500px;
+  background: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  z-index: 9999;
+  overflow: hidden;
+  border: 1px solid #e0e0e0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* 3. The Header (Black & Gold) */
+.chat-header {
+  background: #111; /* Deep Black */
+  color: #d4af37; /* Gold Text */
+  padding: 18px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid #d4af37;
+}
+
+.chat-header h3 {
+  margin: 0;
+  font-size: 18px;
+  font-family: 'Playfair Display', serif; /* Matching site headers */
+  letter-spacing: 0.5px;
+}
+
+.chat-header button {
+  background: none;
+  border: none;
+  color: #d4af37;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+/* 4. Messages Area */
+.chat-messages {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+  background-color: #fcfcfc; /* Very light off-white */
+  background-image: radial-gradient(#d4af37 0.5px, transparent 0.5px); /* Subtle dot pattern */
+  background-size: 20px 20px;
+  background-opacity: 0.1;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* 5. User Message (Gold Bubble) */
+.user-msg {
+  align-self: flex-end;
+  background: linear-gradient(135deg, #d4af37 0%, #c5a059 100%); /* Gold Gradient */
+  color: #fff;
+  padding: 10px 15px;
+  border-radius: 15px 15px 2px 15px;
+  max-width: 80%;
+  font-size: 14px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* 6. Bot Message (White/Grey Elegant) */
+.bot-msg {
+  align-self: flex-start;
+  background: #ffffff;
+  color: #333;
+  padding: 12px 16px;
+  border-radius: 15px 15px 15px 2px;
+  max-width: 80%;
+  font-size: 14px;
+  border: 1px solid #eee;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+/* 7. Input Area */
+.chat-input {
+  display: flex;
+  padding: 15px;
+  background: white;
+  border-top: 1px solid #f0f0f0;
+}
+
+.chat-input input {
+  flex: 1;
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  border-radius: 25px;
+  outline: none;
+  font-size: 14px;
+  transition: border-color 0.3s;
+}
+
+.chat-input input:focus {
+  border-color: #d4af37; /* Gold border on focus */
+}
+
+.chat-input button {
+  margin-left: 10px;
+  background: #111; /* Black Button */
+  color: #d4af37; /* Gold Arrow */
+  border: 1px solid #d4af37;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.chat-input button:hover {
+  background: #d4af37;
+  color: white;
+}
+/* Add this at the bottom of your CSS file */
+
+/* 1. Gold Pulse Animation for the Button */
+@keyframes goldPulse {
+  0% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.7); }
+  70% { box-shadow: 0 0 0 10px rgba(212, 175, 55, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
+}
+
+.chat-toggle-btn {
+  /* Add this animation line to your existing .chat-toggle-btn class */
+  animation: goldPulse 2s infinite;
+}
+
+/* 2. Glassmorphism Backdrop (Modern Blur) */
+.chat-container {
+  /* Update background to be slightly transparent */
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(212, 175, 55, 0.3); /* Subtle gold border */
+}
+
+/* 3. Typing Indicator (Optional Polish) */
+.loading {
+  font-style: italic;
+  color: #888;
+  font-size: 12px;
+}
