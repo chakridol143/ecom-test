@@ -31,9 +31,7 @@ export class login implements AfterViewInit {
     private cartServices: CartService
   ) {}
 
-  /* ---------------------------------------------
-     GOOGLE LOGIN INIT
-  --------------------------------------------- */
+
   ngAfterViewInit() {
     this.waitForGoogle();
   }
@@ -80,14 +78,10 @@ export class login implements AfterViewInit {
           localStorage.setItem('token', token);
           this.cartServices.mergeCartAfterLogin(userId, token);
         }
-
-        // IMPORTANT FIX: do NOT show success dialog here
         this.showDialog = false;
 
-        // Close login modal
         this.close.emit();
 
-        // Instant redirect to home (register-like speed)
         this.router.navigate(['/']);
       },
       error: (err) => {
@@ -131,14 +125,11 @@ export class login implements AfterViewInit {
         this.close.emit();
       },
       error: (err) => {
-        console.error("❌ Login failed:", err);
+        console.error("Login failed:", err);
       }
     });
   }
 
-  /* ---------------------------------------------
-     ADMIN LOGIN
-  --------------------------------------------- */
   adminLogin() {
     if (!this.email.trim() || !this.password.trim()) {
       this.error = "Email and Password are required";
@@ -153,7 +144,7 @@ export class login implements AfterViewInit {
         this.router.navigate(['/admin']);
       },
       error: (err) => {
-        console.error("❌ Admin Login Failed:", err);
+        console.error("Admin Login Failed:", err);
         this.error = "Invalid Email or Password";
       }
     });

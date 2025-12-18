@@ -9,7 +9,7 @@ import { CartService } from '../../cart-details/services/cart.services';
 })
 export class LoginService {
 
-  // BACKEND BASE URL
+
   private BASE_URL = 'https://ecom-backend-production-c71b.up.railway.app/api/auth';
 
   private userState = new BehaviorSubject<any>(this.getUser());
@@ -23,9 +23,7 @@ export class LoginService {
     private cartService: CartService
   ) {}
 
-  /* ---------------------------------------------------
-      USER LOGIN / REGISTER
-  --------------------------------------------------- */
+
 
   login(email: string, password: string) {
     return this.http.post<any>(`${this.BASE_URL}/login`, { email, password });
@@ -51,7 +49,7 @@ export class LoginService {
 
     const userId = this.getUserId();
     if (userId) {
-      // Load cart after login
+   
       this.cartService.loadCartForUser(userId, token);
     }
   }
@@ -69,9 +67,6 @@ export class LoginService {
     return !!token && token.split('.').length === 3;
   }
 
-  /* ---------------------------------------------------
-      ADMIN LOGIN
-  --------------------------------------------------- */
 
   adminLogin(email: string, password: string) {
     return this.http.post<any>(`${this.BASE_URL}/admin/login`, { email, password });
@@ -87,9 +82,6 @@ export class LoginService {
     localStorage.removeItem('admin');
   }
 
-  /* ---------------------------------------------------
-      HELPERS
-  --------------------------------------------------- */
 
   getAdmin() {
     const token = localStorage.getItem('adminToken');

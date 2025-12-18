@@ -59,10 +59,6 @@ export class AdminControlPanelComponent implements OnInit {
   errorMessage = '';
 constructor(private catSvc: CategoryService, private prodSvc: ProductService,private router:Router) {}
 
-  // ngOnInit(): void {
-  //   this.loadCategories();
-  //   this.loadProducts();
-  // }
   ngOnInit(): void {
   this.loadCategories();
   this.loadProducts();
@@ -124,7 +120,6 @@ constructor(private catSvc: CategoryService, private prodSvc: ProductService,pri
     const fd = new FormData();
     fd.append('name', this.editingCategory.name);
 
-    // ✅ FIXED FIELD NAME
     if (this.categoryImage)
       fd.append('image_url', this.categoryImage);
 
@@ -147,11 +142,6 @@ constructor(private catSvc: CategoryService, private prodSvc: ProductService,pri
     });
   }
 
-  //   deleteProduct(id: number) {
-  //   this.prodSvc.deleteProduct(id).subscribe({
-  //     next: () => this.loadProducts()
-  //   });
-  // }
   loadProducts() {
     this.prodSvc.getAll().subscribe({
       next: (res) => this.products = res || [],
@@ -245,13 +235,8 @@ constructor(private catSvc: CategoryService, private prodSvc: ProductService,pri
     this.productImagePreviews = {};
   }
  onLog() {
-  // Clear admin token (if using localStorage or sessionStorage)
   localStorage.removeItem("adminToken");
-
-  // Navigate away
   this.router.navigate(['/']);
-
-  // Prevent back button caching
   history.pushState(null, '', location.href);
 }
 

@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 
 function getAuthHeadersObj(): { headers: HttpHeaders } {
   const token =
-    localStorage.getItem("adminToken") ||     // FIXED
+    localStorage.getItem("adminToken") ||     
     localStorage.getItem("admin_token") ||
     localStorage.getItem("token");
 
