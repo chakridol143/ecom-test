@@ -70,7 +70,7 @@ export class App implements OnInit {
     this.currentRoute.startsWith('/product') ||
     this.currentRoute.startsWith('/admin') ||
     this.currentRoute.startsWith('/login') ||
-
+    this.currentRoute.startsWith('/register') ||
     this.currentRoute.startsWith('/cart') ||
     this.currentRoute.startsWith('/KidsCollections') ||
      this.currentRoute.startsWith('/checkout')
@@ -96,7 +96,8 @@ onCategorySelected(id: number | null) {
 
 showHeaderOnly(): boolean {
   // Routes where only the header should appear
-  return this.currentRoute.startsWith('/login') || this.currentRoute.startsWith('/logout') || this.currentRoute.startsWith('/admin') || this.currentRoute.startsWith('/checkout');
+    
+  return this.currentRoute.startsWith('/login') ||this.currentRoute.startsWith('/register') || this.currentRoute.startsWith('/logout') || this.currentRoute.startsWith('/admin') || this.currentRoute.startsWith('/checkout');
 }
 
   }

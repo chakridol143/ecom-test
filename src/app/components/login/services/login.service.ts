@@ -7,22 +7,38 @@ import { CartService } from '../../cart/services/cart.services';
   providedIn: 'root'
 })
 export class LoginService {
- private apiUrl = 'https://ecom-backend-production-c71b.up.railway.app/api/auth';
-  private adminUrl = 'https://ecom-backend-production-c71b.up.railway.app/api/auth/admin/login';
+
+  // BACKEND BASE URL
+  private BASE_URL = 'https://ecom-backend-production-c71b.up.railway.app/api/auth';
+
   private userState = new BehaviorSubject<any>(this.getUser());
   userState$ = this.userState.asObservable();
 
   private adminState = new BehaviorSubject<any>(this.getAdmin());
   adminState$ = this.adminState.asObservable();
 
-  constructor(private http: HttpClient, private cartService: CartService,) {}
+  constructor(
+    private http: HttpClient,
+    private cartService: CartService
+  ) {}
+
+  /* ---------------------------------------------------
+      USER LOGIN / REGISTER
+  --------------------------------------------------- */
 
   login(email: string, password: string) {
-    return this.http.post<any>(`${this.apiUrl}/login`, { email, password });
+    return this.http.post<any>(`${this.BASE_URL}/login`, { email, password });
   }
 
   register(data: any) {
-    return this.http.post<any>(`${this.apiUrl}/register`, data);
+    return this.http.post<any>(`${this.BASE_URL}/register`, data);
+  }
+
+  googleRegister(credential: string) {
+    return this.http.post<any>(
+      `${this.BASE_URL}/google`,
+      { token: credential }
+    );
   }
 
   saveSession(token: string, user: any) {
@@ -32,24 +48,30 @@ export class LoginService {
 
     const userId = this.getUserId();
     if (userId) {
+      // Load cart after login
       this.cartService.loadCartForUser(userId, token);
     }
   }
 
   logout() {
     sessionStorage.clear();
-    this.userState.next(null);
-    localStorage.removeItem('token');
     localStorage.removeItem('userId');
+    localStorage.removeItem('token');
+
+    this.userState.next(null);
   }
-   isLoggedIn(): boolean {
+
+  isLoggedIn(): boolean {
     const token = sessionStorage.getItem('token');
     return !!token && token.split('.').length === 3;
   }
 
-  /* ADMIN LOGIN */
+  /* ---------------------------------------------------
+      ADMIN LOGIN
+  --------------------------------------------------- */
+
   adminLogin(email: string, password: string) {
-    return this.http.post<any>(`${this.adminUrl}`, { email, password });
+    return this.http.post<any>(`${this.BASE_URL}/admin/login`, { email, password });
   }
 
   saveAdminSession(token: string) {
@@ -57,13 +79,18 @@ export class LoginService {
     this.adminState.next({ token });
   }
 
-adminLogout() {
-  localStorage.removeItem("adminToken");
-  localStorage.removeItem("admin");
-}
+  adminLogout() {
+    localStorage.removeItem('adminToken');
+    localStorage.removeItem('admin');
+  }
+
+  /* ---------------------------------------------------
+      HELPERS
+  --------------------------------------------------- */
 
   getAdmin() {
-    return localStorage.getItem('adminToken') ? { token: localStorage.getItem('adminToken') } : null;
+    const token = localStorage.getItem('adminToken');
+    return token ? { token } : null;
   }
 
   getUser() {
@@ -72,6 +99,6 @@ adminLogout() {
 
   getUserId() {
     const user = JSON.parse(sessionStorage.getItem('user') || '{}');
-    return user.id || user.user_id || null;
+    return user.user_id || user.id || null;
   }
 }

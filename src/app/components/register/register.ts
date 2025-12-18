@@ -1,9 +1,10 @@
-
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, AfterViewInit, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { LoginService } from '../login/services/login.service';
+
+declare const google: any;
 
 @Component({
   selector: 'app-register',
@@ -12,9 +13,7 @@ import { LoginService } from '../login/services/login.service';
   templateUrl: './register.html',
   styleUrls: ['./register.css']
 })
-export class RegisterComponent {
-
-  @Output() close = new EventEmitter<void>();
+export class RegisterComponent implements AfterViewInit, OnInit, OnDestroy {
 
   username = '';
   email = '';
@@ -23,16 +22,73 @@ export class RegisterComponent {
   phone = '';
   address = '';
 
-  constructor(private router: Router, private auth: LoginService) {}
+  constructor(
+    private router: Router,
+    private auth: LoginService
+  ) {}
 
+  // =============================
+  //  GOOGLE LOGIN INIT (Same as Login)
+  // =============================
+  ngAfterViewInit() {
+    this.waitForGoogle();
+  }
+
+  private waitForGoogle() {
+    if ((window as any).google?.accounts?.id) {
+      this.initGoogle();
+    } else {
+      setTimeout(() => this.waitForGoogle(), 100);
+    }
+  }
+
+  private initGoogle() {
+    google.accounts.id.initialize({
+      client_id: "127997694068-djgvmqj311ldteojrtc84gbkc8h7e9bb.apps.googleusercontent.com",
+      callback: (response: any) => this.handleGoogleRegister(response),
+      ux_mode: "popup",
+      auto_select: false,
+      use_fedcm_for_prompt: false
+    });
+
+    google.accounts.id.renderButton(
+      document.getElementById("googleBtn")!,
+      {
+        theme: "outline",
+        size: "large",
+        width: "100%"
+      }
+    );
+  }
+
+  private handleGoogleRegister(response: any) {
+    if (!response?.credential) return;
+
+    this.auth.googleRegister(response.credential).subscribe({
+      next: (res: any) => {
+        this.auth.saveSession(res.token, res.user);
+
+        // Instant redirect (same behaviour as login Google)
+        this.router.navigate(['/']);
+      },
+      error: (err) => {
+        console.error("Google Register Failed:", err);
+        alert("Google Registration failed");
+      }
+    });
+  }
+
+  // =============================
+  // NORMAL MANUAL REGISTER
+  // =============================
   onRegister() {
     if (!this.username || !this.email || !this.password || !this.confirmPassword) {
-      alert('Please fill in all required fields ');
+      alert('Please fill all required fields');
       return;
     }
 
     if (this.password !== this.confirmPassword) {
-      alert('Confirm Password do not match ');
+      alert('Passwords do not match');
       return;
     }
 
@@ -45,32 +101,19 @@ export class RegisterComponent {
     };
 
     this.auth.register(payload).subscribe({
-      next: (res) => {
-        alert('Registration successful! You can now log in.');
-        if (res?.token && res?.user) {
-          this.auth.saveSession(res.token, res.user);
-        }
-        this.router.navigate(['menu']);
-        this.close.emit();
+      next: (res: any) => {
+        this.auth.saveSession(res.token, res.user);
+        this.router.navigate(['/']);
       },
-      error: (err) => {
-        const msg = err?.error?.message || 'Registration failed';
-        alert(` ${msg}`);
-        console.error('Register error:', err);
-      }
+      error: () => alert('Registration failed')
     });
   }
 
-  onClose() {
-    this.router.navigate(['menu']);
+  ngOnInit() {
+    document.body.classList.add("register-page");
   }
 
-  onReset() {
-    this.username = '';
-    this.email = '';
-    this.password = '';
-    this.confirmPassword = '';
-    this.phone = '';
-    this.address = '';
+  ngOnDestroy() {
+    document.body.classList.remove("register-page");
   }
 }
