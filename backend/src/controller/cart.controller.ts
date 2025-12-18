@@ -1,10 +1,7 @@
-
 import { Request, Response } from "express";
 import db from "../config/db"; 
 import { CartItem } from "../models/cart.model";
 
-
-// Get all cart items
 export const getAllCartItems = async (req: Request, res: Response) => {
   const query = "SELECT * FROM Cart_Items";
   try {
@@ -16,7 +13,6 @@ export const getAllCartItems = async (req: Request, res: Response) => {
   }
 };
 
-// Get a single cart item by ID
 export const getCartItemById = async (req: Request, res: Response) => {
   const id = Number(req.params.id);
   if (Number.isNaN(id)) {
@@ -69,41 +65,6 @@ export const getcartByUserId = async (req: Request, res: Response) => {
   }
 };
 
-
-
-// export const addMultipleCartItems = async (req: Request, res: Response) => {
-//   const items = req.body; 
-//   console.log('Received addMultipleCartItems request with body:', items);
-
-//   if (!Array.isArray(items) || items.length === 0) {
-//     return res.status(400).json({ error: "Request body must be a non-empty array" });
-//   }
-
-  
-//   for (const it of items) {
-//     if (typeof it.user_id === "undefined" || typeof it.product_id === "undefined" || typeof it.quantity === "undefined") {
-//       return res.status(400).json({ error: "Missing required fields in one or more items" });
-//     }
-//     const u = Number(it.user_id), p = Number(it.product_id), q = Number(it.quantity);
-//     if (Number.isNaN(u) || Number.isNaN(p) || Number.isNaN(q) || q <= 0) {
-//       return res.status(400).json({ error: "Invalid user_id/product_id/quantity in one or more items" });
-//     }
-//   }
-
-//   const values = items.map(it => [Number(it.user_id), Number(it.product_id), Number(it.quantity)]);
-
-//   const query = `INSERT INTO Cart_Items (user_id, product_id, quantity, added_at) VALUES ?`;
-
-//   try {
-//     await db.query(query, [values]);
-//     return res.status(201).json({ message: "Cart items added successfully" });
-//   } catch (err) {
-//     console.error("Error adding multiple cart items:", err);
-//     return res.status(500).json({ error: "Failed to add cart items" });
-//   }
-// };
-
-
 export const addCartItem = async (req: Request, res: Response) => {
   const { user_id, product_id, quantity } = req.body;
   console.log("Received addCartItem request with body:", req.body);
@@ -120,7 +81,6 @@ export const addCartItem = async (req: Request, res: Response) => {
     return res.status(400).json({ error: "Invalid inputs" });
   }
 
-  // ✅ FIXED TABLE NAME – this was causing your 500 error!
   const query = `
     INSERT INTO cart_items (user_id, product_id, quantity, added_at)
     VALUES (?, ?, ?, NOW())
@@ -139,7 +99,7 @@ export const addCartItem = async (req: Request, res: Response) => {
     });
 
   } catch (err: any) {
-    console.error("\n❌ SQL ERROR inserting cart item:", err);
+    console.error("\n SQL ERROR inserting cart item:", err);
 
     return res.status(500).json({
       error: err.sqlMessage || err.message || "Failed to add cart item",
@@ -148,7 +108,6 @@ export const addCartItem = async (req: Request, res: Response) => {
 };
 
 
-// Update cart item quantity
 export const updateCartItem = async (req: Request, res: Response) => {
   const id = Number(req.params.id);
   const { quantity } = req.body;
@@ -168,7 +127,6 @@ export const updateCartItem = async (req: Request, res: Response) => {
   const query = "UPDATE Cart_Items SET quantity = ? WHERE cart_item_id = ?";
   try {
     const [result] = await db.query<any>(query, [qQuantity, id]);
-    // affectedRows check
     if ((result as any).affectedRows === 0) {
       return res.status(404).json({ message: "Cart item not found" });
     }

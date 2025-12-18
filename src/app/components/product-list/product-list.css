@@ -8,6 +8,7 @@
 .product-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
 }
 
 .product-card {
@@ -109,8 +110,7 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 15px;
-  margin-left: -10px;
-  margin-right: 10px;
+
   }
   .product-img {
     height: 270px;

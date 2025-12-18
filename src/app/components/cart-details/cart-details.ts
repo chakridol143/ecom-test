@@ -94,7 +94,9 @@ export class CartDetails {
   const item = this.items[index];
   if (item) {
     item.quantity = (item.quantity || 1) + 1;
-    this.cart.updateQuantity(item.product_id, item.quantity);
+    // this.cart.updateQuantity(item.product_id, item.quantity);
+    this.cart.updateQuantity(item.cart_item_id, item.quantity);
+
   }
 }
 
@@ -102,7 +104,9 @@ decQty(index: number) {
   const item = this.items[index];
   if (item && item.quantity > 1) {
     item.quantity--;
-    this.cart.updateQuantity(item.product_id, item.quantity);
+    // this.cart.updateQuantity(item.product_id, item.quantity);
+    this.cart.updateQuantity(item.cart_item_id, item.quantity);
+
   }
 }
 }
