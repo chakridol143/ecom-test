@@ -22,7 +22,7 @@ export class Checkout {
   grandTotal : number = 0;
   showDialog: boolean = false;
   
-  constructor(private cartService : CartService, private router:Router, private loginService: LoginService) {}
+  constructor(private cartService : CartService, private router:Router, public loginService: LoginService) {}
 
   ngOnInit():void{
     this.items = this.cartService.getItems();

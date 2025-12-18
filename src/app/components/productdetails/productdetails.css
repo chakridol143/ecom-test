@@ -2,17 +2,27 @@
   display: flex;
   gap: 20px;
   width: 100%;
-  margin-top: 110px;
+  margin-top: 120px;
+  min-height: 120vh;
+  margin-bottom: 80px;
+ 
 }
+
 .big-image-grid {
   display: none;
   margin-right: 15%;
   margin-left: 15%;
   gap: 10px;
-  border-radius: 10px solid black;
+  border-radius: 1px solid black;
+height: 520px;
+margin-bottom: 10px;
+
 
 }
 
+ .big-image-grid img {
+height: 430px;
+ }
 
 .thumbnails {
   display: flex;
@@ -59,8 +69,9 @@
   margin-left: -140px;
   font-weight: lighter;
 }
+
 .product-details h1 {
-  font-family:  "Libre Baskerville", serif;
+  font-family: "Libre Baskerville", serif;
   font-size: 20px;
   font-weight: 400px;
   letter-spacing: 3px;
@@ -80,8 +91,8 @@
   text-transform: uppercase;
   text-align: left;
   margin-top: 15px;
-   width: 500px;
-   margin-top: 20px;
+  width: 500px;
+  margin-top: 20px;
 }
 
 .pricing-section {
@@ -91,21 +102,54 @@
   margin-top: 25px;
 }
 
-.price { font-weight: bold; font-size: 20px; font-family: "Libre Baskerville", serif;  }
-.old-price { text-decoration: line-through; }
-.discount { background: rgb(235, 54, 54); color: #fff; font-size: 16px; padding: 1px 6px; font-family: "Libre Baskerville", serif; }
+.price {
+  font-weight: bold;
+  font-size: 20px;
+  font-family: "Libre Baskerville", serif;
+}
 
-.quantity-box { display: flex; gap: 12px; align-items: center; font-family: "Libre Baskerville", serif; font-size: 16px; margin-top: 20px; }
+.old-price {
+  text-decoration: line-through;
+}
 
-.btn-row { display: flex; flex-direction: column; gap: 12px; }
+.discount {
+  background: rgb(235, 54, 54);
+  color: #fff;
+  font-size: 16px;
+  padding: 1px 6px;
+  font-family: "Libre Baskerville", serif;
+}
+
+.quantity-box {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  font-family: "Libre Baskerville", serif;
+  font-size: 16px;
+  margin-top: 20px;
+}
+
+.quantity-box button {
+  width: 35px;
+  height: 35px;
+  font-size: 18px;
+  border-radius: 6px;
+  font-family: "Libre Baskerville", serif;
+}
+
+.btn-row {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
 
 .add-cart-btn {
-  --btn-bg: 0, 0, 0;       
-  --btn-text: 0, 0, 0;     
-  --btn-text-hover: 255,255,255; 
-  
+  --btn-bg: 0, 0, 0;
+  --btn-text: 0, 0, 0;
+  --btn-text-hover: 255, 255, 255;
+
   margin-top: 20px;
-  font-family:  "Libre Baskerville", serif;
+  font-family: "Libre Baskerville", serif;
   appearance: none;
   border: 1.5px solid rgb(var(--btn-bg));
   border-radius: 1px;
@@ -126,9 +170,10 @@
   background-repeat: no-repeat;
 
   transition:
-    background-size 0.45s cubic-bezier(.785,.135,.15,.86),
-    color 0.45s cubic-bezier(.785,.135,.15,.86);
+    background-size 0.45s cubic-bezier(.785, .135, .15, .86),
+    color 0.45s cubic-bezier(.785, .135, .15, .86);
 }
+
 .add-cart-btn:hover {
   background-size: 100% 100%, 100% 100%;
   color: rgb(var(--btn-text-hover));
@@ -147,6 +192,8 @@
     width: 100%;
     padding: 0 60px;
     align-items: flex-start;
+    
+    
   }
 
   /* LEFT IMAGE GRID — SCROLL WHEN IMAGES GROW */
@@ -155,13 +202,15 @@
     grid-template-columns: repeat(2, 1fr);
     gap: 12px;
 
-    max-height: 92vh;        /* 🔥 Allow scroll only when overflow */
-    overflow-y: auto;        /* 🔥 Enable scroll */
+   height: 880px;   
+    /* 🔥 Allow scroll only when overflow */
+    overflow-y: auto;
+    /* 🔥 Enable scroll */
     padding-right: 10px;
 
     /* Hide scrollbar */
-    scrollbar-width: none;   
-    -ms-overflow-style: none; 
+    scrollbar-width: none;
+    -ms-overflow-style: none;
   }
 
   .big-image-grid::-webkit-scrollbar {
@@ -172,13 +221,14 @@
     width: 100%;
     height: 430px;
     object-fit: cover;
-    border-radius: 10px;
+    border-radius: 1px;
   }
 
   /* RIGHT PANEL — FIXED PRODUCT DETAILS */
   .product-details {
     position: sticky;
-    top: 120px;          /* 🔥 Fixed position starts here */
+    top: 120px;
+    /* 🔥 Fixed position starts here */
     height: fit-content;
     align-self: flex-start;
     z-index: 3;
@@ -222,7 +272,7 @@
     width: 100%;
     margin-top: 25px;
     padding: 0 15px;
-  
+
   }
 }
 
@@ -263,7 +313,7 @@
   width: 100%;
   height: 430px;
   object-fit: cover;
-   margin-bottom: 20px;
+  margin-bottom: 20px;
   /* border-radius: 8px; */
 }
 
@@ -291,8 +341,8 @@
   }
 }
 
-.description {
-  font-size: 16px;
+/* .description {
+  font-size: 1px;
   margin-bottom: 15px;
-  
-}
+
+} */
