@@ -1,0 +1,177 @@
+<div class="checkout-page">
+
+  <!-- HEADER -->
+  <div class="checkout-top">
+    <div class="brand">
+      <img src="../../../assets/images/checkout logo.png" class="checkout-logo">
+      <span class="checkout-text">CHECKOUT</span>
+    </div>
+
+    <div class="login-box">
+      <span>Have An Account?</span>
+      <button class="login-btn" *ngIf="!loginService.isLoggedIn()">
+        LOGIN
+      </button>
+    </div>
+  </div>
+
+  <div class="checkout-content">
+
+    <!-- LEFT -->
+    <div class="left">
+
+      <h3 class="section">SHIPPING</h3>
+
+      <label class="sub-title">SHIPPING ADDRESS</label>
+
+      <div class="form-row">
+        <input placeholder="First Name *">
+        <input placeholder="Last Name *">
+      </div>
+
+      <input class="full" placeholder="Street Address *">
+      <input class="full" placeholder="Apt / Suite / Unit (Optional)">
+
+      <div class="form-row">
+        <input placeholder="City *">
+        <select>
+          <option>Province *</option>
+          <option>Telangana</option>
+          <option>Andhra Pradesh</option>
+        </select>
+      </div>
+
+      <input placeholder="Postal Code *" class="postal">
+
+      <h4 class="sub-title">SHIPPING METHOD</h4>
+      <p class="muted">Enter a shipping address to see accurate shipping options for your order.</p>
+
+      <h4 class="sub-title">GIFT OPTIONS</h4>
+
+      <div class="gift-box">
+        <div class="gift-box">
+          <input type="checkbox" class="checkbox" id="gift">
+          <span>This is a gift</span>
+        </div>
+
+        <!-- <img src="../../../assets/images/gift icon.png" class="gift-icon"> -->
+        <!-- <span>This is a gift</span> -->
+      </div>
+      
+      <img src="../../../assets/images/gift icon.png" class="gift-icon">
+      <div class="gift-note">
+        We'll hide the prices and print your personal message on the packing slip if you include one. You can also add UA GiftBox Kits to your order to assembly and wrapping at
+      </div>
+
+     <div class="continue-wrapper">
+  <button class="continue-btn" (click)="buyNow()">Buy Now</button>
+</div>
+
+
+    </div>
+
+    <!-- RIGHT -->
+    <div class="right">
+
+      <h3 class="section">ORDER SUMMARY</h3>
+
+      <div class="summary-row">
+        <span>Subtotal</span>
+        <span>₹{{ totalAmount.toFixed(2) }}</span>
+      </div>
+
+      <div class="summary-row">
+        <span>Taxes</span>
+        <span>₹{{ gstAmount.toFixed(2) }}</span>
+      </div>
+
+      <div class="summary-row">
+        <span>Shipping ({{ items.length }} items)</span>
+        <span>—</span>
+      </div>
+
+      <div class="summary-total">
+        <span>TOTAL</span>
+        <span>₹{{ grandTotal.toFixed(2) }}</span>
+      </div>
+
+      <div class="promo-box">APPLY A PROMO CODE OR DISCOUNT</div>
+
+     <h4 class="bag-title">
+  BAG SUMMARY
+  <span class="bag-count">{{ items.length }}</span>
+</h4>
+
+<p class="arrival-text">Arrives in 4–7 days</p>
+
+<div class="bag-item" *ngFor="let item of items; let i=index">
+  <img
+    class="bag-img"
+    [src]="'https://ecom-backend-production-c71b.up.railway.app/assets/images/' + item.image_url"
+    alt="product"
+  />
+
+  <div class="bag-details">
+    <p class="bag-name">{{ item.name }}</p>
+
+    <p class="bag-sku">
+      {{ item.product_code || '1300123-025-XL' }}
+    </p>
+
+    <p class="bag-variant">
+      {{ item.color || 'Color' }}, {{ item.size || 'XL' }}
+    </p>
+
+    <p class="bag-price-row">
+      <span class="old-price">₹{{ item.mrp || 4999 }}</span>
+      <span class="new-price">₹{{ item.price }}</span>
+      <span class="qty">x 1</span>
+    </p>
+
+    <div class="bag-actions">
+      <span class="edit">Edit</span>
+      <span class="remove" (click)="removeItem(i)">Remove</span>
+    </div>
+  </div>
+</div>
+
+<p class="policy">
+  <a href="#">Privacy Policy</a> | <a href="#">Terms & Conditions</a>
+</p>
+
+    </div>
+
+  </div>
+</div>
+
+
+<!-- LOGIN POPUP -->
+<!-- <app-login *ngIf="showLoginPopup" (close)="onLoginClosed()"></app-login> -->
+<!-- <div
+  class="login-overlay"
+  *ngIf="showLoginPopup"
+  (click)="onLoginClosed()">
+</div>
+
+<div class="login-modal" *ngIf="showLoginPopup">
+  <app-login (close)="onLoginClosed()"></app-login>
+</div> -->
+
+<!-- DARK OVERLAY -->
+<div class="modal-overlay" *ngIf="showDialog" (click)="closeDialog()"></div>
+
+<!-- SUCCESS DIALOG -->
+<div class="dialog-box" *ngIf="showDialog">
+  <h2>Purchase Successful</h2>
+  <p>
+    Thank you for your purchase!<br />
+    Your total payment is
+    <strong>₹{{ grandTotal.toFixed(2) }}</strong>.
+  </p>
+  <button class="ok-btn" (click)="confirmPurchase()">OK</button>
+</div>
+
+
+
+
+

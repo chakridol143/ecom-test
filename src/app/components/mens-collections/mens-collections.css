@@ -1,0 +1,54 @@
+
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin-top: 8%;
+  margin-right: 55px;
+}
+
+.item {
+  position: relative;
+  width: 90%;
+  overflow: hidden;
+  /* border-radius: 12px; */
+}
+
+.img {
+  width: 100%;
+  height: 450px;
+  display: block;
+  transition: opacity 0.3s ease;
+  object-fit: fill;
+}
+
+.img-1 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 1;
+}
+
+.img-2 {
+  opacity: 0;
+}
+
+.item:hover .img-1 {
+  opacity: 0;
+}
+
+.item:hover .img-2 {
+  opacity: 1;
+}
+
+.title {
+font-family: "Libre Baskerville", serif;
+  font-size: 15px;
+  font-weight: 400;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #1a1a1a;
+  text-align: center;
+  margin-top: 10px;
+}

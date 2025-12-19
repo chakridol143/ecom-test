@@ -1,0 +1,17 @@
+
+<div class="category-row">
+<div class="category-box"
+          *ngFor="let category of categories; trackBy: trackByCategoryId"
+          (click)="selectCategory(category)"
+          [class.active]="selectedCategoryId === category.category_id">
+
+        <img 
+          [src]="getImageUrl(category.image_url)"
+          [alt]="category.name"
+          (error)="onImageError($event)"
+          (click)="selectCategory(category)"
+        />
+
+        <p>{{ category.name }}</p>
+      </div>
+</div>

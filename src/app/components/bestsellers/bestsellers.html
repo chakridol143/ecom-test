@@ -1,0 +1,83 @@
+<div class="category">
+  <h3>Necklace Sets</h3>
+  <div class="grid">
+     <div class="product" *ngFor="let item of necklaceSets">
+    <img [src]="item.image" alt="{{item.name}}" />
+
+    <p class="name">{{ item.name }}</p>
+    <p class="price">₹{{ item.price }}</p>
+  </div>
+</div>
+<hr />
+
+<div class="category">
+  <h3>Rings & Bangles</h3>
+  <div class="grid">
+     <div class="product" *ngFor="let item of Bangles">
+    <img [src]="item.image" />
+    <p class="name">{{ item.name }}</p>
+    <p class="price">₹{{ item.price }}</p>
+  </div>
+  </div>
+</div>
+<hr />
+
+<div class="category">
+  <h3>Bracelets</h3>
+  <div class="grid">
+     <div class="product" *ngFor="let item of bracelets">
+    <img [src]="item.image" />
+    <p class="name">{{ item.name }}</p>
+    <p class="price">₹{{ item.price }}</p>
+  </div>
+  </div>
+</div>
+<hr />
+
+<div class="category">
+  <h3>Swaras</h3>
+  <div class="grid">
+     <div class="product" *ngFor="let item of swaras">
+    <img [src]="item.image" />
+    <p class="name">{{ item.name }}</p>
+    <p class="price">₹{{ item.price }}</p>
+  </div>
+  </div>
+</div>
+<hr />
+
+<div class="category">
+  <h3>Rings</h3>
+  <div class="grid">
+   <div class="product" *ngFor="let item of rings">
+    <img [src]="item.image" />
+    <p class="name">{{ item.name }}</p>
+    <p class="price">₹{{ item.price }}</p>
+  </div>
+  </div>
+</div>
+<hr />
+
+<div class="category">
+  <h3>Paapid Billa</h3>
+  <div class="grid">
+     <div class="product" *ngFor="let item of paapidBilla">
+    <img [src]="item.image" />
+    <p class="name">{{ item.name }}</p>
+    <p class="price">₹{{ item.price }}</p>
+  </div>
+  </div>
+</div>
+<hr />
+
+<div class="category">
+  <h3>Boys Bracelets</h3>
+  <div class="grid">
+     <div class="product" *ngFor="let item of boysBracelets">
+    <img [src]="item.image" />
+    <p class="name">{{ item.name }}</p>
+    <p class="price">₹{{ item.price }}</p>
+  </div>
+  </div>
+</div>
+<hr />

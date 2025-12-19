@@ -1,0 +1,18 @@
+<div *ngIf="product; else noData" class="product-card">
+
+   
+   <img [src]="'https://ecom-backend-production-c71b.up.railway.app/assets/images/' + product.image_url" />
+
+
+
+ 
+  <h1>{{ product.name }} </h1>
+
+  <p>{{ product.description }}</p>
+
+  <h3>₹{{ product.price }}</h3>
+</div>
+
+<ng-template #noData>
+  <p>No product found.</p>
+</ng-template>
