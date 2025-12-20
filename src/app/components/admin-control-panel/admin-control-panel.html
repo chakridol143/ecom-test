@@ -1,0 +1,174 @@
+<div class="admin-wrapper">
+
+  <aside class="sidebar">
+    <div class="logo">Admin</div>
+
+    <ul class="menu">
+      <li [class.active]="activeSection === 'categories'" (click)="activeSection = 'categories'">Categories</li>
+      <li [class.active]="activeSection === 'products'" (click)="activeSection = 'products'">Products</li>
+      <li (click)="onLog()">Logout</li>
+    </ul>
+  </aside>
+
+  <main class="main-panel">
+
+    <section *ngIf="activeSection === 'categories'">
+
+      <div class="card box">
+        <h3>Add New Category</h3>
+
+        <input type="text" placeholder="Category name" [(ngModel)]="categoryName" />
+        <input type="file" (change)="onCategoryFileChange($event)" />
+
+        <button class="btn green" (click)="createCategory()">+ Add Category</button>
+      </div>
+
+      <div class="table-container">
+        <table class="data-table">
+
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Image</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+
+          <tbody>
+
+            <tr *ngFor="let cat of categories">
+
+              <ng-container *ngIf="editingCategory?.category_id !== cat.category_id">
+                <td>{{ cat.name }}</td>
+                <td><img *ngIf="cat.image_url" [src]="'https://ecom-backend-production-c71b.up.railway.app/assets/images/' + cat.image_url" class="thumb" /></td>
+                <td class="actions">
+                  <button class="edit" (click)="editCategory(cat)">✏</button>
+                  <button class="delete" (click)="deleteCategory(cat.category_id)">🗑</button>
+                </td>
+              </ng-container>
+
+              <ng-container *ngIf="editingCategory?.category_id === cat.category_id">
+                <td><input type="text" [(ngModel)]="editingCategory.name" /></td>
+                <td><input type="file" (change)="onCategoryFileChange($event)" /></td>
+                <td class="actions">
+                  <button class="save" (click)="updateCategory()">💾</button>
+                  <button class="delete" (click)="cancelEditCategory()">✖</button>
+                </td>
+              </ng-container>
+
+            </tr>
+
+          </tbody>
+
+        </table>
+      </div>
+
+    </section>
+    
+    <section *ngIf="activeSection === 'products'">
+
+      <div class="card box">
+        <h3>{{ editingProduct ? 'Edit Product' : 'Create Product' }}</h3>
+
+        <input type="text" placeholder="Product name" [(ngModel)]="productForm.name" />
+        <textarea placeholder="Description" [(ngModel)]="productForm.description"></textarea>
+
+        <input type="number" placeholder="Price" [(ngModel)]="productForm.price" />
+        <input type="number" placeholder="Stock Quantity" [(ngModel)]="productForm.stock_quantity" />
+
+        <select [(ngModel)]="productForm.category_id">
+          <option value="">Select Category</option>
+          <option *ngFor="let c of categories" [value]="c.category_id">{{ c.name }}</option>
+        </select>
+
+        <h4>Product Images</h4>
+
+        <div class="image-upload" *ngFor="let key of imageKeys">
+          <label>{{ key }}</label>
+
+          <input type="file" (change)="onProductFileChange($event, key)" />
+
+          <img *ngIf="getPreview(key)" [src]="getPreview(key)" class="thumb" />
+        </div>
+
+        <button class="btn green" *ngIf="!editingProduct" (click)="createProduct()">+ Create Product</button>
+
+        <button class="btn blue" *ngIf="editingProduct" (click)="updateProduct()">Update Product</button>
+        <button class="btn red" *ngIf="editingProduct" (click)="cancelEditProduct()">Cancel</button>
+
+      </div>
+
+      <div class="table-container">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Category</th>
+              <th>Price</th>
+              <th>Stock</th>
+              <th>Image</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr *ngFor="let p of products">
+
+              <ng-container *ngIf="editingProduct?.product_id !== p.product_id">
+
+                <td>{{ p.name }}</td>
+                <td>{{ p.category_id }}</td>
+                <td>₹{{ p.price }}</td>
+                <td>{{ p.stock_quantity }}</td>
+
+                <td>
+                  <img *ngIf="p.image_url" [src]="'https://ecom-backend-production-c71b.up.railway.app/assets/images/' + p.image_url" class="thumb" />
+                </td>
+
+                <td class="actions">
+                  <button class="edit" (click)="editProduct(p)">✏</button>
+                  <button class="delete" (click)="deleteProduct(p.product_id)">🗑</button>
+                </td>
+
+              </ng-container>
+
+              <ng-container *ngIf="editingProduct?.product_id === p.product_id">
+
+                <td><input type="text" [(ngModel)]="editingProduct.name" /></td>
+
+                <td>
+                  <select [(ngModel)]="editingProduct.category_id">
+                    <option *ngFor="let c of categories" [value]="c.category_id">{{ c.name }}</option>
+                  </select>
+                </td>
+
+                <td><input type="number" [(ngModel)]="editingProduct.price" /></td>
+
+                <td><input type="number" [(ngModel)]="editingProduct.stock_quantity" /></td>
+
+                <td>
+                  <input type="file" (change)="onProductFileChange($event, 'image_url')" />
+
+                  <img *ngIf="getPreview('image_url'); else oldImg" [src]="getPreview('image_url')" class="thumb" />
+
+                  <ng-template #oldImg>
+                    <img *ngIf="p.image_url" [src]="'https://ecom-backend-production-c71b.up.railway.app/assets/images/' + p.image_url" class="thumb" />
+                  </ng-template>
+                </td>
+
+                <td class="actions">
+                  <button class="save" (click)="updateProduct()">💾</button>
+                  <button class="delete" (click)="cancelEditProduct()">✖</button>
+                </td>
+
+              </ng-container>
+
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </section>
+
+  </main>
+</div>

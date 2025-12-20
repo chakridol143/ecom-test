@@ -1,0 +1,403 @@
+.mens-section {
+  display: grid;
+  grid-template-columns: 60% 40%;
+  gap: 40px;
+  padding: 40px 120px;
+  align-items: center;
+}
+
+.left-big img.big-img {
+  width: 100%;
+  height: 650px;
+  object-fit: cover;
+  border-radius: 14px;
+}
+
+.heading {
+  font-size: 42px;
+  font-weight: 600;
+  align-items: center;
+  margin-bottom: 20px;
+  margin-left: 120px;
+  margin-top: 10px;
+  font-family: "Libre Baskerville", serif;
+}
+
+.shop-btn {
+  background: white;
+  border: 1px solid #4f4646;
+  padding: 8px 20px;
+  border-radius: 8px;
+  margin-bottom: 40px;
+  cursor: pointer;
+  align-items: center;
+  margin-left: 200px;
+  margin-top: 5px;
+  --btn-bg: 0, 0, 0;       
+  --btn-text: 0, 0, 0;     
+  --btn-text-hover: 255,255,255; 
+  
+  margin-top: 20px;
+  font-family:  "Libre Baskerville", serif;
+  appearance: none;
+  border: 1.5px solid rgb(var(--btn-bg));
+  border-radius: 1px;
+  padding: 12px 28px;
+  font-size: 16px;
+  cursor: pointer;
+  
+
+  color: rgb(var(--btn-text));
+  background-color: transparent;
+
+
+  background-image:
+    linear-gradient(rgb(var(--btn-bg)), rgb(var(--btn-bg))),
+    linear-gradient(transparent, transparent);
+
+  background-size: 0% 100%, 100% 100%;
+  background-position: left;
+  background-repeat: no-repeat;
+
+  transition:
+    background-size 0.45s cubic-bezier(.785,.135,.15,.86),
+    color 0.45s cubic-bezier(.785,.135,.15,.86);
+}
+
+.shop-btn:hover {
+  background-size: 100% 100%, 100% 100%;
+  color: rgb(var(--btn-text-hover));
+}
+
+
+.small-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+
+.small-img {
+  width: 100%;
+  height: 210px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.arrows {
+  margin-top: 20px;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-left: 220px;
+}
+
+.arrows button {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1px solid #cfcfcf;
+  background: white;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+
+.top-banner {
+ width: 1200px;
+  height: 600px;        
+  margin: 20px auto;   
+  position: relative;
+  overflow: hidden;
+margin-bottom: 80px;
+
+}
+
+.top-banner-img {
+  width: 100%;
+  object-fit: contain;  
+  position: absolute;
+  top: 0;
+  left: 0;
+  cursor: pointer;
+}
+
+.img-default { z-index: 1; }
+.img-hover   { z-index: 2; opacity: 0; }
+
+.top-banner:hover .img-hover { opacity: 1; }
+.top-banner:hover .img-default { opacity: 0; }
+
+
+.heading2 {
+  font-family: "Libre Baskerville", serif;
+  font-size: 20px;
+  font-weight: bolder;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #1a1a1a;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.shop2-btn {
+  position: absolute;
+  bottom: 30px;             
+  left: 50%;
+  transform: translateX(-50%);
+  
+  
+
+  background: rgb(242, 237, 237);          
+  color: rgb(14, 13, 13);               
+  border: 1px solid black;   
+  border-radius: 6px;
+
+  cursor: pointer;
+  z-index: 5;
+  transition: 0.25s ease;
+  --btn-bg: 0, 0, 0;       
+  --btn-text: 0, 0, 0;     
+  --btn-text-hover: 255,255,255; 
+  
+  margin-top: 20px;
+  font-family:  "Libre Baskerville", serif;
+  appearance: none;
+  border: 1.5px solid rgb(var(--btn-bg));
+  border-radius: 1px;
+    padding: 12px 28px;
+  font-size: 16px;
+  cursor: pointer;
+
+  color: rgb(var(--btn-text));
+  background-color: transparent;
+
+
+  background-image:
+    linear-gradient(rgb(var(--btn-bg)), rgb(var(--btn-bg))),
+    linear-gradient(transparent, transparent);
+
+  background-size: 0% 100%, 100% 100%;
+  background-position: left;
+  background-repeat: no-repeat;
+
+  transition:
+    background-size 0.45s cubic-bezier(.785,.135,.15,.86),
+    color 0.45s cubic-bezier(.785,.135,.15,.86);
+}
+
+.shop2-btn:hover {
+
+  color: white;    
+  transform: translateX(-50%) scale(1.05);
+    background-size: 100% 100%, 100% 100%;
+  color: rgb(var(--btn-text-hover));
+}
+
+@media (max-width: 1024px) {
+
+  .mens-section {
+    grid-template-columns: 1fr;   
+    padding: 30px 40px;
+    gap: 30px;
+  }
+
+  .left-big img.big-img {
+    height: 450px;
+  }
+
+  .heading {
+    font-size: 32px;
+    margin-left: 0;
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  .shop-btn {
+     --btn-bg: 0, 0, 0;       
+  --btn-text: 0, 0, 0;     
+  --btn-text-hover: 255,255,255; 
+  
+  margin-top: 20px;
+  font-family:  "Libre Baskerville", serif;
+  appearance: none;
+  border: 1.5px solid rgb(var(--btn-bg));
+  border-radius: 1px;
+  padding: 12px 28px;
+  font-size: 16px;
+  cursor: pointer;
+  
+
+  color: rgb(var(--btn-text));
+  background-color: transparent;
+
+
+  background-image:
+    linear-gradient(rgb(var(--btn-bg)), rgb(var(--btn-bg))),
+    linear-gradient(transparent, transparent);
+
+  background-size: 0% 100%, 100% 100%;
+  background-position: left;
+  background-repeat: no-repeat;
+
+  transition:
+    background-size 0.45s cubic-bezier(.785,.135,.15,.86),
+    color 0.45s cubic-bezier(.785,.135,.15,.86);
+  }
+
+  .arrows {
+    margin-left: 0;
+    justify-content: center;
+  }
+
+  .top-banner {
+    width: 100%;
+    height: 450px;
+  }
+
+  .shop2-btn {
+    bottom: 20px;
+    font-size: 14px;
+  }
+}
+
+
+@media (max-width: 768px) {
+
+  .mens-section {
+    padding: 20px;
+  }
+
+  .left-big img.big-img {
+    height: 380px;
+  }
+
+  .heading {
+    font-size: 26px;
+  }
+
+  .small-grid {
+    grid-template-columns: 1fr; 
+  }
+
+  .small-img {
+    height: 180px;
+  }
+
+  .top-banner {
+    height: 350px;
+  }
+
+  .top-banner-img {
+    object-fit: cover; 
+  }
+
+  .shop2-btn {
+    padding: 10px 22px;
+    bottom: 18px;
+  }
+}
+
+
+
+@media (max-width: 480px) {
+
+  .mens-section-wrapper {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 20px;
+    padding: 10px;
+    margin-top: -50px;
+  }
+
+  .mens-section {
+    min-width: 100%; 
+    scroll-snap-align: center;
+    display: block;
+    padding: 0;
+  }
+
+  .left-big img.big-img {
+    width: 100%;
+    height: 450px;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+  
+
+  .small-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+
+  .arrows {
+    margin: 20px auto 0;
+    justify-content: center;
+    display: flex;
+  }
+
+ 
+  .arrows button {
+    width: 36px;
+    height: 36px;
+    font-size: 18px;
+  }
+ .top-banner {
+    width: 95%;
+    height: 300px;        
+    border-radius: 15px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .top-banner-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;     
+    border-radius: 15px;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  .shop-btn {
+    bottom: 15px;
+    font-size: 13px;
+    padding: 8px 18px;
+     --btn-bg: 0, 0, 0;       
+  --btn-text: 0, 0, 0;     
+  --btn-text-hover: 255,255,255; 
+  margin-left: 129px;
+  margin-top: 10px;
+  font-family:  "Libre Baskerville", serif;
+  appearance: none;
+  border: 1.5px solid rgb(var(--btn-bg));
+  border-radius: 1px;
+  padding: 12px 28px;
+  font-size: 16px;
+  cursor: pointer;
+  
+
+  color: rgb(var(--btn-text));
+  background-color: transparent;
+
+
+  background-image:
+    linear-gradient(rgb(var(--btn-bg)), rgb(var(--btn-bg))),
+    linear-gradient(transparent, transparent);
+
+  background-size: 0% 100%, 100% 100%;
+  background-position: left;
+  background-repeat: no-repeat;
+
+  transition:
+    background-size 0.45s cubic-bezier(.785,.135,.15,.86),
+    color 0.45s cubic-bezier(.785,.135,.15,.86);
+  }
+  .shop-btn:hover {
+  background-size: 100% 100%, 100% 100%;
+  color: rgb(var(--btn-text-hover));
+}
+}

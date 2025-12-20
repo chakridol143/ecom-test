@@ -1,0 +1,32 @@
+<div class="cart-page">
+
+  <h2>Your Cart ({{ items.length }})</h2>
+  <span class="close-btn" (click)="closeCart()">✕</span>
+  <div *ngIf="items.length === 0" class="empty">Your cart is empty</div>
+
+  <ul *ngIf="items.length > 0" class="items-list">
+    <li *ngFor="let item of items; let i = index" class="cart-item">
+      <img [src]="'https://ecom-backend-production-c71b.up.railway.app/assets/images/' + item.image_url">
+
+      <div class="info">
+        <div class="name">{{ item.name }}</div>
+        <div class="price">₹{{ item.price }}</div>
+      </div>
+      <div class="quantity-controls">
+  <button (click)="decQty(i)">-</button>
+  <span>{{ item.quantity || 1}}</span>
+  <button (click)="incQty(i)">+</button>
+</div>
+      <button class="remove-btn" (click)="onRemove(i)">Remove</button>
+    </li>
+  </ul>
+
+  <div *ngIf="items.length > 0" class="footer">
+    <div class="total">Total: ₹{{ getTotal() }}</div>
+
+    <div class="actions">
+      <button class="clear-btn" (click)="onClear()">Clear</button>
+      <button class="checkout-btn" (click)="onCheck()">Checkout</button>
+    </div>
+  </div>
+</div>

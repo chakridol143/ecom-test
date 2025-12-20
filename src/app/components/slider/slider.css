@@ -1,0 +1,54 @@
+.slider-container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  margin-top: 8.8%;
+  height: 100%;
+}
+
+.slider {
+  width: 100%;
+  overflow: hidden;
+  margin-left: 0;
+}
+
+.slides {
+  display: flex;
+  transition: transform 0.45s ease-in-out;
+}
+
+.slide {
+  min-width: 100%;
+  height: 100%;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* RESPONSIVE HEIGHT BREAKPOINTS */
+@media (min-width: 700px) and (max-width: 879px) {
+  .slide { height: 420px; }
+}
+@media (min-width: 580px) and (max-width: 699px) {
+  .slide { height: 420px; }
+}
+@media (min-width: 340px) and (max-width: 579px) {
+  .slide { height: 250px; }
+}
+
+/* -------------------------------------------------------------
+   ✅ MOBILE ONLY CHANGE (YOUR REQUEST)
+   margin-top: -15px for screens <= 480px
+-------------------------------------------------------------- */
+@media (max-width: 480px) {
+  .slider-container {
+    margin-top: 53px !important;
+  }
+}

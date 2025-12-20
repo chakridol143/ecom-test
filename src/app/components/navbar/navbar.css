@@ -1,0 +1,64 @@
+/* HORIZONTAL NAVBAR */
+.nav-horizontal {
+  width: 100%;
+  background: transparent;
+  padding: 12px 25px;
+  position: fixed;
+  top: 85px;
+  left: 0;
+  z-index: 999;
+}
+
+.nav-row {
+  display: flex;
+  align-items: center;
+  gap: 28px;          /* spacing between menu items */
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  flex-wrap: wrap;    /* wrap when screen gets small */
+}
+
+/* MENU ITEM STYLE */
+.nav-item {
+  padding: 8px 10px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 600;
+  color: #333;
+
+  transition: background 0.25s ease, color 0.25s ease;
+  border-radius: 6px;
+  white-space: nowrap;
+}
+
+.nav-item:hover {
+  background: #f2f2f2;
+  color: #000;
+}
+
+/* MOBILE RESPONSIVE */
+@media (max-width: 900px) {
+  .nav-horizontal {
+    top: 70px;
+    padding: 10px 15px;
+  }
+
+  .nav-row {
+    gap: 18px;
+  }
+
+  .nav-item {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 450px) {
+  .nav-row {
+    gap: 12px;
+  }
+
+  .nav-item {
+    font-size: 12px;
+  }
+}

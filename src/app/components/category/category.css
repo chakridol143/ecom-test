@@ -1,0 +1,116 @@
+.menu-container {
+  width: 100%;
+  padding-top: 60px; /* Adjust below your slider */
+}
+
+/* CATEGORY ROW */
+.category-row {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  padding: 25px 0;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  scrollbar-width: none;
+  margin-top: -215px;
+}
+
+.category-row::-webkit-scrollbar {
+  display: none;
+}
+
+/* CATEGORY BOX */
+.category-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  transition: transform 0.25s ease;
+  flex-shrink: 0;
+}
+
+.category-box:hover {
+  transform: scale(1.07);
+}
+
+/* CATEGORY IMAGE */
+.category-box img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: contain;
+  border: 2px solid #bfbfbf;
+  padding: 3px;
+  transition: 0.3s ease;
+}
+
+/* CATEGORY TEXT */
+.category-box p {
+  margin-top: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  text-align: center;
+  font-family: "Libre Baskerville", serif;
+}
+
+/* ACTIVE CATEGORY */
+.category-box.active img {
+  border-color: #d8c19a;
+}
+
+/* HEADING */
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* =======================
+   TABLETs & MID-SCREENS
+======================= */
+@media (max-width: 903px) {
+  .category-row {
+    justify-content: flex-start !important;
+    overflow-x: auto !important;
+    gap: 35px !important;
+  }
+
+  .category-box img {
+    width: 110px !important;
+    height: 110px !important;
+  }
+}
+
+/* =======================
+   MOBILE VIEW
+======================= */
+/* MOBILE VIEW */
+@media (max-width: 480px) {
+  .category-row {
+    margin-top: -170px !important; /* ⭐ Move category row up on mobile */
+    justify-content: flex-start !important;
+    gap: 30px !important;
+  }
+
+  .category-box img {
+    width: 100px !important;
+    height: 100px !important;
+  }
+
+  .category-box p {
+    font-size: 12px !important;
+  }
+}
+
+
+/* VERY SMALL DEVICES (e.g., 360px) */
+@media (max-width: 360px) {
+  .category-box img {
+    width: 90px !important;
+    height: 90px !important;
+  }
+
+  .category-row {
+    gap: 25px !important;
+  }
+}

@@ -1,0 +1,45 @@
+
+<h2 class="heading2">Kidz Collections</h2>
+
+<div class="top-banner">
+  <img src="../../../assets/images/kids banner 2.jpg" (click)="goToKids()" class="top-banner-img img-default" />
+  <img src="../../../assets/images/kids banner.jpg" (click)="goToKids()" class="top-banner-img img-hover" />
+  <button class="shop2-btn" (click)="goToKids()">Shop now</button>
+</div>
+
+<div class="mens-section-wrapper">
+
+  <div class="mens-section">
+
+    <div class="left-big">
+      <img [src]="bigImg.img1" class="big-img" />
+    </div>
+
+    <div class="right-small">
+
+      <h2 class="heading">Mens Collection</h2>
+      <button class="shop-btn" (click)="goToMens()">Shop now</button>
+
+      <div class="small-grid">
+        <img 
+          [src]="small1.img1"
+          class="small-img"
+          (click)="showFrom((currentIndex + 1) % products.length)"
+        />
+
+        <img 
+          [src]="small2.img1"
+          class="small-img"
+          (click)="showFrom((currentIndex + 2) % products.length)"
+        />
+      </div>
+
+      <div class="arrows">
+        <button (click)="prev()">&#10094;</button>
+        <button (click)="next()">&#10095;</button>
+      </div>
+
+    </div>
+  </div>
+
+</div>
