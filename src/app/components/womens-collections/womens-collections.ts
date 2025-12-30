@@ -1,16 +1,13 @@
-import { CommonModule, NgFor } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Output } from '@angular/core';
-import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-womens-collections',
-  imports: [CommonModule, NgFor],
+  imports: [CommonModule],
   templateUrl: './womens-collections.html',
   styleUrl: './womens-collections.css'
 })
 export class WomensCollections {
-
-  @Output() close = new EventEmitter<void>();
 
   womensCollections = [
   { image: 'e1.jpg', name: 'Jumka', price: 1299 },
@@ -20,9 +17,6 @@ export class WomensCollections {
  
 ];
 
-//  closeView() {
-//     this.close.emit();
-//   }
 
  necklaceSets = [
   {

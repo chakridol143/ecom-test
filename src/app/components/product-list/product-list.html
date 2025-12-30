@@ -1,6 +1,32 @@
 
 <div *ngIf="loading">Loading…</div>
-<div *ngIf="!loading && error" class="error">{{ error }}</div>
+<!-- <div *ngIf="!loading && error" class="error">{{ error }}</div> -->
+ <!-- ================= ERROR STATE ================= -->
+<div class="no-collection1" *ngIf="!loading && error">
+  <!-- <video
+   #errorVideo
+    class="no-collection1-video"
+    autoplay
+    muted
+    loop
+    playsinline
+    preload="auto"
+  >
+    <source src="../../../assets/videos/cat1.png" type="video/mp4" />
+  </video> -->
+
+  <img
+  class="no-collection1-video"
+  src="../../../assets/images/warning.png"
+  alt="No collection"
+  loading="lazy"
+/>
+
+
+  <h3>Something went wrong</h3>
+  <p>Please try again later 🙏</p>
+</div>
+
 
 <div *ngIf="!loading && !error">
   <div *ngIf="viewMode === 'scroll'" class="scroll-wrapper">
@@ -33,11 +59,6 @@
 
   </div>
 
-
-  <!-- ================================================= -->
-  <!-- =============== FULL DETAILS GRID ================ -->
-  <!-- =========== (CATEGORY / PRODUCTS/:ID) ============ -->
-  <!-- ================================================= -->
   <div *ngIf="viewMode === 'full'" class="product-grid">
   <div class="product-card" *ngFor="let product of productsToShow">
     <div class="full-details-card">
@@ -63,7 +84,6 @@
   </div>
 </div>
 
-<!-- ✅ SHOW ONLY WHEN THERE ARE NO PRODUCTS -->
 <div
   class="no-collection"
   *ngIf="viewMode === 'full' && !loading && productsToShow.length === 0"
@@ -83,10 +103,6 @@
   <p>New gold ornaments arriving soon ✨</p>
 </div>
 
-  <!-- ================================================= -->
-  <!-- =============== VIEW ALL GRID =================== -->
-  <!-- ========== (NAME + MRP ONLY GRID) =============== -->
-  <!-- ================================================= -->
   <div *ngIf="viewMode === 'names'" class="product-grid">
 
     <div class="product-card" *ngFor="let product of productsToShow">
@@ -112,8 +128,6 @@
 
   </div>
 
-
-  <!-- ================= EMPTY STATE ================= -->
   <ng-template #empty>
     <p>No products found.</p>
   </ng-template>

@@ -1,4 +1,4 @@
-/* HORIZONTAL NAVBAR */
+
 .nav-horizontal {
   width: 100%;
   background: transparent;
@@ -12,14 +12,13 @@
 .nav-row {
   display: flex;
   align-items: center;
-  gap: 28px;          /* spacing between menu items */
+  gap: 28px;         
   list-style: none;
   margin: 0;
   padding: 0;
-  flex-wrap: wrap;    /* wrap when screen gets small */
+  flex-wrap: wrap;   
 }
 
-/* MENU ITEM STYLE */
 .nav-item {
   padding: 8px 10px;
   cursor: pointer;
@@ -37,7 +36,6 @@
   color: #000;
 }
 
-/* MOBILE RESPONSIVE */
 @media (max-width: 900px) {
   .nav-horizontal {
     top: 70px;

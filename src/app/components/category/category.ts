@@ -13,22 +13,24 @@ import { Router } from '@angular/router';
 })
 export class category implements OnInit {
   @Output() categorySelected = new EventEmitter<number | null>();
+
   categories: any[] = [];
   loading = true;
   errorMessage = '';
-  @Input() items: any[] = [];
-  @Output() close = new EventEmitter<void>();
-  @Output() remove = new EventEmitter<number>();
-  @Output() clear = new EventEmitter<void>();
-  private lastSelectedId: number | null = null;
-  // private baseUrl = 'http://localhost:3001/api/categories/with-products/all';
+  selectedCategoryId: number | null = null;
+
    private baseUrl1 = 'https://ecom-backend-production-c71b.up.railway.app/api/Categories/with-products/all';
    private baseUrl ='https://ecom-backend-production-c71b.up.railway.app';
+
   constructor(private http: HttpClient, private router: Router) {}
-  ngOnInit(): void {
+    ngOnInit(): void {
     this.http.get<any[]>(this.baseUrl1).subscribe({
       next: (data) => {
-        this.categories = Array.isArray(data) ? data : [];
+        // Add a flag to track image load status
+        this.categories = (Array.isArray(data) ? data : []).map(cat => ({
+          ...cat,
+          imageLoaded: true
+        }));
         this.loading = false;
       },
       error: (err) => {
@@ -38,26 +40,12 @@ export class category implements OnInit {
       }
     });
   }
-onSelect(categoryId: number | null) {
-    if (this.lastSelectedId === categoryId) return;
-    this.lastSelectedId = categoryId;
-    this.categorySelected.emit(categoryId);
-  }
-  imgUrl(img?: string): string {
-    const raw = (img ?? '').replace(/^\/*/, '').trim();
-    const encoded = encodeURIComponent(raw);
-     return `https://ecom-backend-production-c71b.up.railway.app/assets/images/${encoded}`;
-  }
-  onImgError(ev: Event) {
-    (ev.target as HTMLImageElement).src = `https://ecom-backend-production-c71b.up.railway.app/assets/images/placeholder.png`;
-  }
+
   trackByCategoryId(index: number, item: any) {
   return item?.category_id ?? item?.id ?? index;
 }
 
 
-  selectedCategoryId: number | null = null;
-  selectedCategory: any = null;
 
  selectCategory(category: any) {
   const id = Number(category?.category_id);
@@ -78,8 +66,13 @@ clearSelection() {
     return `https://ecom-backend-production-c71b.up.railway.app/assets/images/${encoded}`;
   }
 
-  onImageError(ev: Event) { 
-    (ev.target as HTMLImageElement).src = 
-      `https://ecom-backend-production-c71b.up.railway.app/assets/images/placeholder.png`; 
+  // onImageError(ev: Event) { 
+  //   (ev.target as HTMLImageElement).src = 
+  //     `https://ecom-backend-production-c71b.up.railway.app/assets/images/placeholder.png`; 
+  // }
+   onImageError(category: any) {
+    category.imageLoaded = false; // Switch to MP4 fallback
   }
+
+   fallbackVideo = '../../../assets/videos/Lines Circular Loader 1.mp4';
 }

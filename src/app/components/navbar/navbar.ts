@@ -76,22 +76,14 @@ selectWomenCollection() {
   this.womenCollectionClick.emit();
 }
 
-//new releases
-
-
 onNewReleasesClick() {
   this.newReleasesClick.emit();
 }
-
-//bestsellers
 
 
 openBestSellers() {
   this.bestSellersClick.emit();
 }
-
-//menscollections
-
 
 selectMensCollection() {
   this.isAllMenuOpen = false;

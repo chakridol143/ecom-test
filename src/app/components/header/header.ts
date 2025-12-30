@@ -57,7 +57,7 @@ export class Header implements OnInit {
     this.cartCount = this.items.length;
   }
 
-  /* ================= CART ================= */
+  
 
   toggleCartDetails() {
     this.showCartPopup = !this.showCartPopup;
@@ -78,7 +78,7 @@ export class Header implements OnInit {
     this.cart.clearCart();
   }
 
-  /* ================= SEARCH ================= */
+ 
 
   openSearch() {
     this.searchOpen = true;
@@ -98,15 +98,13 @@ export class Header implements OnInit {
     this.searchBus.setTerm((term || '').trim());
   }
 
-  /* ================= AUTH ================= */
-
   logoutUser() {
     this.auth.logout();
     this.user = null;
     this.router.navigate(['/app']);
   }
 
-  /* ================= UI ================= */
+ 
 
   toggleMenu() {
     this.menuOpen = !this.menuOpen;
@@ -120,14 +118,5 @@ export class Header implements OnInit {
     this.router.navigate([route]);
   }
 
-  /* (Keeping unused methods untouched as requested) */
-  isCartOpen = false;
 
-  openCart() {
-    this.isCartOpen = true;
-  }
-
-  closeCart() {
-    this.isCartOpen = false;
-  }
 }

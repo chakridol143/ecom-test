@@ -27,9 +27,6 @@ export class RegisterComponent implements AfterViewInit, OnInit, OnDestroy {
     private auth: LoginService
   ) {}
 
-  // =============================
-  //  GOOGLE LOGIN INIT (Same as Login)
-  // =============================
   ngAfterViewInit() {
     this.waitForGoogle();
   }
@@ -68,7 +65,6 @@ export class RegisterComponent implements AfterViewInit, OnInit, OnDestroy {
       next: (res: any) => {
         this.auth.saveSession(res.token, res.user);
 
-        // Instant redirect (same behaviour as login Google)
         this.router.navigate(['/']);
       },
       error: (err) => {
@@ -77,10 +73,6 @@ export class RegisterComponent implements AfterViewInit, OnInit, OnDestroy {
       }
     });
   }
-
-  // =============================
-  // NORMAL MANUAL REGISTER
-  // =============================
   onRegister() {
     if (!this.username || !this.email || !this.password || !this.confirmPassword) {
       alert('Please fill all required fields');

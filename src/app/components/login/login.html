@@ -9,13 +9,12 @@
 
       <form (ngSubmit)="submitLogin()" #loginForm="ngForm">
 
-        <!-- Email -->
+       
         <div class="input-group">
           <label>Email</label>
           <input type="email" name="email" [(ngModel)]="email" required />
         </div>
 
-        <!-- Password -->
         <div class="input-group">
           <label>Password</label>
 
@@ -41,15 +40,11 @@
           </div>
         </div>
 
-        <!-- Login Button -->
         <button class="btn-login" type="submit" [disabled]="loginForm.invalid">
           Login
         </button>
-
-        <!-- GOOGLE BUTTON (Render Target) -->
         <div id="googleLoginBtn" class="google-wrapper"></div>
 
-        <!-- Links -->
         <div class="links">
           <a routerLink="/register">New User? Click to register.</a>
           <a routerLink="/forgot-password">Forgot password?</a>

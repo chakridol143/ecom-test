@@ -7,7 +7,6 @@ describe('ChatWidgetComponent', () => {
   let component: ChatWidgetComponent;
   let fixture: ComponentFixture<ChatWidgetComponent>;
 
-  // Mock the Voice Service
   const voiceServiceMock = {
     init: () => {},
     start: () => {},

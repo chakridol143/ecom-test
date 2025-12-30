@@ -1,6 +1,4 @@
-/* =========================
-   BASE
-========================= */
+
 .checkout-page {
   font-family: "Libre Baskerville", serif;
   color: #111;
@@ -10,9 +8,6 @@
 
 }
 
-/* =========================
-   HEADER
-========================= */
 .checkout-top {
   display: flex;
   justify-content: space-between;
@@ -54,9 +49,6 @@
   cursor: pointer;
 }
 
-/* =========================
-   LAYOUT
-========================= */
 .checkout-content {
   display: grid;
   grid-template-columns: 2.1fr 1fr;
@@ -64,9 +56,6 @@
   padding: 20px 20px;
 }
 
-/* =========================
-   LEFT SIDE
-========================= */
 .section {
   background: #d4d0d0;
   padding: 10px 14px;
@@ -118,9 +107,9 @@ input::placeholder {
 
 .gift-box {
   display: flex;
-  align-items: center;      /* vertical alignment */
-  justify-content: flex-start; /* left aligned */
-  gap: 8px;                /* space between box & text */
+  align-items: center;      
+  justify-content: flex-start; 
+  gap: 8px;               
   font-size: 13px;
   margin-bottom: 18px;
 }
@@ -135,7 +124,7 @@ input::placeholder {
 
 .gift-icon {
   display: block;
-  margin: 0 auto;   /* 👈 centers the image */
+  margin: 0 auto;  
   width: 40px;
   height: auto;
   margin-bottom: 15px;
@@ -154,7 +143,7 @@ input::placeholder {
 .continue-wrapper {
   display: flex;
   justify-content: flex-end;
-  margin-top: 30px; /* optional spacing */
+  margin-top: 30px;
 }
 
 .continue-btn {
@@ -168,12 +157,6 @@ input::placeholder {
   cursor: pointer;
 }
 
-  
-
-
-/* =========================
-   RIGHT SIDE
-========================= */
 .right {
   padding-left: 10px;
 }
@@ -208,14 +191,6 @@ input::placeholder {
   cursor: pointer;
 }
 
-
-
-
-
-/* =========================
-   BAG SUMMARY (UA STYLE)
-========================= */
-
 .bag-title {
   font-size: 13px;
   font-weight: 700;
@@ -239,7 +214,6 @@ input::placeholder {
   margin-top: 20px;
 }
 
-/* Item container */
 .bag-item {
   display: flex;
   gap: 14px;
@@ -249,7 +223,6 @@ input::placeholder {
   
 }
 
-/* Image */
 .bag-img {
   width: 120px;
   height: 150px;
@@ -275,7 +248,6 @@ input::placeholder {
   margin-bottom: 2px;
 }
 
-/* Price row */
 .bag-price-row {
   margin-top: 6px;
   font-size: 13px;
@@ -299,11 +271,10 @@ input::placeholder {
   font-size: 12px;
 }
 
-/* Actions */
 .bag-actions {
   margin-top: 20px;
   font-size: 14px;
-  /* margin-left: 30px; */
+
 }
 
 .bag-actions span {
@@ -311,14 +282,13 @@ input::placeholder {
   font-weight: 700px;
   cursor: pointer;
   color: #070707;
-  /* margin-top: 100px; */
+
 }
 
 .bag-actions span:hover {
   text-decoration: underline;
 }
 
-/* Footer links */
 .policy {
   font-size: 12px;
   margin-top: 30px;
@@ -333,7 +303,6 @@ input::placeholder {
   text-decoration: underline;
 }
 
-/* purchase successful popup */
 .confirm-overlay {
   position: fixed;
   inset: 0;
@@ -357,8 +326,6 @@ input::placeholder {
   cursor: pointer;
 }
 
-
-/* css */
 .modal-overlay {
   position: fixed;
   inset: 0;
@@ -408,7 +375,6 @@ margin-top: 8px;
   color: #5a4a00;
 }
 
-/* OK BUTTON */
 .ok-btn {
   margin-top: 14px;
   padding: 10px 22px;
@@ -425,11 +391,6 @@ margin-top: 8px;
   background: linear-gradient(135deg, #ffd700, #b8860b);
 }
 
-
-
- /* =========================
-   LARGE DESKTOP (1600px+)
-========================= */
 @media (min-width: 1600px) {
   .checkout-page {
     max-width: 1600px;
@@ -462,10 +423,6 @@ margin-top: 8px;
   }
 }
 
-
-/* =========================
-   LARGE LAPTOP (1400px+)
-========================= */
 @media (min-width: 1400px) {
   .checkout-content {
     gap: 80px;
@@ -490,12 +447,9 @@ margin-top: 8px;
 
 }
 
-/* =========================
-   TABLET (≤1024px)
-========================= */
 @media (max-width: 1024px) {
  .checkout-top {
-    padding: 14x 20px;   /* was 14px 24px */
+    padding: 14x 20px;   
     gap: 8px;
     margin-top: 45px;
   }
@@ -535,10 +489,6 @@ margin-top: 8px;
     height: 130px;
   }
 
-  /* .checkout-top {
-    padding: 14px 24px;
-    height: auto;
-  } */
 
   .checkout-logo {
     height: 70px;
@@ -555,24 +505,20 @@ margin-top: 8px;
   }
 
   .login-btn {
-    padding: 6px 14px;   /* was 8px 18px */
+    padding: 6px 14px;   
     font-size: 11px;
   }
 
 }
 
-/* =========================
-   MOBILE (≤600px)
-========================= */
 @media (max-width: 600px) {
   .checkout-page {
    flex-direction: column;
-    gap: 4px;            /* was 10px */
+    gap: 4px;           
     padding: 10px 0;
     align-items: center;
   }
 
-  /* Header */
   .checkout-top {
     flex-direction: column;
     gap: 2px;
@@ -602,13 +548,11 @@ font-size: 11px;
     font-size: 11px;
   }
 
-  /* Layout */
   .checkout-content {
     padding: 10px 0;
     gap: 40px;
   }
 
-  /* Forms */
   .form-row {
     grid-template-columns: 1fr;
   }
@@ -636,13 +580,11 @@ font-size: 11px;
     margin-bottom: 40px;
   }
 
-  /* Button */
   .continue-btn {
     font-size: 14px;
     padding: 14px;
   }
 
-  /* Order Summary */
   .summary-row,
   .summary-total {
     font-size: 13px;
@@ -652,7 +594,6 @@ font-size: 11px;
     font-size: 11px;
   }
 
-  /* Bag Summary */
   .bag-item {
     flex-direction: column;
     align-items: center;
@@ -678,12 +619,9 @@ font-size: 11px;
   
 }
 
-/* =========================
-   SMALL MOBILE (≤360px)
-========================= */
 @media (max-width: 360px) {
    .checkout-top {
-    padding: 2px 0;       /* was larger */
+    padding: 2px 0;      
     gap: 4px;
     
   }

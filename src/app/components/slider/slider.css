@@ -2,14 +2,12 @@
   position: relative;
   width: 100%;
   overflow: hidden;
-  margin-top: 8.8%;
-  height: 100%;
+  margin-top: clamp(70px, 9vw, 110px);
 }
 
 .slider {
   width: 100%;
   overflow: hidden;
-  margin-left: 0;
 }
 
 .slides {
@@ -19,36 +17,74 @@
 
 .slide {
   min-width: 100%;
-  height: 100%;
-  margin: 0;
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 25px;
 }
 
 .slide img {
   width: 100%;
-  height: 100%;
-  object-fit: contain;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+  display: block;
+}
+@media (max-width: 360px) {
+  .slide {
+    margin-top: 10px;
+  }
+
+  .slide img {
+    aspect-ratio: 4 / 3;
+  }
 }
 
-/* RESPONSIVE HEIGHT BREAKPOINTS */
-@media (min-width: 700px) and (max-width: 879px) {
-  .slide { height: 420px; }
-}
-@media (min-width: 580px) and (max-width: 699px) {
-  .slide { height: 420px; }
-}
-@media (min-width: 340px) and (max-width: 579px) {
-  .slide { height: 250px; }
+@media (min-width: 361px) and (max-width: 480px) {
+  .slide {
+    margin-top: 35px;
+  }
+
+  .slide img {
+    aspect-ratio: 16 / 10;
+  }
 }
 
-/* -------------------------------------------------------------
-   ✅ MOBILE ONLY CHANGE (YOUR REQUEST)
-   margin-top: -15px for screens <= 480px
--------------------------------------------------------------- */
-@media (max-width: 480px) {
+@media (min-width: 481px) and (max-width: 767px) {
+  .slide {
+    margin-top: 20px;
+  }
+
+  .slide img {
+    aspect-ratio: 16 / 9;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .slide {
+    margin-top: 20px;
+  }
+
+  .slide img {
+    aspect-ratio: 16 / 9;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  .slide {
+    margin-top: 25px;
+  }
+}
+
+@media (min-width: 1600px) {
+  .slide img {
+    aspect-ratio: 21 / 9;
+  }
+}
+
+@media (min-width: 1200px) {
   .slider-container {
-    margin-top: 53px !important;
+    max-width: 1600px;
+    margin-left: auto;
+    margin-right: auto;
   }
 }

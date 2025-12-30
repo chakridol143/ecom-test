@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter, OnChanges } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -16,38 +16,27 @@ import { CartService } from '../cart-details/services/cart.services';
   styleUrls: ['./product-list.css']
 })
 export class ProductList implements OnInit {
-addToCart(_t28: any) {
-throw new Error('Method not implemented.');
-}
 
-  @Output() addToCartEvent = new EventEmitter<any>();
   @Input() searchTerm: string = '';
-  // @Input() categoryId: number | null = null;
+   @Input() limit: number | null = null;
+@Input() excludeProductId: number | null = null;
+
+
   viewMode: 'scroll' | 'full' | 'names' = 'scroll';
 categoryId: number | null = null;
 
-  
-  @Input() limit: number | null = null;
-@Input() excludeProductId: number | null = null;
 
-  products: any[] = [];
   allProducts: any[] = [];
   loading = false;
   error: string | null = null;
-
-  selectedProducts: any = null;
-  showProductPopup = false;
-
-  showLoginDialog = false;
-  selectedCategoryId: number | null = null;
-
- 
   showFullDetails = false;
 
+  
+  
+
   private apiHost = 'https://ecom-backend-production-c71b.up.railway.app';
-  private apiHost1 = 'https://ecom-backend-production-c71b.up.railway.app';
+
   private productsUrl = `${this.apiHost}/api/products`;
-  private categoryProductsUrl = `${this.apiHost1}/api/category`;
 
 
   constructor(
@@ -75,19 +64,6 @@ ngOnInit() {
   });
 }
 
- onCategorySelected(categoryId: number) {
-  this.loading = true;              
-  this.selectedCategoryId = categoryId;
-
-  
-  setTimeout(() => {
-    this.products = this.allProducts.filter(
-      p => Number(p.category_id) === Number(categoryId)
-    );
-
-    this.loading = false;           
-  }, 600); // 400–800ms is ideal
-}
 
 
   get productsToShow(): any[] {
@@ -127,7 +103,8 @@ ngOnInit() {
     },
     error: (err) => {
       console.error('Error loading all products:', err);
-      this.error = 'Failed to load products';
+      // this.error = 'Failed to load products';
+        this.error = 'true';
       this.allProducts = [];
       this.loading = false;
     }
@@ -144,26 +121,18 @@ onLeaveImage(product: any) {
   product.currentImage = product.image_url;
 }
 
+@ViewChild('errorVideo') errorVideo!: ElementRef<HTMLVideoElement>;
+
+ngAfterViewInit() {
+  this.errorVideo?.nativeElement.play().catch(() => {});
+}
+
 
   onImgError(evt: Event) {
     (evt.target as HTMLImageElement).src = 'assets/placeholder.png';
   }
 
 
-
-  get filtered() {
-  let items = this.products;
-
-  if (this.excludeProductId) {
-    items = items.filter(p => p.product_id !== this.excludeProductId);
-  }
-
-  if (this.limit) {
-    items = items.slice(0, this.limit);
-  }
-
-  return items;
-}
 
 
 openProductDetails(product: any) {

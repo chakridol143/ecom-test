@@ -23,7 +23,7 @@
         <div class="dropdown-menu">
           <span (click)="goto('/mens')">Men's Collection</span>
           <span (click)="goto('/womens')">Women's Collection</span>
-          <span (click)="goto('/kidsCollections')">Kidz Collection</span>
+          <span (click)="goto('/KidsCollections')">Kidz Collection</span>
         </div>
       </div>
 
@@ -65,11 +65,9 @@
 </header>
 
 
-<!-- BACKGROUND BLUR OVERLAY -->
 <div class="menu-overlay" [class.show]="menuOpen" (click)="toggleMenu()"></div>
 
 
-<!-- FULL SCREEN MOBILE MENU -->
 <div class="mobile-menu-full" [class.open]="menuOpen">
 
   <div class="menu-header">
@@ -84,7 +82,7 @@
     <span (click)="goto('/releases'); toggleMenu()">New Releases</span>
     <span (click)="goto('/mens'); toggleMenu()">Men's Collection</span>
     <span (click)="goto('/womens'); toggleMenu()">Women's Collection</span>
-    <span (click)="goto('/kidsCollections'); toggleMenu()">Kidz Collection</span>
+    <span (click)="goto('/KidsCollections'); toggleMenu()">Kidz Collection</span>
 
     <ng-container *ngIf="user" >
       <span (click)="logoutUser()"  style="margin-top: 10px;">Logout</span>

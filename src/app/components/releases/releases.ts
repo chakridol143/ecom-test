@@ -1,15 +1,14 @@
-import { CommonModule, NgFor } from '@angular/common';
-import { Component, EventEmitter, Output } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-releases',
-  imports: [CommonModule, NgFor],
+  imports: [CommonModule],
   templateUrl: './releases.html',
   styleUrls: ['./releases.css']
 })
 export class Releases {
 
-  @Output() close = new EventEmitter<void>();
 
   products = [
     {
@@ -31,6 +30,8 @@ export class Releases {
     {
       title: "14K 18K Gold Plated Cuban Chain with Monaco Key Lock Clasp Iced Out Solid Brass Heavy Hip Hop Bracelet and Necklace for Men",
       video: "//play.video.alibaba.com/play/u/2153292369/p/1/e/6/t/10300/6000313922688.mp4",
+      price: 1469,
+      oldPrice: 5876,
       images: [
         "https://sc04.alicdn.com/kf/H3bfc07366e0746e293de05cee9aedaedd.jpg",
         "https://sc04.alicdn.com/kf/Hf49dbcf00b944630987659af77d3d173Q.jpeg",
@@ -48,17 +49,7 @@ export class Releases {
     this.activeIndex[p] = index;
   }
 
-  next(p: number) {
-    this.activeIndex[p] = (this.activeIndex[p] + 1) % this.products[p].images.length;
-  }
 
-  prev(p: number) {
-    this.activeIndex[p] =
-      (this.activeIndex[p] - 1 + this.products[p].images.length) %
-      this.products[p].images.length;
-  }
-
-  //pendents
   videoGrid = [
     {
       name: "Elegant Diamond Ring",
@@ -131,7 +122,7 @@ export class Releases {
   }
 
   playVideo(event: Event) {
-    this.stopAllVideos(); // stop others first
+    this.stopAllVideos(); 
     const video = event.target as HTMLVideoElement;
     video.play();
   }

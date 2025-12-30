@@ -1,6 +1,6 @@
 
 .search-icon {
-  width: 42px;                 /* adjust size */
+  width: 42px;                
   height: 42px;
   cursor: pointer;
   object-fit: contain;
@@ -13,13 +13,11 @@
   margin-top: 5px;
 }
 
-/* Hover animation */
 .search-icon:hover {
   transform: scale(1.15);
   opacity: 0.8;
 }
 
-/* Responsive */
 @media (max-width: 500px) {
   .search-container {
     max-width: 300px;

@@ -1,17 +1,13 @@
 <div class="releases-container">
 
-  <!-- <div class="close-wrapper">
-    <button class="close-btn" (click)="close.emit()">✖</button>
-  </div> -->
+
 
   <div *ngFor="let item of products; let p = index" class="product-section">
 
-    <!-- Product Title -->
     <h2 class="product-title">{{ item.title }}</h2>
 
     <div class="media-wrapper">
 
-      <!-- left images vertically -->
       <div class="thumbs-vertical">
         <div class="thumb video-thumb" [class.active]="activeIndex[p] === -1" (click)="setActive(p, -1)"><img
             src="../assets/images/e2.avif" alt="Video"></div>
@@ -22,7 +18,6 @@
         </div>
       </div>
 
-      <!-- vedio display -->
       <div class="main-media">
         <video *ngIf="activeIndex[p] === -1" controls muted autoplay>
           <source [src]="item.video" type="video/mp4">
@@ -43,14 +38,12 @@
 
   <p class="tax" *ngIf="item.taxIncluded">Tax included.</p>
 
-  <!-- Quantity -->
   <div class="quantity-box">Quantity
     <button>-</button>
     <span>1</span>
     <button>+</button>
   </div>
 
-  <!-- Add / Buy Buttons -->
   <div class="btn-row">
     <button class="add-cart-btn">Add to cart</button>
     <button class="buy-btn">Buy it now</button>
@@ -61,9 +54,7 @@
 </div>
 
 
-      <!-- Slide Arrows -->
-      <!-- <button class="arrow left" (click)="prev(p)">❮</button>
-      <button class="arrow right" (click)="next(p)">❯</button> -->
+      
     </div>
 
   </div>

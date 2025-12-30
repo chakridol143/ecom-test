@@ -1,4 +1,4 @@
-/* Prevent background from scrolling */
+
 body.register-page {
   overflow: hidden !important;
 }
@@ -7,15 +7,13 @@ body.register-page {
   width: 100%;
   min-height: 100vh;
   display: flex;
-  align-items: flex-start;     /* PAGE SHOULD START AT TOP */
+  align-items: flex-start;     
   justify-content: center;
   background: #f7f7f7;
-  padding: 150px 15px 40px !important;   /* <<< ADDED FIX */
+  padding: 150px 15px 40px !important;   
   box-sizing: border-box;
 }
 
-
-/* Card */
 .register-card {
   width: 100%;
   max-width: 420px;
@@ -26,7 +24,6 @@ body.register-page {
   text-align: center;
 }
 
-/* Title */
 .title {
   font-size: 26px;
   font-weight: 700;
@@ -37,8 +34,6 @@ body.register-page {
   color: #777;
   margin-bottom: 25px;
 }
-
-/* Input groups */
 .input-group {
   text-align: left;
   margin-bottom: 18px;
@@ -63,7 +58,6 @@ body.register-page {
   border-color: #007bff;
 }
 
-/* Button */
 .btn-login {
   width: 100%;
   padding: 12px;
@@ -94,8 +88,6 @@ body.register-page {
 .links a:hover {
   text-decoration: underline;
 }
-
-/* Mobile responsiveness */
 @media (max-width: 480px) {
   .register-card {
     padding: 25px 20px;

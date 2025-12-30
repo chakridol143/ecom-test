@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { login } from '../login/login';
@@ -8,15 +8,13 @@ import { CartService } from '../cart-details/services/cart.services';
 
 @Component({
   selector: 'app-checkout',
-  imports: [CommonModule, login],
+  imports: [CommonModule],
   templateUrl:'./checkout.html',
   styleUrl: './checkout.css'
 })
 export class Checkout {
 
-  @Input() items : any[] = [];
-  @Output() close = new EventEmitter<void>();
-  // showLoginPopup: boolean = false;
+ items : any[] = [];
 
   totalAmount : number = 0;
   gstAmount : number = 0;
@@ -44,30 +42,27 @@ export class Checkout {
     this.gstAmount = this.totalAmount * 0.18;
     this.grandTotal = this.totalAmount + this.gstAmount; 
    }
-  buyNow(){
-    if(this.items.length === 0){
-      alert('Your cart is empty. Please add items to cart before proceeding to buy.');
-      return;
-    }
-   if (!this.loginService.isLoggedIn()) {
-    this.router.navigate(['/login'], {
-      queryParams: { redirect: 'checkout' }
-    });
-    return;
-  }
-    this.showDialog = true;
-  }
 
-  // onLoginClosed() {
-  //   this.showLoginPopup = false;
-  //   if(this.loginService.isLoggedIn()) {
-  //     this.showDialog = true;
-  //   }
-  // }
+   buyNow() {
+  this.router.navigate(['/payments'], {
+    state: {
+      items: this.items,
+      total: this.grandTotal,
+      address: {
+        firstName: 'Manoj',
+        lastName: 'Karthik',
+        street: 'Ameerpet',
+        city: 'Hyderabad',
+        state: 'Telangana',
+        postal: '500016'
+      }
+    }
+  });
+}
     confirmPurchase() {
     this.clearCart();
     this.showDialog = false;
-    this.close.emit();
+  
   }
 
   closeDialog() {

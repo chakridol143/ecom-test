@@ -13,8 +13,6 @@ import { MensCollections } from './components/mens-collections/mens-collections'
 import { WomensCollections } from './components/womens-collections/womens-collections';
 import { Bestsellers } from './components/bestsellers/bestsellers';
 import { Releases } from './components/releases/releases';
-
-// import { Menu } from './components/menu/menu';
 import { NgModule } from '@angular/core';
 import { Productdetails } from './components/productdetails/productdetails';
 import { AdminControlPanelComponent } from './components/admin-control-panel/admin-control-panel';
@@ -23,12 +21,7 @@ import { Banner1 } from './components/banner1/banner1';
 import { KidsCollections } from './kids-collections/kids-collections';
 import { WhatsappLogo } from './whatsapp-logo/whatsapp-logo';
 import { ChatWidgetComponent } from './components/chat-widget/chat-widget';
-
-
-
-
-
-
+import { Payment } from './components/payment/payment';
 
 export const routes: Routes = [
   
@@ -39,7 +32,6 @@ export const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'navbar', component: Navbar },
   { path: 'slider', component: Slider },
-  // { path: 'cart', component: Cart }  ,
   { path: 'bestsellers', component: Bestsellers },
 { path: 'releases', component: Releases },
 { path: 'banner1', component: Banner1 },
@@ -49,15 +41,16 @@ export const routes: Routes = [
 {path: 'admin-login',loadComponent: () =>import('./components/login/login').then(m => m.login)},
 { path: 'KidsCollections', component: KidsCollections },
 
-{ path: '', component: ProductList }, // HOME scroll view
+{ path: '', component: ProductList }, 
 
-{ path: 'products', component: ProductList }, // scroll
-{ path: 'products/view-all', component: ProductList, data: { view: 'names' } }, // ✅ NEW GRID
-{ path: 'products/:categoryId', component: ProductList, data: { view: 'full' } }, //when clicking on category
+{ path: 'products', component: ProductList }, 
+{ path: 'products/view-all', component: ProductList, data: { view: 'names' } }, 
+{ path: 'products/:categoryId', component: ProductList, data: { view: 'full' } },
 
-{ path: 'product/:id', component: Productdetails }, //product details
+{ path: 'product/:id', component: Productdetails },
 
-{ path: 'whatsapp', component: WhatsappLogo }
+{ path: 'whatsapp', component: WhatsappLogo },
+{path:'payments',component:Payment}
 
 ];
 

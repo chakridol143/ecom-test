@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { AfterViewInit, Component, ElementRef, QueryList, ViewChildren } from '@angular/core';
+import {  Component } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({

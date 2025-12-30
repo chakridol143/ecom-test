@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-bestsellers',
@@ -9,7 +9,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
 })
 export class Bestsellers {
 
-  @Output() close = new EventEmitter<void>();
+  
 
   necklaceSets = [
   {

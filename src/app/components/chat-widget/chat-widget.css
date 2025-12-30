@@ -1,8 +1,4 @@
-/* ===========================
-   THEME: Genperm Luxury (Black & Gold)
-   =========================== */
 
-/* --- LAUNCHER CONTAINER --- */
 .chat-launcher-container {
   position: fixed;
   bottom: 95px; 
@@ -13,8 +9,6 @@
   align-items: flex-end;
   gap: 8px;
 }
-
-/* Avatar Button */
 .avatar-btn {
   width: 60px; 
   height: 60px;
@@ -44,7 +38,6 @@
   box-shadow: 0 4px 20px rgba(212, 175, 55, 0.4);
 }
 
-/* Greeting Bubble */
 .greeting-bubble {
   background: #ffffff;
   color: #1a1a1a;
@@ -76,7 +69,6 @@
   100% { transform: translateY(0); }
 }
 
-/* --- CHAT WINDOW --- */
 .chat-container {
   position: fixed;
   bottom: 180px; 
@@ -95,7 +87,6 @@
   font-family: 'Segoe UI', sans-serif;
 }
 
-/* Header */
 .chat-header {
   background: #111;
   color: #d4af37;
@@ -120,7 +111,6 @@
   cursor: pointer;
 }
 
-/* Messages */
 .chat-messages {
   flex: 1;
   padding: 20px;
@@ -152,8 +142,6 @@
   font-size: 14px;
   border: 1px solid #ddd;
 }
-
-/* --- UPDATED INPUT AREA --- */
 .chat-input {
   display: flex;
   align-items: center;
@@ -174,7 +162,6 @@
 }
 .chat-input input:focus { border-color: #d4af37; }
 
-/* SHARED BUTTON STYLES */
 .chat-input button {
   width: 40px; 
   height: 40px;
@@ -188,7 +175,6 @@
   transition: all 0.3s ease;
 }
 
-/* Voice Button */
 .voice-btn {
   background: #f5f5f5;
   color: #333;
@@ -196,7 +182,6 @@
 }
 .voice-btn:hover { background: #e0e0e0; }
 
-/* Red Pulse Animation */
 .voice-btn.listening {
   background: #fff0f0;
   color: #d40000;
@@ -204,7 +189,6 @@
   animation: softPulse 1.5s infinite;
 }
 
-/* Send Button */
 .send-btn {
   background: #111;
   color: #d4af37;
@@ -221,12 +205,91 @@
   100% { box-shadow: 0 0 0 0 rgba(212, 0, 0, 0); }
 }
 
-/* Mobile Media Queries */
-@media (max-width: 600px) {
+@media (min-width: 360px) and (max-width: 600px) {
+
+ 
+  .chat-launcher-container {
+    bottom: 100px;    
+    right: 20px;
+    z-index: 9999;
+  }
+
+  .avatar-btn {
+    width: 55px;
+    height: 55px;
+  }
+
+  .greeting-bubble {
+    font-size: 12px;
+    padding: 8px 14px;
+    max-width: 210px;
+  }
+
   .chat-container {
-    width: 70%;
-    height: 50%;
-    right: 5%;
-    bottom: 150px;
+    position:fixed;
+    width: calc(100% - 45px);
+    max-width: 340px;
+    height: 420px;
+    bottom: 140px;   
+    right: 29px;
+    top:200px;
+    border-radius: 18px;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.35);
+    z-index: 10000;
+
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  .chat-header {
+    padding: 14px 16px;
+  }
+
+  .chat-header h3 {
+    font-size: 15px;
+  }
+
+  .chat-header span {
+    font-size: 10px;
+    letter-spacing: 1px;
+  }
+
+  .chat-header button {
+    font-size: 22px;
+  }
+
+  .chat-messages {
+    padding: 14px;
+    gap: 10px;
+  }
+
+  .user-msg,
+  .bot-msg {
+    font-size: 13px;
+    max-width: 85%;
+    line-height: 1.45;
+  }
+
+  .chat-input {
+    padding: 10px;
+    gap: 6px;
+  }
+
+  .chat-input input {
+    height: 40px;
+    font-size: 13px;
+  }
+
+  .chat-input button {
+    width: 38px;
+    height: 38px;
+    font-size: 15px;
+  }
+
+  .whatsapp-float,
+  .whatsapp-widget,
+  .chat-widget {
+    bottom: 20px !important;
   }
 }

@@ -35,7 +35,7 @@ export class FilterResults {
     const list = Array.isArray(res) ? res : [];
 
     this.product = list.find(
-      (item) => item.name === this.productName   // ✔ FIXED
+      (item) => item.name === this.productName   
     );
 
     console.log("Matched product:", this.product);

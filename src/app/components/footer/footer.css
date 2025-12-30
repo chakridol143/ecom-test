@@ -4,7 +4,7 @@ html, body {
 }
 
 .footer-main {
-  /* background: #8d646b; */
+ 
   padding: 60px;
   width: 100%;
   box-sizing: border-box;
@@ -24,7 +24,6 @@ html, body {
   color: black;
 }
 
-/* EMAIL INPUT BOX – CLEAN, CENTERED, ARROW INSIDE */
 .email-box {
   margin-top: 5px;
   width: 100%;
@@ -63,7 +62,7 @@ html, body {
 .email-submit:hover {
   padding-left: 60px;opacity: 0;
 }
-/* LINKS */
+
 .footer-column a {
   display: block;
   margin-bottom: 8px;
@@ -84,8 +83,6 @@ html, body {
   color: black;
 }
 
-
-/* SOCIAL ICONS */
 .footer-social {
   display: flex;
   gap: 12px;
@@ -105,7 +102,6 @@ html, body {
   justify-content: center;
 }
 
-/* FOOTER GROUP */
 .footer-group {
   width: 100%;
 }
@@ -120,11 +116,6 @@ html, body {
   margin-top: 10px;
 
 }
-/* .features-section{
-  border-top: 2px solid rgba(0,0,0,0.1);
-} */
-
-/* DESKTOP FORCE: show all content */
 @media (min-width: 601px) {
   .footer-toggle {
     display: none !important;
@@ -135,7 +126,6 @@ html, body {
   }
 }
 
-/* MOBILE ACCORDION */
 @media (max-width: 600px) {
 
   .footer-main {
@@ -167,15 +157,14 @@ html, body {
   div .footer-toggle{
     color: black;
   }
-  /* Hidden by default */
+ 
   .footer-content {
     display: none !important;
-    /* background: #8d646b; */
+
     padding: 10px 5px 20px 5px;
     border-bottom: 1px solid rgba(255,255,255,0.2);
   }
 
-  /* Angular toggled content */
   .footer-content.active {
     display: block !important;
   }
@@ -253,10 +242,9 @@ html, body {
 }
 
 .features-section {
-  /* margin: 80px auto; */
+  
   padding: 50px 0;
-  /* width: 90%; */
-  /* max-width: 1300px; */
+ 
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   text-align: center;
@@ -273,7 +261,6 @@ html, body {
   line-height: 19px;
   }
 
-/* TABLETS */
 @media (max-width: 903px) and (min-width: 601px) {
   .product-grid {
     grid-template-columns: repeat(3, 1fr);
@@ -287,7 +274,6 @@ html, body {
   .features-section { grid-template-columns: repeat(2, 1fr); }
 }
 
-/* DESKTOP & LAPTOP — 4 in one line + small images */
 @media (min-width: 1025px) {
 
   .features-section {
@@ -311,8 +297,6 @@ html, body {
   }
 }
 
-
-/* MOBILE VIEW – Show ONE card, scroll horizontally */
 @media (max-width: 600px) {
 
   .testimonials-container {
@@ -357,7 +341,6 @@ html, body {
     min-width: 90%;
     flex: 0 0 auto;
     scroll-snap-align: center;
-    /* background: #fff; */
     border-radius: 12px;
     padding: 20px;
     box-sizing: border-box;
@@ -381,7 +364,7 @@ html, body {
     width: 90px;
     height: 90px;
     object-fit: contain;
-    /* margin-bottom: 2px; */
+
   }
 
 
@@ -400,7 +383,6 @@ html, body {
   }
 }
 
-/* VERY SMALL SCREENS */
 @media (max-width: 400px) {
   .product-img { height: 150px; }
   .product-info h3 { font-size: 11px; }
@@ -411,14 +393,13 @@ html, body {
   .product-grid { grid-template-columns: 1fr; }
 }
 
-/* Removed animation (clean) */
 .left-right-animate,
 .left-right-animate.show {
   opacity: 1;
   transform: none;
   transition: none;
 }
-/* DESKTOP & LAPTOP VIEW - Better Product Grid */
+
 @media (min-width: 1025px) {
 
   .product-img {
@@ -428,14 +409,12 @@ html, body {
     border-radius: 6px;
   }
 
-  /* Hover effect */
   .product-img:hover {
     transform: scale(1.07);
     box-shadow: 0 8px 25px rgba(0,0,0,0.25);
   }
 }
 
-/* LARGE LAPTOP / 1600px+ */
 @media (min-width: 1400px) {
   .product-img {
     height: 360px !important;

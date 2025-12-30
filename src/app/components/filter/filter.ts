@@ -23,7 +23,7 @@ export class Filter {
   minPriceLimit = 2000;
   maxPriceLimit = 100000;
 
-    categories: any[] = []; // <-- store categories here
+    categories: any[] = []; 
   loading = true;
   errorMessage = '';
 
@@ -62,7 +62,7 @@ applyFilters() {
   );
 
   if (foundProduct) {
-    this.productSelection.selectProduct(foundProduct); // <-- MAGIC HERE
+    this.productSelection.selectProduct(foundProduct); 
   } else {
     console.log("No product found");
   }
@@ -84,7 +84,6 @@ applyFilters() {
     this.filters = {
       price: 20000,
       discount: 10,
-      // brand: '',
       category:'',
       material: '',
       carat: '',

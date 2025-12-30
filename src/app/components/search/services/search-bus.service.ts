@@ -10,7 +10,6 @@ export class SearchBusService {
     this._term$.next(term ?? '');
   }
 
-  // optional: current value getter
   get term(): string {
     return this._term$.getValue();
   }

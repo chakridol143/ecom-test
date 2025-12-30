@@ -1,6 +1,4 @@
-/* ======================================================
-   FILTER OVERLAY
-====================================================== */
+
 .filter-overlay {
   position: fixed;
   top: 0;
@@ -17,11 +15,6 @@
   from { opacity: 0; }
   to   { opacity: 1; }
 }
-
-
-/* ======================================================
-   CENTERED FILTER POPUP
-====================================================== */
 .filter-popup {
   position: fixed !important;
   top: 50% !important;
@@ -55,10 +48,6 @@
   }
 }
 
-
-/* ======================================================
-   FILTER BOX TITLE
-====================================================== */
 .filter-box h2 {
   text-align: center;
   font-size: 23px;
@@ -67,10 +56,6 @@
   color: #2d2d2d;
 }
 
-
-/* ======================================================
-   FILTER GROUPS
-====================================================== */
 .filter-group {
   margin-bottom: 20px;
 }
@@ -83,7 +68,6 @@
   color: #444;
 }
 
-/* Select Inputs */
 .filter-group select {
   width: 100%;
   padding: 12px;
@@ -99,10 +83,6 @@
   box-shadow: 0 0 4px rgba(216, 193, 154, 0.55);
 }
 
-
-/* ======================================================
-   SLIDER INPUTS
-====================================================== */
 .slider input[type="range"] {
   width: 100%;
   height: 6px;
@@ -125,10 +105,6 @@
   transform: scale(1.12);
 }
 
-
-/* ======================================================
-   FILTER ACTION BUTTONS
-====================================================== */
 .filter-actions {
   display: flex;
   gap: 12px;
@@ -147,7 +123,6 @@
   transition: 0.25s;
 }
 
-/* Apply Button */
 .apply-btn {
   background: #d8c19a;
   color: white;
@@ -156,7 +131,6 @@
   background: #c4ab88;
 }
 
-/* Reset Button */
 .reset-btn {
   background: #ff4d4d;
   color: white;
@@ -165,14 +139,10 @@
   background: #e23f3f;
 }
 
-
-/* ======================================================
-   MOBILE RESPONSIVE (≤ 600px)
-====================================================== */
 @media (max-width: 600px) {
   .filter-popup {
     width: 92% !important;
-    max-height: calc(100vh - 40px) !important; /* prevents overflow */
+    max-height: calc(100vh - 40px) !important; 
     padding: 20px !important;
     border-radius: 20px !important;
     top: 50% !important;
@@ -180,7 +150,6 @@
     transform: translate(-50%, -50%) !important;
   }
 
-  /* safe-area for notch phones */
   .filter-popup {
     margin-top: env(safe-area-inset-top);
     margin-bottom: env(safe-area-inset-bottom);
@@ -194,11 +163,6 @@
     font-size: 20px;
   }
 }
-
-
-/* ======================================================
-   SMALL DEVICES (≤ 380px)
-====================================================== */
 @media (max-width: 380px) {
   .filter-popup {
     width: 94% !important;
@@ -213,20 +177,12 @@
   }
 }
 
-
-/* ======================================================
-   TABLET RESPONSIVE (≤ 900px)
-====================================================== */
 @media (max-width: 900px) {
   .filter-popup {
     width: 450px !important;
   }
 }
 
-
-/* ======================================================
-   LARGE SCREENS / TV (≥ 1600px)
-====================================================== */
 @media (min-width: 1600px) {
   .filter-popup {
     width: 520px !important;
@@ -245,10 +201,6 @@
   }
 }
 
-
-/* ======================================================
-   PREVENT POPUP FROM BREAKING LAYOUT
-====================================================== */
 app-filter {
   position: fixed;
   top: 0;

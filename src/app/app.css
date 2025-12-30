@@ -1,15 +1,10 @@
-/* ------------------------------
-   MAIN APP WRAPPER
------------------------------- */
+
 .app-container {
   width: 100%;
-  padding-top: 140px;   /* Space for header */
+  padding-top: 140px;   
   margin-top: 5%;
 }
 
-/* ------------------------------
-   CATEGORY ROW
------------------------------- */
 .category-row {
   display: flex;
   justify-content: center;
@@ -53,18 +48,12 @@
   border-color: #d8c19a;
 }
 
-/* ------------------------------
-   CONTENT WRAPPER
------------------------------- */
 .content {
   width: 100%;
   padding: 20px 25px;
-  margin-top: 8%; /* Gap below categories */
+  margin-top: 8%; 
 }
 
-/* ------------------------------
-   LAYOUT PANEL (PRODUCTS + DETAILS)
------------------------------- */
 .main-layout {
   display: flex;
   width: 100%;
@@ -81,9 +70,6 @@
   border-left: 1px solid #ddd;
 }
 
-/* ------------------------------
-   TABLET VIEW
------------------------------- */
 @media (max-width: 903px) {
 
   .category-row {
@@ -112,9 +98,6 @@
   }
 }
 
-/* ------------------------------
-   MOBILE VIEW
------------------------------- */
 @media (max-width: 480px) {
 
   .category-row {
@@ -130,15 +113,8 @@
     font-size: 12px;
   }
 
-  /* .content {
-    margin-top: 30px;
-    padding: 12px;
-  } */
 }
 
-/* ------------------------------
-   VERY SMALL DEVICES (360px)
------------------------------- */
 @media (max-width: 360px) {
 
   .category-box img {

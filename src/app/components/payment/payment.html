@@ -1,0 +1,51 @@
+<div class="payment-page">
+
+ 
+  <div *ngIf="step === 'summary'">
+    <h2>Order Summary</h2>
+
+    <h4>Shipping Address</h4>
+    <p>
+      {{ address.firstName }} {{ address.lastName }} <br>
+      {{ address.street }}, {{ address.city }} <br>
+      {{ address.state }} - {{ address.postal }}
+    </p>
+
+    <h4>Items</h4>
+    <div *ngFor="let item of items">
+      {{ item.name }} - ₹{{ item.price }}
+    </div>
+
+    <h3>Total: ₹{{ totalAmount }}</h3>
+
+    <button (click)="continueToPayment()">Continue</button>
+  </div>
+  <div *ngIf="step === 'methods'">
+    <h2>Select Payment Method</h2>
+
+    <button (click)="selectMethod('upi')">UPI</button>
+    <button (click)="selectMethod('credit')">Credit Card</button>
+    <button (click)="selectMethod('debit')">Debit Card</button>
+  </div>
+
+  <div *ngIf="step === 'card'">
+    <h2>{{ paymentType | uppercase }} Card</h2>
+
+    <input placeholder="Card Number"
+           [(ngModel)]="cardNumber">
+
+    <input placeholder="MM/YY"
+           [(ngModel)]="expiry">
+
+    <input placeholder="CVV"
+           [(ngModel)]="cvv">
+
+    <button (click)="payNow()">Pay ₹{{ totalAmount }}</button>
+  </div>
+
+  <div *ngIf="step === 'success'">
+    <h2>Payment Successful 🎉</h2>
+    <p>Paid Amount: ₹{{ totalAmount }}</p>
+  </div>
+
+</div>
