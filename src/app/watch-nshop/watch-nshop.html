@@ -1,0 +1,25 @@
+
+<div>
+  <h2>Watch and shop</h2>
+
+  <div class="video-grid">
+    <div class="video-item" *ngFor="let item of videoGrid">
+
+      <video
+        [src]="item.video"
+        #vid
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="auto">
+      </video>
+
+      <div class="video-overlay">
+        <p class="name">{{ item.name }}</p>
+        <p class="price">₹{{ item.price }}</p>
+      </div>
+
+    </div>
+  </div>
+</div>

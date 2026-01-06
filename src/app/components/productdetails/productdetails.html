@@ -1,0 +1,136 @@
+<div class="product-view" *ngIf="product">
+
+  <div class="product-layout">
+
+    <div class="big-image-grid">
+      <img *ngFor="let img of images" [src]="img" />
+    </div>
+
+  
+    <div class="main-media">
+      <img *ngFor="let img of images" [src]="img" />
+    </div>
+
+    <div class="product-details">
+
+      <h3 class="product-title">{{ product.name }}</h3>
+
+      <div class="pricing-section">
+        <span class="price">₹{{ product.price }}</span>
+        <span class="old-price">₹{{ product.oldPrice }}</span>
+        <span class="discount">save 50%</span>
+      </div>
+
+      <div class="quantity-box">
+        <button (click)="decQty()">-</button>
+        <span>{{ quantity }}</span>
+        <button (click)="incQty()">+</button>
+      </div>
+
+      <div class="finish-wrapper">
+        <label class="finish-label">Finish:</label>
+        <select class="finish-select" [(ngModel)]="selectedFinish">
+          <option *ngFor="let finish of finishes" [value]="finish">
+            {{ finish }}
+          </option>
+        </select>
+      </div>
+
+      <div class="btn-row">
+        <button class="add-cart-btn" (click)="addToCart()">Add to Cart</button>
+      </div>
+
+      <div class="description">
+        <h3>{{ product.description }}</h3>
+      </div>
+
+      <div class="accordion">
+
+        <div class="accordion-item">
+          <div class="accordion-header" (click)="toggle('shipping')">
+            <span>SHIPPING</span>
+            <span class="icon">{{ openSection === 'shipping' ? '−' : '+' }}</span>
+          </div>
+
+          <div class="accordion-body" *ngIf="openSection === 'shipping'">
+            <p>
+              Orders shipped within 2 – 3 working days
+              <em>For More Information Click </em>
+              <a href="#" class="info-link">Here</a>
+            </p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <div class="accordion-header" (click)="toggle('material')">
+            <span>MATERIAL</span>
+            <span class="icon">{{ openSection === 'material' ? '−' : '+' }}</span>
+          </div>
+
+          <div class="accordion-body" *ngIf="openSection === 'material'">
+            <p>Brass base with premium 24k gold plating.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <p class="tax" *ngIf="product.taxIncluded">Tax included.</p>
+
+    </div>
+
+  </div>
+
+
+<section class="related-section" *ngIf="filteredRecentlyViewed.length > 0">
+  <h3 class="related-title">Recently Viewed</h3>
+
+  <div class="related-wrapper">
+
+    <button class="scroll-btn left" (click)="scrollRecent('left')">‹</button>
+
+    <div class="related-grid" #recentScroll>
+      <div
+        class="related-card"
+        *ngFor="let item of filteredRecentlyViewed"
+        (click)="openProductDetails(item.product_id)"
+      >
+        <img [src]="baseImg + item.image_url" class="related-img" />
+        <h4>{{ item.name }}</h4>
+        <p>₹{{ item.price }}</p>
+      </div>
+    </div>
+
+    <button class="scroll-btn right" (click)="scrollRecent('right')">›</button>
+
+  </div>
+</section>
+
+<section class="related-section" *ngIf="relatedProducts.length > 0">
+  <h3 class="related-title">You Might Also Prefer</h3>
+
+  <div class="related-wrapper">
+
+    <button class="scroll-btn left" (click)="scrollSuggested('left')">‹</button>
+
+    <div class="related-grid" #suggestedScroll>
+      <div
+        class="related-card"
+        *ngFor="let item of relatedProducts"
+        (click)="openProductDetails(item.product_id)"
+      >
+        <img
+          [src]="item.currentImage"
+          class="related-img"
+          (mouseenter)="onHoverImage(item)"
+          (mouseleave)="onLeaveImage(item)"
+        />
+        <h4>{{ item.name }}</h4>
+        <p>₹{{ item.price }}</p>
+      </div>
+    </div>
+
+    <button class="scroll-btn right" (click)="scrollSuggested('right')">›</button>
+
+  </div>
+</section>
+

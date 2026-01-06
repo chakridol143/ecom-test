@@ -1,0 +1,25 @@
+
+.search-icon {
+  width: 42px;                
+  height: 42px;
+  cursor: pointer;
+  object-fit: contain;
+
+  transition: transform 0.25s ease, opacity 0.25s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 1690%;
+  margin-top: 5px;
+}
+
+.search-icon:hover {
+  transform: scale(1.15);
+  opacity: 0.8;
+}
+
+@media (max-width: 500px) {
+  .search-container {
+    max-width: 300px;
+  }
+}

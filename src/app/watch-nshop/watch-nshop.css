@@ -1,0 +1,57 @@
+h2 {
+  text-align: center;
+  font-size: clamp(20px, 4vw, 32px);
+  margin: clamp(16px, 4vw, 32px) 0;
+  font-family: "Libre Baskerville", serif;
+}
+
+.video-grid {
+  display: flex;
+  gap: clamp(12px, 3vw, 24px);
+  padding: clamp(12px, 4vw, 32px);
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.video-grid::-webkit-scrollbar {
+  display: none;
+}
+
+.video-item {
+  position: relative;
+  flex: 0 0 clamp(140px, 40vw, 220px);
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.video-item video {
+  width: 100%;
+  aspect-ratio: 9 / 16;
+  object-fit: cover;
+  display: block;
+}
+
+.video-overlay {
+  position: absolute;
+  inset: auto 0 0 0;
+  padding: 10px;
+  background: linear-gradient(to top, rgba(0,0,0,0.6), transparent);
+  color: #fff;
+  text-align: center;
+}
+
+.video-overlay .name {
+  font-size: clamp(12px, 3vw, 14px);
+  font-weight: 500;
+}
+
+.video-overlay .price {
+  font-size: clamp(11px, 2.8vw, 13px);
+}
+
+@media (min-width: 1200px) {
+  .video-grid {
+    max-width: 1400px;
+    margin: auto;
+  }
+}

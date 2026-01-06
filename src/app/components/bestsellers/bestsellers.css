@@ -1,0 +1,73 @@
+.category {
+  width: 100%;
+  padding: clamp(16px, 4vw, 32px) 0;
+}
+
+.category h3 {
+  font-family: "Libre Baskerville", serif;
+  font-size: clamp(18px, 3.5vw, 26px);
+  text-align: center;
+  margin-bottom: 20px;
+  margin-top: 10px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: clamp(12px, 3vw, 24px);
+  padding: 0 clamp(12px, 4vw, 32px);
+}
+
+.product {
+  text-align: center;
+  cursor: pointer;
+}
+
+.product img {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.product .name {
+  margin-top: 8px;
+  font-size: clamp(11px, 2.8vw, 14px);
+  font-weight: 500;
+  text-transform: uppercase;
+  font-family: "Libre Baskerville", serif;
+}
+
+.product .price {
+  font-size: clamp(11px, 2.6vw, 13px);
+  color: #444;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid #e0e0e0;
+  margin: clamp(20px, 5vw, 40px) auto;
+  width: 90%;
+}
+
+@media (max-width: 600px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .category h3{
+    margin-top: 60px;
+  }
+}
+
+@media (max-width: 360px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (min-width: 1200px) {
+  .grid {
+    max-width: 1400px;
+    margin: auto;
+  }
+}

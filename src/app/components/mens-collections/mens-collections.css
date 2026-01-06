@@ -1,0 +1,65 @@
+ .gallery {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: clamp(12px, 3vw, 28px);
+  padding: clamp(12px, 4vw, 32px);
+}
+
+.item {
+  position: relative;
+  text-align: center;
+  cursor: pointer;
+}
+
+.img {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  display: block;
+  transition: opacity 0.35s ease;
+}
+
+.img-2 {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+}
+
+.item:hover .img-2 {
+  opacity: 1;
+}
+
+.item:hover .img-1 {
+  opacity: 0;
+}
+
+.title {
+  margin-top: 8px;
+  font-size: clamp(11px, 2.8vw, 14px);
+  font-weight: 500;
+  text-transform: uppercase;
+  text-align: center;
+  font-family: "Libre Baskerville", serif;
+}
+
+@media (hover: none) {
+  .img-2 {
+    display: none;
+  }
+
+  .img-1 {
+    opacity: 1 !important;
+  }
+}
+@media (max-width:600px){
+  .gallery{
+    margin-top: 35px;
+  }
+}
+@media (min-width: 1200px) {
+  .gallery {
+    max-width: 1400px;
+    margin: auto;
+  }
+}

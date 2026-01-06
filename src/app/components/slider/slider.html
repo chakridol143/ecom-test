@@ -1,0 +1,11 @@
+<div class="slider-container">
+  
+
+  <div class="slider">
+    <div class="slides" [style.transform]="'translateX(-' + currentIndex * 100 + '%)'">
+      <div class="slide fade" *ngFor="let img of images">
+        <img [src]="img"  class="slider-clickable" />
+      </div>
+    </div>
+  </div>
+</div>

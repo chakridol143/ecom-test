@@ -1,0 +1,31 @@
+<div class="category-row">
+
+  <div class="category-box"
+       *ngFor="let category of categories; trackBy: trackByCategoryId"
+       (click)="selectCategory(category)"
+       [class.active]="selectedCategoryId === category.category_id">
+
+    <!-- IMAGE -->
+    <div *ngIf="category.imageLoaded">
+      <img [src]="getImageUrl(category.image_url)"
+           [alt]="category.name"
+           (error)="onImageError(category)"
+      />
+    </div>
+
+    <!-- MP4 FALLBACK -->
+    <div *ngIf="!category.imageLoaded">
+      <video [src]="fallbackVideo"
+             autoplay
+             muted
+             loop
+             playsinline
+             class="category-video">
+
+      </video>
+    </div>
+
+    <p>{{ category.name }}</p>
+
+  </div>
+</div>

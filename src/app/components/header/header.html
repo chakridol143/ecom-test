@@ -1,0 +1,106 @@
+<div class="shipping-bar">
+  <h4>FREE SHIPPING ALL OVER INDIA</h4>
+</div>
+
+<header class="header-container" [class.scrolled]="isScrolled">
+
+  <div class="header-left">
+    <span class="nav-item home-logo" (click)="goto('/')">
+  <img src="../../../assets/images/home.png" alt="Home" />
+</span>
+    <div class="left-nav desktop-only">
+      
+      
+
+      <span (click)="goto('/bestsellers')">Bestsellers</span>
+      <span (click)="goto('/releases')">New Releases</span>
+
+      <div class="dropdown">
+        <span class="dropdown-title">
+          Collections <span style="font-size: 10px;margin-top: 2px;">▼</span>
+        </span>
+
+        <div class="dropdown-menu">
+          <span (click)="goto('/mens')">Men's Collection</span>
+          <span (click)="goto('/womens')">Women's Collection</span>
+          <span (click)="goto('/KidsCollections')">Kidz Collection</span>
+        </div>
+      </div>
+
+    </div>
+
+    <span class="menu-icon mobile-only" (click)="toggleMenu()">☰</span>
+  </div>
+
+  <div class="logo">
+    <img src="../../../assets/images/gen_re.png" alt="logo" (click)="logoClick()">
+  </div>
+
+  <div class="right-icons">
+    <img src="../../../assets/images/search.png" class="icon" (click)="openSearch()" />
+
+    <div class="cart-container" (click)="toggleCartDetails()">
+      <img src="../../../assets/images/cart.png" alt="Cart" class="cart-icon" />
+      <span class="cart-count" *ngIf="cartCount > 0">{{ cartCount }}</span>
+    </div>
+
+    <app-cart-details
+      *ngIf="showCartPopup"
+      [items]="items"
+      (close)="closeDetails()"
+      (remove)="cartItemRemove($event)"
+      (clear)="handleClear()">
+    </app-cart-details>
+
+    <ng-container *ngIf="!user">
+      <img src="../../../assets/images/login1.png" class="icon" routerLink="/login" />
+    </ng-container>
+
+    <div *ngIf="user" class="hide-under-900">
+      <span class="user-name">Hello {{ user.name }}</span>
+      <button class="logout-btn" (click)="logoutUser()">Logout</button>
+    </div>
+  </div>
+
+</header>
+
+
+<div class="menu-overlay" [class.show]="menuOpen" (click)="toggleMenu()"></div>
+
+
+<div class="mobile-menu-full" [class.open]="menuOpen">
+
+  <div class="menu-header">
+    <span class="close-icon" (click)="toggleMenu()">✕</span>
+  </div>
+
+  <div class="mobile-menu-items">
+    <ng-container *ngIf="user">
+    <span>Hello {{ user.name }}</span>
+    </ng-container>
+    <span (click)="goto('/bestsellers'); toggleMenu()">Bestsellers</span>
+    <span (click)="goto('/releases'); toggleMenu()">New Releases</span>
+    <span (click)="goto('/mens'); toggleMenu()">Men's Collection</span>
+    <span (click)="goto('/womens'); toggleMenu()">Women's Collection</span>
+    <span (click)="goto('/KidsCollections'); toggleMenu()">Kidz Collection</span>
+
+    <ng-container *ngIf="user" >
+      <span (click)="logoutUser()"  style="margin-top: 10px;">Logout</span>
+    </ng-container>
+  </div>
+
+</div>
+
+
+<div class="full-search" *ngIf="searchOpen">
+  <div class="search-area">
+    <img src="../../../assets/images/search.png" class="search-big-icon">
+    <input
+      placeholder="SEARCH FOR..."
+      [(ngModel)]="overlaySearch"
+      (keyup)="onSearch(overlaySearch)"
+      (keydown.enter)="performSearch()"
+    />
+    <span class="close-search" (click)="closeSearch()">✕</span>
+  </div>
+</div>
