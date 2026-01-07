@@ -48,4 +48,45 @@
     <p>Paid Amount: ₹{{ totalAmount }}</p>
   </div>
 
+<div *ngIf="step === 'success'" class="success">
+
+  <h2>Payment Successful 🎉</h2>
+
+  <p class="amount">Paid Amount: ₹{{ totalAmount }}</p>
+
+  <div class="invoice-box">
+    <h3>Invoice Preview</h3>
+
+    <p>
+      <strong>Name:</strong>
+      {{ address.firstName }} {{ address.lastName }}
+    </p>
+
+    <p>
+      <strong>Address:</strong>
+      {{ address.street }},
+      {{ address.city }},
+      {{ address.state }} - {{ address.postal }}
+    </p>
+
+    <p><strong>Items:</strong></p>
+
+    <ul>
+      <li *ngFor="let item of items">
+        {{ item.name }} — ₹{{ item.price }}
+      </li>
+    </ul>
+
+    <p class="total">
+      <strong>Total:</strong> ₹{{ totalAmount }}
+    </p>
+  </div>
+
+  <button class="download-btn" (click)="downloadInvoice()">
+    Download Invoice (PDF)
+  </button>
+
+</div>
+
+
 </div>

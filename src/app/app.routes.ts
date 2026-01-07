@@ -22,7 +22,7 @@ import { KidsCollections } from './kids-collections/kids-collections';
 import { WhatsappLogo } from './whatsapp-logo/whatsapp-logo';
 import { ChatWidgetComponent } from './components/chat-widget/chat-widget';
 import { Payment } from './components/payment/payment';
-
+import { ConfirmEmailComponent } from './components/confirm-email/confirm-email';
 export const routes: Routes = [
   
   { path: 'login', component: login },
@@ -50,7 +50,9 @@ export const routes: Routes = [
 { path: 'product/:id', component: Productdetails },
 
 { path: 'whatsapp', component: WhatsappLogo },
-{path:'payments',component:Payment}
+{path:'payments',component:Payment},
+
+{ path: 'confirm-email', component: ConfirmEmailComponent }
 
 ];
 

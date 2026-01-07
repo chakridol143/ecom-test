@@ -126,7 +126,15 @@ export class login implements AfterViewInit {
         this.close.emit();
       },
       error: (err) => {
-        console.error("Login failed:", err);
+         if (err?.status === 403) {
+        alert("Please verify your email before logging in.");
+      } else if (err?.status === 401) {
+        alert("Invalid email or password");
+      } else if (err?.status === 404) {
+        alert("User not found");
+      } else {
+        alert("Login failed");
+      }
       }
     });
   }

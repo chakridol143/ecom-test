@@ -21,7 +21,7 @@ h2 {
   position: relative;
   flex: 0 0 clamp(140px, 40vw, 220px);
   overflow: hidden;
-  border-radius: 14px;
+  border-radius: 10px;
 }
 
 .video-item video {

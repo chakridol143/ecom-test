@@ -73,33 +73,37 @@ export class RegisterComponent implements AfterViewInit, OnInit, OnDestroy {
       }
     });
   }
-  onRegister() {
-    if (!this.username || !this.email || !this.password || !this.confirmPassword) {
-      alert('Please fill all required fields');
-      return;
-    }
-
-    if (this.password !== this.confirmPassword) {
-      alert('Passwords do not match');
-      return;
-    }
-
-    const payload = {
-      name: this.username,
-      email: this.email,
-      password: this.password,
-      phone: this.phone,
-      address: this.address
-    };
-
-    this.auth.register(payload).subscribe({
-      next: (res: any) => {
-        this.auth.saveSession(res.token, res.user);
-        this.router.navigate(['/']);
-      },
-      error: () => alert('Registration failed')
-    });
+onRegister() {
+  if (!this.username || !this.email || !this.password || !this.confirmPassword) {
+    alert('Please fill all required fields');
+    return;
   }
+
+  if (this.password !== this.confirmPassword) {
+    alert('Passwords do not match');
+    return;
+  }
+
+  const payload = {
+    name: this.username,
+    email: this.email,
+    password: this.password,
+    phone: this.phone,
+    address: this.address
+  };
+
+  this.auth.register(payload).subscribe({
+    next: () => {
+      alert("Registration successful! Please check your email to verify your account.");
+      this.router.navigate(['/login']);
+    },
+    error: (err) => {
+      if (err?.status === 409) alert("Email already registered");
+      else alert("Registration failed");
+    }
+  });
+}
+
 
   ngOnInit() {
     document.body.classList.add("register-page");
