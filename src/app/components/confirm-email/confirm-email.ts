@@ -17,7 +17,7 @@ export class ConfirmEmailComponent implements OnInit {
   message = 'Verifying email...';
   done = false;
 
-  private BASE_URL = 'https://ecom-backend-production-c71b.up.railway.app/api/auth';
+  private BASE_URL = 'http://localhost:3000/api/auth';
 
   constructor(
     private route: ActivatedRoute,

@@ -10,7 +10,7 @@ import { CartService } from '../../cart-details/services/cart.services';
 export class LoginService {
 
 
-  private BASE_URL = 'https://ecom-backend-production-c71b.up.railway.app/api/auth';
+  private BASE_URL = 'http://localhost:3000/api/auth';
 
   private userState = new BehaviorSubject<any>(this.getUser());
   userState$ = this.userState.asObservable();
